@@ -1,0 +1,1 @@
+jQuery(document).ready(function(r){r("form.search-form").submit(function(a){q=r("form.search-form input.search-field"),s=r("form.search-form input.search-value"),s.val(q.val()+" site:lamaquinadeturing.su")})});
