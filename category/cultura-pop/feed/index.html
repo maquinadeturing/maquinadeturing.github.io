@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Cultura Pop &#8211; La màquina de Turing</title>
+	<atom:link href="https://lamaquinadeturing.su/category/cultura-pop/feed/" rel="self" type="application/rss+xml" />
+	<link>https://lamaquinadeturing.su/</link>
+	<description>cat /dev/random</description>
+	<lastBuildDate>Sat, 21 Aug 2021 12:35:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4</generator>
+	<item>
+		<title>Argot pseudotènic a Blacklist</title>
+		<link>https://lamaquinadeturing.su/2021/08/21/argot-pseudotenic-a-blacklist/</link>
+		
+		<dc:creator><![CDATA[turing]]></dc:creator>
+		<pubDate>Sat, 21 Aug 2021 12:29:41 +0000</pubDate>
+				<category><![CDATA[Cultura Pop]]></category>
+		<guid isPermaLink="false">https://lamaquinadeturing.su/?p=498</guid>
+
+					<description><![CDATA[A la sèrie Blacklist, com en moltes altres sèries, de tant en tant la tecnologia hi té un paper, sobretot a través de l&#8217;agent Aram Mojtabai, graduat al MIT i amb catorze anys d&#8217;experiència a la NSA. De tant en tant el guió inclou argot que sona altament tècnic per la majoria; en realitat, en [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>A la sèrie Blacklist, com en moltes altres sèries, de tant en tant la tecnologia hi té un paper, sobretot a través de l&#8217;agent Aram Mojtabai, graduat al MIT i amb catorze anys d&#8217;experiència a la NSA.</p>
+
+
+
+<p>De tant en tant el guió inclou argot que sona altament tècnic per la majoria; en realitat, en molts casos són barreges de conceptes i sigles sense gaire sentit. Resumeixo aquí alguns exemples.</p>
+
+
+
+<h2>Episode 3:5 Arioch Cain</h2>
+
+
+
+<blockquote class="wp-block-quote"><p><strong>Samar:</strong> You created the site. You can take Agent Keen off the site.<br><strong>Gavin Belgado:</strong> No, I can’t.<br><strong>Samar:</strong> I don’t believe you.<br><strong>Belgado:</strong> You don’t believe me? Go try a layer four UDP/TCP in the OSI stacks.</p></blockquote>
+
+
+
+<p>El <a href="https://ca.wikipedia.org/wiki/OSI">model OSI</a>, o torre OSI, és l&#8217;arquitectura de protocols de telecomunicacions que utilitza Internet. Cada nivell o capa del model s&#8217;encarrega d&#8217;una funcionalitat. La capa 3 (xarxa) s&#8217;encarrega de com arribar d&#8217;un punt a un altre d&#8217;Internet. La capa 4 (transport) defineix com s&#8217;envien les dades i què fer si es perden pel camí. Es poden escollir protocols diferents per a una capa, en funció del tipus d&#8217;aplicació. Per a la capa 3, hi ha el <a href="https://ca.wikipedia.org/wiki/Protocol_d%27Internet">Protocol d&#8217;Internet, o IP</a>. Per a la capa 4, hi ha els protocols <a href="https://ca.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a> (s&#8217;assegura que totes les dades arriben) o <a href="https://ca.wikipedia.org/wiki/User_Datagram_Protocol">UDP</a> (no garanteix que totes les dades arribin). TCP és útil per a pàgines web, descàrregues de fitxers, etc., on volem rebre totes les dades. UDP és útil en videotrucades, per exemple, on si es perd un fotograma o un segon de so no es pot aturar la retransmissió i s&#8217;implement s&#8217;ignora.</p>
+
+
+
+<p>El concepte &#8220;una capa quatre UDP/TCP&#8221; no té sentit, ja que en una connexió només s&#8217;utilitza TCP o UDP, però no els dos alhora.</p>
+
+
+
+<h2>Episode 1:9 Anslo Garrick</h2>
+
+
+
+<blockquote class="wp-block-quote"><p><strong>Liz:</strong> Any idea who hit this facility?<br><strong>Aram:</strong> Um, someone called Garrick. He’s disabled telecom, simplex, and duplex signals.<br><strong>Liz:</strong> How long before you can restore the telecom?<br><strong>Aram:</strong> I haven’t been able to hack around it.They are jamming the signal internally.</p></blockquote>
+
+
+
+<p>Una de les propietats d&#8217;un canal de telecomunicacions és si pot enviar dades en un sol sentit (simplex) o en els dos sentits simultàniament (duplex). El comentari &#8220;ha deshabilitat les telecomunicacions, simplex i duplex&#8221; és redundant, ja que si s&#8217;han deshabilitat no importa si són simplex o duplex.</p>
+
+
+
+<h2>Episode 4:5 The Lindquist Concern</h2>
+
+
+
+<blockquote class="wp-block-quote"><p><strong>Cooper:</strong> What are we looking at?<br><strong>Aram:</strong> I’ve got access to the Patent Office’s server’s infrastructure, and there is a major alert from the TCP retries counter, meaning someone is uploading data. Like– like, a ton of it.</p></blockquote>
+
+
+
+<p>El comentari &#8220;TCP retries counter&#8221; es pot referir a diversos conceptes. El protocol TCP garanteix que les dades arribin íntegrament. Per fer-ho, divideix les dades a enviar, com un fitxer, en fragments petits, que envia en ordre. El receptor contesta amb confirmacions que cada fragment ha arribat. Si un dels fragments es perd, <a href="https://ca.wikipedia.org/wiki/ARQ">el protocol el torna a enviar</a>, el que es coneix com retransmissió. Una altra interpretació podria ser l&#8217;intent d&#8217;establir moltes connexions TCP diferents, cosa que pot provocar que el servidor en denegui algunes per manca de recursos. Una tercera interpretació seria que l&#8217;aplicació que utilitza TCP, si la connexió es trenca a mitja descàrrega, pot reintentar-la continuant des del punt on s&#8217;havia quedat amb una nova connexió.</p>
+
+
+
+<p>En tot cas, un &#8220;TCP retries counter&#8221; molt alt no indica que s&#8217;estiguin enviant moltes dades, sinó que o bé la connexió és de poca qualitat (obligant a TCP a reenviar moltes vegades els fragments que es perden), que hi ha moltes connexions simultànies (tot i que no se sap en quin sentit ni per a quina aplicació en concret) o que hi ha descàrregues que es trenquen i han de ser reiniciades, cosa difícil de dir perquè TCP no s&#8217;encarrega d&#8217;aquesta funcionalitat.</p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>
