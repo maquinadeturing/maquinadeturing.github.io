@@ -12,7 +12,7 @@
 	<atom:link href="https://lamaquinadeturing.su/feed/" rel="self" type="application/rss+xml" />
 	<link>https://lamaquinadeturing.su/</link>
 	<description>cat /dev/random</description>
-	<lastBuildDate>Sat, 21 Aug 2021 12:35:28 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 24 Aug 2021 17:28:13 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,6 +20,311 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.4</generator>
 	<item>
+		<title>Guia: Com descarregar un vídeo en streaming</title>
+		<link>https://lamaquinadeturing.su/2021/08/24/guia-com-descarregar-un-video-en-streaming/</link>
+		
+		<dc:creator><![CDATA[turing]]></dc:creator>
+		<pubDate>Tue, 24 Aug 2021 17:28:13 +0000</pubDate>
+				<category><![CDATA[Informàtica]]></category>
+		<guid isPermaLink="false">https://lamaquinadeturing.su/?p=510</guid>
+
+					<description><![CDATA[Hi ha una màxima que cap indústria de l&#8217;entreteniment ha pogut superar: si un contingut és retransmès a les cases de l&#8217;audiència, pot ser gravat. Fins fa uns anys, era comú que les plataformes de vídeo en línia fossin poc més que reproductors del fitxer de vídeo o àudio sencer. De tal manera que era [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hi ha una màxima que cap indústria de l&#8217;entreteniment ha pogut superar: si un contingut és retransmès a les cases de l&#8217;audiència, pot ser gravat.</p>
+
+
+
+<p>Fins fa uns anys, era comú que les plataformes de vídeo en línia fossin poc més que reproductors del fitxer de vídeo o àudio sencer. De tal manera que era fàcil trobar l&#8217;adreça web o URL que permetia descarregar la pel·lícula o cançó i desar-la al disc dur. Això ha canviat amb els reproductors que permeten canviar la qualitat de la imatge (format adaptatiu), i que divideixen en petits fragments el contingut. Per exemple, si saltem diversos minuts cap endavant només es descarrega a partir d&#8217;aquella posició.</p>
+
+
+
+<p>Això dificulta desar un contingut audiovisual, però no ho fa impossible. En aquesta guia mostraré com descarregar un vídeo d&#8217;una plataforma de streaming amb un sistema GNU/Linux.</p>
+
+
+
+<h2>Precaució</h2>
+
+
+
+<p>Comproveu les condicions d&#8217;ús de la plataforma. Tot i que baixar-vos el vídeo al disc dur és tècnicament el mateix que el que ja fa el vostre navegador quan useu el reproductor de la plataforma, potser els propietaris del contingut no ho consideren igual, o la llei en el vostre país no ho permet. Això podria provocar algun problema legal o que us suspenguin el compte! Aquesta guia té una finalitat educativa i no es pot fer responsable d&#8217;això.</p>
+
+
+
+<h2>Eines</h2>
+
+
+
+<p>Es tracta d&#8217;una operació que no és apta per usuaris comuns, però senzilla per algú amb coneixements bàsics de programació. En concret, aquesta guia se centra en els continguts multimèdia en format <a href="https://en.wikipedia.org/wiki/M3U">Extended M3U</a> originalment desenvolupat per Apple.</p>
+
+
+
+<p>Necessitarem:</p>
+
+
+
+<ul><li>Navegador Firefox (90)</li><li>Terminal (Bash, zsh o el que preferiu)</li><li>wget (1.20)</li><li>Python (3)</li><li>ffmpeg (4.3)</li><li>openssl (1.1, opcional)</li></ul>
+
+
+
+<p>Indico les meves versions orientativament, però segurament altres versions anteriors o posteriors també funcionaran.</p>
+
+
+
+<h2>Inspeccionant el flux</h2>
+
+
+
+<p>Inicieu el navegador Firefox i en una nova pestanya obriu el seu Inspector (<code>Control + Shift + I</code>).</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://lamaquinadeturing.su/app/uploads/2021/08/inspector-1024x355.jpg" alt="" class="wp-image-511" srcset="https://lamaquinadeturing.su/app/uploads/2021/08/inspector-1024x355.jpg 1024w, https://lamaquinadeturing.su/app/uploads/2021/08/inspector-300x104.jpg 300w, https://lamaquinadeturing.su/app/uploads/2021/08/inspector-768x266.jpg 768w, https://lamaquinadeturing.su/app/uploads/2021/08/inspector.jpg 1051w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>El panell d&#8217;Eines de Desenvolupador Web de Firefox, amb la pestanya de Xarxa.</figcaption></figure>
+
+
+
+<p>En concret ens interessa la pestanya de <code>Xarxa</code> o <code>Network</code>, que mostra les dades que la pàgina web descarrega del servidor.</p>
+
+
+
+<p>Un cop estigui llesta, navegeueu cap al reproductor de la web i reproduïu alguns segons de vídeo. Això hauria de mostrar activitat en la pestanya de <code>Xarxa</code>. De fet, molta activitat. Veureu tot tipus de descàrregues, com pàgines HTML, imatges JPEG o fitxers Javascript i CSS. Per centrar-nos en el que ens interessa, podem usar el filtre de tipus <code>Mèdia</code>:</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://lamaquinadeturing.su/app/uploads/2021/08/type_filter.png" alt="" class="wp-image-513" srcset="https://lamaquinadeturing.su/app/uploads/2021/08/type_filter.png 683w, https://lamaquinadeturing.su/app/uploads/2021/08/type_filter-300x66.png 300w" sizes="(max-width: 683px) 100vw, 683px" /><figcaption>Filtre de tipus Mèdia de la pestanya de Xarxa.</figcaption></figure>
+
+
+
+<p>Un cop aplicat el filtre, a dalt de tot de la llista hauríem de veure uns fitxers de tipus M3U8:</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://lamaquinadeturing.su/app/uploads/2021/08/m3u8-1024x139.png" alt="" class="wp-image-514" srcset="https://lamaquinadeturing.su/app/uploads/2021/08/m3u8-1024x139.png 1024w, https://lamaquinadeturing.su/app/uploads/2021/08/m3u8-300x41.png 300w, https://lamaquinadeturing.su/app/uploads/2021/08/m3u8-768x104.png 768w, https://lamaquinadeturing.su/app/uploads/2021/08/m3u8.png 1143w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Aquests fitxers són documents de text que contenen el format del flux de vídeo i àudio. El reproductor utilitza aquesta informació per saber quines qualitats de vídeo existeixen, quins tipus d&#8217;àudio diferents hi ha (per exemple, idiomes diferents), quina durada tenen i en quants fragments estan dividits, etc.</p>
+
+
+
+<p>Vegem un exemple. El primer document de la llista és la llista de reproducció M3U8 primària, i conté un text com el següent, que ha estat extret <a href="https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming/creating_a_primary_playlist">d&#8217;aquesta documentació</a>:</p>
+
+
+
+<pre class="wp-block-code"><code>#EXTM3U
+#EXT-X-STREAM-INF:BANDWIDTH=150000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http:&#47;&#47;example.com/low/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=240000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/lo_mid/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=440000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/hi_mid/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=640000,RESOLUTION=640x360,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/high/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=64000,CODECS="mp4a.40.5"
+http://example.com/audio/index.m3u8</code></pre>
+
+
+
+<p>Cada línia <code>EXT-X-STREAM-INF</code> representa un flux de vídeo o àudio, amb detalls com la mida de la imatge o els formats de codificació (codecs), i apunta a una llista de reproducció M3U8 secundària. Si mirem una d&#8217;aquestes llistes secundàries a la llista de la pestanya de <code>Xarxa</code>, veurem els detalls d&#8217;un flux en concret, com el que trobem <a href="https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming/video_on_demand_playlist_construction">aquí</a>:</p>
+
+
+
+<pre class="wp-block-code"><code>#EXTM3U
+#EXT-X-PLAYLIST-TYPE:VOD
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,
+http:&#47;&#47;example.com/movie1/fileSequence0.ts
+#EXTINF:10.0,
+http://example.com/movie1/fileSequence1.ts
+#EXTINF:10.0,
+http://example.com/movie1/fileSequence2.ts
+#EXTINF:9.0,
+http://example.com/movie1/fileSequence3.ts
+#EXT-X-ENDLIST</code></pre>
+
+
+
+<p>Cada entrada EXTINF és un fitxer individual de tipus <a href="https://ca.wikipedia.org/wiki/MPEG-2_Transport_Stream">MPEG2 TS</a>, que conté un fragment de l&#8217;àudio o el vídeo. El número és la durada en segons del fragment. Tots junts, per tant, formen el contingut multimèdia sencer.</p>
+
+
+
+<h2>Fent inventari</h2>
+
+
+
+<p>Les passes a seguir per tant són:</p>
+
+
+
+<ol><li>Escollir un flux de vídeo, segons quina qualitat preferim. Com més qualitat, més gran serà el fitxer final.</li><li>Escollir un flux d&#8217;àudio. A vegades només n&#8217;hi ha un, a vegades hi ha un flux d&#8217;àudio per cada idioma.</li><li>Preparar una llista dels fragments de cada flux.</li></ol>
+
+
+
+<p>Les llistes de reproducció secundàries ens han indicat la llista de fragments de cada flux. Sovint tenen noms amb un número que es va incrementant, com en l&#8217;exemple anterior: des de <code>fileSequence0.ts</code> fins a <code>fileSequence3.ts</code>. El vostre cas poden ser centenars o milers de fitxers, i per tant necessitarem l&#8217;ajuda de Python per preparar una llista de tots ells:</p>
+
+
+
+<pre class="wp-block-code"><code>last = 3
+
+for i in range(0, last + 1):
+    print("http://example.com/movie1/fileSequence" + str(i) + ".ts")</code></pre>
+
+
+
+<p>Aquest script de Python ens generarà una llista de fitxers de tipus &#8220;.ts&#8221;, que podem desar en un fitxer de text amb la següent comanda:</p>
+
+
+
+<pre class="wp-block-code"><code>python3 url.py > video_urls.txt</code></pre>
+
+
+
+<p>Podeu fer el mateix amb els fitxers d&#8217;àudio, canviant la part de l&#8217;adreça URL que convingui. Ara tenim dos fitxers de text amb les llistes de fragments de vídeo i àudio que ens calen.</p>
+
+
+
+<h2>Descarregant els continguts</h2>
+
+
+
+<p>Passem a realitzar les descàrregues dels fragments. Jo recomano desar-los en carpetes diferents per cada flux, ja que poden ser centenars o milers. Ho farem amb l&#8217;eina <code>wget</code>:</p>
+
+
+
+<pre class="wp-block-code"><code>mkdir video
+cd video
+wget -i ../video_urls.txt --header='User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:90.0) Gecko/20100101 Firefox/90.0'</code></pre>
+
+
+
+<p>El paràmetre <code>-i</code> indica la llista de fitxers a descarregar, que hem preparat anteriorment. El paràmetre <code>--header</code> indica que <code>wget</code> es faci passar pel navegador Firefox. Aquesta darrera configuració és opcional, només per si la plataforma no permet a clients que no siguin navegadors accedir al contingut. Pot ser possible que necessiteu altres capçaleres HTTP, o una <em>cookie</em> si cal estar connectats amb un usuari a la web.</p>
+
+
+
+<p>Les comandes anteriors haurien d&#8217;iniciar una sèrie frenètica de descàrregues a tota velocitat, deixant-vos la carpeta plena de fitxers &#8220;.ts&#8221;.</p>
+
+
+
+<h2>Opcional: desencriptant els fragments</h2>
+
+
+
+<p>Pot ser que els fragments &#8220;.ts&#8221; estiguin encriptats durant la transmissió. No hi ha problema, les llistes de reproducció secundàries ens indiquen com es desencripten. Per exemple, les següents directives M3U <a href="https://support.google.com/admanager/answer/7245661">d&#8217;aquesta documentació</a>:</p>
+
+
+
+<pre class="wp-block-code"><code>#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:26
+#EXT-X-KEY:METHOD=AES-128,URI="https://media.example.com/asset/key",IV=0x12345678901234567890123456789012</code></pre>
+
+
+
+<p>On hi ha tres paràmetres importants de la directiva <code>EXT-X-KEY</code>. El mètode, que sovint és AES 128; l&#8217;adreça, o URI, de la clau de xifratge; i un vector d&#8217;inicialització opcional en forma de número hexadecimal.</p>
+
+
+
+<p>La clau apareixerà a la pestanya de <code>Xarxa</code> de Firefox, si traiem el filtre de continguts <code>Mèdia</code>. Si trobem la descàrrega que correspon a l&#8217;adreça URI, veurem que el contingut (pestanya <code>Resposta</code> o <code>Response</code>) és un número codificat en format Base 64. El podem descodificar i obtenir un número hexadecimal. Per exemple, la clau en Base 64 <code>mHZUMhCYdlQyEJh2VDIQmA==</code> correspon al número hexadecimal <code>0x98765432109876543210987654321098</code>. Suposem que el vector d&#8217;inicialització és <code>0x12345678901234567890123456789012</code>.</p>
+
+
+
+<p>Ara que tenim la clau i, opcionalment, el vector d&#8217;inicialització, en format hexadecimal, podem desencriptar els fragments &#8220;.ts&#8221;:</p>
+
+
+
+<pre class="wp-block-code"><code>mkdir video_clear
+cd video_clear
+for f in `ls ../video`; do openssl aes-128-cbc -d -in ../video/$f -out ./$f -nosalt -iv 12345678901234567890123456789012 -K 98765432109876543210987654321098; done</code></pre>
+
+
+
+<p>Aquest codi desencripta els fitxers &#8220;.ts&#8221; de la carpeta <code>video</code> usant la clau i el vector d&#8217;inicialització, i els desa desencriptats en la carpeta <code>video_clear</code>.</p>
+
+
+
+<p>Amb el programa file podem comprovar el canvi. Si analitzem un fragment encriptat, no és capaç de trobar el format:</p>
+
+
+
+<pre class="wp-block-code"><code>$> file fileSequence0.ts    
+fileSequence0.ts: data</code></pre>
+
+
+
+<p>Mentre que un cop desencriptat, hauria de trobar un format de tipus multimèdia:</p>
+
+
+
+<pre class="wp-block-code"><code>$> file fileSequence0.ts 
+fileSequence0.ts: MPEG transport stream data</code></pre>
+
+
+
+<h2>Combinant-ho tot</h2>
+
+
+
+<p>En aquest punt tenim els fragments de vídeo i àudio descarregats i, si cal, desencriptats. Ens cal ajuntar-los en un sol fitxer de vídeo i d&#8217;àudio. Ho podem fer amb el següent codi de terminal:</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+echo > video_files.txt
+for i in `ls *.ts | sort -V`; do echo "file $i"; done >> video_files.txt
+ffmpeg -f concat -i video_files.txt -c copy video.mp4</code></pre>
+
+
+
+<p>Si executem aquest codi en el terminal, des de la carpeta on estan els fragments de vídeo, ho ajuntarà tot en un sol fitxer MP4 amb l&#8217;eina <code>ffmpeg</code>.</p>
+
+
+
+<p>Per a fer el mateix amb els fitxers d&#8217;àudio, es pot usar el següent codi que té un paràmetre per si hi ha problemes amb el format d&#8217;àudio dels fragments &#8220;.ts&#8221;:</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+echo > audio_files.txt
+for i in `ls *.aac | sort -V`; do echo "file $i"; done >> audio_files.txt
+ffmpeg -f concat -i audio_files.txt -c copy -bsf:a aac_adtstoasc audio.aac</code></pre>
+
+
+
+<p>Si tot va bé, tindrem dos fitxers, <code>video.mp4</code> i <code>audio.aac</code>. Depenent del tipus de contingut multimèdia, potser heu de canviar algun paràmetre de la conversió <code>ffmpeg</code>.</p>
+
+
+
+<p>Per últim, volem combinar els dos fitxers en un de sol que tingui vídeo i àudio:</p>
+
+
+
+<pre class="wp-block-code"><code>ffmpeg -i video.mp4 -i audio.aac -c copy media.mp4</code></pre>
+
+
+
+<p>Això generarà un sol fitxer <code>media.mp4</code> que hauria de tenir el vídeo i àudio que heu escollit quan hem inspeccionat els fluxes. A cada pas de totes aquestes combinacions de fitxers és bona idea comprovar que els continguts són correctes abans de seguir.</p>
+
+
+
+<h2>Conclusions</h2>
+
+
+
+<p>Amb aquesta guia he mostrat com funciona la retransmissió de continguts multimèdia a través del protocol M3U, com escollir els fluxes de vídeo i àudio, descarregar-ne els fragments i combinar-los en un sol fitxer. Opcionalment, pot haver calgut desencriptar els fragments.</p>
+
+
+
+<p><em>Autoria de la foto de portada: <a href="https://unsplash.com/@dmjdenise?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Denise Jans</a> a <a href="https://unsplash.com/s/photos/film-reel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</em></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
 		<title>Argot pseudotènic a Blacklist</title>
 		<link>https://lamaquinadeturing.su/2021/08/21/argot-pseudotenic-a-blacklist/</link>
 		
@@ -139,7 +444,7 @@
 
 
 
-<blockquote class="wp-block-quote"><p>“Nosotros, el partido bolchevique, convencimos a Rusia. Hemos conquistado Rusia: de los ricos para los pobres, de los explotadores para los trabajadores. Ahora debemos gestionar Rusia. Y toda la singularidad del momento que se experimenta, toda la dificultad es comprender las características de la transición de la tarea principal de persuadir al pueblo y la supresión militar de los explotadores a la tarea principal de la gestión&#8221;.</p><cite>Obras completas<sup id="footnote_plugin_tooltip_9693_1" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_1');">1</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_1"></span>, 4ª ed., vol. 27, p. 214</cite></blockquote>
+<blockquote class="wp-block-quote"><p>“Nosotros, el partido bolchevique, convencimos a Rusia. Hemos conquistado Rusia: de los ricos para los pobres, de los explotadores para los trabajadores. Ahora debemos gestionar Rusia. Y toda la singularidad del momento que se experimenta, toda la dificultad es comprender las características de la transición de la tarea principal de persuadir al pueblo y la supresión militar de los explotadores a la tarea principal de la gestión&#8221;.</p><cite>Obras completas<sup id="footnote_plugin_tooltip_5668_1" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_1');">1</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_1"></span>, 4ª ed., vol. 27, p. 214</cite></blockquote>
 
 
 
@@ -147,7 +452,7 @@
 
 
 
-<p>Finalmente, en 1923, en su último artículo &#8220;Mejor poco, pero mejor&#8221; (Pravda<sup id="footnote_plugin_tooltip_9693_2" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_2');">2</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_2"></span>, 4 de marzo), V. I. Lenin expresó su preocupación por la imperfección del aparato estatal de la joven república soviética y enfatizó la necesidad de estudiar &#8220;los fundamentos de la teoría sobre el tema de nuestro aparato estatal&#8221; y el conocimiento de <em>los fundamentos de la ciencia de gestión</em> (obras completas<sup id="footnote_plugin_tooltip_9693_3" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_3');">3</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_3"></span>, 4ª ed., vol. 27, p. 278).</p>
+<p>Finalmente, en 1923, en su último artículo &#8220;Mejor poco, pero mejor&#8221; (Pravda<sup id="footnote_plugin_tooltip_5668_2" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_2');">2</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_2"></span>, 4 de marzo), V. I. Lenin expresó su preocupación por la imperfección del aparato estatal de la joven república soviética y enfatizó la necesidad de estudiar &#8220;los fundamentos de la teoría sobre el tema de nuestro aparato estatal&#8221; y el conocimiento de <em>los fundamentos de la ciencia de gestión</em> (obras completas<sup id="footnote_plugin_tooltip_5668_3" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_3');">3</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_3"></span>, 4ª ed., vol. 27, p. 278).</p>
 
 
 
@@ -267,7 +572,7 @@
 
 
 
-<p>La cibernética se basa en la recopilación, el procesamiento y la entrega de información. La información es también un concepto básico de la teoría general de la comunicación. Mientras tanto, el término &#8220;información&#8221; en sí no tiene una definición exacta.<sup id="footnote_plugin_tooltip_9693_4" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_4');">4</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_4"></span> Esto no debería confundirnos, ya que para la investigación y las actividades prácticas y para el desarrollo posterior de la teoría del control, realmente no necesitamos definiciones precisas de ciertos conceptos. Después de todo, no sabemos qué es el tiempo, nadie puede dar una definición de esta palabra, pero lo medimos perfectamente con gran precisión y lo ponemos en la base de todos nuestros cálculos de eficiencia, productividad laboral. Hablamos de desperdicio y la necesidad de ahorrar tiempo, el uso indebido del tiempo es punible en algunos casos por ley&#8230; Tampoco sabemos qué es el espacio, pero lo medimos, utilizamos los teoremas de la geometría: la ciencia del espacio. Se puede discutir con esto, pero es poco probable que alguien, excepto algunos filósofos y matemáticos que se dedican especialmente a este problema, pueda satisfacer el concepto generalizado del espacio como una colección continua de cualquier objeto o fenómeno homogéneo, la medición de distancias en la que se lleva a cabo de acuerdo con cualquier ley con pasos infinitesimales (Riemann, 1854). Hay muchos ejemplos similares. Pero esto no interfiere con nuestras actividades científicas y prácticas que ocurren en el tiempo y el espacio…</p>
+<p>La cibernética se basa en la recopilación, el procesamiento y la entrega de información. La información es también un concepto básico de la teoría general de la comunicación. Mientras tanto, el término &#8220;información&#8221; en sí no tiene una definición exacta.<sup id="footnote_plugin_tooltip_5668_4" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_4');">4</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_4"></span> Esto no debería confundirnos, ya que para la investigación y las actividades prácticas y para el desarrollo posterior de la teoría del control, realmente no necesitamos definiciones precisas de ciertos conceptos. Después de todo, no sabemos qué es el tiempo, nadie puede dar una definición de esta palabra, pero lo medimos perfectamente con gran precisión y lo ponemos en la base de todos nuestros cálculos de eficiencia, productividad laboral. Hablamos de desperdicio y la necesidad de ahorrar tiempo, el uso indebido del tiempo es punible en algunos casos por ley&#8230; Tampoco sabemos qué es el espacio, pero lo medimos, utilizamos los teoremas de la geometría: la ciencia del espacio. Se puede discutir con esto, pero es poco probable que alguien, excepto algunos filósofos y matemáticos que se dedican especialmente a este problema, pueda satisfacer el concepto generalizado del espacio como una colección continua de cualquier objeto o fenómeno homogéneo, la medición de distancias en la que se lleva a cabo de acuerdo con cualquier ley con pasos infinitesimales (Riemann, 1854). Hay muchos ejemplos similares. Pero esto no interfiere con nuestras actividades científicas y prácticas que ocurren en el tiempo y el espacio…</p>
 
 
 
@@ -327,7 +632,7 @@
 
 
 
-<p>En 1959, se celebró una conferencia científica en Moscú sobre el uso de la electrónica en biología y medicina. Se escucharon varias docenas de informes interesantes al respecto, y se demostró el equipo original. Los trabajos de la conferencia se publicaron en la colección <em>Electrónica en la medicina</em>, Gosenergoizdat<sup id="footnote_plugin_tooltip_9693_5" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_5');">5</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_5"></span>, 1960. En 1962, se convocará una segunda conferencia sobre el mismo tema.</p>
+<p>En 1959, se celebró una conferencia científica en Moscú sobre el uso de la electrónica en biología y medicina. Se escucharon varias docenas de informes interesantes al respecto, y se demostró el equipo original. Los trabajos de la conferencia se publicaron en la colección <em>Electrónica en la medicina</em>, Gosenergoizdat<sup id="footnote_plugin_tooltip_5668_5" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_5');">5</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_5"></span>, 1960. En 1962, se convocará una segunda conferencia sobre el mismo tema.</p>
 
 
 
@@ -335,7 +640,7 @@
 
 
 
-<p>El artículo &#8220;Cibernética y vida&#8221;, publicado en el &#8220;Ekonomicheskoy gazete&#8221;<sup id="footnote_plugin_tooltip_9693_6" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_6');">6</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_6"></span> el 12 de junio de 1960, enumera algunas áreas de aplicación de la cibernética en biología. Estos incluyen: el estudio de varios procesos de control en la naturaleza viva, las células vivas, el comportamiento de los seres vivos, la evolución de la vida silvestre en su conjunto, el diagnóstico, el manejo de ciertos procesos fisiológicos, el estudio de los fenómenos de herencia y la influencia directa en estos procesos para derivar formas valiosas de animales, plantas y microorganismos, etc.</p>
+<p>El artículo &#8220;Cibernética y vida&#8221;, publicado en el &#8220;Ekonomicheskoy gazete&#8221;<sup id="footnote_plugin_tooltip_5668_6" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_6');">6</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_6"></span> el 12 de junio de 1960, enumera algunas áreas de aplicación de la cibernética en biología. Estos incluyen: el estudio de varios procesos de control en la naturaleza viva, las células vivas, el comportamiento de los seres vivos, la evolución de la vida silvestre en su conjunto, el diagnóstico, el manejo de ciertos procesos fisiológicos, el estudio de los fenómenos de herencia y la influencia directa en estos procesos para derivar formas valiosas de animales, plantas y microorganismos, etc.</p>
 
 
 
@@ -347,15 +652,15 @@
 
 
 
-<blockquote class="wp-block-quote"><p>Solo el cálculo diferencial permite a las ciencias naturales representar matemáticamente no solo estados, sino también procesos: movimiento</p><cite>Gospolitizdat<sup id="footnote_plugin_tooltip_9693_7" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_7');">7</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_7"></span>, 1952, p. 218</cite></blockquote>
+<blockquote class="wp-block-quote"><p>Solo el cálculo diferencial permite a las ciencias naturales representar matemáticamente no solo estados, sino también procesos: movimiento</p><cite>Gospolitizdat<sup id="footnote_plugin_tooltip_5668_7" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_7');">7</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_7"></span>, 1952, p. 218</cite></blockquote>
 
 
 
-<p>Lafargue en sus memorias cita la declaración de Marx de que &#8220;la ciencia solo alcanza la perfección cuando logra usar las matemáticas&#8221; (P. Lafargue, Memorias de Marx, en la colección &#8220;Memorias de Marx y Engels&#8221;, Gospolitizdat<sup id="footnote_plugin_tooltip_9693_8" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_8');">8</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_8"></span>, 1956, p. 66).</p>
+<p>Lafargue en sus memorias cita la declaración de Marx de que &#8220;la ciencia solo alcanza la perfección cuando logra usar las matemáticas&#8221; (P. Lafargue, Memorias de Marx, en la colección &#8220;Memorias de Marx y Engels&#8221;, Gospolitizdat<sup id="footnote_plugin_tooltip_5668_8" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_8');">8</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_8"></span>, 1956, p. 66).</p>
 
 
 
-<p>Nuestro mejor científico, acad.<sup id="footnote_plugin_tooltip_9693_9" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_9');">9</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_9"></span> I. P. Pavlov dice:</p>
+<p>Nuestro mejor científico, acad.<sup id="footnote_plugin_tooltip_5668_9" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_9');">9</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_9"></span> I. P. Pavlov dice:</p>
 
 
 
@@ -371,11 +676,11 @@
 
 
 
-<p>Esta colección contiene artículos de A. D. Voskresensky y A. I. Prokhorov sobre el uso de la cibernética en biología y medicina. Desarrollaron las consideraciones anteriores. En el artículo del prof. S. N. Braines sobre neurocibernética aborda cuestiones que han comenzado a desarrollarse en la URSS recientemente. Los resultados de estos interesantes estudios se presentan en un libro sobre neurocibernética<sup id="footnote_plugin_tooltip_9693_10" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_10');">10</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_10"></span> (a finales de 1961 se publicará su segunda edición ampliada) y también se consideraron en varios congresos internacionales.</p>
+<p>Esta colección contiene artículos de A. D. Voskresensky y A. I. Prokhorov sobre el uso de la cibernética en biología y medicina. Desarrollaron las consideraciones anteriores. En el artículo del prof. S. N. Braines sobre neurocibernética aborda cuestiones que han comenzado a desarrollarse en la URSS recientemente. Los resultados de estos interesantes estudios se presentan en un libro sobre neurocibernética<sup id="footnote_plugin_tooltip_5668_10" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_10');">10</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_10"></span> (a finales de 1961 se publicará su segunda edición ampliada) y también se consideraron en varios congresos internacionales.</p>
 
 
 
-<p>De considerable interés es el artículo de A. V. Napalkov, candidato de ciencias biológicas<sup id="footnote_plugin_tooltip_9693_11" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_11');">11</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_11"></span>, sobre el aprendizaje de autómatas. Su autor participó en una conferencia científica dedicada a estos temas, que tuvo lugar en Karlsruhe (Alemania) en abril de 1961. El tema principal de la conferencia fue discutir las perspectivas para estudiar los principios del cerebro y crear nuevos tipos de máquinas cibernéticas sobre esta base. Se consideraron los problemas teóricos del aprendizaje, los mecanismos del cerebro que subyacen a la solución de problemas complejos del desarrollo de conceptos abstractos, reconocimiento de patrones, reconocimiento de voz y lectura de textos. Se discutieron las perspectivas de utilizar los principios del cerebro para crear nuevas máquinas cibernéticas. El artículo de A. V. Napalkov describe: también el trabajo que se lleva a cabo en la Universidad Estatal de Moscú.</p>
+<p>De considerable interés es el artículo de A. V. Napalkov, candidato de ciencias biológicas<sup id="footnote_plugin_tooltip_5668_11" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_11');">11</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_11"></span>, sobre el aprendizaje de autómatas. Su autor participó en una conferencia científica dedicada a estos temas, que tuvo lugar en Karlsruhe (Alemania) en abril de 1961. El tema principal de la conferencia fue discutir las perspectivas para estudiar los principios del cerebro y crear nuevos tipos de máquinas cibernéticas sobre esta base. Se consideraron los problemas teóricos del aprendizaje, los mecanismos del cerebro que subyacen a la solución de problemas complejos del desarrollo de conceptos abstractos, reconocimiento de patrones, reconocimiento de voz y lectura de textos. Se discutieron las perspectivas de utilizar los principios del cerebro para crear nuevas máquinas cibernéticas. El artículo de A. V. Napalkov describe: también el trabajo que se lleva a cabo en la Universidad Estatal de Moscú.</p>
 
 
 
@@ -387,7 +692,7 @@
 
 
 
-<p>Recordemos que en 1936 se publicó un decreto especial del Comité Central del Partido Comunista de Bolcheviques de toda la Unión el 4 de julio, <a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F(%D0%B1)_%D0%BE%D1%82_4.07.1936_%D0%BE_%D0%BF%D0%B5%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85_%D0%B8%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%D1%85_%D0%B2_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5_%D0%9D%D0%B0%D1%80%D0%BA%D0%BE%D0%BC%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2">&#8220;Sobre las distorsiones paidológicas en el sistema del Comisariado Popular de Educación&#8221;</a>.<sup id="footnote_plugin_tooltip_9693_12" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_12');">12</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_12"></span> Esta decisión se dirigió contra errores ideológicos y metodológicos graves que se cometieron durante el examen del desarrollo mental y el talento de los escolares. Como resultado de estos errores, cada vez más niños se inscribieron en la categoría de retrasados ​​mentales, &#8220;defectuosos&#8221; y &#8220;difíciles&#8221; [sic]. Para corregir estos errores, el Comité Central del Partido Comunista de Bolcheviques de toda la Unión decidió: 1) restauración de pleno derecho de la pedagogía y los educadores; 2) eliminar el vínculo de los paidólogos con las escuelas y retirar los libros de texto paidológicos, etc. Esta solución eliminó toda una gama de errores cometidos en la pedagogía. Sin embargo, desafortunadamente, pronto resultó que algunos psicólogos entendieron esta instrucción del Comité Central del Partido Comunista de Bolcheviques de toda la Unión como una condena de toda la investigación sobre psicología del trabajo.</p>
+<p>Recordemos que en 1936 se publicó un decreto especial del Comité Central del Partido Comunista de Bolcheviques de toda la Unión el 4 de julio, <a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F(%D0%B1)_%D0%BE%D1%82_4.07.1936_%D0%BE_%D0%BF%D0%B5%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85_%D0%B8%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%D1%85_%D0%B2_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5_%D0%9D%D0%B0%D1%80%D0%BA%D0%BE%D0%BC%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2">&#8220;Sobre las distorsiones paidológicas en el sistema del Comisariado Popular de Educación&#8221;</a>.<sup id="footnote_plugin_tooltip_5668_12" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_12');">12</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_12"></span> Esta decisión se dirigió contra errores ideológicos y metodológicos graves que se cometieron durante el examen del desarrollo mental y el talento de los escolares. Como resultado de estos errores, cada vez más niños se inscribieron en la categoría de retrasados ​​mentales, &#8220;defectuosos&#8221; y &#8220;difíciles&#8221; [sic]. Para corregir estos errores, el Comité Central del Partido Comunista de Bolcheviques de toda la Unión decidió: 1) restauración de pleno derecho de la pedagogía y los educadores; 2) eliminar el vínculo de los paidólogos con las escuelas y retirar los libros de texto paidológicos, etc. Esta solución eliminó toda una gama de errores cometidos en la pedagogía. Sin embargo, desafortunadamente, pronto resultó que algunos psicólogos entendieron esta instrucción del Comité Central del Partido Comunista de Bolcheviques de toda la Unión como una condena de toda la investigación sobre psicología del trabajo.</p>
 
 
 
@@ -495,7 +800,7 @@
 
 
 
-<p>En la colección &#8220;Problemas de cibernética&#8221; nº 5 (Fizmatgiz<sup id="footnote_plugin_tooltip_9693_13" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_13');">13</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_13"></span>) editada por A. A. Lyapunov, se colocan dos artículos de planificación muy importantes. El artículo de <a href="https://en.wikipedia.org/wiki/Julius_Anatolyevich_Schrader">Yu. A. Schreider</a>, &#8220;El problema de planificación dinámica y los autómatas&#8221;, es una generalización y desarrollo de la monografía de <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">R. Bellman</a> sobre planificación dinámica, publicada en los Estados Unidos en 1957. Yu. A. Schreider describe un esquema que nos permite plantear el problema general de la planificación dinámica y derivar la principal ecuación funcional y establecer las propiedades básicas de sus soluciones. El artículo de E. G. Holshtein y D. B. Yudin, &#8220;Sobre una clase de problemas de planificación de la economía nacional&#8221;, contiene el desarrollo de algunos métodos especiales para resolver ciertos problemas importantes de programación lineal que permiten una reducción significativa en el trabajo computacional.</p>
+<p>En la colección &#8220;Problemas de cibernética&#8221; nº 5 (Fizmatgiz<sup id="footnote_plugin_tooltip_5668_13" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_13');">13</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_13"></span>) editada por A. A. Lyapunov, se colocan dos artículos de planificación muy importantes. El artículo de <a href="https://en.wikipedia.org/wiki/Julius_Anatolyevich_Schrader">Yu. A. Schreider</a>, &#8220;El problema de planificación dinámica y los autómatas&#8221;, es una generalización y desarrollo de la monografía de <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">R. Bellman</a> sobre planificación dinámica, publicada en los Estados Unidos en 1957. Yu. A. Schreider describe un esquema que nos permite plantear el problema general de la planificación dinámica y derivar la principal ecuación funcional y establecer las propiedades básicas de sus soluciones. El artículo de E. G. Holshtein y D. B. Yudin, &#8220;Sobre una clase de problemas de planificación de la economía nacional&#8221;, contiene el desarrollo de algunos métodos especiales para resolver ciertos problemas importantes de programación lineal que permiten una reducción significativa en el trabajo computacional.</p>
 
 
 
@@ -543,7 +848,7 @@
 
 
 
-<p>Los delitos y la legislación existen en todo el mundo. Por lo tanto, es muy interesante estudiar la experiencia de aplicar los métodos anteriores en el extranjero. Ya hay literatura especial disponible sobre este tema. Se realizaron presentaciones sustantivas en el Simposio sobre la Mecanización de los Procesos de Pensamiento en Teddington en noviembre de 1958<sup id="footnote_plugin_tooltip_9693_14" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_14');">14</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_14"></span> y en la Conferencia Internacional sobre Lenguajes de Máquinas en septiembre de 1959 en los Estados Unidos<sup id="footnote_plugin_tooltip_9693_15" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_15');">15</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_15"></span>.</p>
+<p>Los delitos y la legislación existen en todo el mundo. Por lo tanto, es muy interesante estudiar la experiencia de aplicar los métodos anteriores en el extranjero. Ya hay literatura especial disponible sobre este tema. Se realizaron presentaciones sustantivas en el Simposio sobre la Mecanización de los Procesos de Pensamiento en Teddington en noviembre de 1958<sup id="footnote_plugin_tooltip_5668_14" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_14');">14</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_14"></span> y en la Conferencia Internacional sobre Lenguajes de Máquinas en septiembre de 1959 en los Estados Unidos<sup id="footnote_plugin_tooltip_5668_15" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_15');">15</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_15"></span>.</p>
 
 
 
@@ -635,7 +940,7 @@
 
 
 
-<p>Hace más de 40 años, en 1920, se desarrolló el primer plan maestro para el desarrollo de la economía nacional de la Rusia soviética, que sigue siendo de gran importancia como ejemplo de un prometedor plan económico nacional estatal. En el VIII Congreso de los Soviets de toda Rusia en diciembre de 1920, Vladimir Ilich Lenin describió el plan para la electrificación de Rusia, que fue revisado por la Comisión Estatal por la Electrificación de Rusia (<a href="https://es.wikipedia.org/wiki/GOELRO">GOELRO</a>), como el segundo programa del partido, como un gran plan económico que indica la forma de transferir a la Rusia atrasada a una nueva base económica, necesaria para la construcción del comunismo. &#8220;Tal base&#8221;, dijo Vladimir Ilich, &#8220;es solo electricidad. El comunismo es el poder soviético más la electrificación de todo el país&#8221; (obras completas<sup id="footnote_plugin_tooltip_9693_16" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_16');">16</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_16"></span>, 4ª ed., vol. 31, p. 486).</p>
+<p>Hace más de 40 años, en 1920, se desarrolló el primer plan maestro para el desarrollo de la economía nacional de la Rusia soviética, que sigue siendo de gran importancia como ejemplo de un prometedor plan económico nacional estatal. En el VIII Congreso de los Soviets de toda Rusia en diciembre de 1920, Vladimir Ilich Lenin describió el plan para la electrificación de Rusia, que fue revisado por la Comisión Estatal por la Electrificación de Rusia (<a href="https://es.wikipedia.org/wiki/GOELRO">GOELRO</a>), como el segundo programa del partido, como un gran plan económico que indica la forma de transferir a la Rusia atrasada a una nueva base económica, necesaria para la construcción del comunismo. &#8220;Tal base&#8221;, dijo Vladimir Ilich, &#8220;es solo electricidad. El comunismo es el poder soviético más la electrificación de todo el país&#8221; (obras completas<sup id="footnote_plugin_tooltip_5668_16" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_16');">16</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_16"></span>, 4ª ed., vol. 31, p. 486).</p>
 
 
 
@@ -643,7 +948,7 @@
 
 
 
-<p>De acuerdo con las tareas del proyecto de Programa del PCUS, en 1970 la URSS producirá entre 900 y 1.000 y en 1980 entre 2.700 y 3.000 miles de millones de kWh de electricidad. Esto significa triplicar aproximadamente la generación de electricidad cada 10 años. En los Estados Unidos, hubo aproximadamente una duplicación por cada 10 años, y si se puede hablar de suposiciones (en lugar de planes), estas tasas continuarán en los Estados Unidos durante los próximos 20 años (ver la revista &#8220;Planovoye khozyaystvo&#8221;<sup id="footnote_plugin_tooltip_9693_17" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_9693_17');">17</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_9693_17"></span>, 1961, nº 7, p. 84). Si esto se cumple, en 1980 en la URSS y los EE. UU. se generará aproximadamente la misma cantidad de electricidad.</p>
+<p>De acuerdo con las tareas del proyecto de Programa del PCUS, en 1970 la URSS producirá entre 900 y 1.000 y en 1980 entre 2.700 y 3.000 miles de millones de kWh de electricidad. Esto significa triplicar aproximadamente la generación de electricidad cada 10 años. En los Estados Unidos, hubo aproximadamente una duplicación por cada 10 años, y si se puede hablar de suposiciones (en lugar de planes), estas tasas continuarán en los Estados Unidos durante los próximos 20 años (ver la revista &#8220;Planovoye khozyaystvo&#8221;<sup id="footnote_plugin_tooltip_5668_17" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_5668_17');">17</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_5668_17"></span>, 1961, nº 7, p. 84). Si esto se cumple, en 1980 en la URSS y los EE. UU. se generará aproximadamente la misma cantidad de electricidad.</p>
 
 
 
@@ -816,7 +1121,7 @@
 
 
 <blockquote class="wp-block-quote"><p>El progreso de la ciencia y la tecnología en las condiciones de un sistema económico socialista permite el uso más eficiente de la riqueza y la naturaleza de la naturaleza en interés de las personas, para descubrir nuevos tipos de energía, crear nuevos materiales, desarrollar métodos para influir en las condiciones climáticas y dominar el espacio exterior. La aplicación de la ciencia se convierte en un factor decisivo en el poderoso crecimiento de las fuerzas productivas de la sociedad. El desarrollo de la ciencia y la introducción de sus logros en la economía nacional seguirá siendo de particular interés para el partido.</p></blockquote>
-<div class="footnote_container_prepare">	<p><span onclick="footnote_expand_reference_container();">Notas</span><span style="display: none;">&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]</span></p></div><div id="footnote_references_container" style="">	<table class="footnote-reference-container">		<tbody>		<tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_1">1, 3, 16.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_1');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Obras completas de V. I. Lenin, 4ª ed., Gospolitizdat, 1950.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_2">2.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_2');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Pravda, &#8220;La Verdad&#8221;, órgano de expresión del PCUS.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_4">4.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_4');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: El concepto de &#8220;información&#8221; fue problemático en el marxismo dogmático del estalinismo. Para el materialismo mal entendido de los censores estalinistas, una cosa que no era materia ni energía solo podía ser un delirio idealista y burgués. Esto explica la cautela con la que Berg trata este tema, tratando de alejar el foco de atención de su la definición con una audaz comparación entre la información, el tiempo y el espacio, para los cuales &#8220;no tenemos una definición exacta&#8221; pero los &#8220;medimos perfectamente con gran precisión&#8221;.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_5">5.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_5');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Editorial Estatal de Literatura Energética.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_6">6.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_6');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Periódico económico.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_7">7, 8.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_7');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Editorial Política Estatal.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_9">9.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_9');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Académico era el título de los miembros honorarios de una academia de ciencias de la Unión Soviética, uno de los rangos más altos a nivel científico.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_10">10.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_10');">&#8593;</span></td>	<td class="footnote_plugin_text">S. N. Braines, A. V. Napalkov, V. B. Svechinsky, Notas científicas de la Academia de Ciencias Médicas de la URSS, Instituto de Psiquiatría, &#8220;Problemas de Neurocibernética&#8221;, 1959.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_11">11.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_11');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Candidato de ciencias (Кандидат наук) es un título equivalente al doctorado.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_12">12.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_12');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: La <a href="https://es.wikipedia.org/wiki/Paidolog%C3%ADa">paidología</a> es una rama de la psicología dedicada al estudio del comportamiento de los niños, a diferencia de la <a href="https://es.wikipedia.org/wiki/Pedagog%C3%ADa">pedagogía</a> que se dedica al estudio de los procesos de enseñanza y aprendizaje.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_13">13.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_13');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Izdatelstvo fíziko-matematicheskói i tejnicheskói literatury, &#8220;Editorial para la literatura físico-matemática y técnica.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_14">14.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_14');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: El <em>Symposium on Mechanisation of Thought Processes</em> fue el primer simposio internacional sobre inteligencia artificial, donde acudieron pioneros de este campo como Marvin L. Minsky o John McCarthy (el autor del término &#8220;inteligencia artificial&#8221;). La inteligencia artificial, propuesta en el encuentro de Darthmouth en 1956 y discutida en el simposio de Teddington en 1958, tuvo una coexistencia difícil con la cibernética. Posteriormente, los proponentes de la inteligencia artificial conseguirían acaparar la financiación para sus proyectos, <a href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">desterrando la cibernética hacia otros campos como las ciencias sociales</a>.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_15">15.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_15');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Quizá la International Conference for Standards on a Common Language for Machine Searching and Translation celebrada en la Western Reserve University, Cleveland.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_9693_17">17.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_9693_17');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Economía Planificada.</td></tr>		</tbody>	</table></div><script type="text/javascript">	function footnote_expand_reference_container() {		jQuery("#footnote_references_container").show();        jQuery("#footnote_reference_container_collapse_button").text("-");	}    function footnote_collapse_reference_container() {        jQuery("#footnote_references_container").hide();        jQuery("#footnote_reference_container_collapse_button").text("+");    }	function footnote_expand_collapse_reference_container() {		if (jQuery("#footnote_references_container").is(":hidden")) {            footnote_expand_reference_container();		} else {            footnote_collapse_reference_container();		}	}    function footnote_moveToAnchor(p_str_TargetID) {        footnote_expand_reference_container();        var l_obj_Target = jQuery("#" + p_str_TargetID);        if(l_obj_Target.length) {            jQuery('html, body').animate({                scrollTop: l_obj_Target.offset().top - window.innerHeight/2            }, 1000);        }    }</script>]]></content:encoded>
+<div class="footnote_container_prepare">	<p><span onclick="footnote_expand_reference_container();">Notas</span><span style="display: none;">&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]</span></p></div><div id="footnote_references_container" style="">	<table class="footnote-reference-container">		<tbody>		<tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_1">1, 3, 16.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_1');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Obras completas de V. I. Lenin, 4ª ed., Gospolitizdat, 1950.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_2">2.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_2');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Pravda, &#8220;La Verdad&#8221;, órgano de expresión del PCUS.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_4">4.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_4');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: El concepto de &#8220;información&#8221; fue problemático en el marxismo dogmático del estalinismo. Para el materialismo mal entendido de los censores estalinistas, una cosa que no era materia ni energía solo podía ser un delirio idealista y burgués. Esto explica la cautela con la que Berg trata este tema, tratando de alejar el foco de atención de su la definición con una audaz comparación entre la información, el tiempo y el espacio, para los cuales &#8220;no tenemos una definición exacta&#8221; pero los &#8220;medimos perfectamente con gran precisión&#8221;.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_5">5.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_5');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Editorial Estatal de Literatura Energética.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_6">6.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_6');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Periódico económico.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_7">7, 8.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_7');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Editorial Política Estatal.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_9">9.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_9');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Académico era el título de los miembros honorarios de una academia de ciencias de la Unión Soviética, uno de los rangos más altos a nivel científico.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_10">10.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_10');">&#8593;</span></td>	<td class="footnote_plugin_text">S. N. Braines, A. V. Napalkov, V. B. Svechinsky, Notas científicas de la Academia de Ciencias Médicas de la URSS, Instituto de Psiquiatría, &#8220;Problemas de Neurocibernética&#8221;, 1959.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_11">11.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_11');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Candidato de ciencias (Кандидат наук) es un título equivalente al doctorado.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_12">12.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_12');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: La <a href="https://es.wikipedia.org/wiki/Paidolog%C3%ADa">paidología</a> es una rama de la psicología dedicada al estudio del comportamiento de los niños, a diferencia de la <a href="https://es.wikipedia.org/wiki/Pedagog%C3%ADa">pedagogía</a> que se dedica al estudio de los procesos de enseñanza y aprendizaje.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_13">13.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_13');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Izdatelstvo fíziko-matematicheskói i tejnicheskói literatury, &#8220;Editorial para la literatura físico-matemática y técnica.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_14">14.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_14');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: El <em>Symposium on Mechanisation of Thought Processes</em> fue el primer simposio internacional sobre inteligencia artificial, donde acudieron pioneros de este campo como Marvin L. Minsky o John McCarthy (el autor del término &#8220;inteligencia artificial&#8221;). La inteligencia artificial, propuesta en el encuentro de Darthmouth en 1956 y discutida en el simposio de Teddington en 1958, tuvo una coexistencia difícil con la cibernética. Posteriormente, los proponentes de la inteligencia artificial conseguirían acaparar la financiación para sus proyectos, <a href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">desterrando la cibernética hacia otros campos como las ciencias sociales</a>.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_15">15.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_15');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Quizá la International Conference for Standards on a Common Language for Machine Searching and Translation celebrada en la Western Reserve University, Cleveland.</td></tr><tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_5668_17">17.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_5668_17');">&#8593;</span></td>	<td class="footnote_plugin_text">NdT: Economía Planificada.</td></tr>		</tbody>	</table></div><script type="text/javascript">	function footnote_expand_reference_container() {		jQuery("#footnote_references_container").show();        jQuery("#footnote_reference_container_collapse_button").text("-");	}    function footnote_collapse_reference_container() {        jQuery("#footnote_references_container").hide();        jQuery("#footnote_reference_container_collapse_button").text("+");    }	function footnote_expand_collapse_reference_container() {		if (jQuery("#footnote_references_container").is(":hidden")) {            footnote_expand_reference_container();		} else {            footnote_collapse_reference_container();		}	}    function footnote_moveToAnchor(p_str_TargetID) {        footnote_expand_reference_container();        var l_obj_Target = jQuery("#" + p_str_TargetID);        if(l_obj_Target.length) {            jQuery('html, body').animate({                scrollTop: l_obj_Target.offset().top - window.innerHeight/2            }, 1000);        }    }</script>]]></content:encoded>
 					
 		
 		
@@ -832,7 +1137,7 @@
 
 					<description><![CDATA[Fragmento de On the Importance of Being Emergent de Peter Cariani1. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos [&#8230;]]]></description>
 										<content:encoded><![CDATA[
-<p><em>Fragmento de </em>On the Importance of Being Emergent<em> de Peter Cariani</em><sup id="footnote_plugin_tooltip_3605_1" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_3605_1');">1</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_3605_1"></span><em>. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial.</em></p>
+<p><em>Fragmento de </em>On the Importance of Being Emergent<em> de Peter Cariani</em><sup id="footnote_plugin_tooltip_1509_1" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_1509_1');">1</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_1509_1"></span><em>. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial.</em></p>
 
 
 
@@ -845,7 +1150,7 @@
 
 
 <p>El antagonismo, tanto filosófico como financiero, entre la cibernética y la IA parece haberse perdido en la historia. La inteligencia artificial nació en una conferencia celebrada en Dartmouth en 1956, organizada por McCarthy, Minsky, Rochester y Shannon, tres años después de que concluyeran las conferencias de Macy sobre cibernética (Boden 2006; McCorduck 1972). Los dos movimientos coexistieron durante aproximadamente una década, pero a mediados de la década de 1960, los defensores de la IA simbólica obtuvieron el control de los canales de financiación nacional y desfinanciaron despiadadamente la investigación cibernética. Esto efectivamente liquidó los subcampos de los sistemas autoorganizados, las redes neuronales y las máquinas adaptativas, la programación evolutiva, la computación biológica y la biónica durante varias décadas, dejando a los trabajadores de la gestión, la terapia y las ciencias sociales para mantener viva la llama. Creo que algunos de los polémicos forcejeos entre los teóricos del control de primer orden y las multitudes del segundo orden de los que fui testigo en décadas posteriores fueron el resultado acumulativo de un cambio en la financiación, la composición y la investigación desde las ciencias naturales &#8220;duras&#8221; a las intervenciones socio-psicológicas &#8220;blandas&#8221;. Las guerras de clanes se producen cuando la reserva de recursos naturales disminuye. En lugar de filas de gigantescas estatuas de moai en las colinas de Nowbarren, nos han dejado bibliotecas de escritos monumentales sobre ideas profundas cuyos significados originales se están perdiendo rápidamente en el tiempo.</p>
-<div class="footnote_container_prepare">	<p><span onclick="footnote_expand_reference_container();">Notas</span><span style="display: none;">&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]</span></p></div><div id="footnote_references_container" style="">	<table class="footnote-reference-container">		<tbody>		<tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_3605_1">1.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_3605_1');">&#8593;</span></td>	<td class="footnote_plugin_text">Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory” editado por Bruce Clark y Mark B. N. Hanson. Duke University Press, Durham, 2009.</em> Constructivist Foundations 5(2): 86-91. 2010.<br>Disponible en <a href="http://constructivist.info/5/2/086.cariani">http://constructivist.info/5/2/086.cariani</a></td></tr>		</tbody>	</table></div><script type="text/javascript">	function footnote_expand_reference_container() {		jQuery("#footnote_references_container").show();        jQuery("#footnote_reference_container_collapse_button").text("-");	}    function footnote_collapse_reference_container() {        jQuery("#footnote_references_container").hide();        jQuery("#footnote_reference_container_collapse_button").text("+");    }	function footnote_expand_collapse_reference_container() {		if (jQuery("#footnote_references_container").is(":hidden")) {            footnote_expand_reference_container();		} else {            footnote_collapse_reference_container();		}	}    function footnote_moveToAnchor(p_str_TargetID) {        footnote_expand_reference_container();        var l_obj_Target = jQuery("#" + p_str_TargetID);        if(l_obj_Target.length) {            jQuery('html, body').animate({                scrollTop: l_obj_Target.offset().top - window.innerHeight/2            }, 1000);        }    }</script>]]></content:encoded>
+<div class="footnote_container_prepare">	<p><span onclick="footnote_expand_reference_container();">Notas</span><span style="display: none;">&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]</span></p></div><div id="footnote_references_container" style="">	<table class="footnote-reference-container">		<tbody>		<tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_1509_1">1.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_1509_1');">&#8593;</span></td>	<td class="footnote_plugin_text">Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory” editado por Bruce Clark y Mark B. N. Hanson. Duke University Press, Durham, 2009.</em> Constructivist Foundations 5(2): 86-91. 2010.<br>Disponible en <a href="http://constructivist.info/5/2/086.cariani">http://constructivist.info/5/2/086.cariani</a></td></tr>		</tbody>	</table></div><script type="text/javascript">	function footnote_expand_reference_container() {		jQuery("#footnote_references_container").show();        jQuery("#footnote_reference_container_collapse_button").text("-");	}    function footnote_collapse_reference_container() {        jQuery("#footnote_references_container").hide();        jQuery("#footnote_reference_container_collapse_button").text("+");    }	function footnote_expand_collapse_reference_container() {		if (jQuery("#footnote_references_container").is(":hidden")) {            footnote_expand_reference_container();		} else {            footnote_collapse_reference_container();		}	}    function footnote_moveToAnchor(p_str_TargetID) {        footnote_expand_reference_container();        var l_obj_Target = jQuery("#" + p_str_TargetID);        if(l_obj_Target.length) {            jQuery('html, body').animate({                scrollTop: l_obj_Target.offset().top - window.innerHeight/2            }, 1000);        }    }</script>]]></content:encoded>
 					
 		
 		
@@ -862,7 +1167,7 @@
 
 					<description><![CDATA[La cibernética empezó proscrita en la URSS de Stalin, cuando las ideas y las posturas incluso científicas se interpretaban como posicionamientos políticos dentro de las luchas burocráticas del partido. El siguiente texto1 es una muestra de la temprana virulencia contra la cibernética, que hoy entenderíamos como informática e inteligencia artificial, durante esos años. CIBERNÉTICA (de [&#8230;]]]></description>
 										<content:encoded><![CDATA[
-<p><em>La cibernética empezó proscrita en la URSS de Stalin, cuando las ideas y las posturas incluso científicas se interpretaban como posicionamientos políticos dentro de las luchas burocráticas del partido. El siguiente texto</em><sup id="footnote_plugin_tooltip_4281_1" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_4281_1');">1</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_4281_1"></span><em> es una muestra de la temprana virulencia contra la cibernética, que hoy entenderíamos como informática e inteligencia artificial, durante esos años.</em></p>
+<p><em>La cibernética empezó proscrita en la URSS de Stalin, cuando las ideas y las posturas incluso científicas se interpretaban como posicionamientos políticos dentro de las luchas burocráticas del partido. El siguiente texto</em><sup id="footnote_plugin_tooltip_3499_1" class="footnote_plugin_tooltip_text" onclick="footnote_moveToAnchor('footnote_plugin_reference_3499_1');">1</sup><span class="footnote_tooltip" id="footnote_plugin_tooltip_text_3499_1"></span><em> es una muestra de la temprana virulencia contra la cibernética, que hoy entenderíamos como informática e inteligencia artificial, durante esos años.</em></p>
 
 
 
@@ -875,7 +1180,7 @@
 
 
 <p>La cibernética expresa claramente una de las principales características de la cosmovisión burguesa: su inhumanidad, el deseo de convertir a los trabajadores en un apéndice de la máquina, en un instrumento de producción y un instrumento de guerra. Al mismo tiempo, la cibernética se caracteriza por una utopía imperialista: reemplazar al hombre vivo, pensante y luchador por sus intereses con una máquina tanto en la producción como en la guerra. Los incendiarios de la nueva guerra mundial utilizan la cibernética en sus asuntos prácticos sucios. Bajo la cobertura de la propaganda cibernética en los países del imperialismo, los científicos de diversas especialidades están involucrados en el desarrollo de nuevos métodos de exterminio en masa: armas electrónicas, telemecánicas, automáticas, cuyo diseño y fabricación se ha convertido en una gran rama de la industria militar de los países capitalistas. Por lo tanto, la cibernética no es solo un arma ideológica de reacción imperialista, sino también un medio para realizar sus planes agresivos.</p>
-<div class="footnote_container_prepare">	<p><span onclick="footnote_expand_reference_container();">Notas</span><span style="display: none;">&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]</span></p></div><div id="footnote_references_container" style="">	<table class="footnote-reference-container">		<tbody>		<tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_4281_1">1.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_4281_1');">&#8593;</span></td>	<td class="footnote_plugin_text">Breve diccionario filosófico. Ed. M. Rosenthal y P. Yudin. Cuarta Edición. Moscú, Gospolitizdat, 1954, p. 236-237.<br>Traducido del original: <a href="http://ponjatija.ru/node/1485">http://ponjatija.ru/node/1485</a></td></tr>		</tbody>	</table></div><script type="text/javascript">	function footnote_expand_reference_container() {		jQuery("#footnote_references_container").show();        jQuery("#footnote_reference_container_collapse_button").text("-");	}    function footnote_collapse_reference_container() {        jQuery("#footnote_references_container").hide();        jQuery("#footnote_reference_container_collapse_button").text("+");    }	function footnote_expand_collapse_reference_container() {		if (jQuery("#footnote_references_container").is(":hidden")) {            footnote_expand_reference_container();		} else {            footnote_collapse_reference_container();		}	}    function footnote_moveToAnchor(p_str_TargetID) {        footnote_expand_reference_container();        var l_obj_Target = jQuery("#" + p_str_TargetID);        if(l_obj_Target.length) {            jQuery('html, body').animate({                scrollTop: l_obj_Target.offset().top - window.innerHeight/2            }, 1000);        }    }</script>]]></content:encoded>
+<div class="footnote_container_prepare">	<p><span onclick="footnote_expand_reference_container();">Notas</span><span style="display: none;">&nbsp;&nbsp;&nbsp;[ <a id="footnote_reference_container_collapse_button" style="cursor:pointer;" onclick="footnote_expand_collapse_reference_container();">+</a> ]</span></p></div><div id="footnote_references_container" style="">	<table class="footnote-reference-container">		<tbody>		<tr>	<td class="footnote_plugin_index"><span id="footnote_plugin_reference_3499_1">1.</span></td>	<td class="footnote_plugin_link"><span onclick="footnote_moveToAnchor('footnote_plugin_tooltip_3499_1');">&#8593;</span></td>	<td class="footnote_plugin_text">Breve diccionario filosófico. Ed. M. Rosenthal y P. Yudin. Cuarta Edición. Moscú, Gospolitizdat, 1954, p. 236-237.<br>Traducido del original: <a href="http://ponjatija.ru/node/1485">http://ponjatija.ru/node/1485</a></td></tr>		</tbody>	</table></div><script type="text/javascript">	function footnote_expand_reference_container() {		jQuery("#footnote_references_container").show();        jQuery("#footnote_reference_container_collapse_button").text("-");	}    function footnote_collapse_reference_container() {        jQuery("#footnote_references_container").hide();        jQuery("#footnote_reference_container_collapse_button").text("+");    }	function footnote_expand_collapse_reference_container() {		if (jQuery("#footnote_references_container").is(":hidden")) {            footnote_expand_reference_container();		} else {            footnote_collapse_reference_container();		}	}    function footnote_moveToAnchor(p_str_TargetID) {        footnote_expand_reference_container();        var l_obj_Target = jQuery("#" + p_str_TargetID);        if(l_obj_Target.length) {            jQuery('html, body').animate({                scrollTop: l_obj_Target.offset().top - window.innerHeight/2            }, 1000);        }    }</script>]]></content:encoded>
 					
 		
 		

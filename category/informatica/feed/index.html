@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Informàtica &#8211; La màquina de Turing</title>
+	<atom:link href="https://lamaquinadeturing.su/category/informatica/feed/" rel="self" type="application/rss+xml" />
+	<link>https://lamaquinadeturing.su/</link>
+	<description>cat /dev/random</description>
+	<lastBuildDate>Tue, 24 Aug 2021 17:28:13 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.4</generator>
+	<item>
+		<title>Guia: Com descarregar un vídeo en streaming</title>
+		<link>https://lamaquinadeturing.su/2021/08/24/guia-com-descarregar-un-video-en-streaming/</link>
+		
+		<dc:creator><![CDATA[turing]]></dc:creator>
+		<pubDate>Tue, 24 Aug 2021 17:28:13 +0000</pubDate>
+				<category><![CDATA[Informàtica]]></category>
+		<guid isPermaLink="false">https://lamaquinadeturing.su/?p=510</guid>
+
+					<description><![CDATA[Hi ha una màxima que cap indústria de l&#8217;entreteniment ha pogut superar: si un contingut és retransmès a les cases de l&#8217;audiència, pot ser gravat. Fins fa uns anys, era comú que les plataformes de vídeo en línia fossin poc més que reproductors del fitxer de vídeo o àudio sencer. De tal manera que era [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Hi ha una màxima que cap indústria de l&#8217;entreteniment ha pogut superar: si un contingut és retransmès a les cases de l&#8217;audiència, pot ser gravat.</p>
+
+
+
+<p>Fins fa uns anys, era comú que les plataformes de vídeo en línia fossin poc més que reproductors del fitxer de vídeo o àudio sencer. De tal manera que era fàcil trobar l&#8217;adreça web o URL que permetia descarregar la pel·lícula o cançó i desar-la al disc dur. Això ha canviat amb els reproductors que permeten canviar la qualitat de la imatge (format adaptatiu), i que divideixen en petits fragments el contingut. Per exemple, si saltem diversos minuts cap endavant només es descarrega a partir d&#8217;aquella posició.</p>
+
+
+
+<p>Això dificulta desar un contingut audiovisual, però no ho fa impossible. En aquesta guia mostraré com descarregar un vídeo d&#8217;una plataforma de streaming amb un sistema GNU/Linux.</p>
+
+
+
+<h2>Precaució</h2>
+
+
+
+<p>Comproveu les condicions d&#8217;ús de la plataforma. Tot i que baixar-vos el vídeo al disc dur és tècnicament el mateix que el que ja fa el vostre navegador quan useu el reproductor de la plataforma, potser els propietaris del contingut no ho consideren igual, o la llei en el vostre país no ho permet. Això podria provocar algun problema legal o que us suspenguin el compte! Aquesta guia té una finalitat educativa i no es pot fer responsable d&#8217;això.</p>
+
+
+
+<h2>Eines</h2>
+
+
+
+<p>Es tracta d&#8217;una operació que no és apta per usuaris comuns, però senzilla per algú amb coneixements bàsics de programació. En concret, aquesta guia se centra en els continguts multimèdia en format <a href="https://en.wikipedia.org/wiki/M3U">Extended M3U</a> originalment desenvolupat per Apple.</p>
+
+
+
+<p>Necessitarem:</p>
+
+
+
+<ul><li>Navegador Firefox (90)</li><li>Terminal (Bash, zsh o el que preferiu)</li><li>wget (1.20)</li><li>Python (3)</li><li>ffmpeg (4.3)</li><li>openssl (1.1, opcional)</li></ul>
+
+
+
+<p>Indico les meves versions orientativament, però segurament altres versions anteriors o posteriors també funcionaran.</p>
+
+
+
+<h2>Inspeccionant el flux</h2>
+
+
+
+<p>Inicieu el navegador Firefox i en una nova pestanya obriu el seu Inspector (<code>Control + Shift + I</code>).</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://lamaquinadeturing.su/app/uploads/2021/08/inspector-1024x355.jpg" alt="" class="wp-image-511" srcset="https://lamaquinadeturing.su/app/uploads/2021/08/inspector-1024x355.jpg 1024w, https://lamaquinadeturing.su/app/uploads/2021/08/inspector-300x104.jpg 300w, https://lamaquinadeturing.su/app/uploads/2021/08/inspector-768x266.jpg 768w, https://lamaquinadeturing.su/app/uploads/2021/08/inspector.jpg 1051w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption>El panell d&#8217;Eines de Desenvolupador Web de Firefox, amb la pestanya de Xarxa.</figcaption></figure>
+
+
+
+<p>En concret ens interessa la pestanya de <code>Xarxa</code> o <code>Network</code>, que mostra les dades que la pàgina web descarrega del servidor.</p>
+
+
+
+<p>Un cop estigui llesta, navegeueu cap al reproductor de la web i reproduïu alguns segons de vídeo. Això hauria de mostrar activitat en la pestanya de <code>Xarxa</code>. De fet, molta activitat. Veureu tot tipus de descàrregues, com pàgines HTML, imatges JPEG o fitxers Javascript i CSS. Per centrar-nos en el que ens interessa, podem usar el filtre de tipus <code>Mèdia</code>:</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://lamaquinadeturing.su/app/uploads/2021/08/type_filter.png" alt="" class="wp-image-513" srcset="https://lamaquinadeturing.su/app/uploads/2021/08/type_filter.png 683w, https://lamaquinadeturing.su/app/uploads/2021/08/type_filter-300x66.png 300w" sizes="(max-width: 683px) 100vw, 683px" /><figcaption>Filtre de tipus Mèdia de la pestanya de Xarxa.</figcaption></figure>
+
+
+
+<p>Un cop aplicat el filtre, a dalt de tot de la llista hauríem de veure uns fitxers de tipus M3U8:</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://lamaquinadeturing.su/app/uploads/2021/08/m3u8-1024x139.png" alt="" class="wp-image-514" srcset="https://lamaquinadeturing.su/app/uploads/2021/08/m3u8-1024x139.png 1024w, https://lamaquinadeturing.su/app/uploads/2021/08/m3u8-300x41.png 300w, https://lamaquinadeturing.su/app/uploads/2021/08/m3u8-768x104.png 768w, https://lamaquinadeturing.su/app/uploads/2021/08/m3u8.png 1143w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>Aquests fitxers són documents de text que contenen el format del flux de vídeo i àudio. El reproductor utilitza aquesta informació per saber quines qualitats de vídeo existeixen, quins tipus d&#8217;àudio diferents hi ha (per exemple, idiomes diferents), quina durada tenen i en quants fragments estan dividits, etc.</p>
+
+
+
+<p>Vegem un exemple. El primer document de la llista és la llista de reproducció M3U8 primària, i conté un text com el següent, que ha estat extret <a href="https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming/creating_a_primary_playlist">d&#8217;aquesta documentació</a>:</p>
+
+
+
+<pre class="wp-block-code"><code>#EXTM3U
+#EXT-X-STREAM-INF:BANDWIDTH=150000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http:&#47;&#47;example.com/low/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=240000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/lo_mid/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=440000,RESOLUTION=416x234,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/hi_mid/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=640000,RESOLUTION=640x360,CODECS="avc1.42e00a,mp4a.40.2"
+http://example.com/high/index.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=64000,CODECS="mp4a.40.5"
+http://example.com/audio/index.m3u8</code></pre>
+
+
+
+<p>Cada línia <code>EXT-X-STREAM-INF</code> representa un flux de vídeo o àudio, amb detalls com la mida de la imatge o els formats de codificació (codecs), i apunta a una llista de reproducció M3U8 secundària. Si mirem una d&#8217;aquestes llistes secundàries a la llista de la pestanya de <code>Xarxa</code>, veurem els detalls d&#8217;un flux en concret, com el que trobem <a href="https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming/video_on_demand_playlist_construction">aquí</a>:</p>
+
+
+
+<pre class="wp-block-code"><code>#EXTM3U
+#EXT-X-PLAYLIST-TYPE:VOD
+#EXT-X-TARGETDURATION:10
+#EXT-X-VERSION:4
+#EXT-X-MEDIA-SEQUENCE:0
+#EXTINF:10.0,
+http:&#47;&#47;example.com/movie1/fileSequence0.ts
+#EXTINF:10.0,
+http://example.com/movie1/fileSequence1.ts
+#EXTINF:10.0,
+http://example.com/movie1/fileSequence2.ts
+#EXTINF:9.0,
+http://example.com/movie1/fileSequence3.ts
+#EXT-X-ENDLIST</code></pre>
+
+
+
+<p>Cada entrada EXTINF és un fitxer individual de tipus <a href="https://ca.wikipedia.org/wiki/MPEG-2_Transport_Stream">MPEG2 TS</a>, que conté un fragment de l&#8217;àudio o el vídeo. El número és la durada en segons del fragment. Tots junts, per tant, formen el contingut multimèdia sencer.</p>
+
+
+
+<h2>Fent inventari</h2>
+
+
+
+<p>Les passes a seguir per tant són:</p>
+
+
+
+<ol><li>Escollir un flux de vídeo, segons quina qualitat preferim. Com més qualitat, més gran serà el fitxer final.</li><li>Escollir un flux d&#8217;àudio. A vegades només n&#8217;hi ha un, a vegades hi ha un flux d&#8217;àudio per cada idioma.</li><li>Preparar una llista dels fragments de cada flux.</li></ol>
+
+
+
+<p>Les llistes de reproducció secundàries ens han indicat la llista de fragments de cada flux. Sovint tenen noms amb un número que es va incrementant, com en l&#8217;exemple anterior: des de <code>fileSequence0.ts</code> fins a <code>fileSequence3.ts</code>. El vostre cas poden ser centenars o milers de fitxers, i per tant necessitarem l&#8217;ajuda de Python per preparar una llista de tots ells:</p>
+
+
+
+<pre class="wp-block-code"><code>last = 3
+
+for i in range(0, last + 1):
+    print("http://example.com/movie1/fileSequence" + str(i) + ".ts")</code></pre>
+
+
+
+<p>Aquest script de Python ens generarà una llista de fitxers de tipus &#8220;.ts&#8221;, que podem desar en un fitxer de text amb la següent comanda:</p>
+
+
+
+<pre class="wp-block-code"><code>python3 url.py > video_urls.txt</code></pre>
+
+
+
+<p>Podeu fer el mateix amb els fitxers d&#8217;àudio, canviant la part de l&#8217;adreça URL que convingui. Ara tenim dos fitxers de text amb les llistes de fragments de vídeo i àudio que ens calen.</p>
+
+
+
+<h2>Descarregant els continguts</h2>
+
+
+
+<p>Passem a realitzar les descàrregues dels fragments. Jo recomano desar-los en carpetes diferents per cada flux, ja que poden ser centenars o milers. Ho farem amb l&#8217;eina <code>wget</code>:</p>
+
+
+
+<pre class="wp-block-code"><code>mkdir video
+cd video
+wget -i ../video_urls.txt --header='User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:90.0) Gecko/20100101 Firefox/90.0'</code></pre>
+
+
+
+<p>El paràmetre <code>-i</code> indica la llista de fitxers a descarregar, que hem preparat anteriorment. El paràmetre <code>--header</code> indica que <code>wget</code> es faci passar pel navegador Firefox. Aquesta darrera configuració és opcional, només per si la plataforma no permet a clients que no siguin navegadors accedir al contingut. Pot ser possible que necessiteu altres capçaleres HTTP, o una <em>cookie</em> si cal estar connectats amb un usuari a la web.</p>
+
+
+
+<p>Les comandes anteriors haurien d&#8217;iniciar una sèrie frenètica de descàrregues a tota velocitat, deixant-vos la carpeta plena de fitxers &#8220;.ts&#8221;.</p>
+
+
+
+<h2>Opcional: desencriptant els fragments</h2>
+
+
+
+<p>Pot ser que els fragments &#8220;.ts&#8221; estiguin encriptats durant la transmissió. No hi ha problema, les llistes de reproducció secundàries ens indiquen com es desencripten. Per exemple, les següents directives M3U <a href="https://support.google.com/admanager/answer/7245661">d&#8217;aquesta documentació</a>:</p>
+
+
+
+<pre class="wp-block-code"><code>#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:10
+#EXT-X-MEDIA-SEQUENCE:26
+#EXT-X-KEY:METHOD=AES-128,URI="https://media.example.com/asset/key",IV=0x12345678901234567890123456789012</code></pre>
+
+
+
+<p>On hi ha tres paràmetres importants de la directiva <code>EXT-X-KEY</code>. El mètode, que sovint és AES 128; l&#8217;adreça, o URI, de la clau de xifratge; i un vector d&#8217;inicialització opcional en forma de número hexadecimal.</p>
+
+
+
+<p>La clau apareixerà a la pestanya de <code>Xarxa</code> de Firefox, si traiem el filtre de continguts <code>Mèdia</code>. Si trobem la descàrrega que correspon a l&#8217;adreça URI, veurem que el contingut (pestanya <code>Resposta</code> o <code>Response</code>) és un número codificat en format Base 64. El podem descodificar i obtenir un número hexadecimal. Per exemple, la clau en Base 64 <code>mHZUMhCYdlQyEJh2VDIQmA==</code> correspon al número hexadecimal <code>0x98765432109876543210987654321098</code>. Suposem que el vector d&#8217;inicialització és <code>0x12345678901234567890123456789012</code>.</p>
+
+
+
+<p>Ara que tenim la clau i, opcionalment, el vector d&#8217;inicialització, en format hexadecimal, podem desencriptar els fragments &#8220;.ts&#8221;:</p>
+
+
+
+<pre class="wp-block-code"><code>mkdir video_clear
+cd video_clear
+for f in `ls ../video`; do openssl aes-128-cbc -d -in ../video/$f -out ./$f -nosalt -iv 12345678901234567890123456789012 -K 98765432109876543210987654321098; done</code></pre>
+
+
+
+<p>Aquest codi desencripta els fitxers &#8220;.ts&#8221; de la carpeta <code>video</code> usant la clau i el vector d&#8217;inicialització, i els desa desencriptats en la carpeta <code>video_clear</code>.</p>
+
+
+
+<p>Amb el programa file podem comprovar el canvi. Si analitzem un fragment encriptat, no és capaç de trobar el format:</p>
+
+
+
+<pre class="wp-block-code"><code>$> file fileSequence0.ts    
+fileSequence0.ts: data</code></pre>
+
+
+
+<p>Mentre que un cop desencriptat, hauria de trobar un format de tipus multimèdia:</p>
+
+
+
+<pre class="wp-block-code"><code>$> file fileSequence0.ts 
+fileSequence0.ts: MPEG transport stream data</code></pre>
+
+
+
+<h2>Combinant-ho tot</h2>
+
+
+
+<p>En aquest punt tenim els fragments de vídeo i àudio descarregats i, si cal, desencriptats. Ens cal ajuntar-los en un sol fitxer de vídeo i d&#8217;àudio. Ho podem fer amb el següent codi de terminal:</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+echo > video_files.txt
+for i in `ls *.ts | sort -V`; do echo "file $i"; done >> video_files.txt
+ffmpeg -f concat -i video_files.txt -c copy video.mp4</code></pre>
+
+
+
+<p>Si executem aquest codi en el terminal, des de la carpeta on estan els fragments de vídeo, ho ajuntarà tot en un sol fitxer MP4 amb l&#8217;eina <code>ffmpeg</code>.</p>
+
+
+
+<p>Per a fer el mateix amb els fitxers d&#8217;àudio, es pot usar el següent codi que té un paràmetre per si hi ha problemes amb el format d&#8217;àudio dels fragments &#8220;.ts&#8221;:</p>
+
+
+
+<pre class="wp-block-code"><code>#!/bin/bash
+
+echo > audio_files.txt
+for i in `ls *.aac | sort -V`; do echo "file $i"; done >> audio_files.txt
+ffmpeg -f concat -i audio_files.txt -c copy -bsf:a aac_adtstoasc audio.aac</code></pre>
+
+
+
+<p>Si tot va bé, tindrem dos fitxers, <code>video.mp4</code> i <code>audio.aac</code>. Depenent del tipus de contingut multimèdia, potser heu de canviar algun paràmetre de la conversió <code>ffmpeg</code>.</p>
+
+
+
+<p>Per últim, volem combinar els dos fitxers en un de sol que tingui vídeo i àudio:</p>
+
+
+
+<pre class="wp-block-code"><code>ffmpeg -i video.mp4 -i audio.aac -c copy media.mp4</code></pre>
+
+
+
+<p>Això generarà un sol fitxer <code>media.mp4</code> que hauria de tenir el vídeo i àudio que heu escollit quan hem inspeccionat els fluxes. A cada pas de totes aquestes combinacions de fitxers és bona idea comprovar que els continguts són correctes abans de seguir.</p>
+
+
+
+<h2>Conclusions</h2>
+
+
+
+<p>Amb aquesta guia he mostrat com funciona la retransmissió de continguts multimèdia a través del protocol M3U, com escollir els fluxes de vídeo i àudio, descarregar-ne els fragments i combinar-los en un sol fitxer. Opcionalment, pot haver calgut desencriptar els fragments.</p>
+
+
+
+<p><em>Autoria de la foto de portada: <a href="https://unsplash.com/@dmjdenise?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Denise Jans</a> a <a href="https://unsplash.com/s/photos/film-reel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>.</em></p>
+]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>
