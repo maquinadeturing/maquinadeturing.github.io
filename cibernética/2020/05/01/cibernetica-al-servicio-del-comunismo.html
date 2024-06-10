@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>La màquina de Turing – cat /dev/random</title>
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+	<link rel="dns-prefetch" href="https://s.w.org/">
+	<link rel="stylesheet" id="eightbit-style-css" href="/assets/css/style.css" type="text/css" media="all">
+	<link rel="stylesheet" id="fonts-css" href="/assets/css/fonts.css" type="text/css" media="all">
+	<style type="text/css" id="wp-custom-css">
+		@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 400px),
+		screen and (min-resolution: 192dpi) and (max-width: 400px),
+		screen and (min-resolution: 2dppx) and (max-width: 400px),
+		screen and (max-resolution: 1dppx) and (max-width: 400px) {
+
+			article p {
+				line-height: 1.2;
+			}
+
+			.grid__single .grid__item>article {
+				padding: 1rem;
+			}
+
+		}
+
+		pre {
+			max-width: 650px;
+			overflow: auto;
+		}
+	</style>
+	<style type="text/css" media="screen">
+		.footnote_tooltip {
+			display: none;
+			padding: 12px;
+			font-size: 13px;
+			background-color: #ffffff;
+			border-width: 1px;
+			border-style: solid;
+			border-color: #cccc99;
+			border-radius: 3px;
+			-webkit-box-shadow: 2px 2px 11px #666666;
+			-moz-box-shadow: 2px 2px 11px #666666;
+			box-shadow: 2px 2px 11px #666666;
+		}
+	</style>
+</head>
+
+<body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
+    <div id="page">
+
+        <header id="site-header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <div id="branding-wrapper" class="element__frame">
+        <a href="" rel="home" itemscope="" itemtype="http://schema.org/Brand">
+            <h1 class="site-title" itemprop="name">La màquina de Turing</h1>
+        </a>
+    </div>
+
+    <nav itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="element__frame" id="mobile-window">
+        <p class="bar__title">
+            Topics </p>
+        <a id="nav-toggle" class="nav-slide-button" href="#"><span></span></a>
+
+        <ul id="primary-menu" class="pull clear">
+            <li id="menu-item-18" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-18"><a
+                    href="/category/cibernética/">Cibernética</a></li>
+            <li>
+                <!-- <form role="search" method="get" class="search-form" action="https://duckduckgo.com/">
+                    <label>
+                        <span class="screen-reader-text">Search for:</span>
+                        <input type="search" class="search-field" placeholder="Search …" name="q">
+                    </label>
+                    <input type="submit" class="search-submit" value="Search">
+                </form> -->
+            </li>
+        </ul>
+    </nav>
+
+    
+    <ul class="social-media-profiles element__frame">
+        <li>
+            <p class="bar__title">
+                Social </p>
+        </li>
+        
+            
+            
+            
+        <li>
+            <a href="https://mastodont.cat/@urixturing">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg width="65" height="65" viewBox="0 0 61 65" fill="none" version="1.1" id="svg13"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                    <path
+                        d="M60.7539 14.3904C59.8143 7.40642 53.7273 1.90257 46.5117 0.836066C45.2943 0.655854 40.6819 0 29.9973 0H29.9175C19.2299 0 16.937 0.655854 15.7196 0.836066C8.70488 1.87302 2.29885 6.81852 0.744617 13.8852C-0.00294988 17.3654 -0.0827298 21.2237 0.0561464 24.7629C0.254119 29.8384 0.292531 34.905 0.753482 39.9598C1.07215 43.3175 1.62806 46.6484 2.41704 49.9276C3.89445 55.9839 9.87499 61.0239 15.7344 63.0801C22.0077 65.2244 28.7542 65.5804 35.2184 64.1082C35.9295 63.9428 36.6318 63.7508 37.3252 63.5321C38.8971 63.0329 40.738 62.4745 42.0913 61.4937C42.1099 61.4799 42.1251 61.4621 42.1358 61.4417C42.1466 61.4212 42.1526 61.3986 42.1534 61.3755V56.4773C42.153 56.4557 42.1479 56.4345 42.1383 56.4151C42.1287 56.3958 42.1149 56.3788 42.0979 56.3655C42.0809 56.3522 42.0611 56.3429 42.04 56.3382C42.019 56.3335 41.9971 56.3336 41.9761 56.3384C37.8345 57.3276 33.5905 57.8234 29.3324 57.8156C22.0045 57.8156 20.0336 54.3384 19.4693 52.8908C19.0156 51.6397 18.7275 50.3346 18.6124 49.0088C18.6112 48.9866 18.6153 48.9643 18.6243 48.9439C18.6333 48.9236 18.647 48.9056 18.6643 48.8915C18.6816 48.8774 18.7019 48.8675 18.7237 48.8628C18.7455 48.858 18.7681 48.8585 18.7897 48.8641C22.8622 49.8465 27.037 50.3423 31.2265 50.3412C32.234 50.3412 33.2387 50.3412 34.2463 50.3146C38.4598 50.1964 42.9009 49.9808 47.0465 49.1713C47.1499 49.1506 47.2534 49.1329 47.342 49.1063C53.881 47.8507 60.1038 43.9097 60.7362 33.9301C60.7598 33.5372 60.8189 29.8148 60.8189 29.4071C60.8218 28.0215 61.2651 19.5781 60.7539 14.3904Z"
+                        fill="url(#paint0_linear_89_8)" id="path2" style="fill:#000000" />
+                    <path
+                        d="M50.3943 22.237V39.5876H43.5185V22.7481C43.5185 19.2029 42.0411 17.3949 39.036 17.3949C35.7325 17.3949 34.0778 19.5338 34.0778 23.7585V32.9759H27.2434V23.7585C27.2434 19.5338 25.5857 17.3949 22.2822 17.3949C19.2949 17.3949 17.8027 19.2029 17.8027 22.7481V39.5876H10.9298V22.237C10.9298 18.6918 11.835 15.8754 13.6453 13.7877C15.5128 11.7049 17.9623 10.6355 21.0028 10.6355C24.522 10.6355 27.1813 11.9885 28.9542 14.6917L30.665 17.5633L32.3788 14.6917C34.1517 11.9885 36.811 10.6355 40.3243 10.6355C43.3619 10.6355 45.8114 11.7049 47.6847 13.7877C49.4931 15.8734 50.3963 18.6899 50.3943 22.237Z"
+                        fill="white" id="path4" />
+                </svg>
+            </a>
+        </li>
+        
+    </ul>
+    
+</header>
+<div class="clear"></div>
+
+        
+        <section class="grid__single" itemscope="" itemtype="http://schema.org/BlogPost">
+
+            <div class="grid__item">
+    <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting" id="post-5"
+        class="element__frame post type-post status-publish format-standard has-post-thumbnail hentry">
+        <header class="entry-header">
+            
+            <a href="/category/cibernética" class="category-name" itemprop="articleSection">Cibernética</a>
+            
+            <h2 class="entry__title" itemprop="headline">Cibernética – al servicio del comunismo</h2>
+        </header>
+        <div class="entry-content" itemprop="articleBody">
+            <div class="entry-thumbnail-single landscape" itemprop="image">
+                <img src="/assets/media/cybernetics.png" class="attachment-large size-large wp-post-image" alt=""
+                    width="580" height="410">
+            </div>
+
+            <p><em>El siguiente texto es una traducción de la introducción al primer volumen de “Cibernética – al servicio del comunismo”, editado por Aksel I. Berg en 1961 en la URSS después de la restauración política de esta disciplina científica, <a href="https://lamaquinadeturing.su/2020/04/13/cibernetica-en-el-breve-diccionario-filosofico-1954/">antes demonizada por el estalinismo</a>.</em></p>
+
+<p><em>Esta serie de libros contenían las actas del seminario organizado por Berg y otros cibernetistas, en el cual discutían los aspectos cientifico-técnicos de esta nueva disciplina y a la vez buscaban un cuerpo teórico adecuado a los principios comunistas.</em></p>
+
+<p><em>La introducción repasa los artículos de una veintena de autores, en un texto que muestra el interés de los investigadores soviéticos por temas que hoy en día son de plena actualidad: el diagnóstico automatizado de enfermedades usando</em> big data_, aprendizaje automático_ (machine learning)<em>, lectura de textos y reconocimiento de voz, teoría de colas, teoría de la información, sistemas tolerantes a fallos y autoregenerativos, etc., incluso la aplicación a procesos legales. Esto por sí solo desmonta los mitos neoliberales que vinculan creatividad e innovación al lucro personal, demostrando que el progreso científico-técnico no es propio del capitalismo, y existe más allá de la figura del</em> emprendedor_._</p>
+
+<p><em>De Berg, trasluce su visión de una ciencia al servicio de la vida y las humanidades (que en ningún momento se contemplan como contrapuestas a la ciencia, como ocurre hoy en día), a favor de la colaboración científica internacional, y destaca sensibilidad ecologista por la contaminación y sus efectos en humanos y ecosistemas.</em></p>
+
+<p><em>En definitiva, es un documento que muestra los usos que se podría haber dado a la tecnología cibernética, y que hoy estamos a tiempo de dar a la tecnología informática.</em></p>
+
+<hr class="wp-block-separator is-style-wide" />
+
+<h2 id="introducción">Introducción</h2>
+
+<p><strong>A. I. Berg</strong></p>
+
+<blockquote>
+  <p>Es necesario organizar un uso generalizado de la cibernética, la informática electrónica y los dispositivos de control en la producción, la investigación y el desarrollo, la práctica del diseño de los cálculos de planificación, en el campo de la contabilidad, la estadística y la gestión.</p>
+
+  <p>Del proyecto de Programa del PCUS</p>
+</blockquote>
+
+<p>El borrador del Programa de nuestro partido indica que la sociedad comunista, en contraste con todas las formaciones socioeconómicas anteriores, no se forma espontáneamente, sino como resultado de la actividad consciente y decidida de las masas lideradas por el partido marxista-leninista. El liderazgo del partido en la construcción del comunismo se basa en el conocimiento de las leyes de desarrollo de la sociedad, y esto le da un carácter organizado, planificado y científicamente sólido.</p>
+
+<p>Estas disposiciones fundamentales en las que se basan todas nuestras actividades científicas y prácticas son de gran importancia: son el resultado de estudiar toda la práctica de construir el socialismo en nuestro país durante los últimos años. Ahora nos muestran, después de más de 40 años, cuán perspicaz fue V.I. Lenin, buscando desde los primeros días de la revolución llevar la base científica a las medidas prácticas del gobierno soviético en la organización, planificación y dirección de la gestión de la economía nacional de un país que acababa de salir de una sangrienta y guerra devastadora. En marzo – abril de 1918, Vladimir Ilich Lenin hizo un artículo importante, “Las tareas inmediatas del gobierno soviético”. En este artículo, dijo:</p>
+
+<blockquote>
+  <p>“Nosotros, el partido bolchevique, convencimos a Rusia. Hemos conquistado Rusia: de los ricos para los pobres, de los explotadores para los trabajadores. Ahora debemos gestionar Rusia. Y toda la singularidad del momento que se experimenta, toda la dificultad es comprender las características de la transición de la tarea principal de persuadir al pueblo y la supresión militar de los explotadores a la tarea principal de la gestión”.</p>
+
+  <p>Obras completas<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, 4ª ed., vol. 27, p. 214</p>
+</blockquote>
+
+<p>Las tremendas dificultades para combatir la devastación, el sabotaje de la burguesía y la burocracia, el hambre y la falta de las cosas más necesarias en el país, el desvío de todas las fuerzas hacia la guerra civil y la lucha de los intervencionistas no impidieron que V. I. Lenin volviera a este tema una vez más en 1920 durante la discusión sobre El papel de los sindicatos.</p>
+
+<p>Finalmente, en 1923, en su último artículo “Mejor poco, pero mejor” (Pravda<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup>, 4 de marzo), V. I. Lenin expresó su preocupación por la imperfección del aparato estatal de la joven república soviética y enfatizó la necesidad de estudiar “los fundamentos de la teoría sobre el tema de nuestro aparato estatal” y el conocimiento de <em>los fundamentos de la ciencia de gestión</em> (obras completas<sup id="fnref:1:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, 4ª ed., vol. 27, p. 278).</p>
+
+<p>Los años posteriores han demostrado y confirmado la corrección del énfasis de Lenin en el problema de gestión. Con el desarrollo de la economía nacional, las dificultades de su gestión racional crecieron constantemente. Al mismo tiempo, la práctica ha confirmado que es en una economía socialista planificada donde existen todas las condiciones para el mejor uso de los logros de la ciencia y la tecnología en beneficio de todos los miembros de la sociedad, y no de los grupos rivales individuales y la minoría privilegiada.</p>
+
+<p>La Unión Soviética no se vio afectada por la crisis industrial de 1929-1932, que conmocionó profundamente al mundo capitalista y describió de manera particularmente vívida su anarquismo.</p>
+
+<p>A pesar de las enormes pérdidas sufridas durante la guerra civil de 1918-1921, la industria de la Unión Soviética, que se estaba desarrollando rápidamente, alcanzó su nivel anterior a la guerra (1913) en 1925-1926. La tasa de crecimiento y el progreso de la economía socialista planificada resultaron ser tan altos que en 1941 el país resultó estar preparado para la guerra solo con uno de los países más industrializados del mundo: Alemania. Esto, por supuesto, fue el resultado de la mejora continua en la planificación y gestión de la economía nacional.</p>
+
+<p>Durante la Segunda Guerra Mundial, los problemas de una mejor organización de la industria de defensa y una mejor gestión de las operaciones militares atrajeron la atención más seria. Aparecieron nuevas ciencias: la teoría de la investigación operativa, la teoría de los juegos matemáticos, la teoría del servicio de masas; Se dio un desarrollo significativo a la estadística matemática y la teoría de la probabilidad. La complicación continua y rápida del equipo militar y sus frecuentes fallas llamaron la atención sobre la falta de fiabilidad de los dispositivos y aparatos complejos de elementos múltiples. Se comenzó a trabajar sistemáticamente para crear una teoría matemática de la confiabilidad y para estudiar métodos y métodos tecnológicos para mantenerla a un alto nivel.</p>
+
+<p>El rápido desarrollo de la electrónica y la instrumentación allanó el camino para la creación de los primeros medios de automatización electrónica y, finalmente, las primeras computadoras electrónicas. Las máquinas matemáticas y la automatización electrónica, a su vez, nos permitieron plantear un nuevo problema científico para mejorar la gestión de procesos y operaciones complejas. Así nació una nueva ciencia de la gestión: la cibernética.</p>
+
+<p>En los últimos años, se han publicado muchos libros y artículos de revistas sobre cibernética en la literatura rusa y mundial. Hay trabajos científicos serios, cuya comprensión es accesible solo para especialistas bien entrenados y que trabajan en campos relativamente estrechos. Muchos buenos libros de no ficción se han escrito para un amplio público. A pesar de esto, la creciente demanda de literatura en el campo de la cibernética no se está cumpliendo. Este es un fenómeno completamente natural para nuestro tiempo. Se explica por el hecho de que una persona siente una creciente necesidad de aumentar la eficiencia de su trabajo, es decir, obtener ciertos resultados con el menor gasto de tiempo, trabajo, materiales y energía. Pueden objetarme que este deseo siempre ha existido. Sin embargo, no es difícil verificar que este no sea realmente el caso.</p>
+
+<p>En los viejos tiempos, la actividad científica se limitaba a observar o recopilar información, como estamos acostumbrados a decir. Los resultados de las observaciones fueron memorizados, registrados y almacenados. Se crearon grandes bibliotecas, pero contenían principalmente material descriptivo. Catálogos, clasificaciones, sistemas fueron compilados. Pero hubo pocos intentos de penetrar más profundamente en la esencia y la interconexión de los fenómenos observados, principalmente porque el aparato matemático a disposición de los científicos, así como los medios y equipos técnicos, no correspondían en absoluto a la complejidad de los fenómenos y procesos que se estudian.</p>
+
+<p>La experiencia cotidiana convenció a nuestros ancestros distantes de su debilidad e impotencia en los intentos de someter a las fuerzas de la naturaleza. El miedo a las fuerzas omnipotentes de la naturaleza, generado por esta impotencia, acostumbró al hombre a la sumisión a su destino, a la pasividad, a la superstición. La ciencia se desarrolló lentamente porque todas las fuerzas del hombre fueron absorbidas por la lucha por la existencia, y había una sensación de la necesidad de establecer relaciones de causa y efecto, para explicar los hechos observados. De los “científicos” se esperaba solo un beneficio: la profecía. y predicciones Fue un período de astrología en astronomía y medicina en medicina. Los intentos de pensamiento independiente que no encajaban en los cánones legalizados se consideraron sacrilegio y terminaron en una hoguera.</p>
+
+<p>¿Quizás todo esto fue mucho tiempo y ahora no hay nada que recordar al respecto? Desafortunadamente, la situación descrita anteriormente existió hasta los últimos siglos, es decir, durante cientos de miles de años, porque las primeras personas aparecieron en la Tierra hace un millón de años, y los primeros rudimentos de la civilización, en sus formas más primitivas, aparecieron solo unos 10 mil años. volver Las últimas hogueras se apagaron hace 135 años… La ciencia moderna nació en los primeros trabajos de Leibniz y Newton en matemáticas superiores. Solo desde la introducción del cálculo diferencial e integral en la ciencia podemos hablar sobre el surgimiento de las ciencias naturales modernas, ya que la oportunidad se ha abierto para la transición de características “descriptivas” y cualitativas al establecimiento de leyes matemáticas, cuantitativas exactas y, por lo tanto, no solo para indicar fenómenos y hechos, sino también e intenta intervenir activamente en los fenómenos del mundo exterior.</p>
+
+<p>El éxito de esta intervención llevó a la idea de su viabilidad y dio lugar a la necesidad de desarrollar un trabajo científico que conduzca al logro de objetivos específicos de la vida práctica.</p>
+
+<p>Una persona comenzó a fortalecer su creencia en sus habilidades y capacidades. Se plantearon y resolvieron las tareas cada vez más difíciles de aumentar la productividad del trabajo físico. Desde los dispositivos y mecanismos más simples, el hombre cambió a máquinas. La capacidad de producir y mantener el fuego, adquirida hace 30-40 mil años, se utilizó hace 200 años para crear las primeras máquinas de vapor, y comenzó la era de la mecanización de máquinas. Actualmente, el 99% de todo el trabajo útil llevado a cabo en la Tierra se lleva a cabo mediante máquinas controladas por humanos y solo el 1%, por fuerza física no mecanizada. Pero esto no significa en absoluto que solo el uno por ciento de los trabajadores en el mundo se dedique a trabajos físicos no mecanizados. En nuestro país, por ejemplo, según datos poco precisos, del 40 al 60% de los trabajadores están empleados en trabajos auxiliares, principalmente no mecanizados, y esto incluye principalmente la carga y descarga. Pero un trabajador con nosotros, que controla una máquina o una máquina, realiza un trabajo útil, más de cientos de trabajadores que se dedican a un trabajo físico simple. En promedio, en el mundo, dada la baja mecanización de los países subdesarrollados, el porcentaje de trabajadores que manejan máquinas es mucho más bajo que en la URSS, y representa solo un pequeño porcentaje. Sin embargo, es precisamente este número insignificante de trabajadores calificados los que realizan la mayor parte (99%) del trabajo útil en la Tierra.</p>
+
+<p>Cabe recordar que hace unos 100 años la imagen era completamente diferente: aproximadamente el 4% de todo el trabajo útil fue realizado por máquinas y el 96% por trabajo físico, manual. La mecanización y la maquinización comenzaron a extenderse rápidamente solo a fines del siglo pasado después de la invención y el uso generalizado de dinamos, corriente alterna, su sistema de líneas de alta tensión [канализации] y el uso de motores eléctricos y motores eléctricos. La energía eléctrica, su generación, distribución y conversión en energía mecánica revolucionó la industria a fines del siglo XX.</p>
+
+<p>El uso científico e industrial de la electricidad ha abierto nuevas oportunidades no solo para aumentar la capacidad energética de la mano de obra: los dispositivos y los controles de automatización han comenzado a ser ampliamente utilizados. Pero esto se aplica a nuestro siglo, más precisamente, a nuestro tiempo. No debe haber conceptos erróneos: la era de la automatización apenas comienza.</p>
+
+<p>La automatización con medios neumáticos, hidráulicos y electromecánicos ha existido durante varias décadas. Pero la automatización moderna comenzó después de la llegada de los dispositivos electrónicos, de vacío y semiconductores. Las lámparas electrónicas se utilizaron ampliamente en la ingeniería de radio hace 40 años, y en la electrónica industrial y la automatización electrónica hace solo 10 años.</p>
+
+<p>Los dispositivos electrónicos de semiconductores son aún más jóvenes. Comenzaron a encontrar un uso generalizado durante no más de 7-8 años. Pero el ritmo de su distribución, incluso para nuestro tiempo, es sorprendente: en la actualidad, al menos varios cientos de millones de dispositivos semiconductores se producen en el mundo por año.</p>
+
+<p>Pronto su lanzamiento alcanzará los mil millones al año, y reemplazarán las lámparas electrónicas en muchas áreas.</p>
+
+<p>Al final de la Segunda Guerra Mundial, se desarrollaron las primeras computadoras electrónicas. Tomó varios años mejorarlos. Desde 1952, es decir, hace unos 10 años, comenzó una nueva era en matemáticas, electrónica, automatización y en todas las ramas del conocimiento basadas en estas ciencias. Finalmente, fue posible plantear y resolver el problema de un aumento significativo en la efectividad del trabajo mental. Casi al mismo tiempo, nació una nueva ciencia, la cibernética, la ciencia de la gestión.</p>
+
+<p>Ahora podemos volver al comienzo de nuestra introducción. Hemos demostrado con ejemplos concretos que solo en los últimos años se ha abierto la posibilidad de plantear conscientemente el problema de aumentar la eficiencia del trabajo humano en todas las áreas de su actividad. Ahora podemos estudiar fenómenos en la naturaleza viva, procesos de producción en la industria y operaciones realizadas por personas en la sociedad humana, utilizando métodos científicos y medios técnicos correspondientes a la complejidad y sutileza de estos fenómenos, procesos y acciones.</p>
+
+<p>Pero ahora este estudio tiene objetivos prácticos. Ahora no estamos completamente satisfechos con la contemplación, observación, medición y almacenamiento de esta información. En el estudio del mundo que nos rodea y de la vida silvestre necesitamos utilizar esta información para satisfacer las necesidades materiales y espirituales del hombre, para facilitar su trabajo.</p>
+
+<hr class="wp-block-separator" />
+
+<p>El primer volumen de la colección “Cibernética: al servicio del comunismo” contiene varios artículos cuyo propósito es familiarizar a los lectores con las oportunidades que surgen en el uso práctico de los principios de la cibernética. La colección contiene, además de la introducción, 19 artículos escritos por autores que trabajan directamente en los campos relevantes. Los artículos se agrupan en 4 secciones: la primera sección: recopilación, procesamiento y transmisión de información; segunda cibernética y vida silvestre; la tercera es cibernética y humanidades, y la cuarta sección es cibernética en ciencia y tecnología.</p>
+
+<p>A continuación resumimos brevemente el contenido de cada artículo en estas secciones.</p>
+
+<blockquote>
+  <p>“En el siglo de rápido desarrollo de la ciencia, el desarrollo de problemas filosóficos de la ciencia natural moderna sobre la base del materialismo dialéctico como la única visión científica mundial y método de cognición se vuelve aún más urgente”.</p>
+
+  <p>Del borrador del nuevo Programa del PCUS</p>
+</blockquote>
+
+<p>La cibernética es una nueva ciencia que se está generalizando. Afirma estudiar los procesos de gestión que tienen lugar en la naturaleza viva, en la producción y en la sociedad humana, es decir, para cubrir casi todas las actividades humanas, y por lo tanto tenemos el derecho de exigir que los fundamentos ideológicos sobre los que se desarrolla esta ciencia en nuestro país impecable Desde los primeros días de la revolución, V. I. Lenin estuvo muy involucrado en la ciencia de la gobernanza. A lo largo de los años de existencia del poder soviético, se ha prestado mucha atención a estos problemas en la URSS. Pero la cibernética como ciencia del manejo de sistemas dinámicos complejos, basada en la base matemática y el uso de dispositivos electrónicos modernos, se originó en Occidente, y uno de sus fundadores es el matemático estadounidense Norbert Wiener. En este sentido, las ideas, pensamientos y generalizaciones bastante razonables y progresistas contenidos en los trabajos modernos sobre cibernética a veces se presentan a los lectores desde posiciones ideológicas poco claras, contradictorias y a menudo erróneas, lo que trae un daño significativo. La tarea de los científicos soviéticos es crear la escuela soviética de cibernética, basada en el materialismo dialéctico.</p>
+
+<p>En los últimos años, hemos hecho mucho, en esta área. Puede referirse, por ejemplo, a la colección recientemente publicada de Cuestiones filosóficas de la cibernética. Pero estamos lejos de pensar que los artículos de esta colección agotan todo el problema. Por lo tanto, en ‘esta colección es un artículo de I. B. Novik “Sobre algunos problemas metodológicos de la cibernética”. Habla sobre la optimización de la gestión, la naturaleza de la información, la relación entre el hombre y la máquina, y la naturaleza de la cibernética como ciencia. Estamos seguros de que la publicación de este interesante artículo en nuestra colección fortalecerá aún más los fundamentos ideológicos de la cibernética.</p>
+
+<h3 id="i-recogida-tratamiento-y-transferencia-de-información">I. RECOGIDA, TRATAMIENTO Y TRANSFERENCIA DE INFORMACIÓN</h3>
+
+<p>En la primera sección, cuyos artículos proporcionan información sobre la recopilación, el procesamiento y la transmisión de información, el miembro de la Academia de Ciencias de la RSS de Ucrania, prof. B.V. Gnedenko, habla sobre algunos temas de cibernética y estadísticas. En 1956, B.V. Gnedenko, N. M. Amosov, E. A. Shkabara y sus empleados se interesaron en los problemas del diagnóstico médico y llevaron a cabo uno de los primeros intentos en el mundo para el procesamiento estadístico de material clínico, sobre la base de lo cual generalmente se hace el diagnóstico, y se utilizó una computadora electrónica para estos fines. Esto hizo posible obtener evaluaciones más objetivas de varios conjuntos de síntomas que los que puede hacer un médico. El uso de métodos de estadística matemática, lógica matemática y teoría de la probabilidad en el desarrollo de un diagnóstico en el futuro ayudará significativamente a los médicos.</p>
+
+<p>El autor habla sobre la importancia de utilizar los métodos de la teoría del servicio de masas en la organización de la producción. Desde la creación de las primeras centrales telefónicas a principios de este siglo, se sabe que el científico danés A. K. Erlang tiene el mérito de haber desarrollado los fundamentos de esta ciencia matemática. Esta teoría examina los problemas de evaluar la calidad del “servicio” de un determinado sistema en el que es inevitable esperar su turno y determinar el tiempo promedio de “servicio”. Esta teoría considera, por ejemplo, el problema del servicio racional de pasajeros en las taquillas de ferrocarriles, en las empresas comerciales, al calcular las vías de acceso de fábricas, amarres de puertos, lugares de aterrizaje de aviones, etc. El artículo describe un caso interesante de cálculo de silos que acumulan existencias de productos durante la producción en línea, proporciona información sobre algunos problemas de fiabilidad estadística (es decir, tiempo de actividad) de los sistemas de control que consisten en una gran cantidad de elementos, cada uno de los cuales se caracteriza por su probabilidad inherente de un funcionamiento adecuado.</p>
+
+<p>En una forma accesible para el lector general, pero al mismo tiempo bastante seria, B.V. Gpedenko muestra cómo las matemáticas “puras” ayudan a resolver los problemas prácticos reales de nuestro tiempo, qué papel juegan ramas relativamente nuevas de las matemáticas en esto, como la teoría de la planificación óptima, la teoría juegos, teoría de procesos aleatorios, etc.</p>
+
+<p>La cibernética se basa en la recopilación, el procesamiento y la entrega de información. La información es también un concepto básico de la teoría general de la comunicación. Mientras tanto, el término “información” en sí no tiene una definición exacta.<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote" rel="footnote">3</a></sup> Esto no debería confundirnos, ya que para la investigación y las actividades prácticas y para el desarrollo posterior de la teoría del control, realmente no necesitamos definiciones precisas de ciertos conceptos. Después de todo, no sabemos qué es el tiempo, nadie puede dar una definición de esta palabra, pero lo medimos perfectamente con gran precisión y lo ponemos en la base de todos nuestros cálculos de eficiencia, productividad laboral. Hablamos de desperdicio y la necesidad de ahorrar tiempo, el uso indebido del tiempo es punible en algunos casos por ley… Tampoco sabemos qué es el espacio, pero lo medimos, utilizamos los teoremas de la geometría: la ciencia del espacio. Se puede discutir con esto, pero es poco probable que alguien, excepto algunos filósofos y matemáticos que se dedican especialmente a este problema, pueda satisfacer el concepto generalizado del espacio como una colección continua de cualquier objeto o fenómeno homogéneo, la medición de distancias en la que se lleva a cabo de acuerdo con cualquier ley con pasos infinitesimales (Riemann, 1854). Hay muchos ejemplos similares. Pero esto no interfiere con nuestras actividades científicas y prácticas que ocurren en el tiempo y el espacio…</p>
+
+<p>Los méritos del científico e ingeniero de comunicaciones estadounidense Shannon y muchos otros científicos soviéticos y extranjeros, que sentaron las bases de la teoría general de la comunicación y la teoría matemática, más precisamente, probabilística y de información estadística, son bien conocidos. La aplicabilidad de las disposiciones de la teoría del ego a los problemas de transmisión de información a través de canales inanimados no está en duda. Los intentos de extenderlo a los organismos vivos aún no han dado un resultado positivo, y quizás en este caso es necesario utilizar categorías completamente diferentes. Nos parece que la colección “Teoría de la información en biología”, que fue publicada en la URSS en 1960 por la Editorial de Literatura Extranjera, es de considerable interés a este respecto.</p>
+
+<p>Nuestra colección contiene un artículo de R. L. Dobrushin y Y. I. Khurtin, “Preguntas en la teoría de la información”. Interesará a los lectores planteando algunas preguntas, aunque leer este artículo requiere cierta preparación matemática. Los autores están tratando de formular y explicar algunos problemas de codificación óptima de la información, y nos parece que tuvieron éxito. La literatura sobre teoría de la información es muy significativa. Los autores enumeran una serie de trabajos que merecen atención a la luz de los problemas que están considerando. Es interesante notar que en el apéndice del <em><a href="https://ca.wikipedia.org/wiki/IRE">Institute of Radio Engineers</a> <a href="https://en.wikipedia.org/wiki/IEEE_Transactions_on_Information_Theory">Transactions on Information Theory</a></em>, nº 2, junio de 1956, contiene <a href="https://ieeexplore.ieee.org/document/1056783">“Una bibliografía de literatura soviética sobre la teoría de la información, correlación y ruido”</a>, compilada en los EEUU, que contiene alrededor de 150 títulos. En el segundo volumen de nuestra colección, tenemos la intención de imprimir varios artículos sobre información interpretada desde el punto de vista de la cibernética teórica. Estos incluyen, por ejemplo, los problemas de percepción y reconocimiento de imágenes en la naturaleza viva. Estos problemas atraen cada vez más la atención de psicólogos y fisiólogos, así como de especialistas en máquinas electrónicas que trabajan en el campo del autoaprendizaje y autoajuste. Hasta cierto punto, estos problemas se plantean en un artículo de A. V. Napalkov, colocado en la segunda sección de esta colección.</p>
+
+<p>Dado que el procesamiento de la información es la base de la gestión, se imprime en la colección un artículo de K. B. Arutyunov y D. V. Svecharnik “Selección, procesamiento primario, almacenamiento y transmisión de información sobre el curso de los procesos de producción”. Considera las peculiaridades de la actividad de información en la producción en comparación con los organismos vivos. Se destaca y explica la conveniencia excepcional de todo el mecanismo y dispositivo para transmitir información y su almacenamiento en organismos vivos. Es especialmente importante mantener la alta confiabilidad de estos procesos. En la vida silvestre, esto está garantizado por la interacción de todos los elementos estructurales y funcionales involucrados en este proceso. Gracias a esto, durante millones de años, por medio de la selección natural y la adaptación a las condiciones ambientales, esas especies han sobrevivido en las que el trabajo conjunto de una gran cantidad de elementos menos confiables garantiza una confiabilidad extremadamente alta. Desafortunadamente, la lucha por mejorar la confiabilidad de los instrumentos, herramientas y sistemas de recopilación, almacenamiento y procesamiento de datos que deben usarse en la industria apenas está comenzando, y la situación en esta área aún debe ser reconocida como insatisfactoria. Las preguntas planteadas en el artículo anterior son muy relevantes. Planeamos en el segundo volumen, en 1962, desarrollar significativamente la sección de información y, en particular, colocar varios artículos sobre instrumentación científica, ya que el equipo de laboratorios científicos con estos dispositivos que no satisface las necesidades limita sus capacidades, reduciendo la efectividad del trabajo experimental de investigación de nuestros científicos.</p>
+
+<p>La primera sección contiene un artículo de K. Ya. Sergeychuk, “Problemas de comunicación y cibernética”. El autor muestra el creciente papel de la ciencia de las comunicaciones y su tecnología en el rápido desarrollo de la economía nacional de nuestro país. Se destaca el papel creciente de los sistemas con alto rendimiento, en particular los enlaces coaxiales y de microondas. Ahora podemos agregarles las capacidades recientemente descubiertas de transmisión direccional intensa [резко] de una gran cantidad de información sobre ondas electromagnéticas de los rangos infrarrojo y óptico. Aquí se abren grandes oportunidades, de las cuales solo una parte ha sido tenida en cuenta. Los generadores y amplificadores de mecánica cuántica de este rango de longitud de onda permiten crear receptores de alta sensibilidad y bajo nivel de ruido, en los cuales la comunicación por radio se llevará a cabo a distancias de escala astronómica (varios años luz). Se abren oportunidades para construir máquinas electrónicas con gran velocidad. Probablemente, estas nuevas perspectivas nos harán re-evaluar la importancia de algunos de los sistemas modernos de transferencia de información.</p>
+
+<p>K. Ya. Serteychuk habla más sobre el papel y la importancia de las comunicaciones en la automatización de la economía nacional, cuando los dispositivos automáticos y las máquinas electrónicas resultan ser fuentes y receptores de información. En este sentido, el término “comunicación tecnológica” [технологическая связь] comienza a utilizarse, que se entiende como un complejo de medios técnicos de comunicación que proporcionan control de la producción automatizada. Observamos de paso que estos temas también se abordan en los artículos de A. I. Kitov y V. A. Ilyin, ubicados en las secciones tercera y cuarta de la colección.</p>
+
+<p>Finalmente, el artículo llama la atención sobre la creciente importancia de una mayor elaboración de los problemas de la teoría de la información y el uso de máquinas electrónicas para el procesamiento de la información. En este artículo se presta especial y merecida atención a la creciente importancia de la robotización confiable de los medios automatizados de transmisión de información.</p>
+
+<h3 id="ii-cibernética-y-naturaleza-viva">II. CIBERNÉTICA Y NATURALEZA VIVA</h3>
+
+<p>Estamos principalmente interesados en la vida silvestre, la flora y la fauna. Y, sobre todo, nos preocupamos por la persona, por su salud. La sociedad comunista debe ser construida por personas sanas. El mantenimiento de la salud, la prevención de enfermedades, el diagnóstico precoz de enfermedades graves, los métodos de tratamiento eficaces en caso de enfermedad es la principal preocupación de las autoridades sanitarias soviéticas. La mejora integral de la mano de obra, la introducción de medios modernos de seguridad técnica y la provisión de condiciones sanitarias y técnicas que eliminen las lesiones y enfermedades profesionales son la principal preocupación de nuestro partido para el hombre soviético, como se establece en el proyecto de Programa del PCUS. Es interesante recordar que la misma preocupación se mostró en 1919. El segundo programa del partido, adoptado en el 8º Congreso del PCR, dijo: “En el campo de la salud pública, la adopción decisiva de amplias medidas sanitarias en interés de los trabajadores, tales como: a) mejora áreas pobladas (protección del suelo, agua, aire)”, etc.</p>
+
+<p>Lamentablemente, la industrialización va acompañada de la contaminación de nuestro medio ambiente. Las preguntas planteadas hace más de 40 años aún no se han resuelto en la medida en que esto es necesario. Las potentes centrales térmicas son una fuente de contaminación del aire si no se toman medidas para limpiar el humo. La tecnología moderna nos permite hacer esto, y estas oportunidades deben ser aprovechadas, de lo contrario las poderosas estaciones termales se convertirán en fuentes de envenenamiento del aire y muerte de la vegetación. ¿Se presta suficiente atención a este grave problema? Según nuestra información, no. El envenenamiento del suelo y el agua por parte de las empresas industriales sigue siendo un problema sin resolver, ya que la industria crece y se desarrolla más rápido de lo que se implementan las medidas preventivas y de prohibición.</p>
+
+<p>Se ha publicado un extenso material sobre todos estos temas en el mundo y en nuestra prensa, pero las tareas, en mi opinión, todavía no se resuelven satisfactoriamente. Se necesita un cambio radical aquí. Esto es exactamente lo que requiere el párrafo del borrador del Programa:</p>
+
+<blockquote>
+  <p>Se están produciendo cambios importantes en el desarrollo de todo el complejo de ciencias biológicas en relación con las necesidades de resolver con éxito los problemas de la medicina y el desarrollo de la agricultura. Los intereses de la humanidad plantean ante estas ciencias como tareas principales la clarificación de la esencia de los fenómenos de la vida, el dominio y la gestión de los procesos de la vida, en particular, el metabolismo, la herencia de los organismos. La ciencia médica debe centrarse en el descubrimiento de medios para prevenir y superar enfermedades.</p>
+</blockquote>
+
+<p>Parece que la preocupación por la salud del pueblo soviético no pertenece al tema de esta colección, pero en realidad no es así.</p>
+
+<p>Uno de los documentos más importantes que caracterizan esta situación es la resolución del Comité Central del PCUS y el Consejo de Ministros de la URSS del 14 de enero de 1960 “Sobre medidas para mejorar aún más los servicios médicos y proteger la salud de la población del país”. De acuerdo con las grandes oportunidades creadas recientemente por la ciencia y la tecnología, esta resolución enumera muchas actividades cuya implementación permitirá utilizar ampliamente los logros en el campo de la instrumentación y la electrónica en las instituciones médicas. La resolución propone ampliar significativamente el trabajo de investigación y desarrollo en la creación de equipos médicos basados ​​en el uso de los logros modernos en biología, química, física nuclear, electrónica y cibernética. Se presta especial atención al desarrollo de máquinas y dispositivos de diagnóstico especiales para la evaluación precisa de los cambios funcionales y morfológicos en el cuerpo en función de los últimos logros de la cibernética. Los médicos de diagnóstico tendrán la oportunidad de establecer las causas y la naturaleza de la enfermedad mediante el análisis de los síntomas que, sin máquinas electrónicas, corren el riesgo de no ser detectados, y así garantizar que el diagnóstico se realice en una etapa más temprana de la enfermedad grave que la que se está haciendo actualmente.</p>
+
+<p>Todas estas instrucciones de nuestro partido y nuestro gobierno se están implementando actualmente. Para resolver los problemas difíciles asociados con estos problemas, participan matemáticos, especialistas en electrónica y biología. Docenas de colectivos ahora trabajan en este problema en Moscú, Leningrado, Kiev, Tbilisi y otras ciudades de la URSS, en los países de democracia popular, así como en Occidente. Sobre los problemas del uso de las matemáticas, la electrónica y la cibernética en biología y medicina, se ha publicado una extensa literatura científica, que en 1961 tiene al menos cinco mil artículos. Los congresos y reuniones internacionales están dedicados a este tema. En todas partes se están tomando medidas para capacitar a especialistas en electrónica biológica, este nuevo tipo de médico, ingeniero y electricista. En 1961, se celebró una conferencia científica sobre el uso de la cibernética en la cirugía en el Instituto de Cirugía A. V. Vishnevsky. Por iniciativa del director de este instituto, el Instituto A. A. Vishnevsky estableció un laboratorio de cibernética médica. Médicos e ingenieros, fisiólogos y matemáticos, radiólogos y técnicos trabajan en él.</p>
+
+<p>En 1959, se celebró una conferencia científica en Moscú sobre el uso de la electrónica en biología y medicina. Se escucharon varias docenas de informes interesantes al respecto, y se demostró el equipo original. Los trabajos de la conferencia se publicaron en la colección <em>Electrónica en la medicina</em>, Gosenergoizdat<sup id="fnref:4" role="doc-noteref"><a href="#fn:4" class="footnote" rel="footnote">4</a></sup>, 1960. En 1962, se convocará una segunda conferencia sobre el mismo tema.</p>
+
+<p>Permítanme recordarle al lector que la electrónica biológica y la cibernética tienen solo unos pocos años de vida. Todo lo que se ha hecho hasta ahora es solo el comienzo de una nueva era en biología, y los científicos de la Unión Soviética y otros países lo saben. No cabe duda de que los próximos años abrirán perspectivas y oportunidades completamente nuevas.</p>
+
+<p>El artículo “Cibernética y vida”, publicado en el “Ekonomicheskoy gazete”<sup id="fnref:5" role="doc-noteref"><a href="#fn:5" class="footnote" rel="footnote">5</a></sup> el 12 de junio de 1960, enumera algunas áreas de aplicación de la cibernética en biología. Estos incluyen: el estudio de varios procesos de control en la naturaleza viva, las células vivas, el comportamiento de los seres vivos, la evolución de la vida silvestre en su conjunto, el diagnóstico, el manejo de ciertos procesos fisiológicos, el estudio de los fenómenos de herencia y la influencia directa en estos procesos para derivar formas valiosas de animales, plantas y microorganismos, etc.</p>
+
+<p>¿Qué es característico de todo este nuevo campo de la ciencia? La biología se caracteriza por la tendencia centenaria de acumular información sobre organismos vivos. El material recolectado durante 5-6 mil años es enorme. Pero, ¿a qué métodos iba a recurrir, qué medios técnicos se utilizaron para estudiar los fenómenos y procesos más complejos conocidos en el mundo? Es cierto que el lento progreso de la biología no se puede culpar a un solo biólogo. No hay duda de que las ciencias técnicas, que no proporcionaron a los biólogos los medios para estudiar, recopilar y analizar información, son igualmente culpables de esto o incluso más. ¿Qué podría haber puesto la tecnología a disposición de los biólogos antes del siglo XX? Solo los medios inadecuados para un estudio serio de las leyes más complejas de la naturaleza viva, hasta que la ingeniería eléctrica y la electrónica posterior no cambiaron su posición mediante el desarrollo de electrocardiógrafos, espectroscopía de radio de microondas, microscopios electrónicos, rayos X, encefalografías, etc. En ninguna parte, en ninguna área de la actividad humana durante miles de años, ha habido tal desajuste entre los medios científicos y técnicos de la complejidad y los fenómenos y procesos estudiados. La aplicación de métodos matemáticos en biología, incluso para procesar los resultados de las observaciones (estadísticas matemáticas), hasta las últimas décadas se consideraba casi una blasfemia. Y esto sucedió, a pesar de que los fundadores del marxismo-leninismo y el materialismo dialéctico hablaron muy definitivamente sobre este tema.</p>
+
+<p>En la “Dialéctica de la naturaleza” F. Engels dice:</p>
+
+<blockquote>
+  <p>Solo el cálculo diferencial permite a las ciencias naturales representar matemáticamente no solo estados, sino también procesos: movimiento</p>
+
+  <p>Gospolitizdat<sup id="fnref:6" role="doc-noteref"><a href="#fn:6" class="footnote" rel="footnote">6</a></sup>, 1952, p. 218</p>
+</blockquote>
+
+<p>Lafargue en sus memorias cita la declaración de Marx de que “la ciencia solo alcanza la perfección cuando logra usar las matemáticas” (P. Lafargue, Memorias de Marx, en la colección “Memorias de Marx y Engels”, Gospolitizdat<sup id="fnref:6:1" role="doc-noteref"><a href="#fn:6" class="footnote" rel="footnote">6</a></sup>, 1956, p. 66).</p>
+
+<p>Nuestro mejor científico, acad.<sup id="fnref:7" role="doc-noteref"><a href="#fn:7" class="footnote" rel="footnote">7</a></sup> I. P. Pavlov dice:</p>
+
+<blockquote>
+  <p>…toda la vida, desde los organismos más simples hasta los más complejos, incluidos, por supuesto, los humanos, existe una larga serie de equilibrios ambientales cada vez más complejos que se vuelven cada vez más complicados. Llegará el momento, aunque distante, cuando el análisis matemático, basado en las ciencias naturales, ilumine todos estos equilibrios con magníficas fórmulas de ecuaciones…</p>
+
+  <p>Obras completas, vol. III, libro 1, pp. 124-125</p>
+</blockquote>
+
+<p>Estos ejemplos podrían continuar. Si recordamos que estas declaraciones pertenecían a las primeras etapas de la introducción de las matemáticas en las ciencias naturales y la biología, entonces la instrumentación, la ingeniería eléctrica y la informática estaban en un nivel bajo, que nadie podría haber previsto las enormes oportunidades que la electrónica tenía para abrir, y en especialmente su simbiosis con las matemáticas, la creación de la automatización electrónica y las máquinas matemáticas electrónicas, y aún más la nueva ciencia del procesamiento de la información en estas máquinas—la cibernética, es necesario rendir homenaje al don de previsión de las personas avanzadas del pasado en la evaluación correcta de las perspectivas distantes de la ciencia y, en particular, de las matemáticas aplicadas.</p>
+
+<p>Vivimos en la era de la matematización de todas las ciencias naturales y humanas, y la matematización de la biología es solo uno de los lados de este proceso.</p>
+
+<p>Esta colección contiene artículos de A. D. Voskresensky y A. I. Prokhorov sobre el uso de la cibernética en biología y medicina. Desarrollaron las consideraciones anteriores. En el artículo del prof. S. N. Braines sobre neurocibernética aborda cuestiones que han comenzado a desarrollarse en la URSS recientemente. Los resultados de estos interesantes estudios se presentan en un libro sobre neurocibernética<sup id="fnref:8" role="doc-noteref"><a href="#fn:8" class="footnote" rel="footnote">8</a></sup> (a finales de 1961 se publicará su segunda edición ampliada) y también se consideraron en varios congresos internacionales.</p>
+
+<p>De considerable interés es el artículo de A. V. Napalkov, candidato de ciencias biológicas<sup id="fnref:9" role="doc-noteref"><a href="#fn:9" class="footnote" rel="footnote">9</a></sup>, sobre el aprendizaje de autómatas. Su autor participó en una conferencia científica dedicada a estos temas, que tuvo lugar en Karlsruhe (Alemania) en abril de 1961. El tema principal de la conferencia fue discutir las perspectivas para estudiar los principios del cerebro y crear nuevos tipos de máquinas cibernéticas sobre esta base. Se consideraron los problemas teóricos del aprendizaje, los mecanismos del cerebro que subyacen a la solución de problemas complejos del desarrollo de conceptos abstractos, reconocimiento de patrones, reconocimiento de voz y lectura de textos. Se discutieron las perspectivas de utilizar los principios del cerebro para crear nuevas máquinas cibernéticas. El artículo de A. V. Napalkov describe: también el trabajo que se lleva a cabo en la Universidad Estatal de Moscú.</p>
+
+<p>La automatización de la gestión de procesos y sistemas complejos no libera completamente a una persona, sino que la pone en nuevas condiciones. Cuando una persona aprende a construir máquinas, cuya tarea es convertir un tipo de energía en otra, a menudo mecánica, se tiene un tipo de relación con la máquina, cuya acción y operación tiene que controlar. Los controles de la máquina, las herramienta y otros mecanismos deben estar dentro del rango de accesibilidad, y las acciones realizadas por la persona deben estar dentro de los límites de sus capacidades físicas y psicológicas. En la era de la automatización, surgieron nuevos problemas, ya que el hombre resultó ser uno de los eslabones de la nueva cadena máquina-control automático. Este objetivo es complicado cuando muchas máquinas, líneas de producción, talleres y fábricas se controlan automáticamente. No hay mecanismos y máquinas a prueba de fallas. Esta disposición se aplica igualmente a los órganos manuales y, aún más, a los órganos de control automático. Los fallos, aunque temporales, en el trabajo de cualquier eslabón (y en esta cadena no hay eslabones importantes y sin importancia) requieren una intervención inmediata en una serie de operaciones de control, y a menudo en tan poco tiempo que excede las capacidades fisiológicas y psicológicas de una persona. El problema de la fiabilidad surge nuevamente con toda su agudeza. Pero incluso con la acción “normal” del sistema, el papel del hombre sigue siendo decisivo, y las acciones que exceden sus capacidades deben ser excluidas.</p>
+
+<p>Debe admitirse que esto a menudo está lejos de ser y no siempre se tiene en cuenta, y hay casos en que las organizaciones de diseño, diseñadores y tecnólogos se olvidan de la persona, creyendo sin ninguna razón que en la era de la automatización, el papel de una persona se vuelve auxiliar y su trabajo se facilita “automáticamente”… En el sistema máquina-autómata-humano, cada enlace, por separado y todo el sistema en su conjunto, debería funcionar en condiciones óptimas, y en particular esto se aplica a la carga física y psicofisiológica de una persona. En los últimos años, esta posición ha comenzado a ganar reconocimiento. Se presta considerable atención al desarrollo de la ciencia, que se llama psicotecnia. A veces se llama psicología de ingeniería.</p>
+
+<p>Recordemos que en 1936 se publicó un decreto especial del Comité Central del Partido Comunista de Bolcheviques de toda la Unión el 4 de julio, <a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F(%D0%B1)_%D0%BE%D1%82_4.07.1936_%D0%BE_%D0%BF%D0%B5%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85_%D0%B8%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%D1%85_%D0%B2_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5_%D0%9D%D0%B0%D1%80%D0%BA%D0%BE%D0%BC%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2">“Sobre las distorsiones paidológicas en el sistema del Comisariado Popular de Educación”</a>.<sup id="fnref:10" role="doc-noteref"><a href="#fn:10" class="footnote" rel="footnote">10</a></sup> Esta decisión se dirigió contra errores ideológicos y metodológicos graves que se cometieron durante el examen del desarrollo mental y el talento de los escolares. Como resultado de estos errores, cada vez más niños se inscribieron en la categoría de retrasados ​​mentales, “defectuosos” y “difíciles” [sic]. Para corregir estos errores, el Comité Central del Partido Comunista de Bolcheviques de toda la Unión decidió: 1) restauración de pleno derecho de la pedagogía y los educadores; 2) eliminar el vínculo de los paidólogos con las escuelas y retirar los libros de texto paidológicos, etc. Esta solución eliminó toda una gama de errores cometidos en la pedagogía. Sin embargo, desafortunadamente, pronto resultó que algunos psicólogos entendieron esta instrucción del Comité Central del Partido Comunista de Bolcheviques de toda la Unión como una condena de toda la investigación sobre psicología del trabajo.</p>
+
+<p>En la revista teórica y política del Comité Central del PCUS “Comunista”, nº 4 de 1956, es decir, 20 años después de la publicación de la resolución anterior, se publicó un editorial con el título titulado “Fortalecer la conexión de la ciencia psicológica con la práctica”. Confirmando la total inadmisibilidad de la repetición de errores antiguos y condenados en el campo de la psicología y la paidología, el artículo habló de la necesidad de estudiar y desarrollar los fundamentos científicos del desarrollo de la psique humana para estudiar las condiciones psicológicas para la organización efectiva de las actividades de las personas, especialmente su trabajo. Se trata de las enormes tareas que enfrentan los científicos en materia de un estudio amplio e integral de la psicología del trabajo, los factores psicológicos del aumento de la productividad laboral, el dominio de la tecnología avanzada y los métodos avanzados de trabajo, y el hecho de que el progreso tecnológico aumenta aún más la importancia y la eficacia de la aplicación de datos de la psicología del trabajo. Se recomienda asegurar la conexión directa entre la psicología y la práctica, organizar laboratorios psicológicos científico-prácticos en grandes empresas, en instituciones médicas, en la formación de mano de obra.</p>
+
+<p>El artículo además establece claramente: “La psicología soviética parte del hecho de que la psique humana es un producto de su vida en sociedad, que sus características dependen de las condiciones históricas concretas de la actividad humana y que, por lo tanto, la psicología estudia la psique humana como un individuo público”. Por cierto, estas consideraciones deben recordarse al comparar las habilidades mentales de una persona y algunas operaciones lógicas realizadas por máquinas electrónicas.</p>
+
+<p>Finalmente, este artículo dice: “No se puede guardar silencio sobre la actitud equivocada hacia la psicología extranjera. Algunos de nuestros científicos prestan poca atención incluso a los trabajos más serios de científicos extranjeros, sin someterlos a un análisis profundo, no tienen en cuenta lo positivo que aportan a la psicología, en particular, a la metodología de la investigación psicológica. Los intereses de la ciencia requieren urgentemente el estudio del estado de la ciencia psicológica en otros países, la lucha ideológica contra las tendencias reaccionarias, así como la consideración y el uso de lo positivo que existe: sin esto, el desarrollo exitoso de la ciencia es imposible “.</p>
+
+<p>Aunque estas líneas se escribieron hace solo 5 años, la práctica cotidiana muestra que los pensamientos y direcciones interesantes contenidos en este artículo son completamente olvidados o generalmente desconocidos para algunos administradores de la industria.</p>
+
+<p>En el artículo del prof. D. Yu. Panova y S. A. Oshanin en esta colección discuten las causas de la psicología de la ingeniería, el análisis de las capacidades humanas y de máquinas, la distribución de funciones entre una persona y una máquina, el análisis de la actividad del operador en sistemas de control complejos, la confiabilidad del operador humano en un sistema de control complejo, los problemas de capacitación y selección, y las tareas del laboratorio de psicología de la ingeniería industrial.</p>
+
+<p>Una serie de preguntas en este artículo se plantean de una manera nueva. La literatura soviética sobre psicología de la ingeniería está limitada hasta ahora a unas pocas publicaciones: artículos. Esperemos que esto sea solo el comienzo. El descuido de esta ciencia afecta directamente las condiciones de trabajo de las empresas. Es altamente deseable que las personas que aún no entienden el significado de todo lo dicho anteriormente visiten algunas de nuestras plantas automatizadas; verían de primera mano lo importante que es estudiar las condiciones de trabajo en la era de la automatización.</p>
+
+<h3 id="iii-cibernética-en-humanidades">III. CIBERNÉTICA EN HUMANIDADES</h3>
+
+<p>Ya en 1919, en el programa del segundo partido adoptado por el VIII Congreso del PCR, se decía: “Como principal y básico, determinando toda la política económica del gobierno soviético, establecer un aumento integral de las fuerzas productivas del país”. El XIV Congreso del Partido (1925) indicó que el plan leninista para la industrialización socialista del país se implementaría en el campo del desarrollo económico. Eso fue hace más de 35 años.</p>
+
+<p>Ahora, en 1961, el borrador del Programa del PCUS dice: “La principal tarea económica del partido y del pueblo soviético es crear la base material y técnica del comunismo en dos décadas”. De acuerdo con esto, la ciencia económica tiene la tarea de generalizar nuevos fenómenos en la vida económica de la sociedad y desarrollar problemas económicos nacionales, cuya solución contribuye a la construcción exitosa del comunismo. “La atención de los economistas debe estar dirigida a encontrar formas de utilizar con mayor eficacia los recursos materiales y laborales en la economía nacional, los mejores métodos para planificar y organizar la producción preindustrial y agrícola, y desarrollar una distribución racional de las fuerzas productivas y los problemas técnicos y económicos de la construcción del comunismo”.</p>
+
+<p>Vemos que a la ciencia económica se le ha asignado esencialmente la tarea de aumentar su eficacia, es decir, encontrar formas y medios para resolver los problemas más importantes en el campo de la economía indicados por la parte, con el menor gasto de tiempo, trabajo, materiales y energía. Hablando en la Conferencia de Científicos de toda la Unión el 14 de junio de 1961, A.N. Kosygin dijo:</p>
+
+<blockquote>
+  <p>Los medios técnicos modernos –me refiero a las computadoras de alta velocidad– también permiten mecanizar muchos procesos de trabajo mental en ila investigación científica, el diseño, la planificación de la economía nacional, en diversas operaciones contables y bancarias, en estadísticas, información provisional e incluso al traducir texto de un idioma a otro. También hay experiencia en la resolución con computadoras de muchos de los problemas económicos asociados con la planificación. Estos trabajos indican la gran eficiencia económica de la aplicación de métodos matemáticos y computadoras de alta velocidad. Es necesario ampliar la escala de aplicación práctica de estos métodos</p>
+</blockquote>
+
+<p>y sigue:</p>
+
+<blockquote>
+  <p>En la ciencia económica y en la planificación basada en la investigación científica económica, es necesario avanzar más audaz y ampliamente hacia el uso de la tecnología de computación electrónica moderna y los métodos matemáticos. Los economistas y los matemáticos deberían desarrollar conjuntamente propuestas concretas para la aplicación de métodos matemáticos y tecnología informática moderna, máquinas de alta velocidad en investigación económica, planificación y gestión de la producción.</p>
+
+  <p>Pravda, 15 de junio de 1961</p>
+</blockquote>
+
+<p>De estas declaraciones se deduce que el progreso de la ciencia económica depende en gran medida de su matematización. Pero para usar métodos matemáticos, primero debe tener información precisa. Los métodos existentes de contabilidad y procesamiento de la documentación primaria están diseñados para su promoción pausada. Existe una discrepancia en la metodología contable incluso en empresas que pertenecen a la misma rama de la economía y ubicadas en el territorio de una región administrativa. La mecanización de la contabilidad y la informática es extremadamente baja. En el transcurso de aproximadamente un año, Ekonomicheskaya Gazeta publicó una serie de discursos de trabajadores de contabilidad y estadística, abordando los problemas fundamentales de mejorar la contabilidad, las estadísticas y el análisis económico. Pero, como se señaló especialmente (Ekonomicheskaya Gazeta, nº 167, 16 de julio de 1961), las organizaciones y departamentos a los que se les pide que se preocupen por mejorar los métodos de contabilidad y las estadísticas no sacaron las conclusiones necesarias hasta julio de 1961. Recuerde que a fines de 1959, el Comité Central del PCUS y el Consejo de Ministros de la URSS adoptó una resolución especial sobre la mecanización de estas obras, y a principios de 1960 se celebró una reunión especial en Moscú para aumentar la eficiencia de la recopilación y el procesamiento de la documentación primaria.</p>
+
+<p>Un artículo interesante publicado en Ekonomicheskaya Gazeta el 14 de diciembre de 1960, fue un artículo del ingeniero economista V. Mash [В. Маш], “Servicio de contabilidad y economía en las empresas estadounidenses”. Aunque los métodos y formas de organizar este servicio en los Estados Unidos no pueden ser aplicados de forma mecánica a las empresas soviéticas, indican que Estados Unidos está “haciendo grandes esfuerzos para lograr una gestión más flexible, clara y eficiente” con el fin de aumentar la eficiencia y la rentabilidad industrial producción</p>
+
+<p>Por resolución del Presidium de la Academia de Ciencias de la URSS del 20 de mayo de 1960, se creó un Consejo Científico sobre la aplicación de métodos matemáticos en la investigación y planificación económica bajo la guía de acad. V.S. Nemchinova. Este consejo proporciona coordinación de trabajo en dos áreas principales:</p>
+
+<ol>
+  <li>la aplicación de métodos matemáticos y computadoras electrónicas en el análisis económico y la planificación en la escala de la economía nacional del país y las regiones económicas individuales;</li>
+  <li>la aplicación de métodos matemáticos y computadoras electrónicas para resolver problemas técnicos y económicos.</li>
+</ol>
+
+<p>Las principales organizaciones en las que se basa el Consejo Científico son el Centro de Computación del Consejo Económico Estatal de la URSS, el Instituto de Ingeniería y Economía, las Universidades de Leningrado y Moscú y el Instituto de Matemáticas con el centro de cómputo de la Rama Siberiana de la Academia de Ciencias de la URSS, el Instituto de Trabajo y Salarios del Comité Estatal de Trabajo y Salarios, el Laboratorio de Métodos Económicos y Matemáticos de la Academia de Ciencias de la URSS.</p>
+
+<p>La ciencia de administrar procesos y operaciones complejas, la cibernética, está encontrando una aplicación más amplia en la ciencia económica. El objetivo principal de la aplicación de la cibernética y las máquinas electrónicas en la economía socialista es la planificación económica. Ya hemos mencionado anteriormente que la preparación del plan debe basarse en suficiente volumen y contenido, información precisa y oportuna. Una economía socialista decidida permite el desarrollo de planes óptimos y más rentables. Eso le permite distribuir tareas entre empresas de tal manera que logre la máxima productividad general mientras observa las proporciones especificadas en la producción de diversos bienes. Se están realizando estudios sobre los esquemas óptimos para el transporte de cargas a granel de carbón, cemento, arena, etc.</p>
+
+<p>La organización científica y la planificación de la economía nacional en la URSS y en los países de democracia popular abren las mayores posibilidades para la aplicación de métodos matemáticos y computadoras electrónicas. Pero esto no significa que la experiencia y los logros en este campo en el mundo capitalista deban ser descuidados.</p>
+
+<p>Recientemente, se ha publicado material interesante sobre el trabajo en el campo de la metodología económica y matemática en algunos institutos en Francia (Ekonomicheskaya Gazeta, 23 de mayo de 1961). Allí, durante aproximadamente 2 años, ha habido una “Sociedad de Economía y Matemáticas Aplicadas” que aceptaba pedidos de grandes empresas para realizar cálculos económicos de la implementación más económica de varias operaciones comerciales. Se estudian y determinan las mejores opciones de transporte, asegurando la implementación del programa con un kilometraje total mínimo; se encuentran combinaciones racionales de suministro de combustible para complejos de producción, en los cuales se minimizan los costos totales; se determinan las rutas de tuberías más ventajosas, etc. Los autores de este artículo (V. Dadayan, A. Pokrovsky y Yu. Chernyak) recomiendan acertadamente tomar prestada esta experiencia organizando centros de cómputo en repúblicas sindicales o consejos económicos duales: el consejo económico y las academias republicanas de ciencias. Esto asegurará, según los autores, una combinación de resolución de problemas prácticos presentados por las necesidades de producción, con el desarrollo de los principios fundamentales de la metodología económica y matemática.</p>
+
+<p>De considerable interés son los trabajos realizados en el Laboratorio Central de Investigación Mosoblsovnarkhoz para la Aplicación de Estadística Matemática y Tecnología de Computación Electrónica dirigido por el prof. A. M. Dlin.</p>
+
+<p>En el artículo “Métodos matemáticos en la industria” (Ekonomicheskaya Gazeta, 21 de agosto de 1961, p. 18) el prof. A. M. Dlin y N. Pokrovsky hablan sobre su modelado matemático de procesos de producción individuales, el uso de programación lineal para determinar los tamaños de corte óptimos para chapa metálica, la expansión de la aplicación de estadísticas matemáticas en el control y análisis de producción, y la colaboración con el Laboratorio para la Aplicación de Matemática en métodos de investigación y planificación económica, liderados por Acad. V. S. Nemchinov.</p>
+
+<p>Esta colección contiene un artículo de A. I. Kitov sobre el uso de la cibernética en la gestión de la economía nacional. Las consideraciones del autor sobre la planificación óptima y sobre la aplicación de métodos matemáticos en la planificación merecen una atención seria.</p>
+
+<p>Es necesario destacar especialmente el maravilloso artículo del acad. S. L. Sobolev, “Para resolver problemas económicos con precisión matemática”, publicado en el Ekonomicheskaya Gazeta del 11 de junio de 1961.</p>
+
+<p>Nuestra colección contiene un artículo sustancial del cand. de Ciencias Económicas V. D. Belkin “Cibernética y economía”. El autor enfatiza que bajo el socialismo es bastante posible crear un sistema automatizado integrado para administrar la economía del país, y esto tendrá un efecto mucho mayor que en los países capitalistas, que ya utilizan parcialmente la automatización en secciones separadas de la economía, pero que no pueden extender este método a la economía de todo el país.</p>
+
+<p>En la colección “Problemas de cibernética” nº 5 (Fizmatgiz<sup id="fnref:11" role="doc-noteref"><a href="#fn:11" class="footnote" rel="footnote">11</a></sup>) editada por A. A. Lyapunov, se colocan dos artículos de planificación muy importantes. El artículo de <a href="https://en.wikipedia.org/wiki/Julius_Anatolyevich_Schrader">Yu. A. Schreider</a>, “El problema de planificación dinámica y los autómatas”, es una generalización y desarrollo de la monografía de <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">R. Bellman</a> sobre planificación dinámica, publicada en los Estados Unidos en 1957. Yu. A. Schreider describe un esquema que nos permite plantear el problema general de la planificación dinámica y derivar la principal ecuación funcional y establecer las propiedades básicas de sus soluciones. El artículo de E. G. Holshtein y D. B. Yudin, “Sobre una clase de problemas de planificación de la economía nacional”, contiene el desarrollo de algunos métodos especiales para resolver ciertos problemas importantes de programación lineal que permiten una reducción significativa en el trabajo computacional.</p>
+
+<p>Nos detenemos en más detalles sobre la situación de la ciencia económica porque es especialmente importante. De hecho, al final, la única evaluación objetiva de todas nuestras acciones en el campo de la mecanización, la automatización, la expansión de la producción, la colocación de nuevos sitios de construcción, el uso de métodos de planificación más avanzados y todos nuestros esfuerzos para aumentar el ritmo del progreso científico y tecnológico es su eficiencia económica. No podemos permitirnos el lujo de no calcular con precisión en el campo de la economía. Al cumplir con las tareas de nuestro grupo establecidas en el nuevo programa, ya no podemos soportar el problema incompleto de fijación de precios, esta base de todos los cálculos económicos.</p>
+
+<p>En su discurso en la Conferencia de científicos de toda la Unión en el Kremlin el 14 de junio de 1961, A.N. Kosygin dedicó una gran atención a los problemas económicos. Dijo:</p>
+
+<blockquote>
+  <p>En las decisiones del XXI Congreso se afirmó que en el campo de las ciencias sociales, especialmente en la ciencia económica, la tarea es generalizar creativamente la experiencia de la construcción económica y cultural y estudiar las nuevas cuestiones que plantea la vida. La ciencia económica sigue estando a la zaga de las exigencias de la vida y la práctica, lo que fue señalado por el Comité Central del Partido y personalmente por el camarada Jruschov. Científicos-economistas: se presta poca atención al desarrollo de la metodología de planificación, la eficiencia de la inversión de capital, el uso racional de los activos fijos y otras cuestiones que plantea la práctica de la construcción económica.</p>
+
+  <p>Pravda, 15 de junio de 1961</p>
+</blockquote>
+
+<p>Todos estos temas se plantean en cierta medida en artículos sobre el uso de la cibernética en la economía, que se colocan en la colección, y en artículos sobre los que llamamos especialmente la atención de los lectores.</p>
+
+<p>Amamos y apreciamos los buenos libros de la literatura soviética y mundial. Se ha prestado mucha atención en los últimos años para mejorar el estudio de lenguas extranjeras. La lingüística, la ciencia del lenguaje, una de las ciencias más antiguas, es una disciplina descriptiva que, como parecía a lo largo de los años y hasta hace poco, estaba muy lejos de la tecnología y, especialmente, de las matemáticas. Pero la vida nos hace cambiar este punto de vista tradicional. En muchos países, los problemas de la traducción automática de un idioma a otro utilizando máquinas de información se han desarrollado con éxito. Esto requirió la creación de una nueva ciencia: la lingüística matemática o estructural.</p>
+
+<p>Esta dirección de la lingüística es causada por la necesidad de un mejor uso de la enorme información científica publicada en muchos idiomas. La lingüística matemática es una ciencia completamente nueva, con solo unos 10 años. Pero en este corto período de tiempo se demostró que era aconsejable realizar la traducción automática, que era necesario desarrollar un solo idioma, un intermediario para la traducción de diferentes idiomas, que era aconsejable “enseñar” a la máquina electrónica a leer el discurso escrito y percibir las combinaciones de sonido de una voz humana. Estos problemas se están trabajando actualmente en nuestro país y en el extranjero.</p>
+
+<p>El artículo de VV Ivanov y S. K. Shaumyan, “Problemas lingüísticos de cibernética y lingüística estructural”, publicado en nuestra colección, contiene muchas consideraciones muy interesantes y nuevas sobre estos temas. Habla sobre el papel del lenguaje en los procesos de control, la lingüística estructural como teoría abstracta del lenguaje y el significado teórico y aplicado de la lingüística aplicada.</p>
+
+<p>Hay otra nueva área de aplicación de la cibernética en las humanidades, a saber, el campo del derecho. Parece que la cuestión del uso de las matemáticas, la automatización y la electrónica, y aún más la cibernética en la ciencia del derecho, no tiene una base real. Pero en el artículo de N. D. Andreev y D. A. Kerimov, “Las posibilidades de utilizar la técnica cibernética para resolver ciertos problemas legales”, se presentan una serie de consideraciones que demuestran lo contrario. Esta es una de las áreas de penetración de las ciencias exactas en el campo de las humanidades.</p>
+
+<p>Se plantea la cuestión sobre la acumulación de información legal en máquinas lógicas y de información, sobre su sistematización y procesamiento, y sobre su emisión para el trabajo práctico en la elaboración de leyes y para aumentar la usabilidad de la legislación soviética. Se recomienda que las máquinas se utilicen para llevar a cabo diversas operaciones auxiliares intensivas en mano de obra relacionadas con la preparación de la codificación de la ley. Parece prometedor el uso de máquinas cibernéticas en la preparación de materiales para la generalización de la práctica judicial.</p>
+
+<p>Finalmente, se propone utilizar máquinas para diversos tipos de examen documental.</p>
+
+<p>Por supuesto, la aplicación práctica de estas ideas requerirá un trabajo preparatorio serio. Pero es interesante notar que la Universidad de Leningrado ya ha dado los primeros pasos en esta dirección.</p>
+
+<p>Los delitos y la legislación existen en todo el mundo. Por lo tanto, es muy interesante estudiar la experiencia de aplicar los métodos anteriores en el extranjero. Ya hay literatura especial disponible sobre este tema. Se realizaron presentaciones sustantivas en el Simposio sobre la Mecanización de los Procesos de Pensamiento en Teddington en noviembre de 1958<sup id="fnref:12" role="doc-noteref"><a href="#fn:12" class="footnote" rel="footnote">12</a></sup> y en la Conferencia Internacional sobre Lenguajes de Máquinas en septiembre de 1959 en los Estados Unidos<sup id="fnref:13" role="doc-noteref"><a href="#fn:13" class="footnote" rel="footnote">13</a></sup>.</p>
+
+<p>Esperamos que el artículo sobre el uso de métodos y herramientas cibernéticos en la ley atraiga la atención de nuestros abogados.</p>
+
+<h3 id="iv-cibernética-en-ciencia-y-tecnología">IV. CIBERNÉTICA EN CIENCIA Y TECNOLOGÍA</h3>
+
+<p>El borrador del Programa del PCUS planteó el requisito de desarrollar métodos para influir en las condiciones climáticas. Este es un viejo sueño de la humanidad, completamente irrealizable en el pasado. La implementación de esta tarea en el futuro cercano es una tarea extremadamente difícil, pero las posibilidades modernas de la ciencia ya permiten ponerla en práctica.</p>
+
+<p>Aparentemente, deberíamos comenzar mejorando los métodos de predicción del clima. En este sentido, se ha hecho mucho en las últimas décadas. Se proporciona una ayuda significativa mediante medios e instrumentos más avanzados para recopilar y procesar información sobre el estado y la dinámica de la atmósfera. Pero la introducción de métodos científicos matemáticos y máquinas electrónicas en el servicio de predicción meteorológica ha comenzado, y esto ya da un resultado indudablemente positivo.</p>
+
+<p>Es mucho más difícil influir en los factores que determinan el clima. Esta es una tarea de control típica, es decir, el impacto en grandes reservas de materia y energía con la ayuda de cantidades mucho más pequeñas, pero el impacto es en aquellos factores que determinan el estado del sistema. Los técnicos de radio son conscientes de la eficacia con la que el voltaje en la red de control de una lámpara electrónica actúa sobre el consumo de energía de la fuente de alimentación del circuito anódico y sobre la aparición de un voltaje mucho mayor en el circuito anódico en el modo de amplificación de voltaje. Este es un efecto de retransmisión bien conocido en la técnica. En esencia, toda la electrónica se basa en la gestión de pequeños potenciales, grandes reservas de energía y la conversión de esta energía en la forma deseada.</p>
+
+<p>Usando este principio, podemos dispersar nubes y nebulosas para un mejor uso de la energía solar, cuando se desee, o, por el contrario, condensar la humedad en las nubes y causar lluvia artificial o niebla. La solución de estos problemas hoy en pequeña escala ya es posible y se está implementando.</p>
+
+<p>Por supuesto, es mucho más difícil influir en el clima. Pero, ¿no está sucediendo ahora un riego a gran escala de desiertos y drenaje de pantanos? ¿Es imposible conducir la silvicultura a una escala mucho mayor y mucho más racional? ¿Soportaremos nosotros y nuestra descendencia el hecho de que las vastas extensiones de nuestra patria están cubiertas de permafrost “eterno”? Una gran cantidad de energía solar inagotable cae a la Tierra y, sin duda, llegará el momento en que aprenderemos cómo usarla mejor. ¿Usamos la energía eólica en alguna escala notable? Todos estos son problemas de gran política económica y estrategia, pero pueden resolverse ahora. Esto también incluye la tarea de cambiar el curso de los ríos y la dirección de sus aguas hacia donde el agua no es suficiente.</p>
+
+<p>Por supuesto, la solución de estos problemas requiere coraje, audacia e investigación profunda. Pero el partido no plantea tareas fáciles para los científicos soviéticos. Esta es la gran ventaja de la gestión socialista de la economía nacional: solo le permite buscar y encuentrar soluciones óptimas para tareas y problemas difíciles pero importantes.</p>
+
+<p>La matemática electrónica y la cibernética pueden proporcionar excelentes servicios en el campo del cambio climático, pero bajo una condición: las tareas deben plantearse a gran escala y las fuerzas necesarias deben concentrarse en resolverlas.</p>
+
+<p>Esta colección contiene un artículo de S. A. Mashkovich “Cibernética y meteorología”, que desarrolla ideas sobre la posibilidad de predecir mejor el clima, el efecto sobre el clima y el impacto sobre el clima.</p>
+
+<p>Una de las industrias de más rápido crecimiento en la Unión Soviética es la industria química. En el Pleno de mayo del Comité Central del PCUS (1958), se prestó especial atención a esta industria. En los 3 años que han pasado desde entonces, la situación en la química ha cambiado radicalmente. Se encargaron más de 60 empresas industriales; muchas capacidades se pondrán en servicio en 1961.</p>
+
+<p>La ciencia y la industria química se están desarrollando rápidamente en todo el mundo. Al mismo tiempo, el uso de altas presiones y temperaturas, altas tasas de reacción y muchos procesos tecnológicos nocivos e inaccesibles crean una necesidad urgente de mecanización y automatización de la industria química. La especial complejidad de muchos procesos abre posibilidades para la aplicación de métodos modernos de cibernética en el control. Los principales requisitos en este caso son, obviamente, la optimización de los procesos tecnológicos y la garantía de un alto grado de fiabilidad (seguridad) de funcionamiento tanto del propio equipo químico como de los medios de automatización electrónica (o neumática) utilizados para controlarlo. La aplicación de las matemáticas, la estadística matemática, la teoría de la probabilidad, la lógica matemática y otras secciones de las matemáticas para la descripción estricta de las regularidades que actúan en la producción química caracteriza un lado’ de la materia. El segundo lado es el trabajo informativo sobre la literatura química. Esta misma parte del trabajo está dedicada principalmente al artículo de G. E. Vladuts.</p>
+
+<p>El autor señala que en la actualidad, la literatura química representa aproximadamente un tercio de toda la literatura científica impresa hasta el momento. Es imposible sistematizar y encontrar la información necesaria utilizando métodos antiguos, ya que esto absorberá demasiado tiempo. Por lo tanto, en la actualidad, los especialistas de todos los perfiles están extremadamente interesados en automatizar las búsquedas de información utilizando máquinas especiales de información y lógica.</p>
+
+<p>Un problema relacionado es la creación de un lenguaje de máquina de información: un lenguaje para la química, es decir, la traducción del lenguaje conocido de fórmulas estructurales de compuestos químicos en una secuencia lineal de caracteres. Este problema puede resolverse con máquinas especiales, que procesan el lenguaje químico ordinario en máquinas “comprensibles” y un lenguaje químico de máquina conveniente. Aquí se abren interesantes posibilidades para asignar a las máquinas lógicas de información las funciones de “pensamiento químico”, es decir, la solución del problema de la elección del modo óptimo de síntesis de algún compuesto químico aún no descrito. Tales máquinas en el futuro serán de “auto-aprendizaje”. Todo esto facilitará muchas veces el trabajo de los científicos e investigadores en química.</p>
+
+<p>Un artículo de G. E. Vladets sin duda ampliará los horizontes de los lectores que no se dedican a estudiar las posibilidades de las máquinas de lógica de la información en química.</p>
+
+<p>¿Cuánto ha madurado la necesidad de lidiar con la aplicación de las matemáticas, la automatización y la cibernética en la química en un grado mucho mayor de lo que se hace ahora? Uno puede juzgar por la enorme atención prestada a estos problemas en el extranjero. La química se caracteriza por la existencia de dos áreas de uso de la cibernética: el efecto de control de la información sobre los procesos químicos en la producción con el propósito de su optimización y las actividades de tecnología de la información en el mundo de la literatura química, científica, técnica, de patentes, etc.</p>
+
+<p>Se realizó una reunión interesante sobre algunos de estos temas en el Club de Negocios del Ekonomicheskaya Gazeta, cuyos materiales fueron publicados en el periódico del 4 de septiembre de 1961</p>
+
+<p>Junto con la compleja mecanización y automatización de la industria, un nuevo campo de automatización, la teleautomática, se ha extendido en los últimos años. Se está realizando un trabajo interesante en esta área bajo la dirección de V. A. Ilyin. En el artículo “Teleautomática y cibernética”, el autor habla sobre el desarrollo de métodos y herramientas de telemecánica para la recopilación remota de información, señalización, regulación y control en relación con objetos dispersos. Naturalmente, en dichos sistemas se requiere garantizar una alta confiabilidad, un funcionamiento sin problemas de todos los dispositivos y medios para recopilar, procesar información y emitir comandos. Por medio de la teleautomática, muchas instalaciones de los sistemas de energía del país ya están equipadas. Aparentemente, se presta la mayor atención al trabajo realizado con éxito durante varios años en la telemecanización masiva de campos petroleros. De considerable interés es también un sistema integrado de automatización y telemecanización en el campo del riego. Cuando hay muchos objetos de administración, puede ser necesario recopilar y procesar información y administración extensas en el modo óptimo. Las máquinas electrónicas pueden ayudar. Por lo tanto, las tareas de automatización remota se acercan a las tareas que se resuelven mediante la cibernética.</p>
+
+<p>De considerable interés es el folleto de V. A. Ilyin “Sistemas de telemecánica para objetos dispersos” (Gosenergoizdat, 1960).</p>
+
+<p>Según la información recibida del autor, el trabajo en el campo de la telemecanización de los pozos petroleros ha avanzado tanto con nosotros que ya más del 20% de ellos están telemecanizados.</p>
+
+<p>Cabe señalar el gran interés mostrado en el primer congreso internacional sobre control automático (Moscú, 1960) en temas de recolección remota de información, telemetría, su confiabilidad, inmunidad al ruido y eficiencia.</p>
+
+<p>“La electrificación, que es el núcleo de la construcción de la economía de la sociedad comunista, desempeña un papel de liderazgo en el desarrollo de todos los sectores de la economía nacional, asegurando todo el progreso tecnológico moderno. Por lo tanto, es necesario garantizar un ritmo más rápido de producción de electricidad”. Dicha evaluación se da en el borrador del Programa de electrificación de PCUS del país.</p>
+
+<p>Hace más de 40 años, en 1920, se desarrolló el primer plan maestro para el desarrollo de la economía nacional de la Rusia soviética, que sigue siendo de gran importancia como ejemplo de un prometedor plan económico nacional estatal. En el VIII Congreso de los Soviets de toda Rusia en diciembre de 1920, Vladimir Ilich Lenin describió el plan para la electrificación de Rusia, que fue revisado por la Comisión Estatal por la Electrificación de Rusia (<a href="https://es.wikipedia.org/wiki/GOELRO">GOELRO</a>), como el segundo programa del partido, como un gran plan económico que indica la forma de transferir a la Rusia atrasada a una nueva base económica, necesaria para la construcción del comunismo. “Tal base”, dijo Vladimir Ilich, “es solo electricidad. El comunismo es el poder soviético más la electrificación de todo el país” (obras completas<sup id="fnref:1:2" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, 4ª ed., vol. 31, p. 486).</p>
+
+<p>El valor para establecer metas para el plan GOELRO solo puede evaluarse si tenemos en cuenta la situación en el país en 1919-1920. Si en 1913 se generaron alrededor de 1.9-2.0 miles de millones de kWh de electricidad en Rusia, entonces en 1920 se generó 4 veces menos, alrededor de 0.5 miles de millones de kWh. Al mismo tiempo en los EE. UU. se generaron 50*10^9 kWh, es decir, 100 veces más. Después de 40 años, la imagen cambió dramáticamente. En 1960, se produjeron 292*10^9 en la URSS y alrededor de 900*10^9 kWh (en las terminales de las centrales eléctricas) en los Estados Unidos, es decir, “solo” 3 veces más. Pero si no hubiera habido la Segunda Guerra Mundial, que no solo se detuvo, sino que también retrasó el desarrollo de la electrificación de la URSS y no hizo daño a los Estados Unidos, entonces habríamos generado del 40 al 50% de la capacidad de generación de electricidad en los EE. UU en 1960.</p>
+
+<p>De acuerdo con las tareas del proyecto de Programa del PCUS, en 1970 la URSS producirá entre 900 y 1.000 y en 1980 entre 2.700 y 3.000 miles de millones de kWh de electricidad. Esto significa triplicar aproximadamente la generación de electricidad cada 10 años. En los Estados Unidos, hubo aproximadamente una duplicación por cada 10 años, y si se puede hablar de suposiciones (en lugar de planes), estas tasas continuarán en los Estados Unidos durante los próximos 20 años (ver la revista “Planovoye khozyaystvo”<sup id="fnref:14" role="doc-noteref"><a href="#fn:14" class="footnote" rel="footnote">14</a></sup>, 1961, nº 7, p. 84). Si esto se cumple, en 1980 en la URSS y los EE. UU. se generará aproximadamente la misma cantidad de electricidad.</p>
+
+<p>Este libro se centra en los problemas y desafíos de la gestión de sistemas complejos. Hemos dado cifras sobre el crecimiento de la generación de electricidad para mostrar los retos que habrá que afrontar para gestionar las enormes reservas de energía del futuro de la manera más ventajosa y óptima.</p>
+
+<p>En los últimos años, se ha prestado mucha atención a los problemas de automatización de la gestión de plantas de energía individuales, y aquí se han logrado resultados significativos. Las tareas de control automático de sistemas de energía separados, más o menos grandes, se han resuelto con éxito y continúan realizándose. Nos acercamos a la tarea más importante de una gestión conjunta de la distribución del Sistema Unificado de Energía de la parte europea de la URSS. En un futuro próximo, el problema de un sistema energético unificado de toda la Unión Soviética comenzará a resolverse y, de acuerdo con esto, el problema de su gestión óptima. Finalmente, la tarea de unir los sistemas energéticos nacionales de los países de la democracia popular y la URSS en un solo sistema energético ya se está estudiando. Naturalmente, el problema surgirá de la gestión óptima y confiable de sistemas tan complejos, y este es un problema típico de la cibernética, y es necesario prepararse para una fiesta científica ahora.</p>
+
+<p>En mayo de 1960 se celebró en Kiev una reunión científica y técnica sobre la aplicación de la tecnología informática en el diseño y el funcionamiento de los sistemas de energía. En la reunión se adoptó una decisión detallada en la que se señaló que para la investigación científica y para la práctica de la ingeniería en el ámbito del diseño y el funcionamiento de los sistemas de energía es necesario utilizar ampliamente métodos matemáticos relativamente complejos que atraigan la teoría de la probabilidad, la teoría cualitativa y los métodos numéricos para resolver ecuaciones diferenciales lineales y no lineales, el álgebra superior, etc. En la reunión se señaló que esos problemas sólo pueden resolverse con la ayuda de la moderna tecnología informática, para cuya aplicación se definieron las siguientes orientaciones principales en el sector de la energía:</p>
+
+<ol>
+  <li>Perspectiva y planificación continua, procesamiento de materiales estadísticos e informativos relevantes.</li>
+  <li>Diseño de plantas de energía, redes eléctricas, transmisión de energía a larga distancia, dispositivos de automatización; trabajos de investigación.</li>
+  <li>Cálculos del modo de operación (planificado y operativo), análisis de los modos de control de accidentes del sistema y el equipo, registro y procesamiento de la información primaria.</li>
+  <li>Control automático de los regímenes de sistemas de energía, plantas de energía y otras instalaciones de energía.</li>
+</ol>
+
+<p>Por último, recordamos que en el I Congreso de la Federación Internacional de Por último, cabe recordar que en el I Congreso de la Federación Internacional de Control Automático (IFAC), celebrado en 1960 en Moscú, representantes de la URSS, los Estados Unidos, Inglaterra, Italia, Polonia, Checoslovaquia, Hungría y otros países presentaron interesantes ponencias sobre la automatización del control de los sistemas de energía y la utilización de dispositivos electrónicos de computación con ese fin.</p>
+
+<p>Todas estas consideraciones fueron la base de un interesante artículo “Cibernética y Sistemas de Potencia” del prof. Venikov, ganador del Premio Lenin.</p>
+
+<p>El borrador del Programa establece: “El crecimiento de la economía nacional requerirá un desarrollo acelerado de todos los medios de transporte. Las tareas más importantes en la esfera del transporte son: la expansión del transporte y la construcción de carreteras y la garantía de la plena satisfacción de las necesidades de la economía nacional y de la población en todos los tipos de transporte; un mayor reequipamiento técnico de los ferrocarriles y otros medios de transporte; un aumento significativo de la velocidad de los ferrocarriles y de las rutas marítimas y fluviales; el desarrollo coordinado de todos los tipos de transporte como componentes de una red de transporte única. La proporción de transporte por oleoducto aumentará”.</p>
+
+<p>Si tenemos en cuenta el tamaño del territorio de la URSS, el rápido desarrollo de la industria y la agricultura en todo el país, el desarrollo de nuevas zonas para la extracción de minerales, la necesidad de agilizar el transporte y garantizar su seguridad y viabilidad económica, no es difícil comprender que el problema del transporte no puede resolverse con los métodos antiguos.</p>
+
+<p>La colección contiene el artículo de I. Ya. Aksenov “Problemas de transporte de la cibernética”, cuyo autor dice que el transporte más que muchos otros sectores de la economía necesita la introducción más urgente y rápida de la cibernética, tanto por sus características debido a la naturaleza del propio transporte, como por los importantes resultados técnicos y económicos que puede proporcionar tanto en el transporte como en el Estado en su conjunto. Lo mismo se afirma en el artículo del Ministro de Ferrocarriles de la URSS B. Beshchev en “Pravda” de agosto de 1961 con respecto al transporte ferroviario: “El control del tráfico de trenes y todos los procesos de formación y desestabilización de los trenes en las estaciones se llevarán a cabo utilizando dispositivos cibernéticos”.</p>
+
+<p>Ya hemos mencionado anteriormente que la cibernética estudia los sistemas dinámicos complejos y los procesos que tienen lugar en ellos. El transporte es un ejemplo típico de un sistema dinámico gigante y altamente complejo que es difícil de controlar para lograr el máximo efecto con el mínimo costo.</p>
+
+<p>Al mismo tiempo, los medios técnicos de reunión y tratamiento de la información para la solución de este problema prácticamente sólo empiezan a aparecer. Es necesario señalar la iniciativa de los ciudadanos de Kiev que celebran en 1961 y 1962 el seminario por correspondencia “Cibernética en el transporte”. Los organizadores del seminario señalan que la aplicación de los progresos técnicos en el transporte plantea una serie de tareas sobre la automatización del control del tráfico, la introducción de dispositivos cibernéticos y de computadoras electrónicas automáticas en la práctica de la producción del transporte. Dado que el transporte es una rama de la economía nacional con una gestión centralizada y que utiliza los mismos métodos para encontrar soluciones óptimas, podemos esperar que el uso de máquinas de control especializadas, métodos matemáticos de resolución de problemas multivariantes y sistemas de control automatizados tenga un gran efecto económico.</p>
+
+<p>De considerable interés es el trabajo de nuestros institutos de transporte ferroviario en el desarrollo de un centro de computación especial, llevado a cabo bajo la dirección del miembro correspondiente de la Academia de Ciencias de la URSS, el prof. A. P. Petrov. También merece atención seria el trabajo de B. Del Rio, N. A. Samarin y L. V. Safris sobre el uso de máquinas digitales electrónicas para la elaboración de horarios de trenes paralelos, realizado por el Instituto de Ingenieros de Hierro: Transporte por carretera en Rostov del Don.</p>
+
+<h3 id="v-algunos-resultados">V. ALGUNOS RESULTADOS</h3>
+
+<p>Hemos hablado del proceso de las matemáticas de muchas ciencias típicas de nuestra época: biología, medicina, economía, lingüística, meteorología, química y otras. En todos los casos se pasa de la descripción, de las evaluaciones cualitativas generales al establecimiento de regularidades matemáticas exactas. El propósito de esta evolución de las ciencias naturales y humanas, dirigida conscientemente por el hombre, es una penetración más profunda en la esencia de los fenómenos del mundo exterior que nos rodea, de la naturaleza viva y especialmente de nuestro organismo. La principal tarea de esta actividad es el uso de las regularidades cognitivas para satisfacer las necesidades humanas. No podemos cambiar las leyes naturales de la naturaleza, pero podemos, habiéndolas aprendido, aprender a controlarlas.</p>
+
+<p>Así surgió, respondiendo a una necesidad consciente, una nueva ciencia de gestión: la cibernética. Decimos la “nueva” ciencia de la gestión porque esta ciencia no gestiona procesos simples y ordinarios. En la gran mayoría de los casos, en la práctica, uno tiene que lidiar con relaciones confiables de causa y efecto e interacciones simples, cuando el control se reduce a equipos elementales, cuyo resultado se conoce de antemano de manera confiable. En estas condiciones más comunes de práctica y vida cotidiana, la cibernética es completamente innecesaria. La necesidad de desarrollar una nueva ciencia de gestión surge en aquellos casos complejos cuando los viejos métodos aplicados a casos simples dejan de funcionar. La cibernética brinda la oportunidad de administrar sistemas complejos, operaciones complejas realizadas por equipos humanos, procesos de producción complejos, procesos infinitamente complejos que ocurren en la naturaleza viva.</p>
+
+<p>La cibernética estudia formaciones complejas, un estado de muchos elementos estructurales interconectados organizados en un solo sistema. Los elementos compuestos realizan sus funciones inherentes.</p>
+
+<p>El estado de un sistema está determinado por los valores de los parámetros, variables o coordenadas de sus elementos constitutivos y sus derivados. Los valores de las variables pueden variar en el tiempo y el espacio. Entonces el sistema también cambia su estado y se vuelve dinámico. Si las derivadas de las variables son cero, el sistema dinámico pasa al estado de reposo y se vuelve estático. Al afectar las variables de un sistema dinámico o sus derivados, el sistema se mueve de un estado a otro, un nuevo estado. La transición del sistema de un estado a otro se denomina comúnmente proceso. La transferencia de un sistema a un nuevo estado mediante la influencia de sus variables — esto es el control.</p>
+
+<p>Por lo tanto, la cibernética estudia los procesos que ocurren en sistemas dinámicos complejos cuando son controlados. Si el control lo lleva a cabo una persona o mecanismos, así como máquinas que funcionan de acuerdo con un programa establecido por una persona, entonces es útil. El propósito de la administración en este caso es transferir el sistema a un nuevo estado preasignado. La cibernética también estudia los procesos de control que ocurren en la naturaleza que nos rodea, así como los procesos de control más complejos en los organismos vivos. La cibernética finalmente estudia los procesos sociales y las operaciones realizadas por colectivos humanos.</p>
+
+<p>El complejo proceso de gestión se divide en operaciones de gestión individuales realizadas en una secuencia determinada o en una combinación determinada. Tales, por ejemplo, operaciones de producción industrial. Pero incluso en la sociedad humana, ciertas personas o grupos organizados de personas llevan a cabo ciertas acciones u operaciones con propósito que están subordinadas a un determinado plan. Existen muchas acciones u operaciones de este tipo: son operaciones de crédito, transporte, seguros, operaciones militares, etc. Pueden ser simples y complejas, independientes entre sí o interconectadas.</p>
+
+<p>Desde el punto de vista de la cibernética los sistemas dinámicos complejos en la naturaleza viva, en la industria y en la sociedad humana son sistemas controlados, objetos de control. Por eso, antes de comenzar a controlar, es necesario estudiar en detalle o, como se dice en el lenguaje científico moderno, recoger información, caracterizando el sistema a controlar, estudiar esta información y revelar aquellos rasgos, que es necesario conocer para la realización del control: estructura, organización, conexiones mutuas y funciones de los elementos. Los resultados de este estudio DEBEN expresarse en lenguaje matemático y lógico-matemático.</p>
+
+<p>Si el sistema controlado se estudia y describe matemáticamente, es necesario crear un sistema de control para influir en las variables del sistema controlado según los objetivos y las tareas establecidas. Es fundamentalmente completamente indiferente que el sistema controlado se controle automáticamente o mediante una cierta combinación de comandos. En general se supone que todos los dispositivos cibernéticos funcionan automáticamente utilizando principios de retroalimentación. En muchos casos esto es cierto. Pero también hay casos en los que se introducen conscientemente retrasos entre los pasos individuales o las etapas de control. Por ejemplo, el proceso de reunión de información puede separarse, incluso a intervalos prolongados, del proceso de aplicación de esa información para la gestión.</p>
+
+<p>Si nos adhierimos a la terminología aceptada y la hace más clara para los expertos, en particular para los técnicos de radio, el sistema operado es una “carga” para el sistema de control. Los comandos de control programados y codificados se dan a la entrada del sistema de control (por ejemplo, la máquina de control electrónico). Estos comandos son “comprensibles” para el dispositivo o sistema de control. Pero esto no significa que sean “comprensibles” para el sistema controlado. Deben ser procesados en consecuencia para que los comandos de control provenientes del sistema de control sean ejecutados correctamente por el sistema controlado. Un buen ejemplo es el sistema telefónico automático. Llamando al abonado correcto marcando un número de teléfono conocido, envían el comando de control a la central telefónica. Allí se procesa el comando y se busca el número del suscriptor. Si la línea está libre y el número de teléfono del abonado no está ocupado, la llamada se realiza y el abonado se conecta al dispositivo. La estación, el abonado o la línea ocupada se reconoce por los pitidos – señales de retroalimentación de información. Así pues, una central telefónica automática de distrito, junto con las líneas de comunicación y los abonados, es un buen ejemplo de un sistema dinámico complejo controlado por muchos dispositivos o sistemas de control más sencillos. Como cualquier sistema dinámico complejo, tiene sus propias características. Una de sus características es el cambio de los puntos de origen y la información percibida, es decir, los sujetos y objetos: la gestión.</p>
+
+<p>Otro ejemplo es el sistema de control remoto. Aquí, las funciones de los Otro ejemplo es el sistema de control remoto. Aquí, las funciones de los sistemas de control y gestión están distribuidas de forma clara e inequívoca. Los puntos de desarrollo y emisión de comandos de control y los objetos de control o sistemas controlados pueden ser separados por “largas distancias”. El entorno intermedio puede ser muy diferente: la atmósfera de la Tierra, el espacio exterior o el agua. Los enlaces de información de retroalimentación pueden existir y actuar automáticamente, pero también pueden estar ausentes si las relaciones causa-efecto se conocen de manera precisa y confiable y la ejecución de comandos no está en duda. Por lo general, se utilizan enlaces de información de retroalimentación automática, pero este no es el único esquema posible.</p>
+
+<p>El control remoto de los sistemas de energía puede servir como otro ejemplo de la existencia separada de sistemas de control y controlados.</p>
+
+<p>Nos centramos en estos ejemplos y en la terminología, porque en la mayoría de los casos el término sistema de “control” se utiliza en la literatura cibernética en un sentido ligeramente distinto: significa un conjunto de dispositivos que emiten y procesan órdenes y sistemas que las perciben. Esto tiene la justificación de que a veces es difícil separar el sistema de control del sistema controlado en nuestra terminología. Los organismos vivos pueden servir de ejemplo en este caso. La fuente de información inicial suele ser éste o aquel proceso que tiene lugar en el entorno externo. Si un organismo tiene receptores de esta fuente de información, reacciona a ellos. A través de muchos canales del sistema nervioso (y el cuerpo escoge las formas más ventajosas y confiables) la señal de irritación se transmite y se procesa repetidamente en el camino hacia el cerebro. Después de un procesamiento muy complejo de la información que ha llegado aquí se producen señales de respuesta que se transmiten a los órganos ejecutivos, que en última instancia llevan a cabo la respuesta del cuerpo a la irritación externa. Aquí las funciones de los comandos o las señales para controlar su procesamiento y ejecución están continua y repetidamente entrelazadas, y cada señal de comando subsiguiente está determinada por la información recibida a través de los canales de retroalimentación. Todos estos procesos son mucho más complicados que en la tecnología y la vida social. El estudio de estos procesos acaba de comenzar, pero está progresando bien en nuestro país y en muchos otros. Este estudio es una fuente inagotable para enriquecer nuestro conocimiento e imitarlo en casos de control más sencillos.</p>
+
+<p>Sin embargo, cada acto elemental de este complejo proceso se ajusta a nuestra terminología. En cuanto a la gestión de mecanismos, máquinas, aparatos, operaciones de colectivos humanos, nos parece que en este caso nuestra terminología es bastante aplicable.</p>
+
+<p>No hay artículos sobre máquinas matemáticas electrónicas en nuestra colección. Sobre esta cuestión hay una extensa literatura científica y popular. Desde las posiciones de la cibernética las máquinas electrónicas son medios modernos de la cibernética técnica. En las máquinas electrónicas del segundo volumen se mencionarán los problemas de su desarrollo ulterior, en particular la reducción de sus tamaños, la miniaturización de los elementos estructurales y, sobre todo, los problemas de aumento de su fiabilidad operacional y de aumento de la velocidad.</p>
+
+<p>En esta colección tampoco se tratan cuestiones de fiabilidad. Este tema se tratará a fondo en el volumen 2 de la colección. Consideramos que este tema es uno de los más importantes. Debemos admitir que la situación en esta zona es obviamente desfavorable. La fiabilidad de la automática electrónica no satisface a nadie. Sólo se puede hablar de una amplia introducción de estos medios en la economía nacional si se resuelve satisfactoriamente el problema de la fiabilidad. No debería haber ilusiones. Pero al mismo tiempo es necesario reconocer que el problema del aumento de la fiabilidad de los medios de la automática electrónica y la cibernética no puede ser resuelto por los esfuerzos de algunos expertos en electrónica. Es necesario involucrar más ampliamente a los matemáticos, diseñadores y tecnólogos en su decisión. Es totalmente injustificado pensar que la fiabilidad de los dispositivos y sensores primarios es bastante alta. Igualmente equivocado: la opinión de la alta fiabilidad de los mecanismos ejecutivos. Esto se aplica principalmente a la industria química.</p>
+
+<p>Los intentos de “dejar de lado” el problema de la fiabilidad como un problema ficticio que supuestamente no existe no resisten ninguna crítica. Se debe establecer una responsabilidad estricta por encubrir y desatender estas cuestiones. Esto comienza a ser entendido por la mayoría de las personas progresistas responsables del progreso científico y tecnológico. Pero hay que recordar que el problema de la fiabilidad, aun si hubiera sido resuelto satisfactoriamente hoy (que por supuesto no lo es), se plantea de nuevo mañana y nunca será eliminado mientras exista el desarrollo e introducción de nuevas tecnologías y nuevos dispositivos. Este es un problema “eterno”, y nunca será resuelto por eventos episódicos.</p>
+
+<h3 id="vi-conclusión">VI. CONCLUSIÓN</h3>
+
+<p>Hace tiempo que estamos acostumbrados a confiar firmemente en la ayuda de nuestra comunidad en todos los casos difíciles. Somos conscientes de que la ciencia se desarrolla solo como resultado del trabajo creativo persistente y decidido de científicos individuales y en laboratorios bien organizados y equipados con instrumentos y equipos científicos modernos.</p>
+
+<p>Desde los primeros días del poder soviético, V.I. Lenin, un científico brillante y un organizador maravilloso, ayudó al desarrollo de la ciencia joven soviética y la dirigió a resolver los problemas económicos más importantes. No todos recuerdan que, por iniciativa de V.I. Lenin, el programa del partido adoptado en el VIII Congreso en 1919 establece:</p>
+
+<blockquote>
+  <p>El gobierno soviético ya ha tomado una serie de medidas destinadas al desarrollo de la ciencia y su acercamiento a la producción: la creación de una red completa de nuevos institutos científicos y aplicados, laboratorios, estaciones de prueba, plantas piloto para probar nuevos métodos técnicos, mejoras e invenciones, contabilidad y organización. Todas las fuerzas y medios científicos, etc., el PCR, apoyando todas estas medidas, busca desarrollarlas más y crear las condiciones más favorables para el trabajo científico en relación con el aumento de las fuerzas productivas del país.</p>
+
+  <p>Resoluciones y decisiones del PCUS, parte I, ed. VII, 1953, pp. 423-424</p>
+</blockquote>
+
+<p>¿Algún otro país tuvo que experimentar las dificultades que recayeron sobre la ciencia soviética durante los años de bloqueo, hambruna e intervención? ¿Han tenido que evacuar otros países no solo una gran cantidad de empresas industriales, sino casi todas las instituciones de educación superior, como era necesario hacer en Leningrado y en muchas otras ciudades que fueron objeto de una invasión fascista en la Segunda Guerra Mundial? Los científicos de otros países nunca han experimentado esto. Sin embargo, unos años después del final de la guerra, la primera planta de energía nuclear comenzó a funcionar en la Unión Soviética, y poco después se lanzaron los primeros satélites, y hoy, los primeros astronautas en volar alrededor de la Tierra.</p>
+
+<p>Estos éxitos son aún más notables porque se han logrado, a pesar de las dificultades más recientes experimentadas en un país que se consideraba atrasado entre 30 y 40 años atrás.</p>
+
+<p>Es interesante notar que, según la UNESCO, en los últimos 50 años, el aumento anual promedio en el número de científicos en el mundo ha alcanzado el 7% con un crecimiento de la población mucho más bajo (aproximadamente 1,7% por año). Esto significa que el número de científicos en el mundo se duplica cada 10 años, mientras que la población mundial se duplica en 40 años. Para resolver las tareas establecidas para la ciencia soviética durante los próximos 20 años, es necesario capacitar a un gran número de jóvenes científicos, expandir significativamente la base de investigación, atraer a las universidades a la investigación a una escala mucho mayor de lo que se está haciendo actualmente, destacar las áreas más importantes de investigación y centrarse en ellos las principales fuerzas. El equipamiento de las universidades, laboratorios de institutos y fábricas debería alinearse con la complejidad de resolver nuevos problemas científicos. Se debe prestar especial atención al desarrollo de la instrumentación, en particular la instrumentación científica y el equipo necesario para realizar trabajos experimentales.</p>
+
+<p>Todas estas tareas fueron discutidas en la Conferencia de Trabajadores Científicos de toda la Unión y en una reunión de trabajadores de escuelas superiores en el Kremlin en el verano de 1961. La validez del tema y los requisitos para el equipo científico de los laboratorios de investigación y educación depende de los trabajadores científicos y los profesores universitarios.</p>
+
+<p>Se debe prestar especial atención al desarrollo de la teoría y los principios para la creación de nuevas máquinas, sistemas automáticos y telemecánicos, el desarrollo intensivo de la radioelectrónica, el desarrollo de fundamentos teóricos y la mejora técnica de las computadoras, el control y las máquinas de información, como se indica en el borrador del Programa del PCUS.</p>
+
+<p>Son estas direcciones las que constituyen el contenido de la nueva ciencia de la gestión óptima de los sistemas complejos, llamada cibernética. Como se ha indicado anteriormente y se describe con más detalle en los artículos de esta colección, la principal tarea de la cibernética es desarrollar esos nuevos métodos y utilizar esos nuevos medios científicos y técnicos para gestionar la economía nacional, los procesos de producción y la investigación científica, lo que permitiría alcanzar el objetivo con el menor tiempo, mano de obra, material y consumo de energía. Ese régimen de gestión se suele denominar óptimo.</p>
+
+<p>Hablando en la Conferencia de toda la Unión de Trabajadores de la Ciencia el 12 de junio de 1961, el Presidente de la Academia de Ciencias de la URSS acad. M. V. Keldysh dijo: “Hasta ahora, no hemos tenido un alcance suficiente de trabajo en el campo de la cibernética: la ciencia de los procesos de control, que actualmente es de importancia práctica y teórica primaria. La investigación en esta área debe intensificarse y combinarse en el instituto apropiado o en el consejo de coordinación especial “. Estamos totalmente de acuerdo con esta declaración.</p>
+
+<p>Los autores de esta colección, los editores y la Editorial Estatal de Literatura Energética desean que su trabajo contribuya a resolver las tareas asignadas a la cibernética soviética. Consideramos que nuestra tarea principal es poner esta nueva ciencia al servicio de la construcción más temprana posible de una sociedad comunista en nuestro país. El segundo y el tercer volumen de nuestra colección, que planeamos publicar en 1962 y 1963, servirán para esta tarea.</p>
+
+<p>Los científicos de la Unión Soviética, sin duda, harán todo lo posible para justificar la confianza de nuestro partido y la tremenda asistencia que brinda a la ciencia en nuestro país. En su trabajo diario, serán guiados por los maravillosos pensamientos expuestos en el borrador del Programa:</p>
+
+<blockquote>
+  <p>El progreso de la ciencia y la tecnología en las condiciones de un sistema económico socialista permite el uso más eficiente de la riqueza y la naturaleza de la naturaleza en interés de las personas, para descubrir nuevos tipos de energía, crear nuevos materiales, desarrollar métodos para influir en las condiciones climáticas y dominar el espacio exterior. La aplicación de la ciencia se convierte en un factor decisivo en el poderoso crecimiento de las fuerzas productivas de la sociedad. El desarrollo de la ciencia y la introducción de sus logros en la economía nacional seguirá siendo de particular interés para el partido.</p>
+</blockquote>
+
+<hr class="wp-block-separator is-style-wide" />
+
+<h2 id="notas">Notas</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>NdT: Obras completas de V. I. Lenin, 4ª ed., Gospolitizdat, 1950. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:1:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>NdT: Pravda, “La Verdad”, órgano de expresión del PCUS. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p>NdT: El concepto de “información” fue problemático en el marxismo dogmático del estalinismo. Para el materialismo mal entendido de los censores estalinistas, una cosa que no era materia ni energía solo podía ser un delirio idealista y burgués. Esto explica la cautela con la que Berg trata este tema, tratando de alejar el foco de atención de su la definición con una audaz comparación entre la información, el tiempo y el espacio, para los cuales “no tenemos una definición exacta” pero los “medimos perfectamente con gran precisión”. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:4" role="doc-endnote">
+      <p>NdT: Editorial Estatal de Literatura Energética. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:5" role="doc-endnote">
+      <p>NdT: Periódico económico. <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:6" role="doc-endnote">
+      <p>NdT: Editorial Política Estatal. <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:6:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:7" role="doc-endnote">
+      <p>NdT: Académico era el título de los miembros honorarios de una academia de ciencias de la Unión Soviética, uno de los rangos más altos a nivel científico. <a href="#fnref:7" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:8" role="doc-endnote">
+      <p>S. N. Braines, A. V. Napalkov, V. B. Svechinsky, Notas científicas de la Academia de Ciencias Médicas de la URSS, Instituto de Psiquiatría, “Problemas de Neurocibernética”, 1959. <a href="#fnref:8" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:9" role="doc-endnote">
+      <p>NdT: Candidato de ciencias (Кандидат наук) es un título equivalente al doctorado. <a href="#fnref:9" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:10" role="doc-endnote">
+      <p>NdT: La <a href="https://es.wikipedia.org/wiki/Paidolog%C3%ADa">paidología</a> es una rama de la psicología dedicada al estudio del comportamiento de los niños, a diferencia de la <a href="https://es.wikipedia.org/wiki/Pedagog%C3%ADa">pedagogía</a> que se dedica al estudio de los procesos de enseñanza y aprendizaje. <a href="#fnref:10" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:11" role="doc-endnote">
+      <p>NdT: Izdatelstvo fíziko-matematicheskói i tejnicheskói literatury, “Editorial para la literatura físico-matemática y técnica. <a href="#fnref:11" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:12" role="doc-endnote">
+      <p>NdT: El <em>Symposium on Mechanisation of Thought Processes</em> fue el primer simposio internacional sobre inteligencia artificial, donde acudieron pioneros de este campo como Marvin L. Minsky o John McCarthy (el autor del término “inteligencia artificial”). La inteligencia artificial, propuesta en el encuentro de Darthmouth en 1956 y discutida en el simposio de Teddington en 1958, tuvo una coexistencia difícil con la cibernética. Posteriormente, los proponentes de la inteligencia artificial conseguirían acaparar la financiación para sus proyectos, <a href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">desterrando la cibernética hacia otros campos como las ciencias sociales</a>. <a href="#fnref:12" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:13" role="doc-endnote">
+      <p>NdT: Quizá la International Conference for Standards on a Common Language for Machine Searching and Translation celebrada en la Western Reserve University, Cleveland. <a href="#fnref:13" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:14" role="doc-endnote">
+      <p>NdT: Economía Planificada. <a href="#fnref:14" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+
+
+        </div>
+        <div class="clear"></div>
+
+    </article>
+    <!-- <div class="brutalist_themes__related_posts">
+
+        <h4 class="widget-title">You might also like</h4>
+
+        <ul>
+            <li itemscope="" itemtype="http://schema.org/blogPost">
+                <a class="title" href="https://lamaquinadeturing.su/2020/05/01/cibernetica-al-servicio-del-comunismo/"
+                    title="Cibernética – al servicio del comunismo">
+                    <img src="index_fitxers/cybernetics-150x150.png"
+                        class="attachment-thumbnail size-thumbnail wp-post-image"
+                        alt="Cibernética – al servicio del comunismo" itemprop="image"
+                        itemtype="http://schema.org/thumbnailUrl" width="150" height="150">
+                    <h5 itemscope="" itemtype="http://schema.org/headline">Cibernética – al servicio del
+                        comunismo</h5>
+                </a>
+            </li>
+            <li itemscope="" itemtype="http://schema.org/blogPost">
+                <a class="title"
+                    href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/"
+                    title="Cuando la inteligencia artificial desplazó la cibernética">
+                    <img src="index_fitxers/darthsmouth-1-150x150.jpg"
+                        class="attachment-thumbnail size-thumbnail wp-post-image"
+                        alt="Cuando la inteligencia artificial desplazó la cibernética" itemprop="image"
+                        itemtype="http://schema.org/thumbnailUrl" width="150" height="150">
+                    <h5 itemscope="" itemtype="http://schema.org/headline">Cuando la inteligencia artificial
+                        desplazó la cibernética</h5>
+                </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div> -->
+</div>
+
+<div class="grid__item">
+
+    <aside class="widget-area" itemscope="" itemtype="http://schema.org/WPSideBar">
+    <div id="recent-posts-2" class="widget element__frame widget_recent_entries">
+        <h3 class="widget-title">Recent Posts</h3>
+        <ul>
+            
+            <li>
+                <a href="/cibern%C3%A9tica/2020/05/01/cibernetica-al-servicio-del-comunismo.html">Cibernética – al servicio del comunismo</a>
+            </li>
+            
+            <li>
+                <a href="/cibern%C3%A9tica/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica.html">Cuando la inteligencia artificial desplazó la cibernética</a>
+            </li>
+            
+            <li>
+                <a href="/cibern%C3%A9tica/lzhenau%CC%81ka/2020/04/13/cibernetica-en-el-breve-diccionario-filosofico-1954.html">“Cibernética” (en el Breve diccionario filosófico, 1954)</a>
+            </li>
+            
+        </ul>
+    </div>
+    <!-- <div id="archives-2" class="widget element__frame widget_archive">
+        <h3 class="widget-title">Archives</h3>
+        <ul>
+            <li><a href="https://lamaquinadeturing.su/2021/08/">August 2021</a></li>
+            <li><a href="https://lamaquinadeturing.su/2020/05/">May 2020</a></li>
+            <li><a href="https://lamaquinadeturing.su/2020/04/">April 2020</a></li>
+        </ul>
+    </div> -->
+    <div id="categories-2" class="widget element__frame widget_categories">
+        <h3 class="widget-title">Categories</h3>
+        <ul>
+            
+            <li class="cat-item cat-item-2"><a href="/category/cibernética">Cibernética</a>
+            </li>
+            
+            <li class="cat-item cat-item-2"><a href="/category/lzhenaúka">Lzhenaúka</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="clear"></div>
+</aside>
+
+</div>
+
+        </section>
+        
+
+        <footer id="site-footer" itemscope="" itemtype="http://schema.org/WPFooter"><span><a
+            href="https://creativecommons.org/licenses/by-sa/4.0/deed.ca">CC BY-SA 2021</a> La màquina de Turing
+        · Designed by <a href="https://brutalistthemes.com/">Brutalist Themes</a></span>
+</footer>
+    </div>
+
+    <a class="element__frame scroll-top" href="#scroll-top" title="scroll top" style="display: none;">
+        <p class="bar__title">Top</p>
+    </a>
+</body>
+</html>
