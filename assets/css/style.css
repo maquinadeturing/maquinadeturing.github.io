@@ -527,7 +527,11 @@ article.element__frame.flex__quarter,
 }
 
 .lang-code {
+    text-transform: uppercase;
+    font-style: normal;
     padding: 1px;
+    margin: 0px 2px;
+    font-size: .7rem;
 }
 
 .pull li span {
