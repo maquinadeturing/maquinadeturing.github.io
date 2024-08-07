@@ -47,6 +47,12 @@
 			box-shadow: 2px 2px 11px #666666;
 		}
 	</style>
+
+	<script>
+		var page_lang = "es";
+		var site_languages = ["ca","en","es",];
+	</script>
+	<script type="text/javascript" src="/assets/js/search.js"></script>
 </head>
 
 <body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
@@ -78,7 +84,7 @@
         </ul>
     </nav>
 
-    <nav itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="element__frame" id="mobile-window">
+    <nav itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="element__frame">
         <p class="bar__title">
             Temes </p>
         <a id="nav-toggle" class="nav-slide-button" href="#"><span></span></a>
@@ -100,14 +106,19 @@
             
 
             <li>
-                <!-- <form role="search" method="get" class="search-form" action="https://duckduckgo.com/">
+                <div class="search-form">
                     <label>
-                        <span class="screen-reader-text">Search for:</span>
-                        <input type="search" class="search-field" placeholder="Search …" name="q">
+                        <span class="screen-reader-text">Búsqueda de:</span>
+                        <input type="search" class="search-field" placeholder="Buscar…" name="q">
                     </label>
                     <input type="submit" class="search-submit" value="Search">
-                </form> -->
+                </div>
             </li>
+        </ul>
+
+        <ul class="search-results hidden">
+            <li><a href="#">Title 1</a></li>
+            <li><a href="#">Title 2</a></li>
         </ul>
     </nav>
 
