@@ -299,17 +299,15 @@ function search_content_index(words, index) {
         });
     }
 
-    // Results is a map of language to an array of Node, where its value is [ [post_index, count], ... ].
+    // Results is a map of language to an array of Node, where its value is [ post_index, ... ].
     // Group the results per post index and count the number of occurrences and their distances.
     // The indexes refer to the post index in search_index["posts"].
 
     let post_results = new Map; // { post_index: score, ... }
-    results.forEach((results, lang) => {
+    results.forEach((results, _lang) => {
         results.forEach((word_node) => {
             let score = word_node.score;
-            word_node.value.forEach((result) => {
-                let post_index = result[0];
-
+            word_node.value.forEach((post_index) => {
                 if (post_results.has(post_index)) {
                     post_results.set(post_index, post_results.get(post_index) + score);
                 } else {
