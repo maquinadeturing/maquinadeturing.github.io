@@ -219,7 +219,7 @@ function get_ansi_map() {
 
 function to_ansi(str) {
     const ansi_map = get_letter_ansi_map();
-    return str.replace(new RegExp(/./, 'g'), (char) => ansi_map[char] || char);
+    return str.replace(new RegExp(/./, 'g'), (char) => ansi_map[char] || char).toLowerCase();
 }
 
 function get_ansi_word(word) {
@@ -227,7 +227,8 @@ function get_ansi_word(word) {
     const special_chars = Object.keys(ansi_map).join('');
     const valid_chars = 'a-zA-Z0-9' + special_chars;
     return word.replace(new RegExp(`[^${valid_chars}]`, 'g'), '')
-        .replace(new RegExp(/./, 'g'), (char) => ansi_map[char] || char);
+        .replace(new RegExp(/./, 'g'), (char) => ansi_map[char] || char)
+        .toLowerCase();
 }
 
 function get_ansi_words(query) {
@@ -237,6 +238,7 @@ function get_ansi_words(query) {
     words = new Set(query
         .replace(new RegExp(`[^${valid_chars}]`, 'g'), ' ')
         .replace(new RegExp(/./, 'g'), (char) => ansi_map[char] || char)
+        .toLowerCase()
         .split(/\s+/)
         .filter(word => word.length >= 2 && !(/^\d+$/.test(word))));
     return words;
