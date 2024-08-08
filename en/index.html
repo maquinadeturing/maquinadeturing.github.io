@@ -52,7 +52,7 @@
 		var page_lang = "en";
 		var site_languages = ["ca","en","es",];
 	</script>
-	<script type="text/javascript" src="/assets/js/search.js"></script>
+	<script type="text/javascript" src="/assets/js/combined.js"></script>
 </head>
 
 <body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
@@ -84,24 +84,22 @@
         </ul>
     </nav>
 
-    <nav itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="element__frame">
-        <p class="bar__title">
-            Topics </p>
+    <nav itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="element__frame" id="mobile-window">
+        <p class="bar__title mobile-media">Menu</p>
+
         <a id="nav-toggle" class="nav-slide-button" href="#"><span></span></a>
 
         <ul id="primary-menu" class="pull clear">
+            <li class="menu-item mobile-media"><span>en</span></li>
             
                 
-                
-            
-                
-                
-                <li class="menu-item"><a href="/en/cybernetics/">Cybernetics</a></li>
-                
-                <li class="menu-item"><a href="/en/lzhenauka/">Lzhenauka</a></li>
+                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/ca">ca</a></li>
                 
             
                 
+            
+                
+                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/es">es</a></li>
                 
             
 
@@ -114,12 +112,24 @@
                     <input type="submit" class="search-submit" value="Search">
                 </div>
             </li>
+
+            
+                
+                
+            
+                
+                
+                <li class="menu-item desktop-media"><a href="/en/cybernetics/">Cybernetics</a></li>
+                
+                <li class="menu-item desktop-media"><a href="/en/lzhenauka/">Lzhenauka</a></li>
+                
+            
+                
+                
+            
         </ul>
 
-        <ul class="search-results hidden">
-            <li><a href="#">Title 1</a></li>
-            <li><a href="#">Title 2</a></li>
-        </ul>
+        <ul class="search-results hidden"></ul>
     </nav>
 
     

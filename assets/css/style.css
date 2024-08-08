@@ -686,7 +686,7 @@ ul.page-numbers::after {
 .search-results {
     position: absolute;
     top: 100%;
-    width: 100%;
+    width: 150%;
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     outline: 1px solid hsla(0, 0%, 0%, .4);
@@ -1014,6 +1014,14 @@ ul.page-numbers li a {
 screen and (min-resolution: 192dpi) and (max-width: 1439px),
 screen and (min-resolution: 2dppx) and (max-width: 1439px),
 screen and (max-resolution: 1dppx) and (max-width: 1439px) {
+    .desktop-media {
+        display: none !important;
+    }
+
+    .mobile-media {
+        display: block !important;
+    }
+
     #mobile-window {
         position: fixed;
         right: 1rem;
@@ -1034,18 +1042,26 @@ screen and (max-resolution: 1dppx) and (max-width: 1439px) {
         top: 0;
         left: 0;
         right: 0;
-        padding: 2rem 90px 2rem 2rem;
         align-items: center;
         flex-flow: row wrap;
-        background: var(--color-border);
+        height: 100px;
+        padding: 15px;
+        border: 1px solid var(--color-border);
+        outline: 1px solid hsla(0, 0%, 0%, .4);
+        outline-offset: -3px;
+        border-radius: 5px;
+        background-color: var(--color-bg);
+    }
+
+    .search-results {
+        position: fixed;
+        top: 100px;
+        left: 0;
+        width: 100%;
     }
 
     .pull li {
         flex: 0 1 auto;
-    }
-
-    .pull li a {
-        color: var(--color-bg);
     }
 
     #nav-toggle {
@@ -1105,7 +1121,6 @@ screen and (max-resolution: 1dppx) and (max-width: 1439px) {
     #nav-toggle.active span:after {
         position: absolute;
         top: 0;
-        background: var(--color-bg);
         width: 2rem;
     }
 
@@ -1125,6 +1140,14 @@ screen and (max-resolution: 1dppx) and (max-width: 1439px) {
 screen and (min-resolution: 192dpi) and (min-width: 1440px),
 screen and (min-resolution: 2dppx) and (min-width: 1440px),
 screen and (max-resolution: 1dppx) and (min-width: 1440px) {
+    .desktop-media {
+        display: block !important;
+    }
+
+    .mobile-media {
+        display: none !important;
+    }
+
     .pull {
         padding: .8rem 1rem .2rem 1rem;
         margin: 0;
