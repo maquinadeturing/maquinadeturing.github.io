@@ -161,7 +161,7 @@ async function get_search_index() {
         // {
         //     "index": {
         //         lang: [
-        //             { word: [ [post_index, count], ... ], ... },
+        //             { word: [ [post_index, ... ], ... },
         //             ... ],
         //         ... },
         //     "posts": [
@@ -181,6 +181,7 @@ async function get_search_index() {
             let tree = new BKTree(levenshtein_distance);
             Object.entries(index_data.index[lang]).forEach(([word, posts]) => {
                 const ansi_word = get_ansi_word(word);
+                posts = Array.isArray(posts) ? posts : [posts];
                 tree.add(ansi_word, posts);
             });
             search_index.content_index[lang] = tree;
