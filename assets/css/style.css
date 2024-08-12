@@ -1,10 +1,3 @@
-@font-face {
-    font-family: "Pixelar";
-    src: url("/assets/fonts/pixelar_regular.woff2") format("woff2"), url("/assets/fonts/pixelar_regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
-
 #nprogress {
     pointer-events: none;
 }
@@ -80,74 +73,6 @@
     }
 }
 
-html {
-    font-size: 20px;
-    --font-title: "Pixelar", -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: "Barlow", -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-size-18: .9rem;
-    --color-text: hsl(0, 0%, 25%);
-    --color-accent: hsl(120, 95%, 42%);
-    --color-title: hsl(285, 4%, 21%);
-    --color-border: hsl(285, 4%, 21%);
-    --color-bg: hsl(0, 0%, 100%);
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-size: var(--font-size-18);
-    font-family: var(--font-body);
-    line-height: 1.8;
-    color: var(--color-text);
-    overflow-x: hidden;
-    font-weight: normal;
-    background: url("/assets/img/dots.svg") var(--color-bg);
-    background-size: 2px 2px;
-    background-attachment: fixed;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-title);
-    color: var(--color-title);
-    margin: 1em 0 .5em 0;
-    line-height: 1.4;
-    font-weight: normal;
-}
-
-h1 {
-    font-size: 2.4rem;
-}
-
-h2 {
-    font-size: 2rem;
-}
-
-h3 {
-    font-size: 1.7rem;
-}
-
-h4 {
-    font-size: 1.5rem;
-}
-
-h5 {
-    font-size: 1.3rem;
-}
-
-h6 {
-    font-size: 1.1rem;
-}
-
 strong,
 b,
 dt {
@@ -164,6 +89,8 @@ i {
 code,
 pre {
     font-family: monospace;
+    max-width: 650px;
+    overflow: auto;
 }
 
 a,
@@ -739,12 +666,17 @@ a.entry-thumbnail {
 .entry-thumbnail-single {
     max-width: 400px;
     float: left;
-    padding: 0 2rem 1rem 0;
 }
 
 .entry-thumbnail-single.landscape {
     max-width: none;
     float: none;
+}
+
+.entry-thumbnail-caption p {
+    font-size: .7rem;
+    color: var(--color-indifferent);
+    margin: 0;
 }
 
 .wrap {

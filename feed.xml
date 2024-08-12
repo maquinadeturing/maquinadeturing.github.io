@@ -1,4 +1,349 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-08-09T11:38:04+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random &gt; /dev/null</subtitle><entry xml:lang="en"><title type="html">“Cybernetics” (in A Dictionary of Philosophy, 1967)</title><link href="https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/" rel="alternate" type="text/html" title="“Cybernetics” (in A Dictionary of Philosophy, 1967)" /><published>2024-07-27T17:00:00+00:00</published><updated>2024-07-27T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/"><![CDATA[<p><em>Cybernetics entry in</em> A Dictionary of Philosophy, <em>the influential work that reflected the political consensus in the USSR about many topics. This entry, probably based on the 1963 edition in Russian by Rozental and Yudin, reflects the post-Stalin view of cybernetics. Compare to <a href="/ca/2020/04/cibernetica-en-el-breu-diccionari-filosofic-1954/">this older entry<span class="box-shadow lang-code">ca</span></a><a href="/es/2020/04/cibernetica-en-el-breve-diccionario-filosofico-1954/" class="box-shadow lang-code">es</a> from a 1954 edition, where it is dubbed a “reactionary pseudoscience”, “mechanicist” and “idealist”. In contrast, in this edition cybernetics is “against” idealist philosophy.</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-08-12T14:54:18+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random &gt; /dev/null</subtitle><entry xml:lang="en"><title type="html">Implementing the search function in a static web site</title><link href="https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site/" rel="alternate" type="text/html" title="Implementing the search function in a static web site" /><published>2024-08-09T11:00:00+00:00</published><updated>2024-08-09T11:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site/"><![CDATA[<p>Static web sites are the best. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is <em>searching</em>.</p>
+
+<h2 id="the-poor-mans-search-function">The poor man’s search function</h2>
+
+<p>Usually, the alternative has been the <code class="language-plaintext highlighter-rouge">site:</code> operator in Google: a form in your website would transform the search string into a <code class="language-plaintext highlighter-rouge">site:</code> query and redirect it to Google. Purists can do the same with <a href="https://duckduckgo.com/duckduckgo-help-pages/results/syntax/">DuckDuckGo</a>. But that leaves me relying on notoriously unreliable companies, which can drop this feature at any moment or hide it behind a pawyall.</p>
+
+<p>And I wandered: is there a way to have my own search function?</p>
+
+<h2 id="is-static-search-even-possible">Is static search even possible?</h2>
+
+<p>My wishlist for a search function was:</p>
+<ol>
+  <li>Doesn’t depend on an external API.</li>
+  <li>Has to be lightweight, ie. downloading all the posts and searching them is not an option.</li>
+  <li>Has to be reasonably good at finding results, but not perfect. For instance, I can do without full-text search.</li>
+</ol>
+
+<p>With that in mind, I started designing my own static search function. The basic idea was to generate some kind of index that would allow for static searches using Javascript.</p>
+
+<p>There are some nice Javascript libraries that will consume texts and provide a search function, like <a href="https://lunrjs.com">Lunr</a>. It even lets you <a href="https://lunrjs.com/guides/index_prebuilding.html">pre-build the serch index</a>, so it can be downloaded as a static JSON file. As a test, I created a Lunr JSON index with <a href="/es/2020/04/cibernetica-en-el-breve-diccionario-filosofico-1954/">the</a> <a href="/es/2020/05/cibernetica-al-servicio-del-comunismo/">three</a> <a href="/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">posts</a> in Spanish in the blog, as they are the longest right now. The result is the following:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Posts</th>
+      <th>Rendered Post Size<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></th>
+      <th>Lunr JSON Index Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/es/2020/04/cibernetica-en-el-breve-diccionario-filosofico-1954/">Post 1</a></td>
+      <td>2.72 KB</td>
+      <td>12.39 KB</td>
+    </tr>
+    <tr>
+      <td><a href="/es/2020/05/cibernetica-al-servicio-del-comunismo/">Post 2</a></td>
+      <td>87.16 KB</td>
+      <td>141.89 KB</td>
+    </tr>
+    <tr>
+      <td><a href="/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">Post 3</a></td>
+      <td>3.27 KB</td>
+      <td>15.04 KB</td>
+    </tr>
+    <tr>
+      <td>All three posts</td>
+      <td>93.16 KB</td>
+      <td>158.32 KB</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>As it can be seen, the Lunr index grows linearly to the size of the text, but also it becomes larger than the text itself! At least for this small amount of content, it would be better to just download the text of the posts.</p>
+
+<p>Maybe Lunr was too fancy for me, so I should implement my own search library.</p>
+
+<h2 id="putting-it-down-in-words">Putting it down in words</h2>
+
+<p>The basic functionality of a search function is to map a query to posts that contain them. So a very initial implementation would be to collect all the words from all the posts and map each one to a list of posts. Then, when the user enters a query, the words of such query can be found in the search index.</p>
+
+<p>As this site uses Jekyll, the static generation of the index would be in Ruby, while the search of the index would be in Javascript. Let’s focus on the former.</p>
+
+<p>I’ll show some snippets of code, but they are greatly simplified and are not expected to actually run:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">site</span><span class="p">.</span><span class="nf">posts</span><span class="p">.</span><span class="nf">docs</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span>
+    <span class="n">rendered_content</span> <span class="o">=</span> <span class="n">site</span>
+        <span class="p">.</span><span class="nf">liquid_renderer</span>
+        <span class="p">.</span><span class="nf">file</span><span class="p">(</span><span class="n">post</span><span class="p">.</span><span class="nf">path</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">post</span><span class="p">.</span><span class="nf">content</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="n">site</span><span class="p">.</span><span class="nf">site_payload</span><span class="p">)</span>
+    <span class="n">html_content</span> <span class="o">=</span> <span class="n">site</span>
+        <span class="p">.</span><span class="nf">find_converter_instance</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">Converters</span><span class="o">::</span><span class="no">Markdown</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="n">rendered_content</span><span class="p">)</span>
+
+    <span class="n">text_content</span> <span class="o">=</span> <span class="n">html_content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/&lt;\/?[^&gt;]*&gt;/</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span>
+    <span class="o">...</span></code></pre></figure>
+
+<p>In this iterator, the posts of the site are programmatically rendered using the Liquid parser and the Markdown converter to HTML. The result is the HTML as it would be displayed by the web browser. Then, the HTML tags are stripped, so what remains is the pure text content.</p>
+
+<p>Let’s get the words:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="o">...</span>
+    <span class="n">lang</span> <span class="o">=</span> <span class="n">post</span><span class="p">.</span><span class="nf">data</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">]</span>
+    <span class="n">valid_chars</span> <span class="o">=</span> <span class="s1">'a-zA-Z0-9áéíóúàèìòùäëïöüâêîôûçñÁÉÍÓÚÀÈÌÒÙÄËÏÖÜÂÊÎÔÛÇÑ·'</span>
+
+    <span class="n">text_content</span> <span class="o">=</span> <span class="n">text_content</span><span class="p">.</span><span class="nf">gsub</span><span class="p">(</span><span class="sr">/[^</span><span class="si">#{</span><span class="n">valid_chars</span><span class="si">}</span><span class="sr">]/</span><span class="p">,</span> <span class="s1">' '</span><span class="p">)</span>
+
+    <span class="n">words</span> <span class="o">=</span> <span class="n">text_content</span><span class="p">.</span><span class="nf">downcase</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">/\s+/</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">filter</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="n">word</span><span class="p">.</span><span class="nf">length</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">filter</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="o">!</span><span class="n">word</span><span class="p">.</span><span class="nf">match?</span><span class="p">(</span><span class="sr">/^\d+$/</span><span class="p">)</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">filter</span> <span class="p">{</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span> <span class="o">!</span><span class="n">stopwords</span><span class="p">[</span><span class="n">lang</span><span class="p">].</span><span class="nf">include?</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="p">}</span>
+        <span class="p">.</span><span class="nf">sort</span>
+        <span class="p">.</span><span class="nf">uniq</span>
+    <span class="o">...</span></code></pre></figure>
+
+<p>Here the <code class="language-plaintext highlighter-rouge">text_content</code> string is filtered, excluding anything that is not a valid character in one of the languages of the blog. This means that punctuation marks or other symbols are removed.</p>
+
+<p>Then, the resulting string is split by words, excluding short ones or numbers. A list of stopwords for the language of the post is used to remove common words, like “then” or “one”. There are projects that maintain lists of stopwords, like <a href="https://github.com/nltk/nltk_data/blob/gh-pages/packages/corpora/stopwords.zip">NLTK</a>.</p>
+
+<p>Finally, the words are sorted and duplicates are removed. Great! This is the list of unique words from one post, after removing garbage like stopwords, short words or numbers. Let’s add them to the index:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="o">...</span>
+    <span class="n">words</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">word</span><span class="p">,</span> <span class="n">count</span><span class="o">|</span>
+        <span class="n">index</span><span class="p">[</span><span class="n">lang</span><span class="p">]</span> <span class="o">||=</span> <span class="p">{}</span>
+        <span class="n">index</span><span class="p">[</span><span class="n">lang</span><span class="p">][</span><span class="n">word</span><span class="p">]</span> <span class="o">||=</span> <span class="p">[]</span>
+        <span class="n">index</span><span class="p">[</span><span class="n">lang</span><span class="p">][</span><span class="n">word</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">post_index</span>
+    <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Note that per each word in a given language, it maps to a list of posts referenced by an “index”. This index is the position in the array of posts at the end of the index structure.</p>
+
+<p>Let’s use an example. The following snippet is taken from the Markdown source of this <a href="/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/">post</a>:</p>
+
+<p><code class="language-plaintext highlighter-rouge">**Cybernetics**[^1], the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.)</code></p>
+
+<p>After rendering it:</p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;p&gt;&lt;strong&gt;Cybernetics&lt;/strong&gt;&lt;sup id="fnref:1" role="doc-noteref"&gt;&lt;a href="#fn:1" class="footnote" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.).&lt;p&gt;</code></p>
+
+<p>After removing the HTML tags:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Cybernetics 1, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.).</code></p>
+
+<p>Removing the invalid characters:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Cybernetics 1 the science of the common features of processes and control systems in technological devices living organisms and human organisations The principles of C were first set forth by Wiener q v</code></p>
+
+<p>And after filtering out short words, numbers and stopwords:</p>
+
+<p><code class="language-plaintext highlighter-rouge">Cybernetics science common features processes control systems technological devices living organisms human organisations principles set forth Wiener</code></p>
+
+<p>Last step, sorting and removing repeated words:</p>
+
+<p><code class="language-plaintext highlighter-rouge">common control cybernetics devices features forth human living organisations organisms principles processes science set systems technological wiener</code></p>
+
+<p>From this, the index would look as follows:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"en"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"common"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"control"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"cybernetics"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"forth"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"human"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"living"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"organisations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"organisms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"principles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"processes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"science"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"set"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"systems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"technological"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+            </span><span class="nl">"wiener"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"posts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"“Cybernetics” (in A Dictionary of Philosophy, 1967)"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-27 19:00:00 +0200"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"lang"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>The current JSON search index in this format for the 7 posts in 3 languages of the site is 52 KB. Not bad compared to the 141 KB of Lunr for just 3 posts. All in all, 50 KB or 140 KB may be are not very important nowadays, as some images in this site are larger than that. But I’d like this blog to grow enough so the size of the index matters.</p>
+
+<h2 id="wait-doesnt-that-look-like-a-bloom-filter">Wait, doesn’t that look like a Bloom filter?</h2>
+
+<p>Indeed, why not use a <a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom filter</a>, instead of a map of words? After all, a Bloom filter is super compact: 1 bit per word!</p>
+
+<p>The issue is that a Bloom filter only tells you if a given entry is (probably) part of a set. In other words, it maps a given key to a <em>boolean value.</em> But in my case each key must map to a <em>list of values,</em> the posts that contain that word.</p>
+
+<p>There are two alternatives. One is to implement a Bloom filter per post. But that would be prohibitive as the number of posts grows. The other is to implement a modified Bloom filter that can store <em>values.</em></p>
+
+<p>Some kind of <em>Bloom map.</em></p>
+
+<p>Each entry in the Bloom table would be a set, containing the values that were assigned by the hash functions. Then, the test operation would return the subset of values present in all the entries mapped by the key, if any.</p>
+
+<p>As far as I know, no such hybrid between a Bloom filter and a hash table exists. Maybe for a reason? I am not 100% sure if this would really preserve the accuracy of a Bloom filter, but I made a quick implementation. The result is that even using very compact encodings of this Bloom map (I’m talking about base 36 indices for sparse tables) it still would be less efficient than the previous approach that just stores the list of words. In particular, the Bloom maps would need 82 KB, compared to the 52 KB of the word map.</p>
+
+<p>I’ll leave that implementation in a branch. Maybe, in the long run, it outperforms the word map.</p>
+
+<h2 id="levenshtein-and-his-friends-burkhard-and-keller">Levenshtein and his friends Burkhard and Keller</h2>
+
+<p>Now that the search index is generated, it’s time to do some searching in the web browser.</p>
+
+<p>The search index contains (almost) all the words of the posts. A trivial approach would be to take the search query word by word and try to match it against the index. Every time there is a match, one point is given to the matched posts. If the query has 4 words, then the maximum score would be 4. The matching posts are displayed sorted by their score.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">word_map</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">query_words</span> <span class="o">=</span> <span class="p">[...</span> <span class="k">new</span> <span class="nc">Set</span><span class="p">(</span>
+    <span class="nf">to_ansi</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">toLowerCase</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/</span><span class="p">)</span>
+  <span class="p">)];</span>
+  <span class="kd">let</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">;</span>
+  <span class="nx">index</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">lang</span><span class="p">,</span> <span class="nx">word_map</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">query_words</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">query_word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">posts</span> <span class="o">=</span> <span class="nx">word_map</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">query_word</span><span class="p">);</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">posts</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">posts</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">post_index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">let</span> <span class="nx">score</span> <span class="o">=</span> <span class="nx">results</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">post_index</span><span class="p">)</span> <span class="o">||</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="nx">results</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">post_index</span><span class="p">,</span> <span class="nx">score</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">results</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>That will be the base search algorithm, but I would like it to be slightly smarter than that. After all, we are all used to fancy search engines that will find similar words, or match just prefixes. Instead of doing an exact match of the words in the index, the search could find <em>similar</em> words. An obvious optimization is to ignore accents. But how to match other similarities? For instance, “cybernetics” is very similar to “cibernètica” (Catalan).</p>
+
+<p>Enter Levenshtein.</p>
+
+<p>The <em>similarity</em> between two words could be defined as the <em>distance</em> between these words. This is what the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> function does: it calculates how far away two words are. The distance is defined as how many letters need to be added, removed or substituted to go from one word to the other. In the case of “cybernetics”, it needs 2 substitutions to become “cibernètica”, if we ignore the accents.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">word_map</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">query_words</span> <span class="o">=</span> <span class="p">[...</span> <span class="k">new</span> <span class="nc">Set</span><span class="p">(</span>
+    <span class="nf">to_ansi</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">toLowerCase</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/</span><span class="p">)</span>
+  <span class="p">)];</span>
+  <span class="kd">let</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">;</span>
+  <span class="nx">index</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">lang</span><span class="p">,</span> <span class="nx">word_map</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">query_words</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">query_word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">max_distance</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">query_word</span><span class="p">.</span><span class="nx">length</span> <span class="o">/</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+      <span class="nx">word_map</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">posts</span><span class="p">,</span> <span class="nx">index_word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">distance</span> <span class="o">=</span> <span class="nf">levenshtein_distance</span><span class="p">(</span><span class="nx">query_word</span><span class="p">,</span> <span class="nx">index_word</span><span class="p">);</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">distance</span> <span class="o">&lt;=</span> <span class="nx">max_distance</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">posts</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">post_index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="kd">const</span> <span class="nx">score</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="nx">distance</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nx">query_word</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">index_word</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+              <span class="nx">results</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">post_index</span><span class="p">,</span> <span class="p">(</span><span class="nx">results</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">post_index</span><span class="p">)</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">score</span><span class="p">);</span>
+          <span class="p">});</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">results</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Good, we now have a precise definition of similarity. So the search algorithm can match not only exact words from the index, but also similar words whose Levenshtein distance is below a certain threshold (in particular, the maximum distance allowed is 1/3 of the length of the word, in other words, two words should share 2/3 of their letters to be considered similar).</p>
+
+<p>Also, now the score is not 1 per each match, because matches may be similar but not exact. How exact? The normalized distance between the words, meaning a distance of 1 in a 5-letter word is an 80% similarity.</p>
+
+<p>But there is another difference between this code and the previous one: before it was using a map to find exact matches, which is fast, while now it is comparing each word from the query to each word from the index. It has gone from O(1) to O(n<sup>2</sup>)!<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></p>
+
+<p>Let’s bring some friends of Levenshtein to the party. In particular, Burkhard and Keller and their tree structure, the <a href="https://en.wikipedia.org/wiki/BK-tree">BK-Tree</a>. A BK-Tree is a data structure that can organize values based on their relative distance, and allows to quickly navigate it to find the values with a similarity below the given threshold.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nf">build_forest</span><span class="p">(</span><span class="nx">word_map</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">forest</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">;</span>
+  <span class="nx">index</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">lang</span><span class="p">,</span> <span class="nx">word_map</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">tree</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BKTree</span><span class="p">(</span><span class="nx">levenshtein_distance</span><span class="p">);</span>
+    <span class="nx">word_map</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">posts</span><span class="p">,</span> <span class="nx">index_word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">tree</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">index_word</span><span class="p">,</span> <span class="nx">posts</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">forest</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">lang</span><span class="p">,</span> <span class="nx">tree</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">forest</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">word_map</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">query_words</span> <span class="o">=</span> <span class="p">[...</span> <span class="k">new</span> <span class="nc">Set</span><span class="p">(</span>
+    <span class="nf">to_ansi</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">toLowerCase</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/</span><span class="p">)</span>
+  <span class="p">)];</span>
+
+  <span class="kd">let</span> <span class="nx">forest</span> <span class="o">=</span> <span class="nf">build_forest</span><span class="p">(</span><span class="nx">word_map</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">;</span>
+
+  <span class="nx">forest</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">tree</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">query_words</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">query_word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">max_distance</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">query_word</span><span class="p">.</span><span class="nx">length</span> <span class="o">/</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+      <span class="nx">tree</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="nx">query_word</span><span class="p">,</span> <span class="nx">max_distance</span><span class="p">).</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">search_result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">search_result</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">post_index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">score</span> <span class="o">=</span> <span class="nx">search_result</span><span class="p">.</span><span class="nx">score</span><span class="p">;</span>
+          <span class="nx">results</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">post_index</span><span class="p">,</span> <span class="p">(</span><span class="nx">results</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="nx">post_index</span><span class="p">)</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="nx">score</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">results</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>In this new code, a BK-Tree is constructed for each word index, and now these trees can be used to search for similar words below a certain threshold with a time complexity of O(log n). That’s more like it.</p>
+
+<h2 id="looking-for-the-headline">Looking for the headline</h2>
+
+<p>The fuzzy search function that was implemented above will match similar words. But surely the user, after typing “cyber”, will expect <a href="/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/">“Cybernetics” (in A Dictionary of Philosophy, 1967)</a> to appear in the results.</p>
+
+<p>Implementing a prefix match for all the words is possible, for instance with a <a href="https://en.wikipedia.org/wiki/Radix_tree">radix tree</a> structure. But that would probably generate too many results, many of them unuseful. If the user types “app”, do they want results about applications but also about apples?</p>
+
+<p>Still, what is overkill for the content can be adequate if limited to the title. In addition to the score provided by the fuzzy search with the word map, I also added a substring search:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nf">search_titles</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">post_list</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">query_words</span> <span class="o">=</span> <span class="p">[...</span> <span class="k">new</span> <span class="nc">Set</span><span class="p">(</span>
+    <span class="nf">to_ansi</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">toLowerCase</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sr">/</span><span class="se">\s</span><span class="sr">+/</span><span class="p">)</span>
+  <span class="p">)];</span>
+
+  <span class="kd">let</span> <span class="nx">results</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">;</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">post_list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">post_list</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">title</span><span class="p">;</span>
+    <span class="kd">let</span> <span class="nx">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">query_words</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">query_word</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">title</span><span class="p">.</span><span class="nf">includes</span><span class="p">(</span><span class="nx">word</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">results</span><span class="p">.</span><span class="nf">set</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">score</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">results</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The previous code takes the words of the search query and checks if they are a substring of a post title. For each word that is a substring of a title, that post gets 1 point. The score of the title search is added to the score of the fuzzy search, and that is how posts are displayed in the search box and how they are sorted.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I am quite satisfied with the static search function I implemented for this website. It is quite lightweight: 52 KB, compared to the 141 KB of Lunr or the 82 KB of a <em>Bloom map.</em> Still, the search experience feels similar to what can be expected from a full text search. Go ahead and test it yourself.</p>
+
+<p>Obviously, searching web pages is complicated, after all Google was built around this. If I type for “levens” I want the search function to return me results for Levenshtein, but that will not happen as it is too dissimilar (45% similarity). And yet, it will match “leaves” and “even” (66% similarity).</p>
+
+<p>As the blog grows, maybe I will have to revisit the implementation in case the index becomes too heavy, or it is not very accurate, but for now does the job.</p>
+
+<h2 id="notes">Notes</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>The count of visible characters of the post’s text, as seen in the web browser, excluding white spaces. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p>See <a href="https://en.wikipedia.org/wiki/Big_O_notation">Big O Notation</a>. Also, technically, it has gone from O(1) to O(n m). <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><category term="Web" /><summary type="html"><![CDATA[Static web sites are the best. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is searching.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/search.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/search.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">“Cybernetics” (in A Dictionary of Philosophy, 1967)</title><link href="https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/" rel="alternate" type="text/html" title="“Cybernetics” (in A Dictionary of Philosophy, 1967)" /><published>2024-07-27T17:00:00+00:00</published><updated>2024-07-27T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/"><![CDATA[<p><em>Cybernetics entry in</em> A Dictionary of Philosophy, <em>the influential work that reflected the political consensus in the USSR about many topics. This entry, probably based on the 1963 edition in Russian by Rozental and Yudin, reflects the post-Stalin view of cybernetics. Compare to <a href="/ca/2020/04/cibernetica-en-el-breu-diccionari-filosofic-1954/">this older entry<span class="box-shadow lang-code">ca</span></a><a href="/es/2020/04/cibernetica-en-el-breve-diccionario-filosofico-1954/" class="box-shadow lang-code">es</a> from a 1954 edition, where it is dubbed a “reactionary pseudoscience”, “mechanicist” and “idealist”. In contrast, in this edition cybernetics is “against” idealist philosophy.</em></p>
 
 <hr class="wp-block-separator is-style-wide" />
 

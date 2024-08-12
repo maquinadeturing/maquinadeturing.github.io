@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ca">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">
@@ -10,50 +10,97 @@
 	<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
 	<link rel="dns-prefetch" href="https://s.w.org/">
 	<link rel="stylesheet" id="eightbit-style-css" href="/assets/css/style.css" type="text/css" media="all">
-	<link rel="stylesheet" id="fonts-css" href="/assets/css/fonts.css" type="text/css" media="all">
-	<style type="text/css" id="wp-custom-css">
-		@media screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 400px),
-		screen and (min-resolution: 192dpi) and (max-width: 400px),
-		screen and (min-resolution: 2dppx) and (max-width: 400px),
-		screen and (max-resolution: 1dppx) and (max-width: 400px) {
+	<style>/* inlined.css */
+html {
+    font-size: 20px;
+    --font-title: "Pixelar", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: "Barlow", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size-18: .9rem;
+    --color-text: hsl(0, 0%, 0%);
+    --color-indifferent: hsl(0, 0%, 40%);
+    --color-accent: hsl(120, 95%, 42%);
+    --color-title: hsl(285, 4%, 21%);
+    --color-border: hsl(285, 4%, 21%);
+    --color-bg: hsl(0, 0%, 100%);
+}
 
-			article p {
-				line-height: 1.2;
-			}
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
-			.grid__single .grid__item>article {
-				padding: 1rem;
-			}
+body {
+    margin: 0;
+    font-size: var(--font-size-18);
+    font-family: var(--font-body);
+    line-height: 1.8;
+    color: var(--color-text);
+    overflow-x: hidden;
+    font-weight: normal;
+    background: url("/assets/img/dots.svg") var(--color-bg);
+    background-size: 2px 2px;
+    background-attachment: fixed;
+}
 
-		}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-title);
+    color: var(--color-title);
+    margin: 1em 0 .5em 0;
+    line-height: 1.4;
+    font-weight: normal;
+}
 
-		pre {
-			max-width: 650px;
-			overflow: auto;
-		}
-	</style>
-	<style type="text/css" media="screen">
-		.footnote_tooltip {
-			display: none;
-			padding: 12px;
-			font-size: 13px;
-			background-color: #ffffff;
-			border-width: 1px;
-			border-style: solid;
-			border-color: #cccc99;
-			border-radius: 3px;
-			-webkit-box-shadow: 2px 2px 11px #666666;
-			-moz-box-shadow: 2px 2px 11px #666666;
-			box-shadow: 2px 2px 11px #666666;
-		}
-	</style>
+h1 {
+    font-size: 2.4rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.7rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.3rem;
+}
+
+h6 {
+    font-size: 1.1rem;
+}
+</style>
+<script>
+function loadStyleSheet(src){
+    if (document.createStyleSheet) document.createStyleSheet(src);
+    else {
+        var stylesheet = document.createElement('link');
+        stylesheet.href = src;
+        stylesheet.rel = 'stylesheet';
+        stylesheet.type = 'text/css';
+        document.getElementsByTagName('head')[0].appendChild(stylesheet);
+    }
+}
+loadStyleSheet('/assets/css/highlight.css');
+loadStyleSheet('/assets/css/fonts.css');
+</script>
+<script defer src="/assets/js/combined.js"></script>
 
 	<script>
-		var page_lang = "ca";
-		var site_languages = ["ca","en","es",];
+		const page_lang = "ca";
+		const site_languages = ["ca","en","es",];
 	</script>
 	<script defer data-domain="lamaquinadeturing.su" src="https://plausible.factoria.lu/js/script.js"></script>
-	<script type="text/javascript" src="/assets/js/combined.js"></script>
 </head>
 
 <body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
@@ -186,9 +233,11 @@
         </header>
         <div class="entry-content" itemprop="articleBody">
             
+            
             <div class="entry-thumbnail-single landscape" itemprop="image">
-                <img src="/assets/media/breve-diccionario-filosofico.jpg" class="attachment-large size-large wp-post-image" alt="" width="580" height="410">
+                <img src="/assets/media/breve-diccionario-filosofico.jpg" srcset="/assets/media/breve-diccionario-filosofico_opt698.jpg 698w, /assets/media/breve-diccionario-filosofico_opt1078.jpg 1078w" sizes="(max-width: 800px) 698px, (max-width: 1200px) 1078px, 698px" class="attachment-large size-large wp-post-image" alt="“Cibernètica” (en el Breu diccionari filosòfic, 1954)">
             </div>
+            
             
 
             
@@ -265,6 +314,16 @@
     <div id="recent-posts-2" class="widget element__frame widget_recent_entries">
         <h3 class="widget-title">Entrades recents</h3>
         <ul>
+            
+                
+            <li>
+                <a href="/en/2024/08/implementing-search-function-in-static-web-site/">Implementing the search function in a static web site</a>
+                
+                    <a href="/en/2024/08/implementing-search-function-in-static-web-site/" class="box-shadow lang-code">en</a>
+                    
+                    
+                
+            </li>
             
                 
             <li>
