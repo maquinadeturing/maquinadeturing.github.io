@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-08-13T18:51:58+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Implementing the search function in a static web site</title><link href="https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site/" rel="alternate" type="text/html" title="Implementing the search function in a static web site" /><published>2024-08-09T11:00:00+00:00</published><updated>2024-08-09T11:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site/"><![CDATA[<p>Static web sites are the best. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is <em>searching</em>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-08-15T18:46:38+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="ca"><title type="html">Aquest lloc web no utilitza galetes</title><link href="https://lamaquinadeturing.su/ca/2024/08/aquest-lloc-web-no-utilitza-galetes/" rel="alternate" type="text/html" title="Aquest lloc web no utilitza galetes" /><published>2024-08-14T17:00:00+00:00</published><updated>2024-08-14T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/ca/2024/08/aquest-lloc-web-no-utilitza-galetes</id><content type="html" xml:base="https://lamaquinadeturing.su/ca/2024/08/aquest-lloc-web-no-utilitza-galetes/"><![CDATA[<p><strong>Aquest lloc web no utilitza galetes.</strong></p>
+
+<p>No recull les teves dades per millorar la teva experiència de navegació, ni serveix anuncis personalitzats ni analitza el teu trànsit.</p>
+
+<p>No has de consentir a res per a una experiència de navegació òptima.</p>
+
+<p>No has de configurar la vostra configuració de privacitat a través d’una llista de centenars de socis.</p>
+
+<p><strong>Aquest lloc web no sap si estàs utilitzant un bloquejador d’anuncis.</strong></p>
+
+<p>Aquest lloc web no depèn de la publicitat, per tant, no desactivis el bloqueig d’anuncis. Si en tens un, no dubtis a habilitar-lo.</p>
+
+<p>Si no tens un bloquejador d’anuncis, et recomano que n’instal·lis un. Si el teu navegador no ho admet, considera canviar a un navegador diferent.</p>
+
+<p><strong>Aquest lloc web no té una versió sense anuncis de pagament.</strong></p>
+
+<p>No has de triar entre una subscripció de pagament o consentir que centenars d’intermediaris de dades rastregin i venguin les teves dades personals.</p>
+
+<p>Altres llocs web requereixen una subscripció per accedir al seu contingut, la qual cosa està bé. Però això és diferent del model de “pagar o consentir”.</p>]]></content><author><name></name></author><category term="Web" /><summary type="html"><![CDATA[Aquest lloc web no utilitza galetes.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/questioning-moon.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/questioning-moon.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">This website does not use cookies</title><link href="https://lamaquinadeturing.su/en/2024/08/this-website-does-not-use-cookies/" rel="alternate" type="text/html" title="This website does not use cookies" /><published>2024-08-14T17:00:00+00:00</published><updated>2024-08-14T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/08/this-website-does-not-use-cookies</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/08/this-website-does-not-use-cookies/"><![CDATA[<p><strong>This website does not use cookies.</strong></p>
+
+<p>It does not collect your data to enhance your browsing experience, nor serve personalized ads or analyze your traffic.</p>
+
+<p>You do not have to consent to anything for an optimal browsing experience.</p>
+
+<p>You do not have to configure your privacy settings over a list of hundreds of partners.</p>
+
+<p><strong>This website does not know if you are using an ad blocker.</strong></p>
+
+<p>This website does not rely on advertising, so please do not disable your ad blocker. If you have it, feel free to enable it.</p>
+
+<p>If you do not have an ad blocker, I recommend you to install one. If your browser does not support it, consider switching to a different browser.</p>
+
+<p><strong>This website does not have a paid ad-free version.</strong></p>
+
+<p>You do not have to choose between a paid subscription or consenting to hundreds of data brokers tracking and selling your personal data.</p>
+
+<p>Some other websites require a subscription to access their content, which is fine. But that is different than the “pay or consent” model.</p>]]></content><author><name></name></author><category term="Web" /><summary type="html"><![CDATA[This website does not use cookies.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/questioning-moon.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/questioning-moon.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="es"><title type="html">Esta web no utiliza cookies</title><link href="https://lamaquinadeturing.su/es/2024/08/esta-web-no-utiliza-cookies/" rel="alternate" type="text/html" title="Esta web no utiliza cookies" /><published>2024-08-14T17:00:00+00:00</published><updated>2024-08-14T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/es/2024/08/esta-web-no-utiliza-cookies</id><content type="html" xml:base="https://lamaquinadeturing.su/es/2024/08/esta-web-no-utiliza-cookies/"><![CDATA[<p><strong>Este sitio web no utiliza cookies.</strong></p>
+
+<p>No recoge tus datos para mejorar su experiencia de navegación, ni sirve anuncios personalizados ni analiza tu tráfico.</p>
+
+<p>No tienes que consentir a nada para una experiencia de navegación óptima.</p>
+
+<p>No tienes que configurar tus opciones de privacidad a través de una lista de centenares de socios.</p>
+
+<p><strong>Este sitio web no sabe si estás utilizando un bloqueador de anuncios.</strong></p>
+
+<p>Este sitio web no depende de la publicidad, por lo tanto, no desactives el bloqueo de anuncios. Si lo tienes, no dudes en habilitarlo.</p>
+
+<p>Si no tienes un bloqueador de anuncios, te recomiendo que instales uno. Si tu navegador no lo admite, considera cambiar a un navegador diferente.</p>
+
+<p><strong>Este sitio web no tiene una versión sin anuncios de pago.</strong></p>
+
+<p>No tienes que elegir entre una suscripción de pago o consentir que centenares de intermediarios de datos rastreen y vendan tus datos personales.</p>
+
+<p>Otros sitios web requieren una suscripción para acceder a su contenido, lo cual está bien. Pero esto es diferente al modelo de “pagar o consentir”.</p>]]></content><author><name></name></author><category term="Web" /><summary type="html"><![CDATA[Este sitio web no utiliza cookies.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/questioning-moon.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/questioning-moon.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Implementing the search function in a static web site</title><link href="https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site/" rel="alternate" type="text/html" title="Implementing the search function in a static web site" /><published>2024-08-09T11:00:00+00:00</published><updated>2024-08-09T11:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site/"><![CDATA[<p>Static web sites are the best. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is <em>searching</em>.</p>
 
 <h2 id="the-poor-mans-search-function">The poor man’s search function</h2>
 
