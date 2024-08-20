@@ -1106,17 +1106,17 @@ screen and (min-resolution: 2dppx) and (max-width: 1200px),
 screen and (max-resolution: 1dppx) and (max-width: 1024px) {
     #site-header {
         flex-flow: column wrap;
+        margin: 1rem 0.5rem !important;
     }
 
     .grid,
     .grid__single,
     .grid__page {
         grid-template-columns: 100%;
-        margin-top: 5rem;
+        padding: 0.5rem;
     }
 
     .grid__item {
-        margin: 0 3rem 3rem;
         justify-self: center;
     }
 
@@ -1141,6 +1141,22 @@ screen and (max-resolution: 1dppx) and (max-width: 1024px) {
         width: 100%;
         padding: 0;
         top: 20%;
+    }
+
+    article {
+        padding: 1rem !important;
+    }
+
+    blockquote {
+        padding-left: 1rem;
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    blockquote:before {
+        left: -1rem;
+        top: -.5rem;
+        font-size: 2rem;
     }
 }
 
