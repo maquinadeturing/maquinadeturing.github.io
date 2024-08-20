@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cibernética – al servicio del comunismo – La màquina de Turing</title>
-    <meta property="og:title" content="Cibernética – al servicio del comunismo" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://lamaquinadeturing.su/es/2020/05/cibernetica-al-servicio-del-comunismo/" />
-    <meta property="og:image" content="https://lamaquinadeturing.su/assets/media/cybernetics_opt1200.jpg" />
-    <style>/* inlined.css */
+    <meta property="og:title" content="Cibernética – al servicio del comunismo">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lamaquinadeturing.su/es/2020/05/cibernetica-al-servicio-del-comunismo/">
+    <meta property="og:image" content="https://lamaquinadeturing.su/assets/media/cybernetics_opt1200.jpg">
+    <link rel="stylesheet" href="/assets/css/style.css">
+<style>/* inlined.css */
 html {
     font-size: 20px;
     --font-title: "Pixelar", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -42,63 +43,47 @@ body {
     background-attachment: fixed;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-title);
+h1, h2, h3, h4, h5, h6 {
     color: var(--color-title);
     margin: 1em 0 .5em 0;
     line-height: 1.4;
     font-weight: normal;
 }
 
-h1 {
-    font-size: 2.4rem;
-}
+h1 { font-size: 2.4rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.7rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.3rem; }
+h6 { font-size: 1.1rem; }
 
-h2 {
-    font-size: 2rem;
-}
-
-h3 {
-    font-size: 1.7rem;
-}
-
-h4 {
-    font-size: 1.5rem;
-}
-
-h5 {
-    font-size: 1.3rem;
-}
-
-h6 {
-    font-size: 1.1rem;
-}
+article h1 { font-size: 1.7rem; }
+article h2 { font-size: 1.5rem; }
+article h3 { font-size: 1.3rem; }
+article h4 { font-size: 1.1rem; }
+article h5 { font-size: 0.9rem; }
+article h6 { font-size: 0.7rem; }
 </style>
 <script>
-function loadStyleSheet(src){
-    if (document.createStyleSheet) document.createStyleSheet(src);
-    else {
-        var stylesheet = document.createElement('link');
-        stylesheet.href = src;
-        stylesheet.rel = 'stylesheet';
-        stylesheet.type = 'text/css';
-        document.getElementsByTagName('head')[0].appendChild(stylesheet);
+function loadStyleSheets(...sources) {
+    for (const src of sources) {
+        if (document.createStyleSheet) document.createStyleSheet(src);
+        else {
+            var stylesheet = document.createElement('link');
+            stylesheet.href = src;
+            stylesheet.rel = 'stylesheet';
+            stylesheet.type = 'text/css';
+            document.getElementsByTagName('head')[0].appendChild(stylesheet);
+        }
     }
 }
-loadStyleSheet('/assets/css/highlight.css');
-loadStyleSheet('/assets/css/fonts.css');
+loadStyleSheets('/assets/css/combined.css');
 </script>
 <script defer src="/assets/js/combined.js"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
     <link rel="dns-prefetch" href="https://s.w.org/">
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" media="all">
     <script>
         const page_lang = "es";
         const site_languages = ["ca","en","es"];
@@ -111,7 +96,7 @@ loadStyleSheet('/assets/css/fonts.css');
 
         <header id="site-header" itemscope="" itemtype="http://schema.org/WPHeader">
     <div id="branding-wrapper" class="element__frame">
-        <a href="https://lamaquinadeturing.su/es" rel="home" itemscope="" itemtype="http://schema.org/Brand">
+        <a href="https://lamaquinadeturing.su/es" rel="home" itemscope="" itemtype="http://schema.org/Brand" class="link-external">
             <h1 class="site-title" itemprop="name">La màquina de Turing</h1>
         </a>
     </div>
@@ -123,11 +108,11 @@ loadStyleSheet('/assets/css/fonts.css');
             <li class="menu-item"><span>es</span></li>
             
                 
-                    <li class="menu-item"><a href="https://lamaquinadeturing.su/ca">ca</a></li>
+                    <li class="menu-item"><a href="https://lamaquinadeturing.su/ca" class="link-external">ca</a></li>
                 
             
                 
-                    <li class="menu-item"><a href="https://lamaquinadeturing.su/en">en</a></li>
+                    <li class="menu-item"><a href="https://lamaquinadeturing.su/en" class="link-external">en</a></li>
                 
             
                 
@@ -144,11 +129,11 @@ loadStyleSheet('/assets/css/fonts.css');
             <li class="menu-item mobile-media"><span>es</span></li>
             
                 
-                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/ca">ca</a></li>
+                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/ca" class="link-external">ca</a></li>
                 
             
                 
-                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/en">en</a></li>
+                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/en" class="link-external">en</a></li>
                 
             
                 
@@ -195,19 +180,7 @@ loadStyleSheet('/assets/css/fonts.css');
             
             
             
-        <li>
-            <a href="https://mastodont.cat/@urixturing">
-                <svg width="65" height="65" viewBox="0 0 61 65" fill="none" version="1.1" id="svg13"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-                    <path
-                        d="M60.7539 14.3904C59.8143 7.40642 53.7273 1.90257 46.5117 0.836066C45.2943 0.655854 40.6819 0 29.9973 0H29.9175C19.2299 0 16.937 0.655854 15.7196 0.836066C8.70488 1.87302 2.29885 6.81852 0.744617 13.8852C-0.00294988 17.3654 -0.0827298 21.2237 0.0561464 24.7629C0.254119 29.8384 0.292531 34.905 0.753482 39.9598C1.07215 43.3175 1.62806 46.6484 2.41704 49.9276C3.89445 55.9839 9.87499 61.0239 15.7344 63.0801C22.0077 65.2244 28.7542 65.5804 35.2184 64.1082C35.9295 63.9428 36.6318 63.7508 37.3252 63.5321C38.8971 63.0329 40.738 62.4745 42.0913 61.4937C42.1099 61.4799 42.1251 61.4621 42.1358 61.4417C42.1466 61.4212 42.1526 61.3986 42.1534 61.3755V56.4773C42.153 56.4557 42.1479 56.4345 42.1383 56.4151C42.1287 56.3958 42.1149 56.3788 42.0979 56.3655C42.0809 56.3522 42.0611 56.3429 42.04 56.3382C42.019 56.3335 41.9971 56.3336 41.9761 56.3384C37.8345 57.3276 33.5905 57.8234 29.3324 57.8156C22.0045 57.8156 20.0336 54.3384 19.4693 52.8908C19.0156 51.6397 18.7275 50.3346 18.6124 49.0088C18.6112 48.9866 18.6153 48.9643 18.6243 48.9439C18.6333 48.9236 18.647 48.9056 18.6643 48.8915C18.6816 48.8774 18.7019 48.8675 18.7237 48.8628C18.7455 48.858 18.7681 48.8585 18.7897 48.8641C22.8622 49.8465 27.037 50.3423 31.2265 50.3412C32.234 50.3412 33.2387 50.3412 34.2463 50.3146C38.4598 50.1964 42.9009 49.9808 47.0465 49.1713C47.1499 49.1506 47.2534 49.1329 47.342 49.1063C53.881 47.8507 60.1038 43.9097 60.7362 33.9301C60.7598 33.5372 60.8189 29.8148 60.8189 29.4071C60.8218 28.0215 61.2651 19.5781 60.7539 14.3904Z"
-                        fill="url(#paint0_linear_89_8)" id="path2" style="fill:#000000" />
-                    <path
-                        d="M50.3943 22.237V39.5876H43.5185V22.7481C43.5185 19.2029 42.0411 17.3949 39.036 17.3949C35.7325 17.3949 34.0778 19.5338 34.0778 23.7585V32.9759H27.2434V23.7585C27.2434 19.5338 25.5857 17.3949 22.2822 17.3949C19.2949 17.3949 17.8027 19.2029 17.8027 22.7481V39.5876H10.9298V22.237C10.9298 18.6918 11.835 15.8754 13.6453 13.7877C15.5128 11.7049 17.9623 10.6355 21.0028 10.6355C24.522 10.6355 27.1813 11.9885 28.9542 14.6917L30.665 17.5633L32.3788 14.6917C34.1517 11.9885 36.811 10.6355 40.3243 10.6355C43.3619 10.6355 45.8114 11.7049 47.6847 13.7877C49.4931 15.8734 50.3963 18.6899 50.3943 22.237Z"
-                        fill="white" id="path4" />
-                </svg>
-            </a>
-        </li>
+        <li><a href="https://mastodont.cat/@urixturing" class="link-mastodon"><img src="/assets/img/mastodon.svg" width="12" height="12"></a></li>
         
     </ul>
     
@@ -218,8 +191,7 @@ loadStyleSheet('/assets/css/fonts.css');
         <section class="grid__single" itemscope="" itemtype="http://schema.org/BlogPost">
 
             <div class="grid__item">
-    <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting" id="post-5"
-        class="element__frame post type-post status-publish format-standard has-post-thumbnail hentry">
+    <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting" id="post-5" class="element__frame post type-post status-publish format-standard has-post-thumbnail hentry">
         <header class="entry-header">
             <span class="posted-on">1 may 2020</span>
             
@@ -254,7 +226,7 @@ loadStyleSheet('/assets/css/fonts.css');
 
 <p><em>En definitiva, es un documento que muestra los usos que se podría haber dado a la tecnología cibernética, y que hoy estamos a tiempo de dar a la tecnología informática.</em></p>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr class="wp-block-separator is-style-wide">
 
 <h2 id="introducción">Introducción</h2>
 
@@ -318,7 +290,7 @@ loadStyleSheet('/assets/css/fonts.css');
 
 <p>Pero ahora este estudio tiene objetivos prácticos. Ahora no estamos completamente satisfechos con la contemplación, observación, medición y almacenamiento de esta información. En el estudio del mundo que nos rodea y de la vida silvestre necesitamos utilizar esta información para satisfacer las necesidades materiales y espirituales del hombre, para facilitar su trabajo.</p>
 
-<hr class="wp-block-separator" />
+<hr class="wp-block-separator">
 
 <p>El primer volumen de la colección “Cibernética: al servicio del comunismo” contiene varios artículos cuyo propósito es familiarizar a los lectores con las oportunidades que surgen en el uso práctico de los principios de la cibernética. La colección contiene, además de la introducción, 19 artículos escritos por autores que trabajan directamente en los campos relevantes. Los artículos se agrupan en 4 secciones: la primera sección: recopilación, procesamiento y transmisión de información; segunda cibernética y vida silvestre; la tercera es cibernética y humanidades, y la cuarta sección es cibernética en ciencia y tecnología.</p>
 
@@ -346,7 +318,7 @@ loadStyleSheet('/assets/css/fonts.css');
 
 <p>Los méritos del científico e ingeniero de comunicaciones estadounidense Shannon y muchos otros científicos soviéticos y extranjeros, que sentaron las bases de la teoría general de la comunicación y la teoría matemática, más precisamente, probabilística y de información estadística, son bien conocidos. La aplicabilidad de las disposiciones de la teoría del ego a los problemas de transmisión de información a través de canales inanimados no está en duda. Los intentos de extenderlo a los organismos vivos aún no han dado un resultado positivo, y quizás en este caso es necesario utilizar categorías completamente diferentes. Nos parece que la colección “Teoría de la información en biología”, que fue publicada en la URSS en 1960 por la Editorial de Literatura Extranjera, es de considerable interés a este respecto.</p>
 
-<p>Nuestra colección contiene un artículo de R. L. Dobrushin y Y. I. Khurtin, “Preguntas en la teoría de la información”. Interesará a los lectores planteando algunas preguntas, aunque leer este artículo requiere cierta preparación matemática. Los autores están tratando de formular y explicar algunos problemas de codificación óptima de la información, y nos parece que tuvieron éxito. La literatura sobre teoría de la información es muy significativa. Los autores enumeran una serie de trabajos que merecen atención a la luz de los problemas que están considerando. Es interesante notar que en el apéndice del <em><a href="https://ca.wikipedia.org/wiki/IRE">Institute of Radio Engineers</a> <a href="https://en.wikipedia.org/wiki/IEEE_Transactions_on_Information_Theory">Transactions on Information Theory</a></em>, nº 2, junio de 1956, contiene <a href="https://ieeexplore.ieee.org/document/1056783">“Una bibliografía de literatura soviética sobre la teoría de la información, correlación y ruido”</a>, compilada en los EEUU, que contiene alrededor de 150 títulos. En el segundo volumen de nuestra colección, tenemos la intención de imprimir varios artículos sobre información interpretada desde el punto de vista de la cibernética teórica. Estos incluyen, por ejemplo, los problemas de percepción y reconocimiento de imágenes en la naturaleza viva. Estos problemas atraen cada vez más la atención de psicólogos y fisiólogos, así como de especialistas en máquinas electrónicas que trabajan en el campo del autoaprendizaje y autoajuste. Hasta cierto punto, estos problemas se plantean en un artículo de A. V. Napalkov, colocado en la segunda sección de esta colección.</p>
+<p>Nuestra colección contiene un artículo de R. L. Dobrushin y Y. I. Khurtin, “Preguntas en la teoría de la información”. Interesará a los lectores planteando algunas preguntas, aunque leer este artículo requiere cierta preparación matemática. Los autores están tratando de formular y explicar algunos problemas de codificación óptima de la información, y nos parece que tuvieron éxito. La literatura sobre teoría de la información es muy significativa. Los autores enumeran una serie de trabajos que merecen atención a la luz de los problemas que están considerando. Es interesante notar que en el apéndice del <em><a href="https://ca.wikipedia.org/wiki/IRE" class="link-wikipedia">Institute of Radio Engineers</a> <a href="https://en.wikipedia.org/wiki/IEEE_Transactions_on_Information_Theory" class="link-wikipedia">Transactions on Information Theory</a></em>, nº 2, junio de 1956, contiene <a href="https://ieeexplore.ieee.org/document/1056783" class="link-external">“Una bibliografía de literatura soviética sobre la teoría de la información, correlación y ruido”</a>, compilada en los EEUU, que contiene alrededor de 150 títulos. En el segundo volumen de nuestra colección, tenemos la intención de imprimir varios artículos sobre información interpretada desde el punto de vista de la cibernética teórica. Estos incluyen, por ejemplo, los problemas de percepción y reconocimiento de imágenes en la naturaleza viva. Estos problemas atraen cada vez más la atención de psicólogos y fisiólogos, así como de especialistas en máquinas electrónicas que trabajan en el campo del autoaprendizaje y autoajuste. Hasta cierto punto, estos problemas se plantean en un artículo de A. V. Napalkov, colocado en la segunda sección de esta colección.</p>
 
 <p>Dado que el procesamiento de la información es la base de la gestión, se imprime en la colección un artículo de K. B. Arutyunov y D. V. Svecharnik “Selección, procesamiento primario, almacenamiento y transmisión de información sobre el curso de los procesos de producción”. Considera las peculiaridades de la actividad de información en la producción en comparación con los organismos vivos. Se destaca y explica la conveniencia excepcional de todo el mecanismo y dispositivo para transmitir información y su almacenamiento en organismos vivos. Es especialmente importante mantener la alta confiabilidad de estos procesos. En la vida silvestre, esto está garantizado por la interacción de todos los elementos estructurales y funcionales involucrados en este proceso. Gracias a esto, durante millones de años, por medio de la selección natural y la adaptación a las condiciones ambientales, esas especies han sobrevivido en las que el trabajo conjunto de una gran cantidad de elementos menos confiables garantiza una confiabilidad extremadamente alta. Desafortunadamente, la lucha por mejorar la confiabilidad de los instrumentos, herramientas y sistemas de recopilación, almacenamiento y procesamiento de datos que deben usarse en la industria apenas está comenzando, y la situación en esta área aún debe ser reconocida como insatisfactoria. Las preguntas planteadas en el artículo anterior son muy relevantes. Planeamos en el segundo volumen, en 1962, desarrollar significativamente la sección de información y, en particular, colocar varios artículos sobre instrumentación científica, ya que el equipo de laboratorios científicos con estos dispositivos que no satisface las necesidades limita sus capacidades, reduciendo la efectividad del trabajo experimental de investigación de nuestros científicos.</p>
 
@@ -412,7 +384,7 @@ loadStyleSheet('/assets/css/fonts.css');
 
 <p>Debe admitirse que esto a menudo está lejos de ser y no siempre se tiene en cuenta, y hay casos en que las organizaciones de diseño, diseñadores y tecnólogos se olvidan de la persona, creyendo sin ninguna razón que en la era de la automatización, el papel de una persona se vuelve auxiliar y su trabajo se facilita “automáticamente”… En el sistema máquina-autómata-humano, cada enlace, por separado y todo el sistema en su conjunto, debería funcionar en condiciones óptimas, y en particular esto se aplica a la carga física y psicofisiológica de una persona. En los últimos años, esta posición ha comenzado a ganar reconocimiento. Se presta considerable atención al desarrollo de la ciencia, que se llama psicotecnia. A veces se llama psicología de ingeniería.</p>
 
-<p>Recordemos que en 1936 se publicó un decreto especial del Comité Central del Partido Comunista de Bolcheviques de toda la Unión el 4 de julio, <a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F(%D0%B1)_%D0%BE%D1%82_4.07.1936_%D0%BE_%D0%BF%D0%B5%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85_%D0%B8%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%D1%85_%D0%B2_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5_%D0%9D%D0%B0%D1%80%D0%BA%D0%BE%D0%BC%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2">“Sobre las distorsiones paidológicas en el sistema del Comisariado Popular de Educación”</a>.<sup id="fnref:10" role="doc-noteref"><a href="#fn:10" class="footnote" rel="footnote">10</a></sup> Esta decisión se dirigió contra errores ideológicos y metodológicos graves que se cometieron durante el examen del desarrollo mental y el talento de los escolares. Como resultado de estos errores, cada vez más niños se inscribieron en la categoría de retrasados ​​mentales, “defectuosos” y “difíciles” [sic]. Para corregir estos errores, el Comité Central del Partido Comunista de Bolcheviques de toda la Unión decidió: 1) restauración de pleno derecho de la pedagogía y los educadores; 2) eliminar el vínculo de los paidólogos con las escuelas y retirar los libros de texto paidológicos, etc. Esta solución eliminó toda una gama de errores cometidos en la pedagogía. Sin embargo, desafortunadamente, pronto resultó que algunos psicólogos entendieron esta instrucción del Comité Central del Partido Comunista de Bolcheviques de toda la Unión como una condena de toda la investigación sobre psicología del trabajo.</p>
+<p>Recordemos que en 1936 se publicó un decreto especial del Comité Central del Partido Comunista de Bolcheviques de toda la Unión el 4 de julio, <a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F(%D0%B1)_%D0%BE%D1%82_4.07.1936_%D0%BE_%D0%BF%D0%B5%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85_%D0%B8%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%D1%85_%D0%B2_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5_%D0%9D%D0%B0%D1%80%D0%BA%D0%BE%D0%BC%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2" class="link-external">“Sobre las distorsiones paidológicas en el sistema del Comisariado Popular de Educación”</a>.<sup id="fnref:10" role="doc-noteref"><a href="#fn:10" class="footnote" rel="footnote">10</a></sup> Esta decisión se dirigió contra errores ideológicos y metodológicos graves que se cometieron durante el examen del desarrollo mental y el talento de los escolares. Como resultado de estos errores, cada vez más niños se inscribieron en la categoría de retrasados ​​mentales, “defectuosos” y “difíciles” [sic]. Para corregir estos errores, el Comité Central del Partido Comunista de Bolcheviques de toda la Unión decidió: 1) restauración de pleno derecho de la pedagogía y los educadores; 2) eliminar el vínculo de los paidólogos con las escuelas y retirar los libros de texto paidológicos, etc. Esta solución eliminó toda una gama de errores cometidos en la pedagogía. Sin embargo, desafortunadamente, pronto resultó que algunos psicólogos entendieron esta instrucción del Comité Central del Partido Comunista de Bolcheviques de toda la Unión como una condena de toda la investigación sobre psicología del trabajo.</p>
 
 <p>En la revista teórica y política del Comité Central del PCUS “Comunista”, nº 4 de 1956, es decir, 20 años después de la publicación de la resolución anterior, se publicó un editorial con el título titulado “Fortalecer la conexión de la ciencia psicológica con la práctica”. Confirmando la total inadmisibilidad de la repetición de errores antiguos y condenados en el campo de la psicología y la paidología, el artículo habló de la necesidad de estudiar y desarrollar los fundamentos científicos del desarrollo de la psique humana para estudiar las condiciones psicológicas para la organización efectiva de las actividades de las personas, especialmente su trabajo. Se trata de las enormes tareas que enfrentan los científicos en materia de un estudio amplio e integral de la psicología del trabajo, los factores psicológicos del aumento de la productividad laboral, el dominio de la tecnología avanzada y los métodos avanzados de trabajo, y el hecho de que el progreso tecnológico aumenta aún más la importancia y la eficacia de la aplicación de datos de la psicología del trabajo. Se recomienda asegurar la conexión directa entre la psicología y la práctica, organizar laboratorios psicológicos científico-prácticos en grandes empresas, en instituciones médicas, en la formación de mano de obra.</p>
 
@@ -475,7 +447,7 @@ loadStyleSheet('/assets/css/fonts.css');
 
 <p>Nuestra colección contiene un artículo sustancial del cand. de Ciencias Económicas V. D. Belkin “Cibernética y economía”. El autor enfatiza que bajo el socialismo es bastante posible crear un sistema automatizado integrado para administrar la economía del país, y esto tendrá un efecto mucho mayor que en los países capitalistas, que ya utilizan parcialmente la automatización en secciones separadas de la economía, pero que no pueden extender este método a la economía de todo el país.</p>
 
-<p>En la colección “Problemas de cibernética” nº 5 (Fizmatgiz<sup id="fnref:11" role="doc-noteref"><a href="#fn:11" class="footnote" rel="footnote">11</a></sup>) editada por A. A. Lyapunov, se colocan dos artículos de planificación muy importantes. El artículo de <a href="https://en.wikipedia.org/wiki/Julius_Anatolyevich_Schrader">Yu. A. Schreider</a>, “El problema de planificación dinámica y los autómatas”, es una generalización y desarrollo de la monografía de <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">R. Bellman</a> sobre planificación dinámica, publicada en los Estados Unidos en 1957. Yu. A. Schreider describe un esquema que nos permite plantear el problema general de la planificación dinámica y derivar la principal ecuación funcional y establecer las propiedades básicas de sus soluciones. El artículo de E. G. Holshtein y D. B. Yudin, “Sobre una clase de problemas de planificación de la economía nacional”, contiene el desarrollo de algunos métodos especiales para resolver ciertos problemas importantes de programación lineal que permiten una reducción significativa en el trabajo computacional.</p>
+<p>En la colección “Problemas de cibernética” nº 5 (Fizmatgiz<sup id="fnref:11" role="doc-noteref"><a href="#fn:11" class="footnote" rel="footnote">11</a></sup>) editada por A. A. Lyapunov, se colocan dos artículos de planificación muy importantes. El artículo de <a href="https://en.wikipedia.org/wiki/Julius_Anatolyevich_Schrader" class="link-wikipedia">Yu. A. Schreider</a>, “El problema de planificación dinámica y los autómatas”, es una generalización y desarrollo de la monografía de <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman" class="link-wikipedia">R. Bellman</a> sobre planificación dinámica, publicada en los Estados Unidos en 1957. Yu. A. Schreider describe un esquema que nos permite plantear el problema general de la planificación dinámica y derivar la principal ecuación funcional y establecer las propiedades básicas de sus soluciones. El artículo de E. G. Holshtein y D. B. Yudin, “Sobre una clase de problemas de planificación de la economía nacional”, contiene el desarrollo de algunos métodos especiales para resolver ciertos problemas importantes de programación lineal que permiten una reducción significativa en el trabajo computacional.</p>
 
 <p>Nos detenemos en más detalles sobre la situación de la ciencia económica porque es especialmente importante. De hecho, al final, la única evaluación objetiva de todas nuestras acciones en el campo de la mecanización, la automatización, la expansión de la producción, la colocación de nuevos sitios de construcción, el uso de métodos de planificación más avanzados y todos nuestros esfuerzos para aumentar el ritmo del progreso científico y tecnológico es su eficiencia económica. No podemos permitirnos el lujo de no calcular con precisión en el campo de la economía. Al cumplir con las tareas de nuestro grupo establecidas en el nuevo programa, ya no podemos soportar el problema incompleto de fijación de precios, esta base de todos los cálculos económicos.</p>
 
@@ -549,7 +521,7 @@ loadStyleSheet('/assets/css/fonts.css');
 
 <p>“La electrificación, que es el núcleo de la construcción de la economía de la sociedad comunista, desempeña un papel de liderazgo en el desarrollo de todos los sectores de la economía nacional, asegurando todo el progreso tecnológico moderno. Por lo tanto, es necesario garantizar un ritmo más rápido de producción de electricidad”. Dicha evaluación se da en el borrador del Programa de electrificación de PCUS del país.</p>
 
-<p>Hace más de 40 años, en 1920, se desarrolló el primer plan maestro para el desarrollo de la economía nacional de la Rusia soviética, que sigue siendo de gran importancia como ejemplo de un prometedor plan económico nacional estatal. En el VIII Congreso de los Soviets de toda Rusia en diciembre de 1920, Vladimir Ilich Lenin describió el plan para la electrificación de Rusia, que fue revisado por la Comisión Estatal por la Electrificación de Rusia (<a href="https://es.wikipedia.org/wiki/GOELRO">GOELRO</a>), como el segundo programa del partido, como un gran plan económico que indica la forma de transferir a la Rusia atrasada a una nueva base económica, necesaria para la construcción del comunismo. “Tal base”, dijo Vladimir Ilich, “es solo electricidad. El comunismo es el poder soviético más la electrificación de todo el país” (obras completas<sup id="fnref:1:2" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, 4ª ed., vol. 31, p. 486).</p>
+<p>Hace más de 40 años, en 1920, se desarrolló el primer plan maestro para el desarrollo de la economía nacional de la Rusia soviética, que sigue siendo de gran importancia como ejemplo de un prometedor plan económico nacional estatal. En el VIII Congreso de los Soviets de toda Rusia en diciembre de 1920, Vladimir Ilich Lenin describió el plan para la electrificación de Rusia, que fue revisado por la Comisión Estatal por la Electrificación de Rusia (<a href="https://es.wikipedia.org/wiki/GOELRO" class="link-wikipedia">GOELRO</a>), como el segundo programa del partido, como un gran plan económico que indica la forma de transferir a la Rusia atrasada a una nueva base económica, necesaria para la construcción del comunismo. “Tal base”, dijo Vladimir Ilich, “es solo electricidad. El comunismo es el poder soviético más la electrificación de todo el país” (obras completas<sup id="fnref:1:2" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, 4ª ed., vol. 31, p. 486).</p>
 
 <p>El valor para establecer metas para el plan GOELRO solo puede evaluarse si tenemos en cuenta la situación en el país en 1919-1920. Si en 1913 se generaron alrededor de 1.9-2.0 miles de millones de kWh de electricidad en Rusia, entonces en 1920 se generó 4 veces menos, alrededor de 0.5 miles de millones de kWh. Al mismo tiempo en los EE. UU. se generaron 50×10<sup>9</sup> kWh, es decir, 100 veces más. Después de 40 años, la imagen cambió dramáticamente. En 1960, se produjeron 292×10<sup>9</sup> en la URSS y alrededor de 900×10<sup>9</sup> kWh (en las terminales de las centrales eléctricas) en los Estados Unidos, es decir, “solo” 3 veces más. Pero si no hubiera habido la Segunda Guerra Mundial, que no solo se detuvo, sino que también retrasó el desarrollo de la electrificación de la URSS y no hizo daño a los Estados Unidos, entonces habríamos generado del 40 al 50% de la capacidad de generación de electricidad en los EE. UU en 1960.</p>
 
@@ -652,53 +624,53 @@ loadStyleSheet('/assets/css/fonts.css');
   <p>El progreso de la ciencia y la tecnología en las condiciones de un sistema económico socialista permite el uso más eficiente de la riqueza y la naturaleza de la naturaleza en interés de las personas, para descubrir nuevos tipos de energía, crear nuevos materiales, desarrollar métodos para influir en las condiciones climáticas y dominar el espacio exterior. La aplicación de la ciencia se convierte en un factor decisivo en el poderoso crecimiento de las fuerzas productivas de la sociedad. El desarrollo de la ciencia y la introducción de sus logros en la economía nacional seguirá siendo de particular interés para el partido.</p>
 </blockquote>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr class="wp-block-separator is-style-wide">
 
 <h2 id="notas">Notas</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>NdT: Obras completas de V. I. Lenin, 4ª ed., Gospolitizdat, 1950. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:1:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a></p>
+      <p>NdT: Obras completas de V. I. Lenin, 4ª ed., Gospolitizdat, 1950. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">↩<sup>2</sup></a> <a href="#fnref:1:2" class="reversefootnote" role="doc-backlink">↩<sup>3</sup></a></p>
     </li>
     <li id="fn:2" role="doc-endnote">
-      <p>NdT: Pravda, “La Verdad”, órgano de expresión del PCUS. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Pravda, “La Verdad”, órgano de expresión del PCUS. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:3" role="doc-endnote">
-      <p>NdT: El concepto de “información” fue problemático en el marxismo dogmático del estalinismo. Para el materialismo mal entendido de los censores estalinistas, una cosa que no era materia ni energía solo podía ser un delirio idealista y burgués. Esto explica la cautela con la que Berg trata este tema, tratando de alejar el foco de atención de su la definición con una audaz comparación entre la información, el tiempo y el espacio, para los cuales “no tenemos una definición exacta” pero los “medimos perfectamente con gran precisión”. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: El concepto de “información” fue problemático en el marxismo dogmático del estalinismo. Para el materialismo mal entendido de los censores estalinistas, una cosa que no era materia ni energía solo podía ser un delirio idealista y burgués. Esto explica la cautela con la que Berg trata este tema, tratando de alejar el foco de atención de su la definición con una audaz comparación entre la información, el tiempo y el espacio, para los cuales “no tenemos una definición exacta” pero los “medimos perfectamente con gran precisión”. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:4" role="doc-endnote">
-      <p>NdT: Editorial Estatal de Literatura Energética. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Editorial Estatal de Literatura Energética. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:5" role="doc-endnote">
-      <p>NdT: Periódico económico. <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Periódico económico. <a href="#fnref:5" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:6" role="doc-endnote">
-      <p>NdT: Editorial Política Estatal. <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:6:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+      <p>NdT: Editorial Política Estatal. <a href="#fnref:6" class="reversefootnote" role="doc-backlink">↩</a> <a href="#fnref:6:1" class="reversefootnote" role="doc-backlink">↩<sup>2</sup></a></p>
     </li>
     <li id="fn:7" role="doc-endnote">
-      <p>NdT: Académico era el título de los miembros honorarios de una academia de ciencias de la Unión Soviética, uno de los rangos más altos a nivel científico. <a href="#fnref:7" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Académico era el título de los miembros honorarios de una academia de ciencias de la Unión Soviética, uno de los rangos más altos a nivel científico. <a href="#fnref:7" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:8" role="doc-endnote">
-      <p>S. N. Braines, A. V. Napalkov, V. B. Svechinsky, Notas científicas de la Academia de Ciencias Médicas de la URSS, Instituto de Psiquiatría, “Problemas de Neurocibernética”, 1959. <a href="#fnref:8" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>S. N. Braines, A. V. Napalkov, V. B. Svechinsky, Notas científicas de la Academia de Ciencias Médicas de la URSS, Instituto de Psiquiatría, “Problemas de Neurocibernética”, 1959. <a href="#fnref:8" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:9" role="doc-endnote">
-      <p>NdT: Candidato de ciencias (Кандидат наук) es un título equivalente al doctorado. <a href="#fnref:9" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Candidato de ciencias (Кандидат наук) es un título equivalente al doctorado. <a href="#fnref:9" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:10" role="doc-endnote">
-      <p>NdT: La <a href="https://es.wikipedia.org/wiki/Paidolog%C3%ADa">paidología</a> es una rama de la psicología dedicada al estudio del comportamiento de los niños, a diferencia de la <a href="https://es.wikipedia.org/wiki/Pedagog%C3%ADa">pedagogía</a> que se dedica al estudio de los procesos de enseñanza y aprendizaje. <a href="#fnref:10" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: La <a href="https://es.wikipedia.org/wiki/Paidolog%C3%ADa" class="link-wikipedia">paidología</a> es una rama de la psicología dedicada al estudio del comportamiento de los niños, a diferencia de la <a href="https://es.wikipedia.org/wiki/Pedagog%C3%ADa" class="link-wikipedia">pedagogía</a> que se dedica al estudio de los procesos de enseñanza y aprendizaje. <a href="#fnref:10" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:11" role="doc-endnote">
-      <p>NdT: Izdatelstvo fíziko-matematicheskói i tejnicheskói literatury, “Editorial para la literatura físico-matemática y técnica. <a href="#fnref:11" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Izdatelstvo fíziko-matematicheskói i tejnicheskói literatury, “Editorial para la literatura físico-matemática y técnica. <a href="#fnref:11" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:12" role="doc-endnote">
-      <p>NdT: El <em>Symposium on Mechanisation of Thought Processes</em> fue el primer simposio internacional sobre inteligencia artificial, donde acudieron pioneros de este campo como Marvin L. Minsky o John McCarthy (el autor del término “inteligencia artificial”). La inteligencia artificial, propuesta en el encuentro de Darthmouth en 1956 y discutida en el simposio de Teddington en 1958, tuvo una coexistencia difícil con la cibernética. Posteriormente, los proponentes de la inteligencia artificial conseguirían acaparar la financiación para sus proyectos, <a href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">desterrando la cibernética hacia otros campos como las ciencias sociales</a>. <a href="#fnref:12" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: El <em>Symposium on Mechanisation of Thought Processes</em> fue el primer simposio internacional sobre inteligencia artificial, donde acudieron pioneros de este campo como Marvin L. Minsky o John McCarthy (el autor del término “inteligencia artificial”). La inteligencia artificial, propuesta en el encuentro de Darthmouth en 1956 y discutida en el simposio de Teddington en 1958, tuvo una coexistencia difícil con la cibernética. Posteriormente, los proponentes de la inteligencia artificial conseguirían acaparar la financiación para sus proyectos, <a href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/" class="link-external">desterrando la cibernética hacia otros campos como las ciencias sociales</a>. <a href="#fnref:12" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:13" role="doc-endnote">
-      <p>NdT: Quizá la International Conference for Standards on a Common Language for Machine Searching and Translation celebrada en la Western Reserve University, Cleveland. <a href="#fnref:13" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Quizá la International Conference for Standards on a Common Language for Machine Searching and Translation celebrada en la Western Reserve University, Cleveland. <a href="#fnref:13" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:14" role="doc-endnote">
-      <p>NdT: Economía Planificada. <a href="#fnref:14" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Economía Planificada. <a href="#fnref:14" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>
@@ -751,6 +723,16 @@ loadStyleSheet('/assets/css/fonts.css');
             
                 
             <li>
+                <a href="/en/2024/08/the-case-for-a-better-web/">The case for a better web</a>
+                
+                    <a href="/en/2024/08/the-case-for-a-better-web/" class="box-shadow lang-code">en</a>
+                    
+                    
+                
+            </li>
+            
+                
+            <li>
                 <a href="/es/2024/08/esta-web-no-utiliza-cookies/">Esta web no utiliza cookies</a>
                 
             </li>
@@ -778,12 +760,6 @@ loadStyleSheet('/assets/css/fonts.css');
                 
             <li>
                 <a href="/es/2020/05/cibernetica-al-servicio-del-comunismo/">Cibernética – al servicio del comunismo</a>
-                
-            </li>
-            
-                
-            <li>
-                <a href="/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">Cuando la inteligencia artificial desplazó la cibernética</a>
                 
             </li>
             
@@ -827,7 +803,7 @@ loadStyleSheet('/assets/css/fonts.css');
         
 
         <footer id="site-footer" itemscope="" itemtype="http://schema.org/WPFooter">
-    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ca">CC BY-SA</a> · La màquina de Turing ·
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ca" class="link-external">CC BY-SA</a> · La màquina de Turing ·
     <a href="/es/2024/08/esta-web-no-utiliza-cookies/">Este sitio web no utiliza cookies</a>
 </footer>
     </div>

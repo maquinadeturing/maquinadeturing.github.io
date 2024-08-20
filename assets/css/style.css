@@ -337,6 +337,7 @@ blockquote:before {
 .site-title {
     margin: 0;
     padding: .5rem 1rem 0 1rem;
+    font-family: var(--font-title);
     font-size: 1.8rem;
     display: inline-block;
     color: var(--color-title);
@@ -379,6 +380,7 @@ blockquote:before {
     line-height: 1.1;
     font-size: 2rem;
     color: var(--color-title);
+    font-family: var(--font-title);
     font-weight: normal;
 }
 
@@ -733,7 +735,7 @@ ul.page-numbers li a {
     display: block;
 }
 
-.social-media-profiles svg {
+.social-media-profiles img {
     height: 12px;
 }
 
@@ -752,7 +754,7 @@ ul.page-numbers li a {
     margin-right: 2rem;
 }
 
-.social-media-share svg {
+.social-media-share img {
     height: 16px;
     margin-right: .5rem;
     fill: var(--color-accent);
