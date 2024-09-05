@@ -407,6 +407,20 @@ article.element__frame.flex__quarter,
     filter: grayscale(0);
 }
 
+/* Touch screen device */
+@media (hover: none) {
+    .grid__item article a.entry-thumbnail img {
+        -webkit-filter: none;
+        filter: none;
+        transition: none;
+    }
+
+    .grid__item article:hover a.entry-thumbnail img {
+        -webkit-filter: none;
+        filter: none;
+    }
+}
+
 .category-name {
     color: var(--color-text);
     font-size: var(--font-size-18);
