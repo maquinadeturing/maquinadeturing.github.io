@@ -222,13 +222,13 @@ loadStyleSheets('/assets/css/combined.css');
 
             <p>Static web sites <a href="/en/2024/08/the-case-for-a-better-web/">are the best</a>. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is <em>searching</em>.</p>
 
-<h2 id="the-poor-mans-search-function">The poor man’s search function</h2>
+<h2 id="heading-the-poor-mans-search-function">The poor man’s search function</h2>
 
 <p>Usually, the alternative has been the <code class="language-plaintext highlighter-rouge">site:</code> operator in Google: a form in your website would transform the search string into a <code class="language-plaintext highlighter-rouge">site:</code> query and redirect it to Google. Purists can do the same with <a href="https://duckduckgo.com/duckduckgo-help-pages/results/syntax/" class="link-external">DuckDuckGo</a>. But that leaves me relying on notoriously unreliable companies, which can drop this feature at any moment or hide it behind a pawyall.</p>
 
 <p>And I wondered: is there a way to have my own search function?</p>
 
-<h2 id="is-static-search-even-possible">Is static search even possible?</h2>
+<h2 id="heading-is-static-search-even-possible">Is static search even possible?</h2>
 
 <p>My wishlist for a search function was:</p>
 <ol>
@@ -278,7 +278,7 @@ loadStyleSheets('/assets/css/combined.css');
 
 <p>Maybe Lunr was too fancy for me, so I should implement my own search library.</p>
 
-<h2 id="putting-it-down-in-words">Putting it down in words</h2>
+<h2 id="heading-putting-it-down-in-words">Putting it down in words</h2>
 
 <p>The basic functionality of a search function is to map a query to posts that contain them. So a very initial implementation would be to collect all the words from all the posts and map each one to a list of posts. Then, when the user enters a query, the words of such query can be found in the search index.</p>
 
@@ -394,7 +394,7 @@ loadStyleSheets('/assets/css/combined.css');
 
 <p>The current JSON search index in this format for the 7 posts in 3 languages of the site is 52 KB. Not bad compared to the 141 KB of Lunr for just 3 posts. All in all, 50 KB or 140 KB may be are not very important nowadays, as some images in this site are larger than that. But I’d like this blog to grow enough so the size of the index matters.</p>
 
-<h2 id="wait-doesnt-that-look-like-a-bloom-filter">Wait, doesn’t that look like a Bloom filter?</h2>
+<h2 id="heading-wait-doesnt-that-look-like-a-bloom-filter">Wait, doesn’t that look like a Bloom filter?</h2>
 
 <p>Indeed, why not use a <a href="https://en.wikipedia.org/wiki/Bloom_filter" class="link-wikipedia">Bloom filter</a>, instead of a map of words? After all, a Bloom filter is super compact: 1 bit per word!</p>
 
@@ -410,7 +410,7 @@ loadStyleSheets('/assets/css/combined.css');
 
 <p>I’ll leave that implementation in a branch. Maybe, in the long run, it outperforms the word map.</p>
 
-<h2 id="levenshtein-and-his-friends-burkhard-and-keller">Levenshtein and his friends Burkhard and Keller</h2>
+<h2 id="heading-levenshtein-and-his-friends-burkhard-and-keller">Levenshtein and his friends Burkhard and Keller</h2>
 
 <p>Now that the search index is generated, it’s time to do some searching in the web browser.</p>
 
@@ -513,7 +513,7 @@ loadStyleSheets('/assets/css/combined.css');
 
 <p>In this new code, a BK-Tree is constructed for each word index, and now these trees can be used to search for similar words below a certain threshold with a time complexity of O(log n). That’s more like it.</p>
 
-<h2 id="looking-for-the-headline">Looking for the headline</h2>
+<h2 id="heading-looking-for-the-headline">Looking for the headline</h2>
 
 <p>The fuzzy search function that was implemented above will match similar words. But surely the user, after typing “cyber”, will expect <a href="/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/">“Cybernetics” (in A Dictionary of Philosophy, 1967)</a> to appear in the results.</p>
 
@@ -547,7 +547,7 @@ loadStyleSheets('/assets/css/combined.css');
 
 <p>The previous code takes the words of the search query and checks if they are a substring of a post title. For each word that is a substring of a title, that post gets 1 point. The score of the title search is added to the score of the fuzzy search, and that is how posts are displayed in the search box and how they are sorted.</p>
 
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="heading-conclusion">Conclusion</h2>
 
 <p>I am quite satisfied with the static search function I implemented for this website. It is quite lightweight: 52 KB, compared to the 141 KB of Lunr or the 82 KB of a <em>Bloom map.</em> Still, the search experience feels similar to what can be expected from a full text search. Go ahead and test it yourself.</p>
 
@@ -555,7 +555,7 @@ loadStyleSheets('/assets/css/combined.css');
 
 <p>As the blog grows, maybe I will have to revisit the implementation in case the index becomes too heavy, or it is not very accurate, but for now does the job.</p>
 
-<h2 id="notes">Notes</h2>
+<h2 id="heading-notes">Notes</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
@@ -616,6 +616,12 @@ loadStyleSheets('/assets/css/combined.css');
             
                 
             <li>
+                <a href="/en/2024/09/simple-sabotage-field-manual/">Simple Sabotage Field Manual</a>
+                
+            </li>
+            
+                
+            <li>
                 <a href="/en/2024/08/the-case-for-a-better-web/">The case for a better web</a>
                 
             </li>
@@ -635,16 +641,6 @@ loadStyleSheets('/assets/css/combined.css');
                 
             <li>
                 <a href="/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/">“Cybernetics” (in A Dictionary of Philosophy, 1967)</a>
-                
-            </li>
-            
-                
-            <li>
-                <a href="/es/2020/05/cibernetica-al-servicio-del-comunismo/">Cibernética – al servicio del comunismo</a>
-                
-                    <a href="/es/2020/05/cibernetica-al-servicio-del-comunismo/" class="box-shadow lang-code">es</a>
-                    
-                    
                 
             </li>
             

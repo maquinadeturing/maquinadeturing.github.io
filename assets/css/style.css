@@ -193,6 +193,18 @@ blockquote:before {
     color: var(--color-text);
 }
 
+.textleft {
+    text-align: left;
+}
+
+.textcenter {
+    text-align: center;
+}
+
+.textright {
+    text-align: right;
+}
+
 .alignleft {
     display: inline;
     float: left;
@@ -1121,6 +1133,10 @@ screen and (max-resolution: 1dppx) and (max-width: 1024px) {
     #site-header {
         flex-flow: column wrap;
         margin: 1rem 0.5rem !important;
+    }
+
+    ol {
+        padding-left: 1.5rem;
     }
 
     .grid,
