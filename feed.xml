@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-09-10T19:17:57+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Simple Sabotage Field Manual</title><link href="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/" rel="alternate" type="text/html" title="Simple Sabotage Field Manual" /><published>2024-09-08T17:00:00+00:00</published><updated>2024-09-08T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/"><![CDATA[<p><em>The</em> <a href="https://en.wikisource.org/wiki/Simple_Sabotage_Field_Manual" class="link-wikipedia">Simple Sabotage Field Manual</a> <em>was a collection of simple sabotage techniques gathered by the</em> Office of Strategic Services <em>(predecessor of the CIA) during World War II to be distributed among workers in enemy countries and disrupt their industry and military.</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-09-10T19:59:50+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Simple Sabotage Field Manual</title><link href="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/" rel="alternate" type="text/html" title="Simple Sabotage Field Manual" /><published>2024-09-08T17:00:00+00:00</published><updated>2024-09-08T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/"><![CDATA[<p><em>The</em> <a href="https://en.wikisource.org/wiki/Simple_Sabotage_Field_Manual" class="link-wikipedia">Simple Sabotage Field Manual</a> <em>was a collection of simple sabotage techniques gathered by the</em> Office of Strategic Services <em>(predecessor of the CIA) during World War II to be distributed among workers in enemy countries and disrupt their industry and military.</em></p>
 
 <p><em>Despite being used in 1944, many of its methods will be familiar to 21st century readers. Notably, some techniques come from observing inefficiencies that happen in many organizations “even under normal conditions”, which makes many people inadvertently act as “saboteurs”. For example, by “bringing up irrelevant issues as frequently as possible” or “referring back to matters decided upon at the last meeting and attempting to re-open the question”.</em></p>
 
@@ -29,26 +29,8 @@ Director</p>
 <p id="toc-1" class="toc toc-h2"><a href="#heading-1-introduction">1. Introduction</a></p>
 <p id="toc-2" class="toc toc-h2"><a href="#heading-2-possible-effects">2. Possible Effects</a></p>
 <p id="toc-3" class="toc toc-h2"><a href="#heading-3-motivating-the-saboteur">3. Motivating The Saboteur</a></p>
-<p id="toc-4" class="toc toc-h3"><a href="#heading-1-personal-motives">(1) Personal Motives</a></p>
-<p id="toc-5" class="toc toc-h3"><a href="#heading-2-encouraging-destructiveness">(2) Encouraging Destructiveness</a></p>
-<p id="toc-6" class="toc toc-h3"><a href="#heading-3-safety-measures">(3) Safety Measures</a></p>
-<p id="toc-7" class="toc toc-h2"><a href="#heading-4-tools-targets-and-timing">4. Tools, Targets, And Timing</a></p>
-<p id="toc-8" class="toc toc-h3"><a href="#heading-1-under-general-conditions">(1) Under General Conditions</a></p>
-<p id="toc-9" class="toc toc-h3"><a href="#heading-2-prior-to-a-military-offensive">(2) Prior to a Military Offensive</a></p>
-<p id="toc-10" class="toc toc-h3"><a href="#heading-3-during-a-military-offensive">(3) During a Military Offensive</a></p>
-<p id="toc-11" class="toc toc-h2"><a href="#heading-5-specific-suggestions-for-simple-sabotage">5. Specific Suggestions For Simple Sabotage</a></p>
-<p id="toc-12" class="toc toc-h3"><a href="#heading-1-buildings">(1) Buildings</a></p>
-<p id="toc-13" class="toc toc-h3"><a href="#heading-2-industrial-production-manufacturing">(2) Industrial Production: Manufacturing</a></p>
-<p id="toc-14" class="toc toc-h3"><a href="#heading-3-production-metals">(3) Production. Metals</a></p>
-<p id="toc-15" class="toc toc-h3"><a href="#heading-4-production-mining-and-mineral-extraction">(4) Production: Mining and Mineral Extraction</a></p>
-<p id="toc-16" class="toc toc-h3"><a href="#heading-5-production-agriculture">(5) Production: Agriculture</a></p>
-<p id="toc-17" class="toc toc-h3"><a href="#heading-6-transportation-railways">(6) Transportation: Railways</a></p>
-<p id="toc-18" class="toc toc-h3"><a href="#heading-7-transportation-automotive">(7) Transportation: Automotive</a></p>
-<p id="toc-19" class="toc toc-h3"><a href="#heading-8-transportation-water">(8) Transportation: Water</a></p>
-<p id="toc-20" class="toc toc-h3"><a href="#heading-9-communications">(9) Communications</a></p>
-<p id="toc-21" class="toc toc-h3"><a href="#heading-10-electric-power">(10) Electric Power</a></p>
-<p id="toc-22" class="toc toc-h3"><a href="#heading-11-general-interference-with-organizations-and-production">(11) General Interference with Organizations and Production</a></p>
-<p id="toc-23" class="toc toc-h3"><a href="#heading-12-general-devices-for-lowering-morale-and-creating-confusion">(12) General Devices for Lowering Morale and Creating Confusion</a></p>
+<p id="toc-4" class="toc toc-h2"><a href="#heading-4-tools-targets-and-timing">4. Tools, Targets, And Timing</a></p>
+<p id="toc-5" class="toc toc-h2"><a href="#heading-5-specific-suggestions-for-simple-sabotage">5. Specific Suggestions For Simple Sabotage</a></p>
 </div>
 
 <h2 id="heading-1-introduction" class="heading">1. Introduction <a href="#toc-1" class="toc-back-link">↩</a>
@@ -78,8 +60,7 @@ Director</p>
 
 <p>Simple sabotage is often an act which the citizen performs according to his own initiative and inclination. Acts of destruction do not bring him any personal gain and may be completely foreign to his habitually conservationist attitude toward materials and tools. Purposeful stupidity is contrary to human nature. He frequently needs pressure, stimulation or assurance, and information and suggestions regarding feasible methods of simple sabotage.</p>
 
-<h3 id="heading-1-personal-motives" class="heading">(1) Personal Motives <a href="#toc-4" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-1-personal-motives">(1) Personal Motives</h3>
 
 <p>(a) The ordinary citizen very probably has no immediate personal motive for committing simple sabotage. Instead, he must be made to anticipate indirect personal gain, such as might come with enemy evacuation or destruction of the ruling government group. Gains should be stated as specifically as possible for the area addressed: simple sabotage will hasten the day when Commissioner X and his deputies Y and Z will be thrown out, when particularly obnoxious decrees and restrictions will be abolished, when food will arrive, and so on. Abstract verbalizations about personal liberty, freedom of the press, and so on, will not be convincing in most parts of the world. In many areas they will not even be comprehensible.</p>
 
@@ -87,8 +68,7 @@ Director</p>
 
 <p>(c) More important than (a) or (b) would be to create a situation in which the citizen-saboteur acquires a sense of responsibility and begins to educate others in simple sabotage.</p>
 
-<h3 id="heading-2-encouraging-destructiveness" class="heading">(2) Encouraging Destructiveness <a href="#toc-5" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-2-encouraging-destructiveness">(2) Encouraging Destructiveness</h3>
 
 <p>It should be pointed out to the saboteur where the circumstances are suitable, that he is acting in self-defense against the enemy, or retaliating against the enemy for other acts of destruction. A reasonable amount of humor in the presentation of suggestions for simple sabotage will relax tensions of fear.</p>
 
@@ -100,8 +80,7 @@ Director</p>
 
 <p>(d) Various media may be used to disseminate suggestions and information regarding simple sabotage. Among the media which may be used, as the immediate situation dictates, are: freedom stations or radio false (unreadable) broadcasts or leaflets may be directed toward specific geographic or occupational areas, or they may be general in scope. Finally, agents may be trained in the art of simple sabotage, in anticipation of a time when they may be able to communicate this information directly.</p>
 
-<h3 id="heading-3-safety-measures" class="heading">(3) Safety Measures <a href="#toc-6" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-3-safety-measures">(3) Safety Measures</h3>
 
 <p>(a) The amount of activity carried on by the saboteur will be governed not only by the number of opportunities he sees, but also by the amount of danger he feels. Bad news travels fast, and simple sabotage will be discouraged if too many simple saboteurs are arrested.</p>
 
@@ -122,15 +101,14 @@ Director</p>
   </li>
 </ol>
 
-<h2 id="heading-4-tools-targets-and-timing" class="heading">4. Tools, Targets, And Timing <a href="#toc-7" class="toc-back-link">↩</a>
+<h2 id="heading-4-tools-targets-and-timing" class="heading">4. Tools, Targets, And Timing <a href="#toc-4" class="toc-back-link">↩</a>
 </h2>
 
 <p>The citizen-saboteur cannot be closely controlled. Nor is it reasonable to expect that simple sabotage can be precisely concentrated on specific types of target according to the requirements of a concrete military situation. Attempts to control simple sabotage according to developing military factors, moreover, might provide the enemy with intelligence of more or less value in anticipating the date and area of notably intensified or notably slackened military activity.</p>
 
 <p>Sabotage suggestions, of course, should be adapted to fit the area where they are to be practiced. Target priorities for general types of situations likewise can be specified, for emphasis at the proper time by the underground press, freedom stations, and cooperating propaganda.</p>
 
-<h3 id="heading-1-under-general-conditions" class="heading">(1) Under General Conditions <a href="#toc-8" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-1-under-general-conditions">(1) Under General Conditions</h3>
 
 <p>(a) Simple sabotage is more than malicious mischief, and it should always consist of acts whose results will be detrimental to the materials and manpower of the enemy.</p>
 
@@ -142,13 +120,11 @@ Director</p>
 
 <p>(e) Although the citizen-saboteur may rarely have access to military objects, he should give these preference above all others.</p>
 
-<h3 id="heading-2-prior-to-a-military-offensive" class="heading">(2) Prior to a Military Offensive <a href="#toc-9" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-2-prior-to-a-military-offensive">(2) Prior to a Military Offensive</h3>
 
 <p>During periods which are quiescent in a military sense, such emphasis as can be given to simple sabotage might well center on industrial production, to lessen the flow of materials and equipment to the enemy. Slashing a rubber tire on an Army truck may be an act of value; spoiling a batch of rubber in the production plant is an act of still more value.</p>
 
-<h3 id="heading-3-during-a-military-offensive" class="heading">(3) During a Military Offensive <a href="#toc-10" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-3-during-a-military-offensive">(3) During a Military Offensive</h3>
 
 <p>(a) Most significant sabotage for an area which is, or is soon destined to be, a theater of combat operations is that whose effects will be direct and immediate. Even if the effects are relatively minor and localized, this type of sabotage is to be preferred to activities whose effects, while widespread, are indirect and delayed.</p>
 
@@ -166,15 +142,14 @@ Director</p>
   </li>
 </ol>
 
-<h2 id="heading-5-specific-suggestions-for-simple-sabotage" class="heading">5. Specific Suggestions For Simple Sabotage <a href="#toc-11" class="toc-back-link">↩</a>
+<h2 id="heading-5-specific-suggestions-for-simple-sabotage" class="heading">5. Specific Suggestions For Simple Sabotage <a href="#toc-5" class="toc-back-link">↩</a>
 </h2>
 
 <p>It will not be possible to evaluate the desirability of simple sabotage in an area without having in mind rather specifically what individual acts and results are embraced by the definition of simple sabotage.</p>
 
 <p>A listing of specific acts follows, classified according to types of target. This list is presented as a growing rather than a complete outline of the methods of simple sabotage. As new techniques are developed, or new fields explored, it will be elaborated and expanded.</p>
 
-<h3 id="heading-1-buildings" class="heading">(1) Buildings <a href="#toc-12" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-1-buildings">(1) Buildings</h3>
 
 <p>Warehouses, barracks, offices, hotels, and factory buildings are outstanding targets for simple sabotage. They are extremely susceptible to damage, especially by fire; they offer opportunities to such untrained people as janitors, charwomen, and casual visitors; and, when damaged, they present a relatively large handicap to the enemy.</p>
 
@@ -223,8 +198,7 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-2-industrial-production-manufacturing" class="heading">(2) Industrial Production: Manufacturing <a href="#toc-13" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-2-industrial-production-manufacturing">(2) Industrial Production: Manufacturing</h3>
 
 <p>(a) Tools</p>
 
@@ -387,8 +361,7 @@ Director</p>
   <li>Reduce the efficiency of steam boilers any way you can. Put too much water in them to make them slow-starting, or keep the fire under them low to keep them inefficient. Let them dry and turn the fire up; they will crack and be ruined. An especially good trick is to keep putting limestone or water containing lime in the boiler; it will deposit lime on the bottom and sides. This deposit will provide very good insulation against heat; after enough of it has collected, the boiler will be completely worthless.</li>
 </ol>
 
-<h3 id="heading-3-production-metals" class="heading">(3) Production. Metals <a href="#toc-14" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-3-production-metals">(3) Production. Metals</h3>
 
 <p>(a) Iron and Steel</p>
 
@@ -411,8 +384,7 @@ Director</p>
 
 <p>No suggestions available.</p>
 
-<h3 id="heading-4-production-mining-and-mineral-extraction" class="heading">(4) Production: Mining and Mineral Extraction <a href="#toc-15" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-4-production-mining-and-mineral-extraction">(4) Production: Mining and Mineral Extraction</h3>
 
 <p>(a) Coal</p>
 
@@ -437,8 +409,7 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-5-production-agriculture" class="heading">(5) Production: Agriculture <a href="#toc-16" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-5-production-agriculture">(5) Production: Agriculture</h3>
 
 <p>(a) Machinery</p>
 
@@ -452,8 +423,7 @@ Director</p>
   <li>Feed crops to livestock. Let crops harvest too early or too late. Spoil stores of grain, fruit and vegetables by soaking them in water so that they will rot. Spoil fruit and vegetables by leaving them in the sun.</li>
 </ol>
 
-<h3 id="heading-6-transportation-railways" class="heading">(6) Transportation: Railways <a href="#toc-17" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-6-transportation-railways">(6) Transportation: Railways</h3>
 
 <p>(a) Passengers</p>
 
@@ -559,8 +529,7 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-7-transportation-automotive" class="heading">(7) Transportation: Automotive <a href="#toc-18" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-7-transportation-automotive">(7) Transportation: Automotive</h3>
 
 <p>(a) Roads. Damage to roads [(3) below] is slow, and therefore impractical as a D-day or near D-day activity.</p>
 
@@ -657,8 +626,7 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-8-transportation-water" class="heading">(8) Transportation: Water <a href="#toc-19" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-8-transportation-water">(8) Transportation: Water</h3>
 
 <p>(a) Navigation</p>
 
@@ -689,8 +657,7 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-9-communications" class="heading">(9) Communications <a href="#toc-20" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-9-communications">(9) Communications</h3>
 
 <p>(a) Telephone</p>
 
@@ -762,8 +729,7 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-10-electric-power" class="heading">(10) Electric Power <a href="#toc-21" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-10-electric-power">(10) Electric Power</h3>
 
 <p>(a) Turbines, Electric Motors, Transformers</p>
 
@@ -777,8 +743,7 @@ Director</p>
   <li>Linesmen can loosen and dirty insulators to cause power leakage. It will be quite easy, too, for them to tie a piece of very heavy string several times back and forth between two parallel transmission lines, winding it several turns around the wire each time. Beforehand, the string should be heavily saturated with salt and then dried. When it rains, the string becomes a conductor, and a short-circuit will result.</li>
 </ol>
 
-<h3 id="heading-11-general-interference-with-organizations-and-production" class="heading">(11) General Interference with Organizations and Production <a href="#toc-22" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-11-general-interference-with-organizations-and-production">(11) General Interference with Organizations and Production</h3>
 
 <p>(a) Organizations and Conferences</p>
 
@@ -921,8 +886,7 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-12-general-devices-for-lowering-morale-and-creating-confusion" class="heading">(12) General Devices for Lowering Morale and Creating Confusion <a href="#toc-23" class="toc-back-link">↩</a>
-</h3>
+<h3 id="heading-12-general-devices-for-lowering-morale-and-creating-confusion">(12) General Devices for Lowering Morale and Creating Confusion</h3>
 
 <p>(a) Give lengthy and incomprehensible explanations when questioned.</p>
 
