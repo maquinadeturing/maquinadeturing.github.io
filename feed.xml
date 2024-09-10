@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-09-10T17:27:06+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Simple Sabotage Field Manual</title><link href="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/" rel="alternate" type="text/html" title="Simple Sabotage Field Manual" /><published>2024-09-08T17:00:00+00:00</published><updated>2024-09-08T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/"><![CDATA[<p><em>The</em> <a href="https://en.wikisource.org/wiki/Simple_Sabotage_Field_Manual">Simple Sabotage Field Manual</a> <em>was a collection of simple sabotage techniques gathered by the</em> Office of Strategic Services <em>(predecessor of the CIA) during World War II to be distributed among workers in enemy countries and disrupt their industry and military.</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-09-10T19:17:57+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Simple Sabotage Field Manual</title><link href="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/" rel="alternate" type="text/html" title="Simple Sabotage Field Manual" /><published>2024-09-08T17:00:00+00:00</published><updated>2024-09-08T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/"><![CDATA[<p><em>The</em> <a href="https://en.wikisource.org/wiki/Simple_Sabotage_Field_Manual" class="link-wikipedia">Simple Sabotage Field Manual</a> <em>was a collection of simple sabotage techniques gathered by the</em> Office of Strategic Services <em>(predecessor of the CIA) during World War II to be distributed among workers in enemy countries and disrupt their industry and military.</em></p>
 
 <p><em>Despite being used in 1944, many of its methods will be familiar to 21st century readers. Notably, some techniques come from observing inefficiencies that happen in many organizations “even under normal conditions”, which makes many people inadvertently act as “saboteurs”. For example, by “bringing up irrelevant issues as frequently as possible” or “referring back to matters decided upon at the last meeting and attempting to re-open the question”.</em></p>
 
-<p><em>Erik Bernhardsson adapted it to software development in his <a href="https://erikbern.com/2023/12/13/simple-sabotage-for-software.html">Simple sabotage for software</a>.</em></p>
+<p><em>Erik Bernhardsson adapted it to software development in his <a href="https://erikbern.com/2023/12/13/simple-sabotage-for-software.html" class="link-external">Simple sabotage for software</a>.</em></p>
 
-<hr />
+<hr>
 
 <div class="textright">
-<p class="textleft" style="display: inline-block">Office of Strategic Services<br />
-Washington, D. C.<br />
+<p class="textleft" style="display: inline-block">Office of Strategic Services<br>
+Washington, D. C.<br>
 17 January 1944</p>
 </div>
 
@@ -20,10 +20,39 @@ Washington, D. C.<br />
 
 <p>AR 380-5, pertaining to handling of secret documents, will be complied with in the handling of this Manual.</p>
 
-<p class="textcenter"><a href="https://en.wikipedia.org/wiki/William_J._Donovan">William J. Donovan</a><br />
+<p class="textcenter"><a href="https://en.wikipedia.org/wiki/William_J._Donovan" class="link-wikipedia">William J. Donovan</a><br>
 Director</p>
 
-<h2 id="heading-1-introduction">1. Introduction</h2>
+<h2 class="no-toc" id="heading-contents">Contents</h2>
+
+<div class="toc">
+<p id="toc-1" class="toc toc-h2"><a href="#heading-1-introduction">1. Introduction</a></p>
+<p id="toc-2" class="toc toc-h2"><a href="#heading-2-possible-effects">2. Possible Effects</a></p>
+<p id="toc-3" class="toc toc-h2"><a href="#heading-3-motivating-the-saboteur">3. Motivating The Saboteur</a></p>
+<p id="toc-4" class="toc toc-h3"><a href="#heading-1-personal-motives">(1) Personal Motives</a></p>
+<p id="toc-5" class="toc toc-h3"><a href="#heading-2-encouraging-destructiveness">(2) Encouraging Destructiveness</a></p>
+<p id="toc-6" class="toc toc-h3"><a href="#heading-3-safety-measures">(3) Safety Measures</a></p>
+<p id="toc-7" class="toc toc-h2"><a href="#heading-4-tools-targets-and-timing">4. Tools, Targets, And Timing</a></p>
+<p id="toc-8" class="toc toc-h3"><a href="#heading-1-under-general-conditions">(1) Under General Conditions</a></p>
+<p id="toc-9" class="toc toc-h3"><a href="#heading-2-prior-to-a-military-offensive">(2) Prior to a Military Offensive</a></p>
+<p id="toc-10" class="toc toc-h3"><a href="#heading-3-during-a-military-offensive">(3) During a Military Offensive</a></p>
+<p id="toc-11" class="toc toc-h2"><a href="#heading-5-specific-suggestions-for-simple-sabotage">5. Specific Suggestions For Simple Sabotage</a></p>
+<p id="toc-12" class="toc toc-h3"><a href="#heading-1-buildings">(1) Buildings</a></p>
+<p id="toc-13" class="toc toc-h3"><a href="#heading-2-industrial-production-manufacturing">(2) Industrial Production: Manufacturing</a></p>
+<p id="toc-14" class="toc toc-h3"><a href="#heading-3-production-metals">(3) Production. Metals</a></p>
+<p id="toc-15" class="toc toc-h3"><a href="#heading-4-production-mining-and-mineral-extraction">(4) Production: Mining and Mineral Extraction</a></p>
+<p id="toc-16" class="toc toc-h3"><a href="#heading-5-production-agriculture">(5) Production: Agriculture</a></p>
+<p id="toc-17" class="toc toc-h3"><a href="#heading-6-transportation-railways">(6) Transportation: Railways</a></p>
+<p id="toc-18" class="toc toc-h3"><a href="#heading-7-transportation-automotive">(7) Transportation: Automotive</a></p>
+<p id="toc-19" class="toc toc-h3"><a href="#heading-8-transportation-water">(8) Transportation: Water</a></p>
+<p id="toc-20" class="toc toc-h3"><a href="#heading-9-communications">(9) Communications</a></p>
+<p id="toc-21" class="toc toc-h3"><a href="#heading-10-electric-power">(10) Electric Power</a></p>
+<p id="toc-22" class="toc toc-h3"><a href="#heading-11-general-interference-with-organizations-and-production">(11) General Interference with Organizations and Production</a></p>
+<p id="toc-23" class="toc toc-h3"><a href="#heading-12-general-devices-for-lowering-morale-and-creating-confusion">(12) General Devices for Lowering Morale and Creating Confusion</a></p>
+</div>
+
+<h2 id="heading-1-introduction" class="heading">1. Introduction <a href="#toc-1" class="toc-back-link">↩</a>
+</h2>
 
 <p>The purpose of this paper is to characterize simple sabotage, to outline its possible effects, and to present suggestions for inciting and executing it.</p>
 
@@ -35,19 +64,22 @@ Director</p>
 
 <p>This type of activity, sometimes referred to as the “human element,” is frequently responsible for accidents, delays, and general obstruction even under normal conditions. The potential saboteur should discover what types of faulty decisions and the operations are normally found in this kind of work and should then devise his sabotage so as to enlarge that “margin for error.”</p>
 
-<h2 id="heading-2-possible-effects">2. Possible Effects</h2>
+<h2 id="heading-2-possible-effects" class="heading">2. Possible Effects <a href="#toc-2" class="toc-back-link">↩</a>
+</h2>
 
 <p>Acts of simple sabotage are occurring throughout Europe. An effort should be made to add to their efficiency, lessen their detectability, and increase their number. Acts of simple sabotage, multiplied by thousands of citizen-saboteurs, can be an effective weapon against the enemy. Slashing tires, draining fuel tanks, starting fires, starting arguments, acting stupidly, short-circuiting electric systems, abrading machine parts will waste materials, manpower, and time. Occurring on a wide scale, simple sabotage will be a constant and tangible drag on the war effort of the enemy.</p>
 
 <p>Simple sabotage may also have secondary results of more or less value. Widespread practice of simple sabotage will harass and demoralize enemy administrators and police. Further, success may embolden the citizen-saboteur eventually to find colleagues who can assist him in sabotage of greater dimensions. Finally, the very practice of simple sabotage by natives in enemy or occupied territory may make these individuals identify themselves actively with the United Nations war effort, and encourage them to assist openly in periods of Allied invasion and occupation.</p>
 
-<h2 id="heading-3-motivating-the-saboteur">3. Motivating The Saboteur</h2>
+<h2 id="heading-3-motivating-the-saboteur" class="heading">3. Motivating The Saboteur <a href="#toc-3" class="toc-back-link">↩</a>
+</h2>
 
 <p>To incite the citizen to the active practice of simple sabotage and to keep him practicing that sabotage over sustained periods is a special problem.</p>
 
 <p>Simple sabotage is often an act which the citizen performs according to his own initiative and inclination. Acts of destruction do not bring him any personal gain and may be completely foreign to his habitually conservationist attitude toward materials and tools. Purposeful stupidity is contrary to human nature. He frequently needs pressure, stimulation or assurance, and information and suggestions regarding feasible methods of simple sabotage.</p>
 
-<h3 id="heading-1-personal-motives">(1) Personal Motives</h3>
+<h3 id="heading-1-personal-motives" class="heading">(1) Personal Motives <a href="#toc-4" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) The ordinary citizen very probably has no immediate personal motive for committing simple sabotage. Instead, he must be made to anticipate indirect personal gain, such as might come with enemy evacuation or destruction of the ruling government group. Gains should be stated as specifically as possible for the area addressed: simple sabotage will hasten the day when Commissioner X and his deputies Y and Z will be thrown out, when particularly obnoxious decrees and restrictions will be abolished, when food will arrive, and so on. Abstract verbalizations about personal liberty, freedom of the press, and so on, will not be convincing in most parts of the world. In many areas they will not even be comprehensible.</p>
 
@@ -55,7 +87,8 @@ Director</p>
 
 <p>(c) More important than (a) or (b) would be to create a situation in which the citizen-saboteur acquires a sense of responsibility and begins to educate others in simple sabotage.</p>
 
-<h3 id="heading-2-encouraging-destructiveness">(2) Encouraging Destructiveness</h3>
+<h3 id="heading-2-encouraging-destructiveness" class="heading">(2) Encouraging Destructiveness <a href="#toc-5" class="toc-back-link">↩</a>
+</h3>
 
 <p>It should be pointed out to the saboteur where the circumstances are suitable, that he is acting in self-defense against the enemy, or retaliating against the enemy for other acts of destruction. A reasonable amount of humor in the presentation of suggestions for simple sabotage will relax tensions of fear.</p>
 
@@ -67,7 +100,8 @@ Director</p>
 
 <p>(d) Various media may be used to disseminate suggestions and information regarding simple sabotage. Among the media which may be used, as the immediate situation dictates, are: freedom stations or radio false (unreadable) broadcasts or leaflets may be directed toward specific geographic or occupational areas, or they may be general in scope. Finally, agents may be trained in the art of simple sabotage, in anticipation of a time when they may be able to communicate this information directly.</p>
 
-<h3 id="heading-3-safety-measures">(3) Safety Measures</h3>
+<h3 id="heading-3-safety-measures" class="heading">(3) Safety Measures <a href="#toc-6" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) The amount of activity carried on by the saboteur will be governed not only by the number of opportunities he sees, but also by the amount of danger he feels. Bad news travels fast, and simple sabotage will be discouraged if too many simple saboteurs are arrested.</p>
 
@@ -88,13 +122,15 @@ Director</p>
   </li>
 </ol>
 
-<h2 id="heading-4-tools-targets-and-timing">4. Tools, Targets, And Timing</h2>
+<h2 id="heading-4-tools-targets-and-timing" class="heading">4. Tools, Targets, And Timing <a href="#toc-7" class="toc-back-link">↩</a>
+</h2>
 
 <p>The citizen-saboteur cannot be closely controlled. Nor is it reasonable to expect that simple sabotage can be precisely concentrated on specific types of target according to the requirements of a concrete military situation. Attempts to control simple sabotage according to developing military factors, moreover, might provide the enemy with intelligence of more or less value in anticipating the date and area of notably intensified or notably slackened military activity.</p>
 
 <p>Sabotage suggestions, of course, should be adapted to fit the area where they are to be practiced. Target priorities for general types of situations likewise can be specified, for emphasis at the proper time by the underground press, freedom stations, and cooperating propaganda.</p>
 
-<h3 id="heading-1-under-general-conditions">(1) Under General Conditions</h3>
+<h3 id="heading-1-under-general-conditions" class="heading">(1) Under General Conditions <a href="#toc-8" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Simple sabotage is more than malicious mischief, and it should always consist of acts whose results will be detrimental to the materials and manpower of the enemy.</p>
 
@@ -106,11 +142,13 @@ Director</p>
 
 <p>(e) Although the citizen-saboteur may rarely have access to military objects, he should give these preference above all others.</p>
 
-<h3 id="heading-2-prior-to-a-military-offensive">(2) Prior to a Military Offensive</h3>
+<h3 id="heading-2-prior-to-a-military-offensive" class="heading">(2) Prior to a Military Offensive <a href="#toc-9" class="toc-back-link">↩</a>
+</h3>
 
 <p>During periods which are quiescent in a military sense, such emphasis as can be given to simple sabotage might well center on industrial production, to lessen the flow of materials and equipment to the enemy. Slashing a rubber tire on an Army truck may be an act of value; spoiling a batch of rubber in the production plant is an act of still more value.</p>
 
-<h3 id="heading-3-during-a-military-offensive">(3) During a Military Offensive</h3>
+<h3 id="heading-3-during-a-military-offensive" class="heading">(3) During a Military Offensive <a href="#toc-10" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Most significant sabotage for an area which is, or is soon destined to be, a theater of combat operations is that whose effects will be direct and immediate. Even if the effects are relatively minor and localized, this type of sabotage is to be preferred to activities whose effects, while widespread, are indirect and delayed.</p>
 
@@ -128,13 +166,15 @@ Director</p>
   </li>
 </ol>
 
-<h2 id="heading-5-specific-suggestions-for-simple-sabotage">5. Specific Suggestions For Simple Sabotage</h2>
+<h2 id="heading-5-specific-suggestions-for-simple-sabotage" class="heading">5. Specific Suggestions For Simple Sabotage <a href="#toc-11" class="toc-back-link">↩</a>
+</h2>
 
 <p>It will not be possible to evaluate the desirability of simple sabotage in an area without having in mind rather specifically what individual acts and results are embraced by the definition of simple sabotage.</p>
 
 <p>A listing of specific acts follows, classified according to types of target. This list is presented as a growing rather than a complete outline of the methods of simple sabotage. As new techniques are developed, or new fields explored, it will be elaborated and expanded.</p>
 
-<h3 id="heading-1-buildings">(1) Buildings</h3>
+<h3 id="heading-1-buildings" class="heading">(1) Buildings <a href="#toc-12" class="toc-back-link">↩</a>
+</h3>
 
 <p>Warehouses, barracks, offices, hotels, and factory buildings are outstanding targets for simple sabotage. They are extremely susceptible to damage, especially by fire; they offer opportunities to such untrained people as janitors, charwomen, and casual visitors; and, when damaged, they present a relatively large handicap to the enemy.</p>
 
@@ -183,7 +223,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-2-industrial-production-manufacturing">(2) Industrial Production: Manufacturing</h3>
+<h3 id="heading-2-industrial-production-manufacturing" class="heading">(2) Industrial Production: Manufacturing <a href="#toc-13" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Tools</p>
 
@@ -346,7 +387,8 @@ Director</p>
   <li>Reduce the efficiency of steam boilers any way you can. Put too much water in them to make them slow-starting, or keep the fire under them low to keep them inefficient. Let them dry and turn the fire up; they will crack and be ruined. An especially good trick is to keep putting limestone or water containing lime in the boiler; it will deposit lime on the bottom and sides. This deposit will provide very good insulation against heat; after enough of it has collected, the boiler will be completely worthless.</li>
 </ol>
 
-<h3 id="heading-3-production-metals">(3) Production. Metals</h3>
+<h3 id="heading-3-production-metals" class="heading">(3) Production. Metals <a href="#toc-14" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Iron and Steel</p>
 
@@ -369,7 +411,8 @@ Director</p>
 
 <p>No suggestions available.</p>
 
-<h3 id="heading-4-production-mining-and-mineral-extraction">(4) Production: Mining and Mineral Extraction</h3>
+<h3 id="heading-4-production-mining-and-mineral-extraction" class="heading">(4) Production: Mining and Mineral Extraction <a href="#toc-15" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Coal</p>
 
@@ -394,7 +437,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-5-production-agriculture">(5) Production: Agriculture</h3>
+<h3 id="heading-5-production-agriculture" class="heading">(5) Production: Agriculture <a href="#toc-16" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Machinery</p>
 
@@ -408,7 +452,8 @@ Director</p>
   <li>Feed crops to livestock. Let crops harvest too early or too late. Spoil stores of grain, fruit and vegetables by soaking them in water so that they will rot. Spoil fruit and vegetables by leaving them in the sun.</li>
 </ol>
 
-<h3 id="heading-6-transportation-railways">(6) Transportation: Railways</h3>
+<h3 id="heading-6-transportation-railways" class="heading">(6) Transportation: Railways <a href="#toc-17" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Passengers</p>
 
@@ -514,7 +559,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-7-transportation-automotive">(7) Transportation: Automotive</h3>
+<h3 id="heading-7-transportation-automotive" class="heading">(7) Transportation: Automotive <a href="#toc-18" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Roads. Damage to roads [(3) below] is slow, and therefore impractical as a D-day or near D-day activity.</p>
 
@@ -611,7 +657,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-8-transportation-water">(8) Transportation: Water</h3>
+<h3 id="heading-8-transportation-water" class="heading">(8) Transportation: Water <a href="#toc-19" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Navigation</p>
 
@@ -642,7 +689,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-9-communications">(9) Communications</h3>
+<h3 id="heading-9-communications" class="heading">(9) Communications <a href="#toc-20" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Telephone</p>
 
@@ -714,7 +762,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-10-electric-power">(10) Electric Power</h3>
+<h3 id="heading-10-electric-power" class="heading">(10) Electric Power <a href="#toc-21" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Turbines, Electric Motors, Transformers</p>
 
@@ -728,7 +777,8 @@ Director</p>
   <li>Linesmen can loosen and dirty insulators to cause power leakage. It will be quite easy, too, for them to tie a piece of very heavy string several times back and forth between two parallel transmission lines, winding it several turns around the wire each time. Beforehand, the string should be heavily saturated with salt and then dried. When it rains, the string becomes a conductor, and a short-circuit will result.</li>
 </ol>
 
-<h3 id="heading-11-general-interference-with-organizations-and-production">(11) General Interference with Organizations and Production</h3>
+<h3 id="heading-11-general-interference-with-organizations-and-production" class="heading">(11) General Interference with Organizations and Production <a href="#toc-22" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Organizations and Conferences</p>
 
@@ -871,7 +921,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-12-general-devices-for-lowering-morale-and-creating-confusion">(12) General Devices for Lowering Morale and Creating Confusion</h3>
+<h3 id="heading-12-general-devices-for-lowering-morale-and-creating-confusion" class="heading">(12) General Devices for Lowering Morale and Creating Confusion <a href="#toc-23" class="toc-back-link">↩</a>
+</h3>
 
 <p>(a) Give lengthy and incomprehensible explanations when questioned.</p>
 
@@ -899,47 +950,47 @@ Director</p>
 
 <p>That air of innocence has vanished. For good. A few decades later it has become a dystopian trap of surveillance and censorship, where governments and platforms gorge on our attention and personal data and force-feed us ads and fake news. The web today, as most people experience it, is a horrible place.</p>
 
-<p>This has been discussed for a while, but 2024 has seen a peak of discussions and contributions to this topic. I suggest three converging causes to this renaissance of the web: the late stage of <a href="https://pluralistic.net/2023/01/08/watch-the-surpluses/">enshittification</a> of the platforms; the revival of the personal blogs (and podcasts) during the covid pandemic; and the nostalgia of the generations that enjoyed the old web as teenagers and are now in their 30s and 40s.</p>
+<p>This has been discussed for a while, but 2024 has seen a peak of discussions and contributions to this topic. I suggest three converging causes to this renaissance of the web: the late stage of <a href="https://pluralistic.net/2023/01/08/watch-the-surpluses/" class="link-external">enshittification</a> of the platforms; the revival of the personal blogs (and podcasts) during the covid pandemic; and the nostalgia of the generations that enjoyed the old web as teenagers and are now in their 30s and 40s.</p>
 
 <p>This is an on-going collection of essays, articles, projects and manifestos about what went wrong and what to do to make it right.</p>
 
-<h2 id="heading-the-disenshittified-internet-starts-with-loyal-user-agents"><a href="https://pluralistic.net/2024/05/07/treacherous-computing/">The disenshittified internet starts with loyal “user agents”</a></h2>
+<h2 id="heading-the-disenshittified-internet-starts-with-loyal-user-agents"><a href="https://pluralistic.net/2024/05/07/treacherous-computing/" class="link-external">The disenshittified internet starts with loyal “user agents”</a></h2>
 
-<p>By <a href="https://mamot.fr/@pluralistic">Cory Doctorow</a>, 7 May, 2024.</p>
+<p>By <a href="https://mamot.fr/@pluralistic" class="link-mastodon">Cory Doctorow</a>, 7 May, 2024.</p>
 
 <blockquote>
   <p>A web browser that’s a “user agent” is a comforting thought. An agent’s job is to serve you and your interests. […] A “faithless” user agent is utterly different from a “clumsy” user agent, and faithless user agents have become the norm. Indeed, as crude early internet clients progressed in sophistication, they grew increasingly treacherous. Most non-browser tools are designed for treachery.</p>
 </blockquote>
 
-<h2 id="heading-reweirding-the-web"><a href="https://webdirections.org/blog/reweirding-the-web/">Reweirding the Web</a></h2>
+<h2 id="heading-reweirding-the-web"><a href="https://webdirections.org/blog/reweirding-the-web/" class="link-external">Reweirding the Web</a></h2>
 
-<p>By <a href="https://indieweb.social/@johnallsopp">John Allsopp</a>, 3 May, 2024.</p>
+<p>By <a href="https://indieweb.social/@johnallsopp" class="link-mastodon">John Allsopp</a>, 3 May, 2024.</p>
 
 <blockquote>
   <p>More than at any time in the last decade or so I feel there’s a desire for this more personal web, and the tools and ideas to make it happen. So reclaim your little plot of the web, make it a bit weirder, a bit better. And connect with others who are doing likewise. It’s what drew me to the Web 30 years ago. One of the best decisions I ever made.</p>
 </blockquote>
 
-<p>See also the <a href="https://deshittify.us/">The Disenshittify Project</a>, 30 April, 2024.</p>
+<p>See also the <a href="https://deshittify.us/" class="link-external">The Disenshittify Project</a>, 30 April, 2024.</p>
 
-<h2 id="heading-we-can-have-a-different-web"><a href="https://www.citationneeded.news/we-can-have-a-different-web/">We can have a different web</a></h2>
+<h2 id="heading-we-can-have-a-different-web"><a href="https://www.citationneeded.news/we-can-have-a-different-web/" class="link-external">We can have a different web</a></h2>
 
-<p>By <a href="https://hachyderm.io/@molly0xfff">Molly White</a>, 1 May, 2024.</p>
+<p>By <a href="https://hachyderm.io/@molly0xfff" class="link-mastodon">Molly White</a>, 1 May, 2024.</p>
 
 <blockquote>
   <p>Many yearn for the “good old days” of the web. We could have those good old days back — or something even better — and if anything, it would be easier now than it ever was.</p>
 </blockquote>
 
-<h2 id="heading-we-need-to-rewild-the-internet"><a href="https://www.noemamag.com/we-need-to-rewild-the-internet/">We Need To Rewild The Internet</a></h2>
+<h2 id="heading-we-need-to-rewild-the-internet"><a href="https://www.noemamag.com/we-need-to-rewild-the-internet/" class="link-external">We Need To Rewild The Internet</a></h2>
 
-<p>By <a href="https://hachyderm.io/@mariafarrell@mastodon.social">Maria Farrel</a> and <a href="https://hachyderm.io/@robin@mastodon.social">Robin Berjon</a>, 16 April, 2024.</p>
+<p>By <a href="https://hachyderm.io/@mariafarrell@mastodon.social" class="link-mastodon">Maria Farrel</a> and <a href="https://hachyderm.io/@robin@mastodon.social" class="link-mastodon">Robin Berjon</a>, 16 April, 2024.</p>
 
 <blockquote>
   <p>Ecologists have reoriented their field as a “crisis discipline,” a field of study that’s not just about learning things but about saving them. We technologists need to do the same. Rewilding the internet connects and grows what people are doing across regulation, standards-setting and new ways of organizing and building infrastructure, to tell a shared story of where we want to go. It’s a shared vision with many strategies. The instruments we need to shift away from extractive technological monocultures are at hand or ready to be built.</p>
 </blockquote>
 
-<h2 id="heading-a-manifesto-for-small-static-web-apps"><a href="https://rosswintle.uk/2024/02/a-manifesto-for-small-static-web-apps/">A manifesto for small, static, web apps</a></h2>
+<h2 id="heading-a-manifesto-for-small-static-web-apps"><a href="https://rosswintle.uk/2024/02/a-manifesto-for-small-static-web-apps/" class="link-external">A manifesto for small, static, web apps</a></h2>
 
-<p>By <a href="https://fosstodon.org/@ross">Ross Wintle</a>, 17 February, 2024.</p>
+<p>By <a href="https://fosstodon.org/@ross" class="link-mastodon">Ross Wintle</a>, 17 February, 2024.</p>
 
 <blockquote>
   <p>Static first/only, No login, Don’t store user data, Use the smallest JS library possible, Use web standards as much as possible, Use simple build steps that won’t break, “Done” is a goal, Zero-maintenance (and easy maintenance) is a goal, Don’t minify, Be accessible.</p>
@@ -1001,7 +1052,7 @@ Director</p>
 
 <h2 id="heading-the-poor-mans-search-function">The poor man’s search function</h2>
 
-<p>Usually, the alternative has been the <code class="language-plaintext highlighter-rouge">site:</code> operator in Google: a form in your website would transform the search string into a <code class="language-plaintext highlighter-rouge">site:</code> query and redirect it to Google. Purists can do the same with <a href="https://duckduckgo.com/duckduckgo-help-pages/results/syntax/">DuckDuckGo</a>. But that leaves me relying on notoriously unreliable companies, which can drop this feature at any moment or hide it behind a pawyall.</p>
+<p>Usually, the alternative has been the <code class="language-plaintext highlighter-rouge">site:</code> operator in Google: a form in your website would transform the search string into a <code class="language-plaintext highlighter-rouge">site:</code> query and redirect it to Google. Purists can do the same with <a href="https://duckduckgo.com/duckduckgo-help-pages/results/syntax/" class="link-external">DuckDuckGo</a>. But that leaves me relying on notoriously unreliable companies, which can drop this feature at any moment or hide it behind a pawyall.</p>
 
 <p>And I wondered: is there a way to have my own search function?</p>
 
@@ -1016,13 +1067,14 @@ Director</p>
 
 <p>With that in mind, I started designing my own static search function. The basic idea was to generate some kind of index that would allow for static searches using Javascript.</p>
 
-<p>There are some nice Javascript libraries that will consume texts and provide a search function, like <a href="https://lunrjs.com">Lunr</a>. It even lets you <a href="https://lunrjs.com/guides/index_prebuilding.html">pre-build the serch index</a>, so it can be downloaded as a static JSON file. As a test, I created a Lunr JSON index with <a href="/es/2020/04/cibernetica-en-el-breve-diccionario-filosofico-1954/">the</a> <a href="/es/2020/05/cibernetica-al-servicio-del-comunismo/">three</a> <a href="/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">posts</a> in Spanish in the blog, as they are the longest right now. The result is the following:</p>
+<p>There are some nice Javascript libraries that will consume texts and provide a search function, like <a href="https://lunrjs.com" class="link-external">Lunr</a>. It even lets you <a href="https://lunrjs.com/guides/index_prebuilding.html" class="link-external">pre-build the serch index</a>, so it can be downloaded as a static JSON file. As a test, I created a Lunr JSON index with <a href="/es/2020/04/cibernetica-en-el-breve-diccionario-filosofico-1954/">the</a> <a href="/es/2020/05/cibernetica-al-servicio-del-comunismo/">three</a> <a href="/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">posts</a> in Spanish in the blog, as they are the longest right now. The result is the following:</p>
 
 <table>
   <thead>
     <tr>
       <th>Posts</th>
-      <th>Rendered Post Size<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></th>
+      <th>Rendered Post Size<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>
+</th>
       <th>Lunr JSON Index Size</th>
     </tr>
   </thead>
@@ -1096,7 +1148,7 @@ Director</p>
 
 <p>Here the <code class="language-plaintext highlighter-rouge">text_content</code> string is filtered, excluding anything that is not a valid character in one of the languages of the blog. This means that punctuation marks or other symbols are removed.</p>
 
-<p>Then, the resulting string is split by words, excluding short ones or numbers. A list of stopwords for the language of the post is used to remove common words, like “then” or “one”. There are projects that maintain lists of stopwords, like <a href="https://github.com/nltk/nltk_data/blob/gh-pages/packages/corpora/stopwords.zip">NLTK</a>.</p>
+<p>Then, the resulting string is split by words, excluding short ones or numbers. A list of stopwords for the language of the post is used to remove common words, like “then” or “one”. There are projects that maintain lists of stopwords, like <a href="https://github.com/nltk/nltk_data/blob/gh-pages/packages/corpora/stopwords.zip" class="link-external">NLTK</a>.</p>
 
 <p>Finally, the words are sorted and duplicates are removed. Great! This is the list of unique words from one post, after removing garbage like stopwords, short words or numbers. Let’s add them to the index:</p>
 
@@ -1172,7 +1224,7 @@ Director</p>
 
 <h2 id="heading-wait-doesnt-that-look-like-a-bloom-filter">Wait, doesn’t that look like a Bloom filter?</h2>
 
-<p>Indeed, why not use a <a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom filter</a>, instead of a map of words? After all, a Bloom filter is super compact: 1 bit per word!</p>
+<p>Indeed, why not use a <a href="https://en.wikipedia.org/wiki/Bloom_filter" class="link-wikipedia">Bloom filter</a>, instead of a map of words? After all, a Bloom filter is super compact: 1 bit per word!</p>
 
 <p>The issue is that a Bloom filter only tells you if a given entry is (probably) part of a set. In other words, it maps a given key to a <em>boolean value.</em> But in my case each key must map to a <em>list of values,</em> the posts that contain that word.</p>
 
@@ -1217,7 +1269,7 @@ Director</p>
 
 <p>Enter Levenshtein.</p>
 
-<p>The <em>similarity</em> between two words could be defined as the <em>distance</em> between these words. This is what the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> function does: it calculates how far away two words are. The distance is defined as how many letters need to be added, removed or substituted to go from one word to the other. In the case of “cybernetics”, it needs 2 substitutions to become “cibernètica”, if we ignore the accents.</p>
+<p>The <em>similarity</em> between two words could be defined as the <em>distance</em> between these words. This is what the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" class="link-wikipedia">Levenshtein distance</a> function does: it calculates how far away two words are. The distance is defined as how many letters need to be added, removed or substituted to go from one word to the other. In the case of “cybernetics”, it needs 2 substitutions to become “cibernètica”, if we ignore the accents.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nf">search</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="nx">word_map</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">query_words</span> <span class="o">=</span> <span class="p">[...</span> <span class="k">new</span> <span class="nc">Set</span><span class="p">(</span>
@@ -1249,7 +1301,7 @@ Director</p>
 
 <p>But there is another difference between this code and the previous one: before it was using a map to find exact matches, which is fast, while now it is comparing each word from the query to each word from the index. It has gone from O(1) to O(n<sup>2</sup>)!<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote" rel="footnote">2</a></sup></p>
 
-<p>Let’s bring some friends of Levenshtein to the party. In particular, Burkhard and Keller and their tree structure, the <a href="https://en.wikipedia.org/wiki/BK-tree">BK-Tree</a>. A BK-Tree is a data structure that can organize values based on their relative distance, and allows to quickly navigate it to find the values with a similarity below the given threshold.</p>
+<p>Let’s bring some friends of Levenshtein to the party. In particular, Burkhard and Keller and their tree structure, the <a href="https://en.wikipedia.org/wiki/BK-tree" class="link-wikipedia">BK-Tree</a>. A BK-Tree is a data structure that can organize values based on their relative distance, and allows to quickly navigate it to find the values with a similarity below the given threshold.</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nf">build_forest</span><span class="p">(</span><span class="nx">word_map</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">forest</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Map</span><span class="p">;</span>
@@ -1293,7 +1345,7 @@ Director</p>
 
 <p>The fuzzy search function that was implemented above will match similar words. But surely the user, after typing “cyber”, will expect <a href="/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/">“Cybernetics” (in A Dictionary of Philosophy, 1967)</a> to appear in the results.</p>
 
-<p>Implementing a prefix match for all the words is possible, for instance with a <a href="https://en.wikipedia.org/wiki/Radix_tree">radix tree</a> structure. But that would probably generate too many results, many of them unuseful. If the user types “app”, do they want results about applications but also about apples?</p>
+<p>Implementing a prefix match for all the words is possible, for instance with a <a href="https://en.wikipedia.org/wiki/Radix_tree" class="link-wikipedia">radix tree</a> structure. But that would probably generate too many results, many of them unuseful. If the user types “app”, do they want results about applications but also about apples?</p>
 
 <p>Still, what is overkill for the content can be adequate if limited to the title. In addition to the score provided by the fuzzy search with the word map, I also added a substring search:</p>
 
@@ -1336,26 +1388,26 @@ Director</p>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>The count of visible characters of the post’s text, as seen in the web browser, excluding white spaces. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>The count of visible characters of the post’s text, as seen in the web browser, excluding white spaces. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:2" role="doc-endnote">
-      <p>See <a href="https://en.wikipedia.org/wiki/Big_O_notation">Big O Notation</a>. Also, technically, it has gone from O(1) to O(n m). <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>See <a href="https://en.wikipedia.org/wiki/Big_O_notation" class="link-wikipedia">Big O Notation</a>. Also, technically, it has gone from O(1) to O(n m). <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>]]></content><author><name></name></author><category term="Web" /><summary type="html"><![CDATA[Static web sites are the best. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is searching.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/search.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/search.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">“Cybernetics” (in A Dictionary of Philosophy, 1967)</title><link href="https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/" rel="alternate" type="text/html" title="“Cybernetics” (in A Dictionary of Philosophy, 1967)" /><published>2024-07-27T17:00:00+00:00</published><updated>2024-07-27T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/"><![CDATA[<p><em>Cybernetics entry in</em> A Dictionary of Philosophy, <em>the influential work that reflected the political consensus in the USSR about many topics. This entry, probably based on the 1963 edition in Russian by Rozental and Yudin, reflects the post-Stalin view of cybernetics. Compare to <a href="/ca/2020/04/cibernetica-en-el-breu-diccionari-filosofic-1954/">this older entry</a> from a 1954 edition, where it is dubbed a “reactionary pseudoscience”, “mechanicist” and “idealist”. In contrast, in this edition cybernetics is “against” idealist philosophy.</em></p>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr>
 
 <p><strong>Cybernetics</strong><sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.). The emergence of C. as a science was prepared by a number of technological and scientific achievements in the theory of automatic control; electronics, which made possible the construction of fast-action scanning and programme-controlled computing devices; the theory of probability (q.v), notably its applications in investigating problems of transmission and processing of information (q.v.); mathematical logic (q.v.) and the theory of algorithms (see Algorism); the physiology of nervous activity and homeostasis. As distinct from devices that transform energy or substance, cybernetic systems engage in processing information. In the study of control systems C. combines the macroscopic with the microscopic approach. The macroscopic approach is employed when the internal structure of the system is not known and the only observable is the movement of information at its inputs and outputs (the information entering the system and the reaction of the system). In this way the main flows of information and the ultimate functions of the control system are established. This type of problem is known as the “black box” problem. The microscopic approach assumes a certain knowledge of the internal structure of the control system and involves the determination of its basic elements in their intertelationship, their algorithms of work and the possibility of synthetising a control system out of these elements. One of the central problems of C. is that of the structure of self-organising (self-adjusting) systems. These are complex control systems usually comprising hierarchies of interacting subsystems capable of maintaining or attaining certain states (or characteristics of their states) against external factors tending to disturb or hinder those states. The most perfect self-organising systems have developed as a result of evolutionary processes in animate nature. That is why C. makes use of analogies between control functions in living organisms and technological devices. The importance of C. is seen primarily in the light of the opportunities it opens up for the automation of production and all types of formalised human mental activity, the investigation of biological control and regulation systems (hormonal, neural, hereditary mechanisms) by the method of analogue simulation (q.v.), and the development of new types of medical apparatus. Another promising domain is the application of cybernetic methods to economic studies and other spheres of organised human activity. This great diversity of applications of cybernetic methods is not due to any subjective whims and wills; its objective foundation is the existence of certain common features in the functions and structures of living organisms and man-made devices capable of mathematical description and investigation. Being in this respect a synthetic discipline, C. offers a striking example of a new type of interaction of sciences and provides abundant material for the philosophical investigation of the forms of motion of matter and the classification of sciences. The development of C. sparked debates on a number of methodological problems, viz., the analogies between human thinking and the workings of cybernetic mechanisms, the nature of information and its connection with the physical concept of entropy (q.v.), the essence of what is called organised, purposeful, and living, and other problems of an indubitably philosophical nature around which a struggle between dialectical materialism and idealism has developed. Thus, idealist philosophy, which rejects the possibility of objective investigation of mental activity, comes out against the findings of C. which contribute to an understanding of certain important aspects and mechanisms of such activity. While recognising the objective soundness of cybernetic analogies, dialectical materialism at the same time emphasises the erroneousness of completely identifying man with a machine and human intelligence with the functioning of cybernetic systems.</p>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr>
 
 <h2 id="heading-notes">Notes</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>A Dictionary of Philosophy. Ed. in Russian M. Rozental and P. Yudin, ed. in English R. R. Dixon and M. Saifulin. Moscow, Progress, 1967, p. 108-109. <a href="https://archive.org/details/dictionaryphilosophy1967/">Archived</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>A Dictionary of Philosophy. Ed. in Russian M. Rozental and P. Yudin, ed. in English R. R. Dixon and M. Saifulin. Moscow, Progress, 1967, p. 108-109. <a href="https://archive.org/details/dictionaryphilosophy1967/" class="link-archive">Archived</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>]]></content><author><name></name></author><category term="Cybernetics" /><category term="Lzhenauka" /><summary type="html"><![CDATA[Cybernetics entry in A Dictionary of Philosophy, the influential work that reflected the political consensus in the USSR about many topics. This entry, probably based on the 1963 edition in Russian by Rozental and Yudin, reflects the post-Stalin view of cybernetics. Compare to this older entry from a 1954 edition, where it is dubbed a “reactionary pseudoscience”, “mechanicist” and “idealist”. In contrast, in this edition cybernetics is “against” idealist philosophy.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/a-dictionary-of-philosophy.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/a-dictionary-of-philosophy.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="es"><title type="html">Cibernética – al servicio del comunismo</title><link href="https://lamaquinadeturing.su/es/2020/05/cibernetica-al-servicio-del-comunismo/" rel="alternate" type="text/html" title="Cibernética – al servicio del comunismo" /><published>2020-05-01T11:00:00+00:00</published><updated>2020-05-01T11:00:00+00:00</updated><id>https://lamaquinadeturing.su/es/2020/05/cibernetica-al-servicio-del-comunismo</id><content type="html" xml:base="https://lamaquinadeturing.su/es/2020/05/cibernetica-al-servicio-del-comunismo/"><![CDATA[<p><em>El siguiente texto es una traducción de la introducción al primer volumen de “Cibernética – al servicio del comunismo”, editado por Aksel I. Berg en 1961 en la URSS después de la restauración política de esta disciplina científica, <a href="/es/2020/04/cibernetica-en-el-breve-diccionario-filosofico-1954/">antes demonizada por el estalinismo</a>.</em></p>
@@ -1368,7 +1420,7 @@ Director</p>
 
 <p><em>En definitiva, es un documento que muestra los usos que se podría haber dado a la tecnología cibernética, y que hoy estamos a tiempo de dar a la tecnología informática.</em></p>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr>
 
 <h2 id="heading-introducción">Introducción</h2>
 
@@ -1432,7 +1484,7 @@ Director</p>
 
 <p>Pero ahora este estudio tiene objetivos prácticos. Ahora no estamos completamente satisfechos con la contemplación, observación, medición y almacenamiento de esta información. En el estudio del mundo que nos rodea y de la vida silvestre necesitamos utilizar esta información para satisfacer las necesidades materiales y espirituales del hombre, para facilitar su trabajo.</p>
 
-<hr class="wp-block-separator" />
+<hr class="asterisks">
 
 <p>El primer volumen de la colección “Cibernética: al servicio del comunismo” contiene varios artículos cuyo propósito es familiarizar a los lectores con las oportunidades que surgen en el uso práctico de los principios de la cibernética. La colección contiene, además de la introducción, 19 artículos escritos por autores que trabajan directamente en los campos relevantes. Los artículos se agrupan en 4 secciones: la primera sección: recopilación, procesamiento y transmisión de información; segunda cibernética y vida silvestre; la tercera es cibernética y humanidades, y la cuarta sección es cibernética en ciencia y tecnología.</p>
 
@@ -1460,7 +1512,7 @@ Director</p>
 
 <p>Los méritos del científico e ingeniero de comunicaciones estadounidense Shannon y muchos otros científicos soviéticos y extranjeros, que sentaron las bases de la teoría general de la comunicación y la teoría matemática, más precisamente, probabilística y de información estadística, son bien conocidos. La aplicabilidad de las disposiciones de la teoría del ego a los problemas de transmisión de información a través de canales inanimados no está en duda. Los intentos de extenderlo a los organismos vivos aún no han dado un resultado positivo, y quizás en este caso es necesario utilizar categorías completamente diferentes. Nos parece que la colección “Teoría de la información en biología”, que fue publicada en la URSS en 1960 por la Editorial de Literatura Extranjera, es de considerable interés a este respecto.</p>
 
-<p>Nuestra colección contiene un artículo de R. L. Dobrushin y Y. I. Khurtin, “Preguntas en la teoría de la información”. Interesará a los lectores planteando algunas preguntas, aunque leer este artículo requiere cierta preparación matemática. Los autores están tratando de formular y explicar algunos problemas de codificación óptima de la información, y nos parece que tuvieron éxito. La literatura sobre teoría de la información es muy significativa. Los autores enumeran una serie de trabajos que merecen atención a la luz de los problemas que están considerando. Es interesante notar que en el apéndice del <em><a href="https://ca.wikipedia.org/wiki/IRE">Institute of Radio Engineers</a> <a href="https://en.wikipedia.org/wiki/IEEE_Transactions_on_Information_Theory">Transactions on Information Theory</a></em>, nº 2, junio de 1956, contiene <a href="https://ieeexplore.ieee.org/document/1056783">“Una bibliografía de literatura soviética sobre la teoría de la información, correlación y ruido”</a>, compilada en los EEUU, que contiene alrededor de 150 títulos. En el segundo volumen de nuestra colección, tenemos la intención de imprimir varios artículos sobre información interpretada desde el punto de vista de la cibernética teórica. Estos incluyen, por ejemplo, los problemas de percepción y reconocimiento de imágenes en la naturaleza viva. Estos problemas atraen cada vez más la atención de psicólogos y fisiólogos, así como de especialistas en máquinas electrónicas que trabajan en el campo del autoaprendizaje y autoajuste. Hasta cierto punto, estos problemas se plantean en un artículo de A. V. Napalkov, colocado en la segunda sección de esta colección.</p>
+<p>Nuestra colección contiene un artículo de R. L. Dobrushin y Y. I. Khurtin, “Preguntas en la teoría de la información”. Interesará a los lectores planteando algunas preguntas, aunque leer este artículo requiere cierta preparación matemática. Los autores están tratando de formular y explicar algunos problemas de codificación óptima de la información, y nos parece que tuvieron éxito. La literatura sobre teoría de la información es muy significativa. Los autores enumeran una serie de trabajos que merecen atención a la luz de los problemas que están considerando. Es interesante notar que en el apéndice del <em><a href="https://ca.wikipedia.org/wiki/IRE" class="link-wikipedia">Institute of Radio Engineers</a> <a href="https://en.wikipedia.org/wiki/IEEE_Transactions_on_Information_Theory" class="link-wikipedia">Transactions on Information Theory</a></em>, nº 2, junio de 1956, contiene <a href="https://ieeexplore.ieee.org/document/1056783" class="link-external">“Una bibliografía de literatura soviética sobre la teoría de la información, correlación y ruido”</a>, compilada en los EEUU, que contiene alrededor de 150 títulos. En el segundo volumen de nuestra colección, tenemos la intención de imprimir varios artículos sobre información interpretada desde el punto de vista de la cibernética teórica. Estos incluyen, por ejemplo, los problemas de percepción y reconocimiento de imágenes en la naturaleza viva. Estos problemas atraen cada vez más la atención de psicólogos y fisiólogos, así como de especialistas en máquinas electrónicas que trabajan en el campo del autoaprendizaje y autoajuste. Hasta cierto punto, estos problemas se plantean en un artículo de A. V. Napalkov, colocado en la segunda sección de esta colección.</p>
 
 <p>Dado que el procesamiento de la información es la base de la gestión, se imprime en la colección un artículo de K. B. Arutyunov y D. V. Svecharnik “Selección, procesamiento primario, almacenamiento y transmisión de información sobre el curso de los procesos de producción”. Considera las peculiaridades de la actividad de información en la producción en comparación con los organismos vivos. Se destaca y explica la conveniencia excepcional de todo el mecanismo y dispositivo para transmitir información y su almacenamiento en organismos vivos. Es especialmente importante mantener la alta confiabilidad de estos procesos. En la vida silvestre, esto está garantizado por la interacción de todos los elementos estructurales y funcionales involucrados en este proceso. Gracias a esto, durante millones de años, por medio de la selección natural y la adaptación a las condiciones ambientales, esas especies han sobrevivido en las que el trabajo conjunto de una gran cantidad de elementos menos confiables garantiza una confiabilidad extremadamente alta. Desafortunadamente, la lucha por mejorar la confiabilidad de los instrumentos, herramientas y sistemas de recopilación, almacenamiento y procesamiento de datos que deben usarse en la industria apenas está comenzando, y la situación en esta área aún debe ser reconocida como insatisfactoria. Las preguntas planteadas en el artículo anterior son muy relevantes. Planeamos en el segundo volumen, en 1962, desarrollar significativamente la sección de información y, en particular, colocar varios artículos sobre instrumentación científica, ya que el equipo de laboratorios científicos con estos dispositivos que no satisface las necesidades limita sus capacidades, reduciendo la efectividad del trabajo experimental de investigación de nuestros científicos.</p>
 
@@ -1526,7 +1578,7 @@ Director</p>
 
 <p>Debe admitirse que esto a menudo está lejos de ser y no siempre se tiene en cuenta, y hay casos en que las organizaciones de diseño, diseñadores y tecnólogos se olvidan de la persona, creyendo sin ninguna razón que en la era de la automatización, el papel de una persona se vuelve auxiliar y su trabajo se facilita “automáticamente”… En el sistema máquina-autómata-humano, cada enlace, por separado y todo el sistema en su conjunto, debería funcionar en condiciones óptimas, y en particular esto se aplica a la carga física y psicofisiológica de una persona. En los últimos años, esta posición ha comenzado a ganar reconocimiento. Se presta considerable atención al desarrollo de la ciencia, que se llama psicotecnia. A veces se llama psicología de ingeniería.</p>
 
-<p>Recordemos que en 1936 se publicó un decreto especial del Comité Central del Partido Comunista de Bolcheviques de toda la Unión el 4 de julio, <a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F(%D0%B1)_%D0%BE%D1%82_4.07.1936_%D0%BE_%D0%BF%D0%B5%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85_%D0%B8%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%D1%85_%D0%B2_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5_%D0%9D%D0%B0%D1%80%D0%BA%D0%BE%D0%BC%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2">“Sobre las distorsiones paidológicas en el sistema del Comisariado Popular de Educación”</a>.<sup id="fnref:10" role="doc-noteref"><a href="#fn:10" class="footnote" rel="footnote">10</a></sup> Esta decisión se dirigió contra errores ideológicos y metodológicos graves que se cometieron durante el examen del desarrollo mental y el talento de los escolares. Como resultado de estos errores, cada vez más niños se inscribieron en la categoría de retrasados ​​mentales, “defectuosos” y “difíciles” [sic]. Para corregir estos errores, el Comité Central del Partido Comunista de Bolcheviques de toda la Unión decidió: 1) restauración de pleno derecho de la pedagogía y los educadores; 2) eliminar el vínculo de los paidólogos con las escuelas y retirar los libros de texto paidológicos, etc. Esta solución eliminó toda una gama de errores cometidos en la pedagogía. Sin embargo, desafortunadamente, pronto resultó que algunos psicólogos entendieron esta instrucción del Comité Central del Partido Comunista de Bolcheviques de toda la Unión como una condena de toda la investigación sobre psicología del trabajo.</p>
+<p>Recordemos que en 1936 se publicó un decreto especial del Comité Central del Partido Comunista de Bolcheviques de toda la Unión el 4 de julio, <a href="https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%A6%D0%9A_%D0%92%D0%9A%D0%9F(%D0%B1)_%D0%BE%D1%82_4.07.1936_%D0%BE_%D0%BF%D0%B5%D0%B4%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D1%85_%D0%B8%D0%B7%D0%B2%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%D1%85_%D0%B2_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B5_%D0%9D%D0%B0%D1%80%D0%BA%D0%BE%D0%BC%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2" class="link-wikipedia">“Sobre las distorsiones paidológicas en el sistema del Comisariado Popular de Educación”</a>.<sup id="fnref:10" role="doc-noteref"><a href="#fn:10" class="footnote" rel="footnote">10</a></sup> Esta decisión se dirigió contra errores ideológicos y metodológicos graves que se cometieron durante el examen del desarrollo mental y el talento de los escolares. Como resultado de estos errores, cada vez más niños se inscribieron en la categoría de retrasados ​​mentales, “defectuosos” y “difíciles” [sic]. Para corregir estos errores, el Comité Central del Partido Comunista de Bolcheviques de toda la Unión decidió: 1) restauración de pleno derecho de la pedagogía y los educadores; 2) eliminar el vínculo de los paidólogos con las escuelas y retirar los libros de texto paidológicos, etc. Esta solución eliminó toda una gama de errores cometidos en la pedagogía. Sin embargo, desafortunadamente, pronto resultó que algunos psicólogos entendieron esta instrucción del Comité Central del Partido Comunista de Bolcheviques de toda la Unión como una condena de toda la investigación sobre psicología del trabajo.</p>
 
 <p>En la revista teórica y política del Comité Central del PCUS “Comunista”, nº 4 de 1956, es decir, 20 años después de la publicación de la resolución anterior, se publicó un editorial con el título titulado “Fortalecer la conexión de la ciencia psicológica con la práctica”. Confirmando la total inadmisibilidad de la repetición de errores antiguos y condenados en el campo de la psicología y la paidología, el artículo habló de la necesidad de estudiar y desarrollar los fundamentos científicos del desarrollo de la psique humana para estudiar las condiciones psicológicas para la organización efectiva de las actividades de las personas, especialmente su trabajo. Se trata de las enormes tareas que enfrentan los científicos en materia de un estudio amplio e integral de la psicología del trabajo, los factores psicológicos del aumento de la productividad laboral, el dominio de la tecnología avanzada y los métodos avanzados de trabajo, y el hecho de que el progreso tecnológico aumenta aún más la importancia y la eficacia de la aplicación de datos de la psicología del trabajo. Se recomienda asegurar la conexión directa entre la psicología y la práctica, organizar laboratorios psicológicos científico-prácticos en grandes empresas, en instituciones médicas, en la formación de mano de obra.</p>
 
@@ -1589,7 +1641,7 @@ Director</p>
 
 <p>Nuestra colección contiene un artículo sustancial del cand. de Ciencias Económicas V. D. Belkin “Cibernética y economía”. El autor enfatiza que bajo el socialismo es bastante posible crear un sistema automatizado integrado para administrar la economía del país, y esto tendrá un efecto mucho mayor que en los países capitalistas, que ya utilizan parcialmente la automatización en secciones separadas de la economía, pero que no pueden extender este método a la economía de todo el país.</p>
 
-<p>En la colección “Problemas de cibernética” nº 5 (Fizmatgiz<sup id="fnref:11" role="doc-noteref"><a href="#fn:11" class="footnote" rel="footnote">11</a></sup>) editada por A. A. Lyapunov, se colocan dos artículos de planificación muy importantes. El artículo de <a href="https://en.wikipedia.org/wiki/Julius_Anatolyevich_Schrader">Yu. A. Schreider</a>, “El problema de planificación dinámica y los autómatas”, es una generalización y desarrollo de la monografía de <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman">R. Bellman</a> sobre planificación dinámica, publicada en los Estados Unidos en 1957. Yu. A. Schreider describe un esquema que nos permite plantear el problema general de la planificación dinámica y derivar la principal ecuación funcional y establecer las propiedades básicas de sus soluciones. El artículo de E. G. Holshtein y D. B. Yudin, “Sobre una clase de problemas de planificación de la economía nacional”, contiene el desarrollo de algunos métodos especiales para resolver ciertos problemas importantes de programación lineal que permiten una reducción significativa en el trabajo computacional.</p>
+<p>En la colección “Problemas de cibernética” nº 5 (Fizmatgiz<sup id="fnref:11" role="doc-noteref"><a href="#fn:11" class="footnote" rel="footnote">11</a></sup>) editada por A. A. Lyapunov, se colocan dos artículos de planificación muy importantes. El artículo de <a href="https://en.wikipedia.org/wiki/Julius_Anatolyevich_Schrader" class="link-wikipedia">Yu. A. Schreider</a>, “El problema de planificación dinámica y los autómatas”, es una generalización y desarrollo de la monografía de <a href="https://en.wikipedia.org/wiki/Richard_E._Bellman" class="link-wikipedia">R. Bellman</a> sobre planificación dinámica, publicada en los Estados Unidos en 1957. Yu. A. Schreider describe un esquema que nos permite plantear el problema general de la planificación dinámica y derivar la principal ecuación funcional y establecer las propiedades básicas de sus soluciones. El artículo de E. G. Holshtein y D. B. Yudin, “Sobre una clase de problemas de planificación de la economía nacional”, contiene el desarrollo de algunos métodos especiales para resolver ciertos problemas importantes de programación lineal que permiten una reducción significativa en el trabajo computacional.</p>
 
 <p>Nos detenemos en más detalles sobre la situación de la ciencia económica porque es especialmente importante. De hecho, al final, la única evaluación objetiva de todas nuestras acciones en el campo de la mecanización, la automatización, la expansión de la producción, la colocación de nuevos sitios de construcción, el uso de métodos de planificación más avanzados y todos nuestros esfuerzos para aumentar el ritmo del progreso científico y tecnológico es su eficiencia económica. No podemos permitirnos el lujo de no calcular con precisión en el campo de la economía. Al cumplir con las tareas de nuestro grupo establecidas en el nuevo programa, ya no podemos soportar el problema incompleto de fijación de precios, esta base de todos los cálculos económicos.</p>
 
@@ -1663,7 +1715,7 @@ Director</p>
 
 <p>“La electrificación, que es el núcleo de la construcción de la economía de la sociedad comunista, desempeña un papel de liderazgo en el desarrollo de todos los sectores de la economía nacional, asegurando todo el progreso tecnológico moderno. Por lo tanto, es necesario garantizar un ritmo más rápido de producción de electricidad”. Dicha evaluación se da en el borrador del Programa de electrificación de PCUS del país.</p>
 
-<p>Hace más de 40 años, en 1920, se desarrolló el primer plan maestro para el desarrollo de la economía nacional de la Rusia soviética, que sigue siendo de gran importancia como ejemplo de un prometedor plan económico nacional estatal. En el VIII Congreso de los Soviets de toda Rusia en diciembre de 1920, Vladimir Ilich Lenin describió el plan para la electrificación de Rusia, que fue revisado por la Comisión Estatal por la Electrificación de Rusia (<a href="https://es.wikipedia.org/wiki/GOELRO">GOELRO</a>), como el segundo programa del partido, como un gran plan económico que indica la forma de transferir a la Rusia atrasada a una nueva base económica, necesaria para la construcción del comunismo. “Tal base”, dijo Vladimir Ilich, “es solo electricidad. El comunismo es el poder soviético más la electrificación de todo el país” (obras completas<sup id="fnref:1:2" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, 4ª ed., vol. 31, p. 486).</p>
+<p>Hace más de 40 años, en 1920, se desarrolló el primer plan maestro para el desarrollo de la economía nacional de la Rusia soviética, que sigue siendo de gran importancia como ejemplo de un prometedor plan económico nacional estatal. En el VIII Congreso de los Soviets de toda Rusia en diciembre de 1920, Vladimir Ilich Lenin describió el plan para la electrificación de Rusia, que fue revisado por la Comisión Estatal por la Electrificación de Rusia (<a href="https://es.wikipedia.org/wiki/GOELRO" class="link-wikipedia">GOELRO</a>), como el segundo programa del partido, como un gran plan económico que indica la forma de transferir a la Rusia atrasada a una nueva base económica, necesaria para la construcción del comunismo. “Tal base”, dijo Vladimir Ilich, “es solo electricidad. El comunismo es el poder soviético más la electrificación de todo el país” (obras completas<sup id="fnref:1:2" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>, 4ª ed., vol. 31, p. 486).</p>
 
 <p>El valor para establecer metas para el plan GOELRO solo puede evaluarse si tenemos en cuenta la situación en el país en 1919-1920. Si en 1913 se generaron alrededor de 1.9-2.0 miles de millones de kWh de electricidad en Rusia, entonces en 1920 se generó 4 veces menos, alrededor de 0.5 miles de millones de kWh. Al mismo tiempo en los EE. UU. se generaron 50×10<sup>9</sup> kWh, es decir, 100 veces más. Después de 40 años, la imagen cambió dramáticamente. En 1960, se produjeron 292×10<sup>9</sup> en la URSS y alrededor de 900×10<sup>9</sup> kWh (en las terminales de las centrales eléctricas) en los Estados Unidos, es decir, “solo” 3 veces más. Pero si no hubiera habido la Segunda Guerra Mundial, que no solo se detuvo, sino que también retrasó el desarrollo de la electrificación de la URSS y no hizo daño a los Estados Unidos, entonces habríamos generado del 40 al 50% de la capacidad de generación de electricidad en los EE. UU en 1960.</p>
 
@@ -1766,89 +1818,89 @@ Director</p>
   <p>El progreso de la ciencia y la tecnología en las condiciones de un sistema económico socialista permite el uso más eficiente de la riqueza y la naturaleza de la naturaleza en interés de las personas, para descubrir nuevos tipos de energía, crear nuevos materiales, desarrollar métodos para influir en las condiciones climáticas y dominar el espacio exterior. La aplicación de la ciencia se convierte en un factor decisivo en el poderoso crecimiento de las fuerzas productivas de la sociedad. El desarrollo de la ciencia y la introducción de sus logros en la economía nacional seguirá siendo de particular interés para el partido.</p>
 </blockquote>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr>
 
 <h2 id="heading-notas">Notas</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>NdT: Obras completas de V. I. Lenin, 4ª ed., Gospolitizdat, 1950. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:1:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a></p>
+      <p>NdT: Obras completas de V. I. Lenin, 4ª ed., Gospolitizdat, 1950. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">↩<sup>2</sup></a> <a href="#fnref:1:2" class="reversefootnote" role="doc-backlink">↩<sup>3</sup></a></p>
     </li>
     <li id="fn:2" role="doc-endnote">
-      <p>NdT: Pravda, “La Verdad”, órgano de expresión del PCUS. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Pravda, “La Verdad”, órgano de expresión del PCUS. <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:3" role="doc-endnote">
-      <p>NdT: El concepto de “información” fue problemático en el marxismo dogmático del estalinismo. Para el materialismo mal entendido de los censores estalinistas, una cosa que no era materia ni energía solo podía ser un delirio idealista y burgués. Esto explica la cautela con la que Berg trata este tema, tratando de alejar el foco de atención de su la definición con una audaz comparación entre la información, el tiempo y el espacio, para los cuales “no tenemos una definición exacta” pero los “medimos perfectamente con gran precisión”. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: El concepto de “información” fue problemático en el marxismo dogmático del estalinismo. Para el materialismo mal entendido de los censores estalinistas, una cosa que no era materia ni energía solo podía ser un delirio idealista y burgués. Esto explica la cautela con la que Berg trata este tema, tratando de alejar el foco de atención de su la definición con una audaz comparación entre la información, el tiempo y el espacio, para los cuales “no tenemos una definición exacta” pero los “medimos perfectamente con gran precisión”. <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:4" role="doc-endnote">
-      <p>NdT: Editorial Estatal de Literatura Energética. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Editorial Estatal de Literatura Energética. <a href="#fnref:4" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:5" role="doc-endnote">
-      <p>NdT: Periódico económico. <a href="#fnref:5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Periódico económico. <a href="#fnref:5" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:6" role="doc-endnote">
-      <p>NdT: Editorial Política Estatal. <a href="#fnref:6" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:6:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+      <p>NdT: Editorial Política Estatal. <a href="#fnref:6" class="reversefootnote" role="doc-backlink">↩</a> <a href="#fnref:6:1" class="reversefootnote" role="doc-backlink">↩<sup>2</sup></a></p>
     </li>
     <li id="fn:7" role="doc-endnote">
-      <p>NdT: Académico era el título de los miembros honorarios de una academia de ciencias de la Unión Soviética, uno de los rangos más altos a nivel científico. <a href="#fnref:7" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Académico era el título de los miembros honorarios de una academia de ciencias de la Unión Soviética, uno de los rangos más altos a nivel científico. <a href="#fnref:7" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:8" role="doc-endnote">
-      <p>S. N. Braines, A. V. Napalkov, V. B. Svechinsky, Notas científicas de la Academia de Ciencias Médicas de la URSS, Instituto de Psiquiatría, “Problemas de Neurocibernética”, 1959. <a href="#fnref:8" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>S. N. Braines, A. V. Napalkov, V. B. Svechinsky, Notas científicas de la Academia de Ciencias Médicas de la URSS, Instituto de Psiquiatría, “Problemas de Neurocibernética”, 1959. <a href="#fnref:8" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:9" role="doc-endnote">
-      <p>NdT: Candidato de ciencias (Кандидат наук) es un título equivalente al doctorado. <a href="#fnref:9" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Candidato de ciencias (Кандидат наук) es un título equivalente al doctorado. <a href="#fnref:9" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:10" role="doc-endnote">
-      <p>NdT: La <a href="https://es.wikipedia.org/wiki/Paidolog%C3%ADa">paidología</a> es una rama de la psicología dedicada al estudio del comportamiento de los niños, a diferencia de la <a href="https://es.wikipedia.org/wiki/Pedagog%C3%ADa">pedagogía</a> que se dedica al estudio de los procesos de enseñanza y aprendizaje. <a href="#fnref:10" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: La <a href="https://es.wikipedia.org/wiki/Paidolog%C3%ADa" class="link-wikipedia">paidología</a> es una rama de la psicología dedicada al estudio del comportamiento de los niños, a diferencia de la <a href="https://es.wikipedia.org/wiki/Pedagog%C3%ADa" class="link-wikipedia">pedagogía</a> que se dedica al estudio de los procesos de enseñanza y aprendizaje. <a href="#fnref:10" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:11" role="doc-endnote">
-      <p>NdT: Izdatelstvo fíziko-matematicheskói i tejnicheskói literatury, “Editorial para la literatura físico-matemática y técnica. <a href="#fnref:11" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Izdatelstvo fíziko-matematicheskói i tejnicheskói literatury, “Editorial para la literatura físico-matemática y técnica. <a href="#fnref:11" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:12" role="doc-endnote">
-      <p>NdT: El <em>Symposium on Mechanisation of Thought Processes</em> fue el primer simposio internacional sobre inteligencia artificial, donde acudieron pioneros de este campo como Marvin L. Minsky o John McCarthy (el autor del término “inteligencia artificial”). La inteligencia artificial, propuesta en el encuentro de Darthmouth en 1956 y discutida en el simposio de Teddington en 1958, tuvo una coexistencia difícil con la cibernética. Posteriormente, los proponentes de la inteligencia artificial conseguirían acaparar la financiación para sus proyectos, <a href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">desterrando la cibernética hacia otros campos como las ciencias sociales</a>. <a href="#fnref:12" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: El <em>Symposium on Mechanisation of Thought Processes</em> fue el primer simposio internacional sobre inteligencia artificial, donde acudieron pioneros de este campo como Marvin L. Minsky o John McCarthy (el autor del término “inteligencia artificial”). La inteligencia artificial, propuesta en el encuentro de Darthmouth en 1956 y discutida en el simposio de Teddington en 1958, tuvo una coexistencia difícil con la cibernética. Posteriormente, los proponentes de la inteligencia artificial conseguirían acaparar la financiación para sus proyectos, <a href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/" class="link-external">desterrando la cibernética hacia otros campos como las ciencias sociales</a>. <a href="#fnref:12" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:13" role="doc-endnote">
-      <p>NdT: Quizá la International Conference for Standards on a Common Language for Machine Searching and Translation celebrada en la Western Reserve University, Cleveland. <a href="#fnref:13" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Quizá la International Conference for Standards on a Common Language for Machine Searching and Translation celebrada en la Western Reserve University, Cleveland. <a href="#fnref:13" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:14" role="doc-endnote">
-      <p>NdT: Economía Planificada. <a href="#fnref:14" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>NdT: Economía Planificada. <a href="#fnref:14" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>]]></content><author><name></name></author><category term="Cibernética" /><summary type="html"><![CDATA[El siguiente texto es una traducción de la introducción al primer volumen de “Cibernética – al servicio del comunismo”, editado por Aksel I. Berg en 1961 en la URSS después de la restauración política de esta disciplina científica, antes demonizada por el estalinismo.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/cybernetics.png" /><media:content medium="image" url="https://lamaquinadeturing.su/cybernetics.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="ca"><title type="html">Quan la intel·ligència artificial va desplaçar la cibernètica</title><link href="https://lamaquinadeturing.su/ca/2020/05/quan-la-intelligencia-artificial-va-desplacar-la-cibernetica/" rel="alternate" type="text/html" title="Quan la intel·ligència artificial va desplaçar la cibernètica" /><published>2020-05-01T10:00:00+00:00</published><updated>2020-05-01T10:00:00+00:00</updated><id>https://lamaquinadeturing.su/ca/2020/05/quan-la-intelligencia-artificial-va-desplacar-la-cibernetica</id><content type="html" xml:base="https://lamaquinadeturing.su/ca/2020/05/quan-la-intelligencia-artificial-va-desplacar-la-cibernetica/"><![CDATA[<p><em>Fragment de</em> On the Importance of Being Emergent <em>de Peter Cariani<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. En la pugna entre els fundadors de la intel·ligència artificial contra els defensors de la cibernètica, cal entendre que el paradigma dominant de la IA fins als anys 80 era el de les representacions simbòliques dels problemes, i per tant descartava mètodes com l’aprenentatge autònom i les xarxes neuronals, basats en el processament estadístic i contemplat per la cibernètica, que irònicament avui dia és el que més s’associa a la intel·ligència artificial.</em></p>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr>
 
 <p>Al meu entendre, l’error més exasperant que cometen els editors [d’<em>Emergence and Embodiment</em>] és confondre la cibernètica primerenca amb la IA simbòlica i la informàtica (com en la primera frase del teaser a la contraportada del llibre). Els “aspectes matemàtics i d’enginyeria de la cibernètica” es caracteritzen com a “Intel·ligència Artificial (IA), robòtica, informàtica i tecnologies de comandament, control i comunicacions” (pp. 34–35). Tot i que la cibernètica primerenca va incloure la teoria de control adaptatiu i algunes robòtiques (les tortugues autònomes de George Walter), la cibernètica era i és bastant diferent de la informàtica i la IA (“IA simbòlica”). Aquests moviments tenen objectius, conceptes i mètodes fonamentalment diferents – la cibernètica es refereix a l’organització d’acció efectiva en el món a través de la incorporació de fins en els mitjans, no les possibilitats computacionals i representacionals dels sistemes de símbols – però l’afany sembla ser barrejar tot en una “tecnociència” infocomputacional que ens ha donat “un ordinador al teu escriptori i un iPhone a la teva butxaca” (p. 35). Quan molts comentaristes de teoria cultural confonen la cibernètica amb simulacions de vida artificial, autòmats cel·lulars, estudis de complexitat i l’emergència computacional <em>à la</em> Wolfram, hom té la sensació que les profundes diferències filosòfiques entre la cibernètica i aquests enfocaments computacionalistes d’avui dia són poc apreciats.</p>
 
 <p>L’antagonisme, tant filosòfic com financer, entre la cibernètica i la IA sembla història oblidada. La IA va néixer en una conferència a dartmouth el 1956 que va ser organitzada per McCarthy, Minsky, Rochester i Shannon, tres anys després que les conferències de Macy sobre cibernètica haguessin acabat (Boden 2006; McCorduck 1972). Els dos moviments van coexistir durant aproximadament una dècada, però a mitjans de la dècada de 1960, els defensors de la IA simbòlica van obtenir el control dels canals de finançament nacional i van desfinançar la recerca en cibernètica. Això va liquidar eficaçment els subcamps de sistemes autoorganitzadors, xarxes neuronals i màquines adaptatives, programació evolutiva, computació biològica i biònica durant diverses dècades, deixant als treballadors en gestió, teràpia i ciències socials mantenir viva la flama. Crec que algunes de les polèmiques entre teòrics de control de primer ordre i multituds de segon ordre que vaig presenciar en dècades posteriors van ser el resultat acumulatiu d’un canvi de finançament, pertinença i recerca de les ciències naturals “dures” a les intervencions sociopsicològiques “toves”. Les guerres de clans es produeixen quan disminueix la reserva de recursos naturals. En lloc de files d’estàtues gegantines de moai als turons de Nowbarren, ens hem deixat biblioteques d’escrits monumentals sobre idees profundes els significats originals de les quals s’estan perdent ràpidament amb el temps.</p>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr>
 
 <h2 id="heading-notes">Notes</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”.</em> Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traduït de <a href="http://constructivist.info/5/2/086.cariani">l’original</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”.</em> Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traduït de <a href="http://constructivist.info/5/2/086.cariani" class="link-external">l’original</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
-</div>]]></content><author><name></name></author><category term="Cibernètica" /><summary type="html"><![CDATA[Fragment de On the Importance of Being Emergent de Peter Cariani1. En la pugna entre els fundadors de la intel·ligència artificial contra els defensors de la cibernètica, cal entendre que el paradigma dominant de la IA fins als anys 80 era el de les representacions simbòliques dels problemes, i per tant descartava mètodes com l’aprenentatge autònom i les xarxes neuronals, basats en el processament estadístic i contemplat per la cibernètica, que irònicament avui dia és el que més s’associa a la intel·ligència artificial. Cariani P. On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”. Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traduït de l’original. &#8617;]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/darthsmouth.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/darthsmouth.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="es"><title type="html">Cuando la inteligencia artificial desplazó la cibernética</title><link href="https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/" rel="alternate" type="text/html" title="Cuando la inteligencia artificial desplazó la cibernética" /><published>2020-05-01T10:00:00+00:00</published><updated>2020-05-01T10:00:00+00:00</updated><id>https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica</id><content type="html" xml:base="https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/"><![CDATA[<p><em>Fragmento de</em> On the Importance of Being Emergent <em>de Peter Cariani<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial.</em></p>
+</div>]]></content><author><name></name></author><category term="Cibernètica" /><summary type="html"><![CDATA[Fragment de On the Importance of Being Emergent de Peter Cariani1. En la pugna entre els fundadors de la intel·ligència artificial contra els defensors de la cibernètica, cal entendre que el paradigma dominant de la IA fins als anys 80 era el de les representacions simbòliques dels problemes, i per tant descartava mètodes com l’aprenentatge autònom i les xarxes neuronals, basats en el processament estadístic i contemplat per la cibernètica, que irònicament avui dia és el que més s’associa a la intel·ligència artificial. Cariani P. On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”. Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traduït de l’original. ↩]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/darthsmouth.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/darthsmouth.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="es"><title type="html">Cuando la inteligencia artificial desplazó la cibernética</title><link href="https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/" rel="alternate" type="text/html" title="Cuando la inteligencia artificial desplazó la cibernética" /><published>2020-05-01T10:00:00+00:00</published><updated>2020-05-01T10:00:00+00:00</updated><id>https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica</id><content type="html" xml:base="https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/"><![CDATA[<p><em>Fragmento de</em> On the Importance of Being Emergent <em>de Peter Cariani<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial.</em></p>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr>
 
 <p>En mi opinión, el error más exasperante que cometen los editores [de <em>Emergence and Embodiment</em>] es mezclar la cibernética temprana con la IA simbólica y la informática (como en la primera frase del adelanto de la contraportada del libro). Los “aspectos matemáticos y de ingeniería de la cibernética” se caracterizan como “Inteligencia Artificial (IA), robótica, informática y tecnologías de mando-control-comunicación” (pp. 34–35). Aunque la cibernética temprana abarcaba la teoría del control adaptativo y algo de robótica (las tortugas autónomas de Grey Walter), la cibernética era y es bastante distinta de la informática y la IA (“IA simbólica”). Estos movimientos tienen objetivos, conceptos fundadores y métodos fundamentalmente diferentes – la cibernética se refiere a la organización de acciones efectivas en el mundo a través de la incorporación de fines en los medios, no las posibilidades computacionales y de representación de los sistemas de símbolos – pero el impulso parece ser el de agrupar crudamente todo en una “tecnociencia” info-computacional que nos ha dado “una computadora en tu escritorio y un iPhone en tu bolsillo” (p. 35). Cuando muchos comentaristas de la teoría cultural confunden la cibernética con las simulaciones de vida artificial, los autómatas celulares, los estudios de complejidad y el surgimiento computacional <em>à la</em> Wolfram, uno tiene la sensación de que las profundas diferencias filosóficas entre la cibernética y estos enfoques computacionales de los últimos tiempos son poco apreciadas.</p>
 
 <p>El antagonismo, tanto filosófico como financiero, entre la cibernética y la IA parece haberse perdido en la historia. La inteligencia artificial nació en una conferencia celebrada en Dartmouth en 1956, organizada por McCarthy, Minsky, Rochester y Shannon, tres años después de que concluyeran las conferencias de Macy sobre cibernética (Boden 2006; McCorduck 1972). Los dos movimientos coexistieron durante aproximadamente una década, pero a mediados de la década de 1960, los defensores de la IA simbólica obtuvieron el control de los canales de financiación nacional y desfinanciaron despiadadamente la investigación cibernética. Esto efectivamente liquidó los subcampos de los sistemas autoorganizados, las redes neuronales y las máquinas adaptativas, la programación evolutiva, la computación biológica y la biónica durante varias décadas, dejando a los trabajadores de la gestión, la terapia y las ciencias sociales para mantener viva la llama. Creo que algunos de los polémicos forcejeos entre los teóricos del control de primer orden y las multitudes del segundo orden de los que fui testigo en décadas posteriores fueron el resultado acumulativo de un cambio en la financiación, la composición y la investigación desde las ciencias naturales “duras” a las intervenciones socio-psicológicas “blandas”. Las guerras de clanes se producen cuando la reserva de recursos naturales disminuye. En lugar de filas de gigantescas estatuas de moai en las colinas de Nowbarren, nos han dejado bibliotecas de escritos monumentales sobre ideas profundas cuyos significados originales se están perdiendo rápidamente en el tiempo.</p>
 
-<hr class="wp-block-separator is-style-wide" />
+<hr>
 
 <h2 id="heading-notas">Notas</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1" role="doc-endnote">
-      <p>Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”.</em> Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traducido del <a href="http://constructivist.info/5/2/086.cariani">original</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+      <p>Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”.</em> Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traducido del <a href="http://constructivist.info/5/2/086.cariani" class="link-external">original</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
-</div>]]></content><author><name></name></author><category term="Cibernética" /><summary type="html"><![CDATA[Fragmento de On the Importance of Being Emergent de Peter Cariani1. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial. Cariani P. On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”. Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traducido del original. &#8617;]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/darthsmouth.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/darthsmouth.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</div>]]></content><author><name></name></author><category term="Cibernética" /><summary type="html"><![CDATA[Fragmento de On the Importance of Being Emergent de Peter Cariani1. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial. Cariani P. On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”. Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traducido del original. ↩]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/darthsmouth.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/darthsmouth.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

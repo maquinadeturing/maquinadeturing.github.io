@@ -1213,21 +1213,7 @@ screen and (max-resolution: 1dppx) and (max-width: 800px) {
     text-align: center;
 }
 
-hr.wp-block-separator {
-    border: none;
-}
-
-hr.wp-block-separator:not(.is-style-wide)::before {
-    content: "***";
-    display: block;
-    text-align: center;
-    font-family: "Pixelar";
-    font-size: 100px;
-    margin-top: -50px;
-    margin-bottom: -50px;
-}
-
-hr.wp-block-separator.is-style-wide {
+article hr:not(.asterisks) {
     width: 100%;
     height: 7px;
     display: block;
@@ -1235,7 +1221,7 @@ hr.wp-block-separator.is-style-wide {
     border: 1px solid hsla(0, 0%, 0%, .4);
 }
 
-hr.wp-block-separator.is-style-wide::before {
+article hr:not(.asterisks)::before {
     content: "";
     position: absolute;
     top: 1px;
@@ -1244,6 +1230,20 @@ hr.wp-block-separator.is-style-wide::before {
     width: calc(100% - 2px);
     height: 3px;
     background: repeating-linear-gradient(180deg, hsla(0, 0%, 0%, .4), hsla(0, 0%, 0%, .4) 1px, var(--color-bg) 0, var(--color-bg) 2px);
+}
+
+article hr.asterisks {
+    border: none;
+}
+
+article hr.asterisks::before {
+    content: "***";
+    display: block;
+    text-align: center;
+    font-family: "Pixelar";
+    font-size: 100px;
+    margin-top: -50px;
+    margin-bottom: -50px;
 }
 
 ol.upper-alpha {
