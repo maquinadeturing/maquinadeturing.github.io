@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-09-10T21:04:19+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Simple Sabotage Field Manual</title><link href="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/" rel="alternate" type="text/html" title="Simple Sabotage Field Manual" /><published>2024-09-08T17:00:00+00:00</published><updated>2024-09-08T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/"><![CDATA[<p><em>The</em> <a href="https://en.wikisource.org/wiki/Simple_Sabotage_Field_Manual" class="link-wikipedia">Simple Sabotage Field Manual</a> <em>was a collection of simple sabotage techniques gathered by the</em> Office of Strategic Services <em>(predecessor of the CIA) during World War II to be distributed among workers in enemy countries and disrupt their industry and military.</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-09-15T13:24:13+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Simple Sabotage Field Manual</title><link href="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/" rel="alternate" type="text/html" title="Simple Sabotage Field Manual" /><published>2024-09-08T17:00:00+00:00</published><updated>2024-09-08T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/"><![CDATA[<p><em>The</em> <a href="https://en.wikisource.org/wiki/Simple_Sabotage_Field_Manual" class="link-wikipedia">Simple Sabotage Field Manual</a> <em>was a collection of simple sabotage techniques gathered by the</em> Office of Strategic Services <em>(predecessor of the CIA) during World War II to be distributed among workers in enemy countries and disrupt their industry and military.</em></p>
 
 <p><em>Despite being used in 1944, many of its methods will be familiar to 21st century readers. Notably, some techniques come from observing inefficiencies that happen in many organizations “even under normal conditions”, which makes many people inadvertently act as “saboteurs”. For example, by “bringing up irrelevant issues as frequently as possible” or “referring back to matters decided upon at the last meeting and attempting to re-open the question”.</em></p>
 
@@ -33,7 +33,8 @@ Director</p>
 <p id="toc-5" class="toc toc-h2"><a href="#heading-5-specific-suggestions-for-simple-sabotage">5. Specific Suggestions For Simple Sabotage</a></p>
 </div>
 
-<h2 id="heading-1-introduction" class="heading">1. Introduction <a href="#toc-1" class="toc-back-link">↩</a>
+<h2 id="heading-1-introduction" class="heading">
+<a class="heading-link" href="#heading-1-introduction">§</a>1. Introduction <a href="#toc-1" class="toc-back-link">↩</a>
 </h2>
 
 <p>The purpose of this paper is to characterize simple sabotage, to outline its possible effects, and to present suggestions for inciting and executing it.</p>
@@ -46,21 +47,24 @@ Director</p>
 
 <p>This type of activity, sometimes referred to as the “human element,” is frequently responsible for accidents, delays, and general obstruction even under normal conditions. The potential saboteur should discover what types of faulty decisions and the operations are normally found in this kind of work and should then devise his sabotage so as to enlarge that “margin for error.”</p>
 
-<h2 id="heading-2-possible-effects" class="heading">2. Possible Effects <a href="#toc-2" class="toc-back-link">↩</a>
+<h2 id="heading-2-possible-effects" class="heading">
+<a class="heading-link" href="#heading-2-possible-effects">§</a>2. Possible Effects <a href="#toc-2" class="toc-back-link">↩</a>
 </h2>
 
 <p>Acts of simple sabotage are occurring throughout Europe. An effort should be made to add to their efficiency, lessen their detectability, and increase their number. Acts of simple sabotage, multiplied by thousands of citizen-saboteurs, can be an effective weapon against the enemy. Slashing tires, draining fuel tanks, starting fires, starting arguments, acting stupidly, short-circuiting electric systems, abrading machine parts will waste materials, manpower, and time. Occurring on a wide scale, simple sabotage will be a constant and tangible drag on the war effort of the enemy.</p>
 
 <p>Simple sabotage may also have secondary results of more or less value. Widespread practice of simple sabotage will harass and demoralize enemy administrators and police. Further, success may embolden the citizen-saboteur eventually to find colleagues who can assist him in sabotage of greater dimensions. Finally, the very practice of simple sabotage by natives in enemy or occupied territory may make these individuals identify themselves actively with the United Nations war effort, and encourage them to assist openly in periods of Allied invasion and occupation.</p>
 
-<h2 id="heading-3-motivating-the-saboteur" class="heading">3. Motivating The Saboteur <a href="#toc-3" class="toc-back-link">↩</a>
+<h2 id="heading-3-motivating-the-saboteur" class="heading">
+<a class="heading-link" href="#heading-3-motivating-the-saboteur">§</a>3. Motivating The Saboteur <a href="#toc-3" class="toc-back-link">↩</a>
 </h2>
 
 <p>To incite the citizen to the active practice of simple sabotage and to keep him practicing that sabotage over sustained periods is a special problem.</p>
 
 <p>Simple sabotage is often an act which the citizen performs according to his own initiative and inclination. Acts of destruction do not bring him any personal gain and may be completely foreign to his habitually conservationist attitude toward materials and tools. Purposeful stupidity is contrary to human nature. He frequently needs pressure, stimulation or assurance, and information and suggestions regarding feasible methods of simple sabotage.</p>
 
-<h3 id="heading-1-personal-motives">(1) Personal Motives</h3>
+<h3 id="heading-1-personal-motives">
+<a class="heading-link" href="#heading-1-personal-motives">§</a>(1) Personal Motives</h3>
 
 <p>(a) The ordinary citizen very probably has no immediate personal motive for committing simple sabotage. Instead, he must be made to anticipate indirect personal gain, such as might come with enemy evacuation or destruction of the ruling government group. Gains should be stated as specifically as possible for the area addressed: simple sabotage will hasten the day when Commissioner X and his deputies Y and Z will be thrown out, when particularly obnoxious decrees and restrictions will be abolished, when food will arrive, and so on. Abstract verbalizations about personal liberty, freedom of the press, and so on, will not be convincing in most parts of the world. In many areas they will not even be comprehensible.</p>
 
@@ -68,7 +72,8 @@ Director</p>
 
 <p>(c) More important than (a) or (b) would be to create a situation in which the citizen-saboteur acquires a sense of responsibility and begins to educate others in simple sabotage.</p>
 
-<h3 id="heading-2-encouraging-destructiveness">(2) Encouraging Destructiveness</h3>
+<h3 id="heading-2-encouraging-destructiveness">
+<a class="heading-link" href="#heading-2-encouraging-destructiveness">§</a>(2) Encouraging Destructiveness</h3>
 
 <p>It should be pointed out to the saboteur where the circumstances are suitable, that he is acting in self-defense against the enemy, or retaliating against the enemy for other acts of destruction. A reasonable amount of humor in the presentation of suggestions for simple sabotage will relax tensions of fear.</p>
 
@@ -80,7 +85,8 @@ Director</p>
 
 <p>(d) Various media may be used to disseminate suggestions and information regarding simple sabotage. Among the media which may be used, as the immediate situation dictates, are: freedom stations or radio false (unreadable) broadcasts or leaflets may be directed toward specific geographic or occupational areas, or they may be general in scope. Finally, agents may be trained in the art of simple sabotage, in anticipation of a time when they may be able to communicate this information directly.</p>
 
-<h3 id="heading-3-safety-measures">(3) Safety Measures</h3>
+<h3 id="heading-3-safety-measures">
+<a class="heading-link" href="#heading-3-safety-measures">§</a>(3) Safety Measures</h3>
 
 <p>(a) The amount of activity carried on by the saboteur will be governed not only by the number of opportunities he sees, but also by the amount of danger he feels. Bad news travels fast, and simple sabotage will be discouraged if too many simple saboteurs are arrested.</p>
 
@@ -101,14 +107,16 @@ Director</p>
   </li>
 </ol>
 
-<h2 id="heading-4-tools-targets-and-timing" class="heading">4. Tools, Targets, And Timing <a href="#toc-4" class="toc-back-link">↩</a>
+<h2 id="heading-4-tools-targets-and-timing" class="heading">
+<a class="heading-link" href="#heading-4-tools-targets-and-timing">§</a>4. Tools, Targets, And Timing <a href="#toc-4" class="toc-back-link">↩</a>
 </h2>
 
 <p>The citizen-saboteur cannot be closely controlled. Nor is it reasonable to expect that simple sabotage can be precisely concentrated on specific types of target according to the requirements of a concrete military situation. Attempts to control simple sabotage according to developing military factors, moreover, might provide the enemy with intelligence of more or less value in anticipating the date and area of notably intensified or notably slackened military activity.</p>
 
 <p>Sabotage suggestions, of course, should be adapted to fit the area where they are to be practiced. Target priorities for general types of situations likewise can be specified, for emphasis at the proper time by the underground press, freedom stations, and cooperating propaganda.</p>
 
-<h3 id="heading-1-under-general-conditions">(1) Under General Conditions</h3>
+<h3 id="heading-1-under-general-conditions">
+<a class="heading-link" href="#heading-1-under-general-conditions">§</a>(1) Under General Conditions</h3>
 
 <p>(a) Simple sabotage is more than malicious mischief, and it should always consist of acts whose results will be detrimental to the materials and manpower of the enemy.</p>
 
@@ -120,11 +128,13 @@ Director</p>
 
 <p>(e) Although the citizen-saboteur may rarely have access to military objects, he should give these preference above all others.</p>
 
-<h3 id="heading-2-prior-to-a-military-offensive">(2) Prior to a Military Offensive</h3>
+<h3 id="heading-2-prior-to-a-military-offensive">
+<a class="heading-link" href="#heading-2-prior-to-a-military-offensive">§</a>(2) Prior to a Military Offensive</h3>
 
 <p>During periods which are quiescent in a military sense, such emphasis as can be given to simple sabotage might well center on industrial production, to lessen the flow of materials and equipment to the enemy. Slashing a rubber tire on an Army truck may be an act of value; spoiling a batch of rubber in the production plant is an act of still more value.</p>
 
-<h3 id="heading-3-during-a-military-offensive">(3) During a Military Offensive</h3>
+<h3 id="heading-3-during-a-military-offensive">
+<a class="heading-link" href="#heading-3-during-a-military-offensive">§</a>(3) During a Military Offensive</h3>
 
 <p>(a) Most significant sabotage for an area which is, or is soon destined to be, a theater of combat operations is that whose effects will be direct and immediate. Even if the effects are relatively minor and localized, this type of sabotage is to be preferred to activities whose effects, while widespread, are indirect and delayed.</p>
 
@@ -142,14 +152,16 @@ Director</p>
   </li>
 </ol>
 
-<h2 id="heading-5-specific-suggestions-for-simple-sabotage" class="heading">5. Specific Suggestions For Simple Sabotage <a href="#toc-5" class="toc-back-link">↩</a>
+<h2 id="heading-5-specific-suggestions-for-simple-sabotage" class="heading">
+<a class="heading-link" href="#heading-5-specific-suggestions-for-simple-sabotage">§</a>5. Specific Suggestions For Simple Sabotage <a href="#toc-5" class="toc-back-link">↩</a>
 </h2>
 
 <p>It will not be possible to evaluate the desirability of simple sabotage in an area without having in mind rather specifically what individual acts and results are embraced by the definition of simple sabotage.</p>
 
 <p>A listing of specific acts follows, classified according to types of target. This list is presented as a growing rather than a complete outline of the methods of simple sabotage. As new techniques are developed, or new fields explored, it will be elaborated and expanded.</p>
 
-<h3 id="heading-1-buildings">(1) Buildings</h3>
+<h3 id="heading-1-buildings">
+<a class="heading-link" href="#heading-1-buildings">§</a>(1) Buildings</h3>
 
 <p>Warehouses, barracks, offices, hotels, and factory buildings are outstanding targets for simple sabotage. They are extremely susceptible to damage, especially by fire; they offer opportunities to such untrained people as janitors, charwomen, and casual visitors; and, when damaged, they present a relatively large handicap to the enemy.</p>
 
@@ -198,7 +210,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-2-industrial-production-manufacturing">(2) Industrial Production: Manufacturing</h3>
+<h3 id="heading-2-industrial-production-manufacturing">
+<a class="heading-link" href="#heading-2-industrial-production-manufacturing">§</a>(2) Industrial Production: Manufacturing</h3>
 
 <p>(a) Tools</p>
 
@@ -363,7 +376,8 @@ Director</p>
   <li>Reduce the efficiency of steam boilers any way you can. Put too much water in them to make them slow-starting, or keep the fire under them low to keep them inefficient. Let them dry and turn the fire up; they will crack and be ruined. An especially good trick is to keep putting limestone or water containing lime in the boiler; it will deposit lime on the bottom and sides. This deposit will provide very good insulation against heat; after enough of it has collected, the boiler will be completely worthless.</li>
 </ol>
 
-<h3 id="heading-3-production-metals">(3) Production. Metals</h3>
+<h3 id="heading-3-production-metals">
+<a class="heading-link" href="#heading-3-production-metals">§</a>(3) Production. Metals</h3>
 
 <p>(a) Iron and Steel</p>
 
@@ -386,7 +400,8 @@ Director</p>
 
 <p>No suggestions available.</p>
 
-<h3 id="heading-4-production-mining-and-mineral-extraction">(4) Production: Mining and Mineral Extraction</h3>
+<h3 id="heading-4-production-mining-and-mineral-extraction">
+<a class="heading-link" href="#heading-4-production-mining-and-mineral-extraction">§</a>(4) Production: Mining and Mineral Extraction</h3>
 
 <p>(a) Coal</p>
 
@@ -411,7 +426,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-5-production-agriculture">(5) Production: Agriculture</h3>
+<h3 id="heading-5-production-agriculture">
+<a class="heading-link" href="#heading-5-production-agriculture">§</a>(5) Production: Agriculture</h3>
 
 <p>(a) Machinery</p>
 
@@ -425,7 +441,8 @@ Director</p>
   <li>Feed crops to livestock. Let crops harvest too early or too late. Spoil stores of grain, fruit and vegetables by soaking them in water so that they will rot. Spoil fruit and vegetables by leaving them in the sun.</li>
 </ol>
 
-<h3 id="heading-6-transportation-railways">(6) Transportation: Railways</h3>
+<h3 id="heading-6-transportation-railways">
+<a class="heading-link" href="#heading-6-transportation-railways">§</a>(6) Transportation: Railways</h3>
 
 <p>(a) Passengers</p>
 
@@ -531,7 +548,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-7-transportation-automotive">(7) Transportation: Automotive</h3>
+<h3 id="heading-7-transportation-automotive">
+<a class="heading-link" href="#heading-7-transportation-automotive">§</a>(7) Transportation: Automotive</h3>
 
 <p>(a) Roads. Damage to roads [(3) below] is slow, and therefore impractical as a D-day or near D-day activity.</p>
 
@@ -628,7 +646,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-8-transportation-water">(8) Transportation: Water</h3>
+<h3 id="heading-8-transportation-water">
+<a class="heading-link" href="#heading-8-transportation-water">§</a>(8) Transportation: Water</h3>
 
 <p>(a) Navigation</p>
 
@@ -659,7 +678,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-9-communications">(9) Communications</h3>
+<h3 id="heading-9-communications">
+<a class="heading-link" href="#heading-9-communications">§</a>(9) Communications</h3>
 
 <p>(a) Telephone</p>
 
@@ -731,7 +751,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-10-electric-power">(10) Electric Power</h3>
+<h3 id="heading-10-electric-power">
+<a class="heading-link" href="#heading-10-electric-power">§</a>(10) Electric Power</h3>
 
 <p>(a) Turbines, Electric Motors, Transformers</p>
 
@@ -745,7 +766,8 @@ Director</p>
   <li>Linesmen can loosen and dirty insulators to cause power leakage. It will be quite easy, too, for them to tie a piece of very heavy string several times back and forth between two parallel transmission lines, winding it several turns around the wire each time. Beforehand, the string should be heavily saturated with salt and then dried. When it rains, the string becomes a conductor, and a short-circuit will result.</li>
 </ol>
 
-<h3 id="heading-11-general-interference-with-organizations-and-production">(11) General Interference with Organizations and Production</h3>
+<h3 id="heading-11-general-interference-with-organizations-and-production">
+<a class="heading-link" href="#heading-11-general-interference-with-organizations-and-production">§</a>(11) General Interference with Organizations and Production</h3>
 
 <p>(a) Organizations and Conferences</p>
 
@@ -888,7 +910,8 @@ Director</p>
   </li>
 </ol>
 
-<h3 id="heading-12-general-devices-for-lowering-morale-and-creating-confusion">(12) General Devices for Lowering Morale and Creating Confusion</h3>
+<h3 id="heading-12-general-devices-for-lowering-morale-and-creating-confusion">
+<a class="heading-link" href="#heading-12-general-devices-for-lowering-morale-and-creating-confusion">§</a>(12) General Devices for Lowering Morale and Creating Confusion</h3>
 
 <p>(a) Give lengthy and incomprehensible explanations when questioned.</p>
 
@@ -920,7 +943,9 @@ Director</p>
 
 <p>This is an on-going collection of essays, articles, projects and manifestos about what went wrong and what to do to make it right.</p>
 
-<h2 id="heading-the-disenshittified-internet-starts-with-loyal-user-agents"><a href="https://pluralistic.net/2024/05/07/treacherous-computing/" class="link-external">The disenshittified internet starts with loyal “user agents”</a></h2>
+<h2 id="heading-the-disenshittified-internet-starts-with-loyal-user-agents" class="heading">
+<a class="heading-link" href="#heading-the-disenshittified-internet-starts-with-loyal-user-agents">§</a><a href="https://pluralistic.net/2024/05/07/treacherous-computing/" class="link-external">The disenshittified internet starts with loyal “user agents”</a>
+</h2>
 
 <p>By <a href="https://mamot.fr/@pluralistic" class="link-mastodon">Cory Doctorow</a>, 7 May, 2024.</p>
 
@@ -928,7 +953,9 @@ Director</p>
   <p>A web browser that’s a “user agent” is a comforting thought. An agent’s job is to serve you and your interests. […] A “faithless” user agent is utterly different from a “clumsy” user agent, and faithless user agents have become the norm. Indeed, as crude early internet clients progressed in sophistication, they grew increasingly treacherous. Most non-browser tools are designed for treachery.</p>
 </blockquote>
 
-<h2 id="heading-reweirding-the-web"><a href="https://webdirections.org/blog/reweirding-the-web/" class="link-external">Reweirding the Web</a></h2>
+<h2 id="heading-reweirding-the-web" class="heading">
+<a class="heading-link" href="#heading-reweirding-the-web">§</a><a href="https://webdirections.org/blog/reweirding-the-web/" class="link-external">Reweirding the Web</a>
+</h2>
 
 <p>By <a href="https://indieweb.social/@johnallsopp" class="link-mastodon">John Allsopp</a>, 3 May, 2024.</p>
 
@@ -938,7 +965,9 @@ Director</p>
 
 <p>See also the <a href="https://deshittify.us/" class="link-external">The Disenshittify Project</a>, 30 April, 2024.</p>
 
-<h2 id="heading-we-can-have-a-different-web"><a href="https://www.citationneeded.news/we-can-have-a-different-web/" class="link-external">We can have a different web</a></h2>
+<h2 id="heading-we-can-have-a-different-web" class="heading">
+<a class="heading-link" href="#heading-we-can-have-a-different-web">§</a><a href="https://www.citationneeded.news/we-can-have-a-different-web/" class="link-external">We can have a different web</a>
+</h2>
 
 <p>By <a href="https://hachyderm.io/@molly0xfff" class="link-mastodon">Molly White</a>, 1 May, 2024.</p>
 
@@ -946,7 +975,9 @@ Director</p>
   <p>Many yearn for the “good old days” of the web. We could have those good old days back — or something even better — and if anything, it would be easier now than it ever was.</p>
 </blockquote>
 
-<h2 id="heading-we-need-to-rewild-the-internet"><a href="https://www.noemamag.com/we-need-to-rewild-the-internet/" class="link-external">We Need To Rewild The Internet</a></h2>
+<h2 id="heading-we-need-to-rewild-the-internet" class="heading">
+<a class="heading-link" href="#heading-we-need-to-rewild-the-internet">§</a><a href="https://www.noemamag.com/we-need-to-rewild-the-internet/" class="link-external">We Need To Rewild The Internet</a>
+</h2>
 
 <p>By <a href="https://hachyderm.io/@mariafarrell@mastodon.social" class="link-mastodon">Maria Farrel</a> and <a href="https://hachyderm.io/@robin@mastodon.social" class="link-mastodon">Robin Berjon</a>, 16 April, 2024.</p>
 
@@ -954,7 +985,9 @@ Director</p>
   <p>Ecologists have reoriented their field as a “crisis discipline,” a field of study that’s not just about learning things but about saving them. We technologists need to do the same. Rewilding the internet connects and grows what people are doing across regulation, standards-setting and new ways of organizing and building infrastructure, to tell a shared story of where we want to go. It’s a shared vision with many strategies. The instruments we need to shift away from extractive technological monocultures are at hand or ready to be built.</p>
 </blockquote>
 
-<h2 id="heading-a-manifesto-for-small-static-web-apps"><a href="https://rosswintle.uk/2024/02/a-manifesto-for-small-static-web-apps/" class="link-external">A manifesto for small, static, web apps</a></h2>
+<h2 id="heading-a-manifesto-for-small-static-web-apps" class="heading">
+<a class="heading-link" href="#heading-a-manifesto-for-small-static-web-apps">§</a><a href="https://rosswintle.uk/2024/02/a-manifesto-for-small-static-web-apps/" class="link-external">A manifesto for small, static, web apps</a>
+</h2>
 
 <p>By <a href="https://fosstodon.org/@ross" class="link-mastodon">Ross Wintle</a>, 17 February, 2024.</p>
 
@@ -1016,13 +1049,15 @@ Director</p>
 
 <p>Otros sitios web requieren una suscripción para acceder a su contenido, lo cual está bien. Pero esto es diferente al modelo de “pagar o consentir”.</p>]]></content><author><name></name></author><category term="Web" /><summary type="html"><![CDATA[Este sitio web no utiliza cookies.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/questioning-moon.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/questioning-moon.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Implementing the search function in a static web site</title><link href="https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site/" rel="alternate" type="text/html" title="Implementing the search function in a static web site" /><published>2024-08-09T11:00:00+00:00</published><updated>2024-08-09T11:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/08/implementing-search-function-in-static-web-site/"><![CDATA[<p>Static web sites <a href="/en/2024/08/the-case-for-a-better-web/">are the best</a>. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is <em>searching</em>.</p>
 
-<h2 id="heading-the-poor-mans-search-function">The poor man’s search function</h2>
+<h2 id="heading-the-poor-mans-search-function" class="heading">
+<a class="heading-link" href="#heading-the-poor-mans-search-function">§</a>The poor man’s search function</h2>
 
 <p>Usually, the alternative has been the <code class="language-plaintext highlighter-rouge">site:</code> operator in Google: a form in your website would transform the search string into a <code class="language-plaintext highlighter-rouge">site:</code> query and redirect it to Google. Purists can do the same with <a href="https://duckduckgo.com/duckduckgo-help-pages/results/syntax/" class="link-external">DuckDuckGo</a>. But that leaves me relying on notoriously unreliable companies, which can drop this feature at any moment or hide it behind a pawyall.</p>
 
 <p>And I wondered: is there a way to have my own search function?</p>
 
-<h2 id="heading-is-static-search-even-possible">Is static search even possible?</h2>
+<h2 id="heading-is-static-search-even-possible" class="heading">
+<a class="heading-link" href="#heading-is-static-search-even-possible">§</a>Is static search even possible?</h2>
 
 <p>My wishlist for a search function was:</p>
 <ol>
@@ -1072,7 +1107,8 @@ Director</p>
 
 <p>Maybe Lunr was too fancy for me, so I should implement my own search library.</p>
 
-<h2 id="heading-putting-it-down-in-words">Putting it down in words</h2>
+<h2 id="heading-putting-it-down-in-words" class="heading">
+<a class="heading-link" href="#heading-putting-it-down-in-words">§</a>Putting it down in words</h2>
 
 <p>The basic functionality of a search function is to map a query to posts that contain them. So a very initial implementation would be to collect all the words from all the posts and map each one to a list of posts. Then, when the user enters a query, the words of such query can be found in the search index.</p>
 
@@ -1188,7 +1224,8 @@ Director</p>
 
 <p>The current JSON search index in this format for the 7 posts in 3 languages of the site is 52 KB. Not bad compared to the 141 KB of Lunr for just 3 posts. All in all, 50 KB or 140 KB may be are not very important nowadays, as some images in this site are larger than that. But I’d like this blog to grow enough so the size of the index matters.</p>
 
-<h2 id="heading-wait-doesnt-that-look-like-a-bloom-filter">Wait, doesn’t that look like a Bloom filter?</h2>
+<h2 id="heading-wait-doesnt-that-look-like-a-bloom-filter" class="heading">
+<a class="heading-link" href="#heading-wait-doesnt-that-look-like-a-bloom-filter">§</a>Wait, doesn’t that look like a Bloom filter?</h2>
 
 <p>Indeed, why not use a <a href="https://en.wikipedia.org/wiki/Bloom_filter" class="link-wikipedia">Bloom filter</a>, instead of a map of words? After all, a Bloom filter is super compact: 1 bit per word!</p>
 
@@ -1204,7 +1241,8 @@ Director</p>
 
 <p>I’ll leave that implementation in a branch. Maybe, in the long run, it outperforms the word map.</p>
 
-<h2 id="heading-levenshtein-and-his-friends-burkhard-and-keller">Levenshtein and his friends Burkhard and Keller</h2>
+<h2 id="heading-levenshtein-and-his-friends-burkhard-and-keller" class="heading">
+<a class="heading-link" href="#heading-levenshtein-and-his-friends-burkhard-and-keller">§</a>Levenshtein and his friends Burkhard and Keller</h2>
 
 <p>Now that the search index is generated, it’s time to do some searching in the web browser.</p>
 
@@ -1307,7 +1345,8 @@ Director</p>
 
 <p>In this new code, a BK-Tree is constructed for each word index, and now these trees can be used to search for similar words below a certain threshold with a time complexity of O(log n). That’s more like it.</p>
 
-<h2 id="heading-looking-for-the-headline">Looking for the headline</h2>
+<h2 id="heading-looking-for-the-headline" class="heading">
+<a class="heading-link" href="#heading-looking-for-the-headline">§</a>Looking for the headline</h2>
 
 <p>The fuzzy search function that was implemented above will match similar words. But surely the user, after typing “cyber”, will expect <a href="/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/">“Cybernetics” (in A Dictionary of Philosophy, 1967)</a> to appear in the results.</p>
 
@@ -1341,7 +1380,8 @@ Director</p>
 
 <p>The previous code takes the words of the search query and checks if they are a substring of a post title. For each word that is a substring of a title, that post gets 1 point. The score of the title search is added to the score of the fuzzy search, and that is how posts are displayed in the search box and how they are sorted.</p>
 
-<h2 id="heading-conclusion">Conclusion</h2>
+<h2 id="heading-conclusion" class="heading">
+<a class="heading-link" href="#heading-conclusion">§</a>Conclusion</h2>
 
 <p>I am quite satisfied with the static search function I implemented for this website. It is quite lightweight: 52 KB, compared to the 141 KB of Lunr or the 82 KB of a <em>Bloom map.</em> Still, the search experience feels similar to what can be expected from a full text search. Go ahead and test it yourself.</p>
 
@@ -1349,7 +1389,8 @@ Director</p>
 
 <p>As the blog grows, maybe I will have to revisit the implementation in case the index becomes too heavy, or it is not very accurate, but for now does the job.</p>
 
-<h2 id="heading-notes">Notes</h2>
+<h2 id="heading-notes" class="heading">
+<a class="heading-link" href="#heading-notes">§</a>Notes</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
@@ -1368,7 +1409,8 @@ Director</p>
 
 <hr>
 
-<h2 id="heading-notes">Notes</h2>
+<h2 id="heading-notes" class="heading">
+<a class="heading-link" href="#heading-notes">§</a>Notes</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
@@ -1388,7 +1430,8 @@ Director</p>
 
 <hr>
 
-<h2 id="heading-introducción">Introducción</h2>
+<h2 id="heading-introducción" class="heading">
+<a class="heading-link" href="#heading-introducci%C3%B3n">§</a>Introducción</h2>
 
 <p><strong>A. I. Berg</strong></p>
 
@@ -1466,7 +1509,8 @@ Director</p>
 
 <p>En los últimos años, hemos hecho mucho, en esta área. Puede referirse, por ejemplo, a la colección recientemente publicada de Cuestiones filosóficas de la cibernética. Pero estamos lejos de pensar que los artículos de esta colección agotan todo el problema. Por lo tanto, en ‘esta colección es un artículo de I. B. Novik “Sobre algunos problemas metodológicos de la cibernética”. Habla sobre la optimización de la gestión, la naturaleza de la información, la relación entre el hombre y la máquina, y la naturaleza de la cibernética como ciencia. Estamos seguros de que la publicación de este interesante artículo en nuestra colección fortalecerá aún más los fundamentos ideológicos de la cibernética.</p>
 
-<h3 id="heading-i-recogida-tratamiento-y-transferencia-de-información">I. RECOGIDA, TRATAMIENTO Y TRANSFERENCIA DE INFORMACIÓN</h3>
+<h3 id="heading-i-recogida-tratamiento-y-transferencia-de-información" class="heading">
+<a class="heading-link" href="#heading-i-recogida-tratamiento-y-transferencia-de-informaci%C3%B3n">§</a>I. RECOGIDA, TRATAMIENTO Y TRANSFERENCIA DE INFORMACIÓN</h3>
 
 <p>En la primera sección, cuyos artículos proporcionan información sobre la recopilación, el procesamiento y la transmisión de información, el miembro de la Academia de Ciencias de la RSS de Ucrania, prof. B.V. Gnedenko, habla sobre algunos temas de cibernética y estadísticas. En 1956, B.V. Gnedenko, N. M. Amosov, E. A. Shkabara y sus empleados se interesaron en los problemas del diagnóstico médico y llevaron a cabo uno de los primeros intentos en el mundo para el procesamiento estadístico de material clínico, sobre la base de lo cual generalmente se hace el diagnóstico, y se utilizó una computadora electrónica para estos fines. Esto hizo posible obtener evaluaciones más objetivas de varios conjuntos de síntomas que los que puede hacer un médico. El uso de métodos de estadística matemática, lógica matemática y teoría de la probabilidad en el desarrollo de un diagnóstico en el futuro ayudará significativamente a los médicos.</p>
 
@@ -1488,7 +1532,8 @@ Director</p>
 
 <p>Finalmente, el artículo llama la atención sobre la creciente importancia de una mayor elaboración de los problemas de la teoría de la información y el uso de máquinas electrónicas para el procesamiento de la información. En este artículo se presta especial y merecida atención a la creciente importancia de la robotización confiable de los medios automatizados de transmisión de información.</p>
 
-<h3 id="heading-ii-cibernética-y-naturaleza-viva">II. CIBERNÉTICA Y NATURALEZA VIVA</h3>
+<h3 id="heading-ii-cibernética-y-naturaleza-viva" class="heading">
+<a class="heading-link" href="#heading-ii-cibern%C3%A9tica-y-naturaleza-viva">§</a>II. CIBERNÉTICA Y NATURALEZA VIVA</h3>
 
 <p>Estamos principalmente interesados en la vida silvestre, la flora y la fauna. Y, sobre todo, nos preocupamos por la persona, por su salud. La sociedad comunista debe ser construida por personas sanas. El mantenimiento de la salud, la prevención de enfermedades, el diagnóstico precoz de enfermedades graves, los métodos de tratamiento eficaces en caso de enfermedad es la principal preocupación de las autoridades sanitarias soviéticas. La mejora integral de la mano de obra, la introducción de medios modernos de seguridad técnica y la provisión de condiciones sanitarias y técnicas que eliminen las lesiones y enfermedades profesionales son la principal preocupación de nuestro partido para el hombre soviético, como se establece en el proyecto de Programa del PCUS. Es interesante recordar que la misma preocupación se mostró en 1919. El segundo programa del partido, adoptado en el 8º Congreso del PCR, dijo: “En el campo de la salud pública, la adopción decisiva de amplias medidas sanitarias en interés de los trabajadores, tales como: a) mejora áreas pobladas (protección del suelo, agua, aire)”, etc.</p>
 
@@ -1558,7 +1603,8 @@ Director</p>
 
 <p>Una serie de preguntas en este artículo se plantean de una manera nueva. La literatura soviética sobre psicología de la ingeniería está limitada hasta ahora a unas pocas publicaciones: artículos. Esperemos que esto sea solo el comienzo. El descuido de esta ciencia afecta directamente las condiciones de trabajo de las empresas. Es altamente deseable que las personas que aún no entienden el significado de todo lo dicho anteriormente visiten algunas de nuestras plantas automatizadas; verían de primera mano lo importante que es estudiar las condiciones de trabajo en la era de la automatización.</p>
 
-<h3 id="heading-iii-cibernética-en-humanidades">III. CIBERNÉTICA EN HUMANIDADES</h3>
+<h3 id="heading-iii-cibernética-en-humanidades" class="heading">
+<a class="heading-link" href="#heading-iii-cibern%C3%A9tica-en-humanidades">§</a>III. CIBERNÉTICA EN HUMANIDADES</h3>
 
 <p>Ya en 1919, en el programa del segundo partido adoptado por el VIII Congreso del PCR, se decía: “Como principal y básico, determinando toda la política económica del gobierno soviético, establecer un aumento integral de las fuerzas productivas del país”. El XIV Congreso del Partido (1925) indicó que el plan leninista para la industrialización socialista del país se implementaría en el campo del desarrollo económico. Eso fue hace más de 35 años.</p>
 
@@ -1639,7 +1685,8 @@ Director</p>
 
 <p>Esperamos que el artículo sobre el uso de métodos y herramientas cibernéticos en la ley atraiga la atención de nuestros abogados.</p>
 
-<h3 id="heading-iv-cibernética-en-ciencia-y-tecnología">IV. CIBERNÉTICA EN CIENCIA Y TECNOLOGÍA</h3>
+<h3 id="heading-iv-cibernética-en-ciencia-y-tecnología" class="heading">
+<a class="heading-link" href="#heading-iv-cibern%C3%A9tica-en-ciencia-y-tecnolog%C3%ADa">§</a>IV. CIBERNÉTICA EN CIENCIA Y TECNOLOGÍA</h3>
 
 <p>El borrador del Programa del PCUS planteó el requisito de desarrollar métodos para influir en las condiciones climáticas. Este es un viejo sueño de la humanidad, completamente irrealizable en el pasado. La implementación de esta tarea en el futuro cercano es una tarea extremadamente difícil, pero las posibilidades modernas de la ciencia ya permiten ponerla en práctica.</p>
 
@@ -1716,7 +1763,8 @@ Director</p>
 
 <p>De considerable interés es el trabajo de nuestros institutos de transporte ferroviario en el desarrollo de un centro de computación especial, llevado a cabo bajo la dirección del miembro correspondiente de la Academia de Ciencias de la URSS, el prof. A. P. Petrov. También merece atención seria el trabajo de B. Del Rio, N. A. Samarin y L. V. Safris sobre el uso de máquinas digitales electrónicas para la elaboración de horarios de trenes paralelos, realizado por el Instituto de Ingenieros de Hierro: Transporte por carretera en Rostov del Don.</p>
 
-<h3 id="heading-v-algunos-resultados">V. ALGUNOS RESULTADOS</h3>
+<h3 id="heading-v-algunos-resultados" class="heading">
+<a class="heading-link" href="#heading-v-algunos-resultados">§</a>V. ALGUNOS RESULTADOS</h3>
 
 <p>Hemos hablado del proceso de las matemáticas de muchas ciencias típicas de nuestra época: biología, medicina, economía, lingüística, meteorología, química y otras. En todos los casos se pasa de la descripción, de las evaluaciones cualitativas generales al establecimiento de regularidades matemáticas exactas. El propósito de esta evolución de las ciencias naturales y humanas, dirigida conscientemente por el hombre, es una penetración más profunda en la esencia de los fenómenos del mundo exterior que nos rodea, de la naturaleza viva y especialmente de nuestro organismo. La principal tarea de esta actividad es el uso de las regularidades cognitivas para satisfacer las necesidades humanas. No podemos cambiar las leyes naturales de la naturaleza, pero podemos, habiéndolas aprendido, aprender a controlarlas.</p>
 
@@ -1750,7 +1798,8 @@ Director</p>
 
 <p>Los intentos de “dejar de lado” el problema de la fiabilidad como un problema ficticio que supuestamente no existe no resisten ninguna crítica. Se debe establecer una responsabilidad estricta por encubrir y desatender estas cuestiones. Esto comienza a ser entendido por la mayoría de las personas progresistas responsables del progreso científico y tecnológico. Pero hay que recordar que el problema de la fiabilidad, aun si hubiera sido resuelto satisfactoriamente hoy (que por supuesto no lo es), se plantea de nuevo mañana y nunca será eliminado mientras exista el desarrollo e introducción de nuevas tecnologías y nuevos dispositivos. Este es un problema “eterno”, y nunca será resuelto por eventos episódicos.</p>
 
-<h3 id="heading-vi-conclusión">VI. CONCLUSIÓN</h3>
+<h3 id="heading-vi-conclusión" class="heading">
+<a class="heading-link" href="#heading-vi-conclusi%C3%B3n">§</a>VI. CONCLUSIÓN</h3>
 
 <p>Hace tiempo que estamos acostumbrados a confiar firmemente en la ayuda de nuestra comunidad en todos los casos difíciles. Somos conscientes de que la ciencia se desarrolla solo como resultado del trabajo creativo persistente y decidido de científicos individuales y en laboratorios bien organizados y equipados con instrumentos y equipos científicos modernos.</p>
 
@@ -1786,7 +1835,8 @@ Director</p>
 
 <hr>
 
-<h2 id="heading-notas">Notas</h2>
+<h2 id="heading-notas" class="heading">
+<a class="heading-link" href="#heading-notas">§</a>Notas</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
@@ -1843,7 +1893,8 @@ Director</p>
 
 <hr>
 
-<h2 id="heading-notes">Notes</h2>
+<h2 id="heading-notes" class="heading">
+<a class="heading-link" href="#heading-notes">§</a>Notes</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
@@ -1861,7 +1912,8 @@ Director</p>
 
 <hr>
 
-<h2 id="heading-notas">Notas</h2>
+<h2 id="heading-notas" class="heading">
+<a class="heading-link" href="#heading-notas">§</a>Notas</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
