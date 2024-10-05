@@ -1,4 +1,209 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-09-15T22:01:20+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Simple Sabotage Field Manual</title><link href="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/" rel="alternate" type="text/html" title="Simple Sabotage Field Manual" /><published>2024-09-08T17:00:00+00:00</published><updated>2024-09-08T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/"><![CDATA[<p><em>The</em> <a href="https://en.wikisource.org/wiki/Simple_Sabotage_Field_Manual" class="link-wikipedia">Simple Sabotage Field Manual</a> <em>was a collection of simple sabotage techniques gathered by the</em> Office of Strategic Services <em>(predecessor of the CIA) during World War II to be distributed among workers in enemy countries and disrupt their industry and military.</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://lamaquinadeturing.su/feed.xml" rel="self" type="application/atom+xml" /><link href="https://lamaquinadeturing.su/" rel="alternate" type="text/html" /><updated>2024-10-05T21:36:26+00:00</updated><id>https://lamaquinadeturing.su/feed.xml</id><title type="html">La màquina de Turing</title><subtitle>cat /dev/random</subtitle><entry xml:lang="en"><title type="html">Git rebase doesn’t do what you think</title><link href="https://lamaquinadeturing.su/en/2024/10/git-rebase-onto/" rel="alternate" type="text/html" title="Git rebase doesn’t do what you think" /><published>2024-10-05T18:00:00+00:00</published><updated>2024-10-05T18:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/10/git-rebase-onto</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/10/git-rebase-onto/"><![CDATA[<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true });
+</script>
+
+<p>As <a href="https://xkcd.com/1597/" class="link-external">xkcd says</a>, Git is an awesome tool, but if something goes wrong just delete everything and download a fresh copy.</p>
+
+<p>One of these “oops” moments is <code class="language-plaintext highlighter-rouge">git rebase</code>. The cool brother of <code class="language-plaintext highlighter-rouge">git merge</code> is as powerful as misunderstood. I am writing this post because sometimes it surprises me that so many people will stumble upon common rebasing pitfalls.</p>
+
+<p>What I want to explain in this post is the following:</p>
+
+<div class="toc">
+<p id="toc-1" class="toc toc-h2"><a href="#heading-1-what-people-think-rebasing-does">1. What people think rebasing does</a></p>
+<p id="toc-2" class="toc toc-h2"><a href="#heading-2-what-rebasing-actually-does">2. What rebasing actually does</a></p>
+<p id="toc-3" class="toc toc-h2"><a href="#heading-3-the-common-pitfall-when-rebasing">3. The common pitfall when rebasing</a></p>
+<p id="toc-4" class="toc toc-h2"><a href="#heading-4-why-rebasing-onto-is-what-you-actually-wanted">4. Why rebasing onto is what you actually wanted</a></p>
+</div>
+
+<h2 id="heading-1-what-people-think-rebasing-does" class="heading">
+<a class="heading-link" href="#heading-1-what-people-think-rebasing-does">§</a>1. What people think rebasing does <a href="#toc-1" class="toc-back-link">↩</a>
+</h2>
+
+<p>Git is like a tree, with a common trunk like <code class="language-plaintext highlighter-rouge">main</code> and branches like <code class="language-plaintext highlighter-rouge">develop</code>:</p>
+
+<pre class="mermaid">
+%%{init: { 'theme': 'neutral' } }%%
+gitGraph
+    commit id: "1"
+    commit id: "2"
+    branch develop
+    checkout develop
+    commit id: "5"
+    commit id: "6"
+    checkout main
+    commit id: "3"
+    commit id: "4"
+</pre>
+
+<p>If we execute:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch develop
+git rebase main
+</code></pre></div></div>
+
+<p>Then commits 5 and 6 will be moved (if there are no conflicts) to the tip of <code class="language-plaintext highlighter-rouge">main</code> like this:</p>
+
+<pre class="mermaid">
+%%{init: { 'theme': 'neutral' } }%%
+gitGraph
+    commit id: "1"
+    commit id: "2"
+    commit id: "3"
+    commit id: "4"
+    branch develop
+    checkout develop
+    commit id: "5"
+    commit id: "6"
+</pre>
+
+<p>It appears as if we took commits 5 and 6 and dragged and dropped them on top of commit 4. Simple, right? Well, not exactly.</p>
+
+<h2 id="heading-2-what-rebasing-actually-does" class="heading">
+<a class="heading-link" href="#heading-2-what-rebasing-actually-does">§</a>2. What rebasing actually does <a href="#toc-2" class="toc-back-link">↩</a>
+</h2>
+
+<p>The impression users get from rebasing is that commits are “moved”. We wanted branch <code class="language-plaintext highlighter-rouge">develop</code> to be at the tip of <code class="language-plaintext highlighter-rouge">main</code>. But how does Git know which commits to move?</p>
+
+<p>Intuitively, we know that we wanted commits 5 and 6 to be moved from commit 2 to commit 4. So let’s give these two commits a name:</p>
+
+<ul>
+  <li>Commit 2 is the <em>common ancestor</em>.</li>
+  <li>Commit 4 is the <em>merge base</em>.</li>
+</ul>
+
+<p>When doing a rebase, Git first calculates the common ancestor of the source branch and the target branch (commit 2). Then it selects all the commits from the common ancestor to the tip of the source branch and applies them to the merge base.</p>
+
+<p>In other words, the previous commands are equivalent to:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-d</span> develop
+git switch main
+git checkout <span class="nt">-b</span> develop
+git cherry-pick 5
+git cherry-pick 6
+</code></pre></div></div>
+
+<p>It is important here to understand these two ideas about rebasing:</p>
+<ol>
+  <li>Commits are not moved, but re-applied.</li>
+  <li>Rebasing is done from a common ancestor to a merge base.</li>
+</ol>
+
+<p>The first point is the cause of a common pitfall that makes people fear rebasing. The second is the key to avoiding it.</p>
+
+<h2 id="heading-3-the-common-pitfall-when-rebasing" class="heading">
+<a class="heading-link" href="#heading-3-the-common-pitfall-when-rebasing">§</a>3. The common pitfall when rebasing <a href="#toc-3" class="toc-back-link">↩</a>
+</h2>
+
+<p>In collaborative teams, the following situation is very common: a feature branch <code class="language-plaintext highlighter-rouge">bar</code> depends on a previous feature <code class="language-plaintext highlighter-rouge">foo</code>. Meanwhile, <code class="language-plaintext highlighter-rouge">main</code> has continued to grow (commits 7 and 8). When feature <code class="language-plaintext highlighter-rouge">foo</code> is finally rebased on top of <code class="language-plaintext highlighter-rouge">main</code>, there is a conflict between its commits and the new commits in <code class="language-plaintext highlighter-rouge">main</code>:</p>
+
+<pre class="mermaid">
+%%{init: { 'theme': 'neutral' } }%%
+gitGraph
+    commit id: "1"
+    commit id: "2"
+    branch feature/foo
+    checkout feature/foo
+    commit id: "3" type: REVERSE
+    commit id: "4" type: REVERSE
+    branch feature/bar
+    checkout feature/bar
+    commit id: "5"
+    commit id: "6"
+    checkout main
+    commit id: "7" type: HIGHLIGHT
+    commit id: "8" type: HIGHLIGHT
+</pre>
+
+<p>Inevitably, these conflicts have to be resolved. This usually causes the rebased commits to be different than the original:</p>
+
+<pre class="mermaid">
+%%{init: { 'theme': 'neutral' } }%%
+gitGraph
+    commit id: "1"
+    commit id: "2"
+    branch feature/bar
+    checkout feature/bar
+    commit id: "3" type: REVERSE
+    commit id: "4" type: REVERSE
+    commit id: "5"
+    commit id: "6"
+    checkout main
+    commit id: "7"
+    commit id: "8"
+    commit id: "3'" type: HIGHLIGHT
+    commit id: "4'" type: HIGHLIGHT
+</pre>
+
+<p>That is, commits 3’ and 4’ are now different than the original commits 3 and 4. They <em>look the same</em> to a human, because usually their title and description will be the same, but their changeset is different. And this is the source of our pain.</p>
+
+<p>Imagine that you are the author of feature <code class="language-plaintext highlighter-rouge">bar</code>. From your point of view, feature <code class="language-plaintext highlighter-rouge">foo</code> and its commits 3 and 4 are now on top of <code class="language-plaintext highlighter-rouge">main</code>, so you should be able to rebase your branch without any conflicts.</p>
+
+<p>Based on what we learned, we now know that:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch feature/bar
+git rebase main
+</code></pre></div></div>
+
+<p>Will calculate the common ancestor between <code class="language-plaintext highlighter-rouge">bar</code> and <code class="language-plaintext highlighter-rouge">main</code> (commit 2) and try to re-apply commits 3, 4, 5 and 6 on top of commit 4’. Git is very smart, so in an ideal world it will detect duplicated commits, like 3 and 4, and skip them, so only 5 and 6 will be re-applied.</p>
+
+<p>However, commits 3’ and 4’ are now too different, and Git complains, and you didn’t expect that and you hate rebasing.</p>
+
+<p>Let’s see what can be done about this.</p>
+
+<h2 id="heading-4-why-rebasing-onto-is-what-you-actually-wanted" class="heading">
+<a class="heading-link" href="#heading-4-why-rebasing-onto-is-what-you-actually-wanted">§</a>4. Why rebasing onto is what you actually wanted <a href="#toc-4" class="toc-back-link">↩</a>
+</h2>
+
+<p>In the previous example, the owner of feature <code class="language-plaintext highlighter-rouge">bar</code> doesn’t want to re-apply commits 3, 4, only 5 and 6. So how to tell Git to skip the old commits 3 and 4?</p>
+
+<p>The key is to provide a different common ancestor. Instead of:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase main
+</code></pre></div></div>
+
+<p>What we can do is:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase 4 <span class="nt">--onto</span> main
+</code></pre></div></div>
+
+<p>With this command, what we are telling Git is:</p>
+
+<ol>
+  <li>Use commit 4 as the common ancestor.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">main</code> as the merge base.</li>
+</ol>
+
+<p>(Important note here: the common ancestor is not included in the rebase.)</p>
+
+<p>Git, knowing this, will only select the commits between the common ancestor (commit 4) and the source branch: commits 5 and 6. When re-applying them on top of the tip of main (commit 4’), they should be fine most of the time.</p>
+
+<pre class="mermaid">
+%%{init: { 'theme': 'neutral' } }%%
+gitGraph
+    commit id: "1"
+    commit id: "2"
+    commit id: "7"
+    commit id: "8"
+    commit id: "3'" type: HIGHLIGHT
+    commit id: "4'" type: HIGHLIGHT
+    commit id: "5" type: HIGHLIGHT
+    commit id: "6" type: HIGHLIGHT
+</pre>
+
+<p>Before finishing, a few notes. First, before knowing about <code class="language-plaintext highlighter-rouge">git rebase --onto</code> my mental rebasing model was <em>moving branches</em>, with no way to limit the string of commits attached to them. I guess that many people feel like this about Git. After learning about it, and better understanding what rebasing does, how my brain works now is akin to <em>selecting a list of commits</em> and <em>dragging and dropping</em> them onto another place. Literally this is what I would like Git tools to offer me: as if it was a PowerPoint slide, I would like commits to be like text boxes to be selected, edited, dragged and dropped, deleted…</p>
+
+<p>This also has important consequences when using <code class="language-plaintext highlighter-rouge">git rebase --interactive</code>, because when we want to apply modifications to the rebased commits it is important to understand how Git selects that list of commits. If you want to better understand how the common ancestor works, you can try <code class="language-plaintext highlighter-rouge">git rebase -i main</code> and see that it will show commits 3, 4, 5 and 6, while <code class="language-plaintext highlighter-rouge">git rebase -i 4 --onto main</code> will show commits 5 and 6.</p>
+
+<p>Another important difference between <code class="language-plaintext highlighter-rouge">git rebase</code> and <code class="language-plaintext highlighter-rouge">git rebase --onto</code>: when specifying the common ancestor, that commit will not always be nicely tagged with a branch. So do not be afraid of using the hash of the commit as the common ancestor.</p>
+
+<p>And a disclaimer: Git and rebasing is even more complicated and I made some intentional and unintentional simplifications in this post, but in general I find that this mental model of Git works quite well.</p>
+
+<p>In conclusion, if we want to move the commits between branch <code class="language-plaintext highlighter-rouge">base</code> and <code class="language-plaintext highlighter-rouge">source</code>, and apply them to <code class="language-plaintext highlighter-rouge">target</code>, the command is:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch <span class="nb">source
+</span>git rebase base <span class="nt">--onto</span> target
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/branches.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/branches.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Simple Sabotage Field Manual</title><link href="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/" rel="alternate" type="text/html" title="Simple Sabotage Field Manual" /><published>2024-09-08T17:00:00+00:00</published><updated>2024-09-08T17:00:00+00:00</updated><id>https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual</id><content type="html" xml:base="https://lamaquinadeturing.su/en/2024/09/simple-sabotage-field-manual/"><![CDATA[<p><em>The</em> <a href="https://en.wikisource.org/wiki/Simple_Sabotage_Field_Manual" class="link-wikipedia">Simple Sabotage Field Manual</a> <em>was a collection of simple sabotage techniques gathered by the</em> Office of Strategic Services <em>(predecessor of the CIA) during World War II to be distributed among workers in enemy countries and disrupt their industry and military.</em></p>
 
 <p><em>Despite being used in 1944, many of its methods will be familiar to 21st century readers. Notably, some techniques come from observing inefficiencies that happen in many organizations “even under normal conditions”, which makes many people inadvertently act as “saboteurs”. For example, by “bringing up irrelevant issues as frequently as possible” or “referring back to matters decided upon at the last meeting and attempting to re-open the question”.</em></p>
 
@@ -1902,23 +2107,4 @@ Director</p>
       <p>Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”.</em> Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traduït de <a href="http://constructivist.info/5/2/086.cariani" class="link-external">l’original</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
-</div>]]></content><author><name></name></author><category term="Cibernètica" /><summary type="html"><![CDATA[Fragment de On the Importance of Being Emergent de Peter Cariani1. En la pugna entre els fundadors de la intel·ligència artificial contra els defensors de la cibernètica, cal entendre que el paradigma dominant de la IA fins als anys 80 era el de les representacions simbòliques dels problemes, i per tant descartava mètodes com l’aprenentatge autònom i les xarxes neuronals, basats en el processament estadístic i contemplat per la cibernètica, que irònicament avui dia és el que més s’associa a la intel·ligència artificial. Cariani P. On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”. Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traduït de l’original. ↩]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/darthsmouth.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/darthsmouth.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="es"><title type="html">Cuando la inteligencia artificial desplazó la cibernética</title><link href="https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/" rel="alternate" type="text/html" title="Cuando la inteligencia artificial desplazó la cibernética" /><published>2020-05-01T10:00:00+00:00</published><updated>2020-05-01T10:00:00+00:00</updated><id>https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica</id><content type="html" xml:base="https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/"><![CDATA[<p><em>Fragmento de</em> On the Importance of Being Emergent <em>de Peter Cariani<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial.</em></p>
-
-<hr>
-
-<p>En mi opinión, el error más exasperante que cometen los editores [de <em>Emergence and Embodiment</em>] es mezclar la cibernética temprana con la IA simbólica y la informática (como en la primera frase del adelanto de la contraportada del libro). Los “aspectos matemáticos y de ingeniería de la cibernética” se caracterizan como “Inteligencia Artificial (IA), robótica, informática y tecnologías de mando-control-comunicación” (pp. 34–35). Aunque la cibernética temprana abarcaba la teoría del control adaptativo y algo de robótica (las tortugas autónomas de Grey Walter), la cibernética era y es bastante distinta de la informática y la IA (“IA simbólica”). Estos movimientos tienen objetivos, conceptos fundadores y métodos fundamentalmente diferentes – la cibernética se refiere a la organización de acciones efectivas en el mundo a través de la incorporación de fines en los medios, no las posibilidades computacionales y de representación de los sistemas de símbolos – pero el impulso parece ser el de agrupar crudamente todo en una “tecnociencia” info-computacional que nos ha dado “una computadora en tu escritorio y un iPhone en tu bolsillo” (p. 35). Cuando muchos comentaristas de la teoría cultural confunden la cibernética con las simulaciones de vida artificial, los autómatas celulares, los estudios de complejidad y el surgimiento computacional <em>à la</em> Wolfram, uno tiene la sensación de que las profundas diferencias filosóficas entre la cibernética y estos enfoques computacionales de los últimos tiempos son poco apreciadas.</p>
-
-<p>El antagonismo, tanto filosófico como financiero, entre la cibernética y la IA parece haberse perdido en la historia. La inteligencia artificial nació en una conferencia celebrada en Dartmouth en 1956, organizada por McCarthy, Minsky, Rochester y Shannon, tres años después de que concluyeran las conferencias de Macy sobre cibernética (Boden 2006; McCorduck 1972). Los dos movimientos coexistieron durante aproximadamente una década, pero a mediados de la década de 1960, los defensores de la IA simbólica obtuvieron el control de los canales de financiación nacional y desfinanciaron despiadadamente la investigación cibernética. Esto efectivamente liquidó los subcampos de los sistemas autoorganizados, las redes neuronales y las máquinas adaptativas, la programación evolutiva, la computación biológica y la biónica durante varias décadas, dejando a los trabajadores de la gestión, la terapia y las ciencias sociales para mantener viva la llama. Creo que algunos de los polémicos forcejeos entre los teóricos del control de primer orden y las multitudes del segundo orden de los que fui testigo en décadas posteriores fueron el resultado acumulativo de un cambio en la financiación, la composición y la investigación desde las ciencias naturales “duras” a las intervenciones socio-psicológicas “blandas”. Las guerras de clanes se producen cuando la reserva de recursos naturales disminuye. En lugar de filas de gigantescas estatuas de moai en las colinas de Nowbarren, nos han dejado bibliotecas de escritos monumentales sobre ideas profundas cuyos significados originales se están perdiendo rápidamente en el tiempo.</p>
-
-<hr>
-
-<h2 id="heading-notas" class="heading">
-<a class="heading-link" href="#heading-notas">§</a>Notas</h2>
-
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1" role="doc-endnote">
-      <p>Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”.</em> Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traducido del <a href="http://constructivist.info/5/2/086.cariani" class="link-external">original</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
-    </li>
-  </ol>
-</div>]]></content><author><name></name></author><category term="Cibernética" /><summary type="html"><![CDATA[Fragmento de On the Importance of Being Emergent de Peter Cariani1. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial. Cariani P. On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”. Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traducido del original. ↩]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/darthsmouth.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/darthsmouth.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</div>]]></content><author><name></name></author><category term="Cibernètica" /><summary type="html"><![CDATA[Fragment de On the Importance of Being Emergent de Peter Cariani1. En la pugna entre els fundadors de la intel·ligència artificial contra els defensors de la cibernètica, cal entendre que el paradigma dominant de la IA fins als anys 80 era el de les representacions simbòliques dels problemes, i per tant descartava mètodes com l’aprenentatge autònom i les xarxes neuronals, basats en el processament estadístic i contemplat per la cibernètica, que irònicament avui dia és el que més s’associa a la intel·ligència artificial. Cariani P. On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”. Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traduït de l’original. ↩]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://lamaquinadeturing.su/darthsmouth.jpg" /><media:content medium="image" url="https://lamaquinadeturing.su/darthsmouth.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
