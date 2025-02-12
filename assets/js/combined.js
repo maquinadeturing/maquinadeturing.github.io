@@ -1,4 +1,4 @@
-/* responsive.js */
+/* assets/js/responsive.js */
 document.addEventListener("DOMContentLoaded", function () {
     const nav_toggle_element = document.querySelector("#nav-toggle");
     nav_toggle_element.addEventListener("click", (e) => {
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-/* search.js */
+/* assets/js/search.js */
 var search_index = null;
 
 document.addEventListener('DOMContentLoaded', function () {

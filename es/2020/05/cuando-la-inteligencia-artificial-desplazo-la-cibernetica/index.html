@@ -4,13 +4,13 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Eleventy v3.0.0">
     <title>Cuando la inteligencia artificial desplazó la cibernética – La màquina de Turing</title>
     <meta property="og:title" content="Cuando la inteligencia artificial desplazó la cibernética">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://lamaquinadeturing.su/es/2020/05/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/">
     <meta property="og:image" content="https://lamaquinadeturing.su/assets/media/darthsmouth_opt1200.jpg">
-    <link rel="stylesheet" href="/assets/css/linked.css" type="text/css">
-<style>/* inlined.css */
+    <style>/* assets/css/inlined.css */
 html {
     font-size: 20px;
     --font-title: "Pixelar", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -64,6 +64,7 @@ article h4 { font-size: 1.1rem; }
 article h5 { font-size: 0.9rem; }
 article h6 { font-size: 0.7rem; }
 </style>
+<link rel="stylesheet" href="/assets/css/linked.css" type="text/css">
 <script>
 function loadStyleSheets(...sources) {
     for (const src of sources) {
@@ -79,7 +80,7 @@ function loadStyleSheets(...sources) {
 }
 loadStyleSheets('/assets/css/deferred.css');
 </script>
-<script defer src="/assets/js/combined.js"></script>
+<script src="/assets/js/combined.js" defer></script>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
@@ -88,15 +89,14 @@ loadStyleSheets('/assets/css/deferred.css');
         const page_lang = "es";
         const site_languages = ["ca","en","es"];
     </script>
-    <script defer data-domain="lamaquinadeturing.su" src="https://plausible.factoria.lu/js/script.js"></script>
+    <!-- <script defer data-domain="lamaquinadeturing.su" src="https://plausible.factoria.lu/js/script.js"></script> -->
 </head>
-
 <body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
     <div id="page">
 
         <header id="site-header" itemscope="" itemtype="http://schema.org/WPHeader">
     <div id="branding-wrapper" class="element__frame">
-        <a href="https://lamaquinadeturing.su/es" rel="home" itemscope="" itemtype="http://schema.org/Brand">
+        <a href="/es" rel="home" itemscope="" itemtype="http://schema.org/Brand">
             <h1 class="site-title" itemprop="name">La màquina de Turing</h1>
         </a>
     </div>
@@ -108,11 +108,11 @@ loadStyleSheets('/assets/css/deferred.css');
             <li class="menu-item"><span>es</span></li>
             
                 
-                    <li class="menu-item"><a href="https://lamaquinadeturing.su/ca">ca</a></li>
+                    <li class="menu-item"><a href="/ca">ca</a></li>
                 
             
                 
-                    <li class="menu-item"><a href="https://lamaquinadeturing.su/en">en</a></li>
+                    <li class="menu-item"><a href="/en">en</a></li>
                 
             
                 
@@ -129,11 +129,7 @@ loadStyleSheets('/assets/css/deferred.css');
             <li class="menu-item mobile-media"><span>es</span></li>
             
                 
-                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/ca">ca</a></li>
-                
             
-                
-                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/en">en</a></li>
                 
             
                 
@@ -150,20 +146,12 @@ loadStyleSheets('/assets/css/deferred.css');
             </li>
 
             
-                
-                
             
-                
-                
+            <li class="menu-item desktop-media"><a href="/es/cibern%C3%A9tica/">Cibernética</a></li>
             
-                
-                
-                <li class="menu-item desktop-media"><a href="/es/cibern%C3%A9tica/">Cibernética</a></li>
-                
-                <li class="menu-item desktop-media"><a href="/es/lzhenau%CC%81ka/">Lzhenaúka</a></li>
-                
-                <li class="menu-item desktop-media"><a href="/es/web/">Web</a></li>
-                
+            <li class="menu-item desktop-media"><a href="/es/lzhenau%CC%81ka/">Lzhenaúka</a></li>
+            
+            <li class="menu-item desktop-media"><a href="/es/web/">Web</a></li>
             
         </ul>
 
@@ -193,7 +181,8 @@ loadStyleSheets('/assets/css/deferred.css');
         
         <section class="grid__single" itemscope="" itemtype="http://schema.org/BlogPost">
 
-            <div class="grid__item">
+            
+<div class="grid__item">
     <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting" id="post-5"
         class="element__frame post type-post status-publish format-standard has-post-thumbnail hentry">
         <header class="entry-header">
@@ -211,8 +200,10 @@ loadStyleSheets('/assets/css/deferred.css');
         <div class="entry-content" itemprop="articleBody">
             
             
+            
+            
             <div class="entry-thumbnail-single landscape" itemprop="image">
-                <img src="/assets/media/darthsmouth_opt.jpg" srcset="/assets/media/darthsmouth_opt698.jpg 698w, /assets/media/darthsmouth_opt1078.jpg 1078w" sizes="(max-width: 800px) 698px, (max-width: 1200px) 1078px, 698px" class="attachment-large size-large wp-post-image" alt="Organizadores del Dartmouth Summer Research Project on Artificial Intelligence de 1956. De izquierda a derecha, al fondo Oliver Selfridge, Nathaniel Rochester, Marvin Minsky y John McCarthy, y al frente Ray Solomonoff, Peter Milner y Claude Shannon.">
+                <img src="/assets/media/darthsmouth_opt.jpg" srcset="/assets/media/darthsmouth_opt698.jpg 698w" sizes="(max-width: 800px) 698px, (max-width: 1200px) 1078px, 698px" class="attachment-large size-large wp-post-image" alt="Organizadores del Dartmouth Summer Research Project on Artificial Intelligence de 1956. De izquierda a derecha, al fondo Oliver Selfridge, Nathaniel Rochester, Marvin Minsky y John McCarthy, y al frente Ray Solomonoff, Peter Milner y Claude Shannon.">
             </div>
             
             <div class="entry-thumbnail-caption"><p>Organizadores del Dartmouth Summer Research Project on Artificial Intelligence de 1956. De izquierda a derecha, al fondo Oliver Selfridge, Nathaniel Rochester, Marvin Minsky y John McCarthy, y al frente Ray Solomonoff, Peter Milner y Claude Shannon.</p>
@@ -229,26 +220,20 @@ loadStyleSheets('/assets/css/deferred.css');
                 </p>
             
 
-            <p><em>Fragmento de</em> On the Importance of Being Emergent <em>de Peter Cariani<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial.</em></p>
-
+            
+<p><em>Fragmento de</em> On the Importance of Being Emergent <em>de Peter Cariani<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. En la pugna entre los fundadores de la inteligencia artificial contra los defensores de la cibernética, cabe entender que el paradigma dominante de la IA hasta los años 80 era el de las representaciones simbólicas de los problemas, y por lo tanto descartaba métodos como el aprendizaje autónomo y las redes neuronales, basados en el procesado estadístico y contemplado por la cibernética, que irónicamente hoy en día es el que más se asocia a la inteligencia artificial.</em></p>
 <hr>
-
 <p>En mi opinión, el error más exasperante que cometen los editores [de <em>Emergence and Embodiment</em>] es mezclar la cibernética temprana con la IA simbólica y la informática (como en la primera frase del adelanto de la contraportada del libro). Los “aspectos matemáticos y de ingeniería de la cibernética” se caracterizan como “Inteligencia Artificial (IA), robótica, informática y tecnologías de mando-control-comunicación” (pp. 34–35). Aunque la cibernética temprana abarcaba la teoría del control adaptativo y algo de robótica (las tortugas autónomas de Grey Walter), la cibernética era y es bastante distinta de la informática y la IA (“IA simbólica”). Estos movimientos tienen objetivos, conceptos fundadores y métodos fundamentalmente diferentes – la cibernética se refiere a la organización de acciones efectivas en el mundo a través de la incorporación de fines en los medios, no las posibilidades computacionales y de representación de los sistemas de símbolos – pero el impulso parece ser el de agrupar crudamente todo en una “tecnociencia” info-computacional que nos ha dado “una computadora en tu escritorio y un iPhone en tu bolsillo” (p. 35). Cuando muchos comentaristas de la teoría cultural confunden la cibernética con las simulaciones de vida artificial, los autómatas celulares, los estudios de complejidad y el surgimiento computacional <em>à la</em> Wolfram, uno tiene la sensación de que las profundas diferencias filosóficas entre la cibernética y estos enfoques computacionales de los últimos tiempos son poco apreciadas.</p>
-
 <p>El antagonismo, tanto filosófico como financiero, entre la cibernética y la IA parece haberse perdido en la historia. La inteligencia artificial nació en una conferencia celebrada en Dartmouth en 1956, organizada por McCarthy, Minsky, Rochester y Shannon, tres años después de que concluyeran las conferencias de Macy sobre cibernética (Boden 2006; McCorduck 1972). Los dos movimientos coexistieron durante aproximadamente una década, pero a mediados de la década de 1960, los defensores de la IA simbólica obtuvieron el control de los canales de financiación nacional y desfinanciaron despiadadamente la investigación cibernética. Esto efectivamente liquidó los subcampos de los sistemas autoorganizados, las redes neuronales y las máquinas adaptativas, la programación evolutiva, la computación biológica y la biónica durante varias décadas, dejando a los trabajadores de la gestión, la terapia y las ciencias sociales para mantener viva la llama. Creo que algunos de los polémicos forcejeos entre los teóricos del control de primer orden y las multitudes del segundo orden de los que fui testigo en décadas posteriores fueron el resultado acumulativo de un cambio en la financiación, la composición y la investigación desde las ciencias naturales “duras” a las intervenciones socio-psicológicas “blandas”. Las guerras de clanes se producen cuando la reserva de recursos naturales disminuye. En lugar de filas de gigantescas estatuas de moai en las colinas de Nowbarren, nos han dejado bibliotecas de escritos monumentales sobre ideas profundas cuyos significados originales se están perdiendo rápidamente en el tiempo.</p>
-
 <hr>
-
-<h2 id="heading-notas" class="heading">
-<a class="heading-link" href="#heading-notas">§</a>Notas</h2>
-
-<div class="footnotes" role="doc-endnotes">
-  <ol>
-    <li id="fn:1" role="doc-endnote">
-      <p>Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”.</em> Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traducido del <a href="http://constructivist.info/5/2/086.cariani" class="link-external">original</a>. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
-    </li>
-  </ol>
-</div>
+<h2 id="notas" tabindex="-1">Notas <a class="heading-link" href="#notas">§</a></h2>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Cariani P. <em>On the Importance of Being Emergent. Extended Review of “Emergence and Embodiment: New Essays on Second-Order Systems Theory”.</em> Duke University Press, Durham, 2009. Constructivist Foundations 5(2): 86-91. 2010. Traducido del <a href="http://constructivist.info/5/2/086.cariani" class="link-external">original</a>. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
 
 
@@ -299,9 +284,9 @@ loadStyleSheets('/assets/css/deferred.css');
             
                 
             <li>
-                <a href="/en/2024/10/git-rebase-onto/">Git rebase doesn't do what you think</a>
+                <a href="/en/2024/10/git-rebase-doesnt-do-what-you-think/">Git rebase doesn't do what you think</a>
                 
-                    <a href="/en/2024/10/git-rebase-onto/" class="box-shadow lang-code">en</a>
+                    <a href="/en/2024/10/git-rebase-doesnt-do-what-you-think/" class="box-shadow lang-code">en</a>
                     
                     
                 
@@ -335,9 +320,9 @@ loadStyleSheets('/assets/css/deferred.css');
             
                 
             <li>
-                <a href="/en/2024/08/implementing-search-function-in-static-web-site/">Implementing the search function in a static web site</a>
+                <a href="/en/2024/08/implementing-the-search-function-in-a-static-web-site/">Implementing the search function in a static web site</a>
                 
-                    <a href="/en/2024/08/implementing-search-function-in-static-web-site/" class="box-shadow lang-code">en</a>
+                    <a href="/en/2024/08/implementing-the-search-function-in-a-static-web-site/" class="box-shadow lang-code">en</a>
                     
                     
                 
@@ -358,19 +343,11 @@ loadStyleSheets('/assets/css/deferred.css');
         <ul>
             
             
-            
-            
-            
-            
-            
-            
-            
             <li class="cat-item cat-item-2"><a href="/es/cibern%C3%A9tica/">Cibernética</a></li>
             
             <li class="cat-item cat-item-2"><a href="/es/lzhenau%CC%81ka/">Lzhenaúka</a></li>
             
             <li class="cat-item cat-item-2"><a href="/es/web/">Web</a></li>
-            
             
         </ul>
     </div>
@@ -384,7 +361,7 @@ loadStyleSheets('/assets/css/deferred.css');
 
         <footer id="site-footer" itemscope="" itemtype="http://schema.org/WPFooter">
     <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ca">CC BY-SA</a> · La màquina de Turing ·
-    <a href="/es/2024/08/esta-web-no-utiliza-cookies/">Este sitio web no utiliza cookies</a>
+    <a href="/">This website does not use cookies</a>
 </footer>
     </div>
 

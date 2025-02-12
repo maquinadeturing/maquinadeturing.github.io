@@ -1,4 +1,4 @@
-/* fonts.css */
+/* assets/css/fonts.css */
 @font-face {
   font-family: "Pixelar";
   src: url("/assets/fonts/pixelar_regular.woff2") format("woff2"), url("/assets/fonts/pixelar_regular.woff") format("woff");
@@ -89,7 +89,11 @@
   font-display: swap;
 }
 
-/* highlight.css */
+/* assets/css/footnotes.css */
+.footnotes .footnote-item p {
+    margin: 0;
+}
+/* assets/css/highlight.css */
 .highlight { margin: 1em 0; font-size: 0.7rem; }
 
 .highlight .hll { background-color: #ffffcc }
@@ -139,11 +143,11 @@
 .highlight .ss { color: #0000FF } /* Literal.String.Symbol */
 .highlight .il { color: #0000FF } /* Literal.Number.Integer.Long */
 
-/* links.css */
+/* assets/css/links.css */
 article a[class^="link-"]::after {
   content: "";
-  width: 16px;
-  height: 16px;
+  width: 0.8em;
+  height: 0.8em;
   margin-left: 4px;
   background-position: center;
   background-repeat: no-repeat;
@@ -169,4 +173,9 @@ article a.link-archive::after
 article a.link-mastodon::after
 {
   background-image: url("/assets/img/mastodon.svg");
+}
+
+article a.link-github::after
+{
+  background-image: url("/assets/img/github.svg");
 }

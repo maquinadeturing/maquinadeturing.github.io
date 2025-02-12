@@ -1,4 +1,4 @@
-/* style.css */
+/* assets/css/style.css */
 #nprogress {
     pointer-events: none;
 }
@@ -198,7 +198,7 @@ blockquote:before {
     text-align: left;
 }
 
-.textcenter {
+.textcenter, .text-align-center {
     text-align: center;
 }
 
@@ -1311,7 +1311,7 @@ article hr.asterisks::before {
 ol.upper-alpha {
     list-style: upper-alpha;
 }
-/* toc.css */
+/* assets/css/toc.css */
 .toc {
     margin: 0;
 }
@@ -1331,31 +1331,32 @@ ol.upper-alpha {
     }
 }
 
-.toc-h1 {
-    font-size: 110%;
+.toc ul {
+    list-style-type: none;
+    padding-left: 0;
 }
 
-.toc-h2 {
+.toc ul > li {
     font-size: 100%;
     margin-left: 0.5em;
 }
 
-.toc-h3 {
+.toc ul > li > ul > li {
     font-size: 90%;
     margin-left: 1em;
 }
 
-.toc-h4 {
+.toc ul > li > ul > li > ul > li {
     font-size: 80%;
     margin-left: 1.5em;
 }
 
-.toc-h5 {
+.toc ul > li > ul > li > ul > li > ul > li {
     font-size: 70%;
     margin-left: 2em;
 }
 
-.toc-h6 {
+.toc ul > li > ul > li > ul > li > ul > li > ul > li {
     font-size: 60%;
     margin-left: 2.5em;
 }

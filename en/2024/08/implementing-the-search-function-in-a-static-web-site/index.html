@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Eleventy v3.0.0">
+    <title>Implementing the search function in a static web site – La màquina de Turing</title>
+    <meta property="og:title" content="Implementing the search function in a static web site">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lamaquinadeturing.su/en/2024/08/implementing-the-search-function-in-a-static-web-site/">
+    <meta property="og:image" content="https://lamaquinadeturing.su/assets/media/search_opt1200.jpg">
+    <style>/* assets/css/inlined.css */
+html {
+    font-size: 20px;
+    --font-title: "Pixelar", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: "Barlow", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size-18: .9rem;
+    --color-text: hsl(0, 0%, 0%);
+    --color-indifferent: hsl(0, 0%, 40%);
+    --color-accent: hsl(120, 95%, 42%);
+    --color-title: hsl(285, 4%, 21%);
+    --color-border: hsl(285, 4%, 21%);
+    --color-bg: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: var(--font-size-18);
+    font-family: var(--font-body);
+    line-height: 1.8;
+    color: var(--color-text);
+    overflow-x: hidden;
+    font-weight: normal;
+    background: url("/assets/img/dots.svg") var(--color-bg);
+    background-size: 2px 2px;
+    background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-title);
+    margin: 1em 0 .5em 0;
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+h1 { font-size: 2.4rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.7rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.3rem; }
+h6 { font-size: 1.1rem; }
+
+article h1 { font-size: 1.7rem; }
+article h2 { font-size: 1.5rem; }
+article h3 { font-size: 1.3rem; }
+article h4 { font-size: 1.1rem; }
+article h5 { font-size: 0.9rem; }
+article h6 { font-size: 0.7rem; }
+</style>
+<link rel="stylesheet" href="/assets/css/linked.css" type="text/css">
+<script>
+function loadStyleSheets(...sources) {
+    for (const src of sources) {
+        if (document.createStyleSheet) document.createStyleSheet(src);
+        else {
+            var stylesheet = document.createElement('link');
+            stylesheet.href = src;
+            stylesheet.rel = 'stylesheet';
+            stylesheet.type = 'text/css';
+            document.getElementsByTagName('head')[0].appendChild(stylesheet);
+        }
+    }
+}
+loadStyleSheets('/assets/css/deferred.css');
+</script>
+<script src="/assets/js/combined.js" defer></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+    <link rel="dns-prefetch" href="https://s.w.org/">
+    <script>
+        const page_lang = "en";
+        const site_languages = ["ca","en","es"];
+    </script>
+    <!-- <script defer data-domain="lamaquinadeturing.su" src="https://plausible.factoria.lu/js/script.js"></script> -->
+</head>
+<body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
+    <div id="page">
+
+        <header id="site-header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <div id="branding-wrapper" class="element__frame">
+        <a href="/en" rel="home" itemscope="" itemtype="http://schema.org/Brand">
+            <h1 class="site-title" itemprop="name">La màquina de Turing</h1>
+        </a>
+    </div>
+
+    <nav class="element__frame desktop-media">
+        <!-- <p class="bar__title">Lang</p> -->
+
+        <ul class="pull clear">
+            <li class="menu-item"><span>en</span></li>
+            
+                
+                    <li class="menu-item"><a href="/ca">ca</a></li>
+                
+            
+                
+            
+                
+                    <li class="menu-item"><a href="/es">es</a></li>
+                
+            
+        </ul>
+    </nav>
+
+    <nav itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="element__frame" id="mobile-window">
+        <p class="bar__title mobile-media">Menu</p>
+
+        <a id="nav-toggle" class="nav-slide-button" href="#"><span></span></a>
+
+        <ul id="primary-menu" class="pull clear">
+            <li class="menu-item mobile-media"><span>en</span></li>
+            
+                
+            
+                
+            
+                
+            
+
+            <li>
+                <div class="search-form">
+                    <label>
+                        <span class="screen-reader-text">Search for:</span>
+                        <input type="search" class="search-field" placeholder="Search…" name="q">
+                    </label>
+                    <input type="submit" class="search-submit" value="Search">
+                </div>
+            </li>
+
+            
+            
+            <li class="menu-item desktop-media"><a href="/en/cybernetics/">Cybernetics</a></li>
+            
+            <li class="menu-item desktop-media"><a href="/en/lzhenauka/">Lzhenauka</a></li>
+            
+            <li class="menu-item desktop-media"><a href="/en/web/">Web</a></li>
+            
+        </ul>
+
+        <ul class="search-results hidden"></ul>
+    </nav>
+
+    
+    <ul class="social-media-profiles element__frame">
+        <li>
+            <p class="bar__title">
+                Social </p>
+        </li>
+        
+            
+            
+            
+        <li><a href="https://mastodont.cat/@urixturing"><img src="/assets/img/mastodon.svg" width="12" height="12"></a></li>
+        
+        
+        <li><a href="https://github.com/maquinadeturing/lamaquinadeturing.su"><img src="/assets/img/github.svg" width="12" height="12"></a></li>
+        
+    </ul>
+    
+</header>
+<div class="clear"></div>
+
+        
+        <section class="grid__single" itemscope="" itemtype="http://schema.org/BlogPost">
+
+            
+<div class="grid__item">
+    <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting" id="post-5"
+        class="element__frame post type-post status-publish format-standard has-post-thumbnail hentry">
+        <header class="entry-header">
+            <span class="posted-on">9 Aug 2024</span>
+            
+            <div>
+            
+            
+            <a href="/en/web/" class="category-name" itemprop="articleSection">Web</a>
+            
+            </div>
+            
+            <h2 class="entry__title" itemprop="headline">Implementing the search function in a static web site</h2>
+        </header>
+        <div class="entry-content" itemprop="articleBody">
+            
+            
+            
+            
+            <div class="entry-thumbnail-single landscape" itemprop="image">
+                <img src="/assets/media/search_opt.jpg" srcset="/assets/media/search_opt698.jpg 698w" sizes="(max-width: 800px) 698px, (max-width: 1200px) 1078px, 698px" class="attachment-large size-large wp-post-image" alt="Cuff&#39;s solar microscope in &amp;quot;Mikroskopische Gemüths - und Augen-Ergötzung&amp;quot;, vol. 3, by M. F. Ledermüller (1759–63).">
+            </div>
+            
+            <div class="entry-thumbnail-caption"><p>Cuff's solar microscope in <a href="https://publicdomainreview.org/collection/microscopic-delights/" class="link-external">&quot;Mikroskopische Gemüths - und Augen-Ergötzung&quot;</a>, vol. 3, by M. F. Ledermüller (1759–63).</p>
+</div>
+            
+            
+
+            
+            
+
+            
+<p>Static web sites <a href="/en/2024/08/the-case-for-a-better-web/">are the best</a>. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is <em>searching</em>.</p>
+<h2 id="the-poor-man's-search-function" tabindex="-1">The poor man's search function <a class="heading-link" href="#the-poor-man's-search-function">§</a></h2>
+<p>Usually, the alternative has been the <code>site:</code> operator in Google: a form in your website would transform the search string into a <code>site:</code> query and redirect it to Google. Purists can do the same with <a href="https://duckduckgo.com/duckduckgo-help-pages/results/syntax/" class="link-external">DuckDuckGo</a>. But that leaves me relying on notoriously unreliable companies, which can drop this feature at any moment or hide it behind a pawyall.</p>
+<p>And I wondered: is there a way to have my own search function?</p>
+<h2 id="is-static-search-even-possible%3F" tabindex="-1">Is static search even possible? <a class="heading-link" href="#is-static-search-even-possible%3F">§</a></h2>
+<p>My wishlist for a search function was:</p>
+<ol>
+<li>Doesn't depend on an external API.</li>
+<li>Has to be lightweight, ie. downloading all the posts and searching them is not an option.</li>
+<li>Has to be reasonably good at finding results, but not perfect. For instance, I can do without full-text search.</li>
+</ol>
+<p>With that in mind, I started designing my own static search function. The basic idea was to generate some kind of index that would allow for static searches using Javascript.</p>
+<p>There are some nice Javascript libraries that will consume texts and provide a search function, like <a href="https://lunrjs.com" class="link-external">Lunr</a>. It even lets you <a href="https://lunrjs.com/guides/index_prebuilding.html" class="link-external">pre-build the serch index</a>, so it can be downloaded as a static JSON file. As a test, I created a Lunr JSON index with <a href="1f8fbc0d-7856-4f82-9cf1-19b2738e90fd/es">the</a> <a href="8a9feaca-9e90-4c16-b91d-0230b5502fd9/es">three</a> <a href="b68e41e8-9b96-4f53-92d0-7c831298858c/es">posts</a> in Spanish in the blog, as they are the longest right now. The result is the following:</p>
+<table>
+<thead>
+<tr>
+<th>Posts</th>
+<th>Rendered Post Size<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></th>
+<th>Lunr JSON Index Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="1f8fbc0d-7856-4f82-9cf1-19b2738e90fd/es">Post 1</a></td>
+<td>2.72 KB</td>
+<td>12.39 KB</td>
+</tr>
+<tr>
+<td><a href="8a9feaca-9e90-4c16-b91d-0230b5502fd9/es">Post 2</a></td>
+<td>87.16 KB</td>
+<td>141.89 KB</td>
+</tr>
+<tr>
+<td><a href="b68e41e8-9b96-4f53-92d0-7c831298858c/es">Post 3</a></td>
+<td>3.27 KB</td>
+<td>15.04 KB</td>
+</tr>
+<tr>
+<td>All three posts</td>
+<td>93.16 KB</td>
+<td>158.32 KB</td>
+</tr>
+</tbody>
+</table>
+<p>As it can be seen, the Lunr index grows linearly to the size of the text, but also it becomes larger than the text itself! At least for this small amount of content, it would be better to just download the text of the posts.</p>
+<p>Maybe Lunr was too fancy for me, so I should implement my own search library.</p>
+<h2 id="putting-it-down-in-words" tabindex="-1">Putting it down in words <a class="heading-link" href="#putting-it-down-in-words">§</a></h2>
+<p>The basic functionality of a search function is to map a query to posts that contain them. So a very initial implementation would be to collect all the words from all the posts and map each one to a list of posts. Then, when the user enters a query, the words of such query can be found in the search index.</p>
+<p>As this site uses Jekyll, the static generation of the index would be in Ruby, while the search of the index would be in Javascript. Let's focus on the former.</p>
+<p>I'll show some snippets of code, but they are greatly simplified and are not expected to actually run:</p>
+<pre class="language-ruby"><code class="language-ruby">index <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+site<span class="token punctuation">.</span>posts<span class="token punctuation">.</span>docs<span class="token punctuation">.</span><span class="token keyword">each</span> <span class="token keyword">do</span> <span class="token operator">|</span>post<span class="token operator">|</span>
+    rendered_content <span class="token operator">=</span> site
+        <span class="token punctuation">.</span>liquid_renderer
+        <span class="token punctuation">.</span>file<span class="token punctuation">(</span>post<span class="token punctuation">.</span>path<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>parse<span class="token punctuation">(</span>post<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>render<span class="token punctuation">(</span>site<span class="token punctuation">.</span>site_payload<span class="token punctuation">)</span>
+    html_content <span class="token operator">=</span> site
+        <span class="token punctuation">.</span>find_converter_instance<span class="token punctuation">(</span>Jekyll<span class="token double-colon punctuation">::</span>Converters<span class="token double-colon punctuation">::</span>Markdown<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>convert<span class="token punctuation">(</span>rendered_content<span class="token punctuation">)</span>
+
+    text_content <span class="token operator">=</span> html_content<span class="token punctuation">.</span>gsub<span class="token punctuation">(</span><span class="token regex-literal"><span class="token regex">/&lt;\/?[^>]*>/</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">' '</span></span><span class="token punctuation">)</span>
+    <span class="token operator">...</span></code></pre>
+<p>In this iterator, the posts of the site are programmatically rendered using the Liquid parser and the Markdown converter to HTML. The result is the HTML as it would be displayed by the web browser. Then, the HTML tags are stripped, so what remains is the pure text content.</p>
+<p>Let's get the words:</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="token operator">...</span>
+    lang <span class="token operator">=</span> post<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'lang'</span></span><span class="token punctuation">]</span>
+    valid_chars <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'a-zA-Z0-9áéíóúàèìòùäëïöüâêîôûçñÁÉÍÓÚÀÈÌÒÙÄËÏÖÜÂÊÎÔÛÇÑ·'</span></span>
+
+    text_content <span class="token operator">=</span> text_content<span class="token punctuation">.</span>gsub<span class="token punctuation">(</span><span class="token regex-literal"><span class="token regex">/[^</span><span class="token interpolation"><span class="token delimiter punctuation">#{</span><span class="token content">valid_chars</span><span class="token delimiter punctuation">}</span></span><span class="token regex">]/</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">' '</span></span><span class="token punctuation">)</span>
+
+    words <span class="token operator">=</span> text_content<span class="token punctuation">.</span>downcase<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token regex-literal"><span class="token regex">/\s+/</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span>filter <span class="token punctuation">{</span> <span class="token operator">|</span>word<span class="token operator">|</span> word<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">1</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span>filter <span class="token punctuation">{</span> <span class="token operator">|</span>word<span class="token operator">|</span> <span class="token operator">!</span>word<span class="token punctuation">.</span>match<span class="token operator">?</span><span class="token punctuation">(</span><span class="token regex-literal"><span class="token regex">/^\d+$/</span></span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span>filter <span class="token punctuation">{</span> <span class="token operator">|</span>word<span class="token operator">|</span> <span class="token operator">!</span>stopwords<span class="token punctuation">[</span>lang<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">include</span><span class="token operator">?</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">.</span>sort
+        <span class="token punctuation">.</span>uniq
+    <span class="token operator">...</span></code></pre>
+<p>Here the <code>text_content</code> string is filtered, excluding anything that is not a valid character in one of the languages of the blog. This means that punctuation marks or other symbols are removed.</p>
+<p>Then, the resulting string is split by words, excluding short ones or numbers. A list of stopwords for the language of the post is used to remove common words, like &quot;then&quot; or &quot;one&quot;. There are projects that maintain lists of stopwords, like <a href="https://github.com/nltk/nltk_data/blob/gh-pages/packages/corpora/stopwords.zip" class="link-github">NLTK</a>.</p>
+<p>Finally, the words are sorted and duplicates are removed. Great! This is the list of unique words from one post, after removing garbage like stopwords, short words or numbers. Let's add them to the index:</p>
+<pre class="language-ruby"><code class="language-ruby"><span class="token operator">...</span>
+    words<span class="token punctuation">.</span><span class="token keyword">each</span> <span class="token keyword">do</span> <span class="token operator">|</span>word<span class="token punctuation">,</span> count<span class="token operator">|</span>
+        index<span class="token punctuation">[</span>lang<span class="token punctuation">]</span> <span class="token operator">||=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        index<span class="token punctuation">[</span>lang<span class="token punctuation">]</span><span class="token punctuation">[</span>word<span class="token punctuation">]</span> <span class="token operator">||=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        index<span class="token punctuation">[</span>lang<span class="token punctuation">]</span><span class="token punctuation">[</span>word<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> post_index
+    <span class="token keyword">end</span>
+<span class="token keyword">end</span></code></pre>
+<p>Note that per each word in a given language, it maps to a list of posts referenced by an &quot;index&quot;. This index is the position in the array of posts at the end of the index structure.</p>
+<p>Let's use an example. The following snippet is taken from the Markdown source of this <a href="28623ef9-070a-464c-889c-f5a42fac3cd4/en">post</a>:</p>
+<p><code>**Cybernetics**[^1], the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.)</code></p>
+<p>After rendering it:</p>
+<p><code>&lt;p&gt;&lt;strong&gt;Cybernetics&lt;/strong&gt;&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.).&lt;p&gt;</code></p>
+<p>After removing the HTML tags:</p>
+<p><code>Cybernetics 1, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.).</code></p>
+<p>Removing the invalid characters:</p>
+<p><code>Cybernetics 1 the science of the common features of processes and control systems in technological devices living organisms and human organisations The principles of C were first set forth by Wiener q v</code></p>
+<p>And after filtering out short words, numbers and stopwords:</p>
+<p><code>Cybernetics science common features processes control systems technological devices living organisms human organisations principles set forth Wiener</code></p>
+<p>Last step, sorting and removing repeated words:</p>
+<p><code>common control cybernetics devices features forth human living organisations organisms principles processes science set systems technological wiener</code></p>
+<p>From this, the index would look as follows:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"index"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"en"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"common"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"control"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"cybernetics"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"devices"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"features"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"forth"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"human"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"living"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"organisations"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"organisms"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"principles"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"processes"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"science"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"set"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"systems"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"technological"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"wiener"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"posts"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"/en/2024/07/cybernetics-in-a-Dictionary-of-philosophy-1967/"</span><span class="token punctuation">,</span>
+            <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"“Cybernetics” (in A Dictionary of Philosophy, 1967)"</span><span class="token punctuation">,</span>
+            <span class="token property">"date"</span><span class="token operator">:</span> <span class="token string">"2024-07-27 19:00:00 +0200"</span><span class="token punctuation">,</span>
+            <span class="token property">"lang"</span><span class="token operator">:</span> <span class="token string">"en"</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The current JSON search index in this format for the 7 posts in 3 languages of the site is 52 KB. Not bad compared to the 141 KB of Lunr for just 3 posts. All in all, 50 KB or 140 KB may be are not very important nowadays, as some images in this site are larger than that. But I'd like this blog to grow enough so the size of the index matters.</p>
+<h2 id="wait%2C-doesn't-that-look-like-a-bloom-filter%3F" tabindex="-1">Wait, doesn't that look like a Bloom filter? <a class="heading-link" href="#wait%2C-doesn't-that-look-like-a-bloom-filter%3F">§</a></h2>
+<p>Indeed, why not use a <a href="https://en.wikipedia.org/wiki/Bloom_filter" class="link-wikipedia">Bloom filter</a>, instead of a map of words? After all, a Bloom filter is super compact: 1 bit per word!</p>
+<p>The issue is that a Bloom filter only tells you if a given entry is (probably) part of a set. In other words, it maps a given key to a <em>boolean value.</em> But in my case each key must map to a <em>list of values,</em> the posts that contain that word.</p>
+<p>There are two alternatives. One is to implement a Bloom filter per post. But that would be prohibitive as the number of posts grows. The other is to implement a modified Bloom filter that can store <em>values.</em></p>
+<p>Some kind of <em>Bloom map.</em></p>
+<p>Each entry in the Bloom table would be a set, containing the values that were assigned by the hash functions. Then, the test operation would return the subset of values present in all the entries mapped by the key, if any.</p>
+<p>As far as I know, no such hybrid between a Bloom filter and a hash table exists. Maybe for a reason? I am not 100% sure if this would really preserve the accuracy of a Bloom filter, but I made a quick implementation. The result is that even using very compact encodings of this Bloom map (I'm talking about base 36 indices for sparse tables) it still would be less efficient than the previous approach that just stores the list of words. In particular, the Bloom maps would need 82 KB, compared to the 52 KB of the word map.</p>
+<p>I'll leave that implementation in a branch. Maybe, in the long run, it outperforms the word map.</p>
+<h2 id="levenshtein-and-his-friends-burkhard-and-keller" tabindex="-1">Levenshtein and his friends Burkhard and Keller <a class="heading-link" href="#levenshtein-and-his-friends-burkhard-and-keller">§</a></h2>
+<p>Now that the search index is generated, it's time to do some searching in the web browser.</p>
+<p>The search index contains (almost) all the words of the posts. A trivial approach would be to take the search query word by word and try to match it against the index. Every time there is a match, one point is given to the matched posts. If the query has 4 words, then the maximum score would be 4. The matching posts are displayed sorted by their score.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> query_words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>
+    <span class="token function">to_ansi</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\s+</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">;</span>
+  index<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">lang<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    query_words<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">query_word</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> posts <span class="token operator">=</span> word_map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>query_word<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>posts<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        posts<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">post_index</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">let</span> score <span class="token operator">=</span> results<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>post_index<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">;</span>
+          results<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>post_index<span class="token punctuation">,</span> score <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>That will be the base search algorithm, but I would like it to be slightly smarter than that. After all, we are all used to fancy search engines that will find similar words, or match just prefixes. Instead of doing an exact match of the words in the index, the search could find <em>similar</em> words. An obvious optimization is to ignore accents. But how to match other similarities? For instance, &quot;cybernetics&quot; is very similar to &quot;cibernètica&quot; (Catalan).</p>
+<p>Enter Levenshtein.</p>
+<p>The <em>similarity</em> between two words could be defined as the <em>distance</em> between these words. This is what the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" class="link-wikipedia">Levenshtein distance</a> function does: it calculates how far away two words are. The distance is defined as how many letters need to be added, removed or substituted to go from one word to the other. In the case of &quot;cybernetics&quot;, it needs 2 substitutions to become &quot;cibernètica&quot;, if we ignore the accents.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> query_words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>
+    <span class="token function">to_ansi</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\s+</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">;</span>
+  index<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">lang<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    query_words<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">query_word</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> max_distance <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>query_word<span class="token punctuation">.</span>length <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      word_map<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">posts<span class="token punctuation">,</span> index_word</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> distance <span class="token operator">=</span> <span class="token function">levenshtein_distance</span><span class="token punctuation">(</span>query_word<span class="token punctuation">,</span> index_word<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>distance <span class="token operator">&lt;=</span> max_distance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          posts<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">post_index</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+              <span class="token keyword">const</span> score <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">-</span> distance <span class="token operator">/</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>query_word<span class="token punctuation">.</span>length<span class="token punctuation">,</span> index_word<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              results<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>post_index<span class="token punctuation">,</span> <span class="token punctuation">(</span>results<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>post_index<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Good, we now have a precise definition of similarity. So the search algorithm can match not only exact words from the index, but also similar words whose Levenshtein distance is below a certain threshold (in particular, the maximum distance allowed is 1/3 of the length of the word, in other words, two words should share 2/3 of their letters to be considered similar).</p>
+<p>Also, now the score is not 1 per each match, because matches may be similar but not exact. How exact? The normalized distance between the words, meaning a distance of 1 in a 5-letter word is an 80% similarity.</p>
+<p>But there is another difference between this code and the previous one: before it was using a map to find exact matches, which is fast, while now it is comparing each word from the query to each word from the index. It has gone from O(1) to O(n<sup>2</sup>)!<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<p>Let's bring some friends of Levenshtein to the party. In particular, Burkhard and Keller and their tree structure, the <a href="https://en.wikipedia.org/wiki/BK-tree" class="link-wikipedia">BK-Tree</a>. A BK-Tree is a data structure that can organize values based on their relative distance, and allows to quickly navigate it to find the values with a similarity below the given threshold.</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">build_forest</span><span class="token punctuation">(</span><span class="token parameter">word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> forest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">;</span>
+  index<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">lang<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> tree <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BKTree</span><span class="token punctuation">(</span>levenshtein_distance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    word_map<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">posts<span class="token punctuation">,</span> index_word</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      tree<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>index_word<span class="token punctuation">,</span> posts<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    forest<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>lang<span class="token punctuation">,</span> tree<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> forest<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> query_words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>
+    <span class="token function">to_ansi</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\s+</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> forest <span class="token operator">=</span> <span class="token function">build_forest</span><span class="token punctuation">(</span>word_map<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">;</span>
+
+  forest<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">tree</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    query_words<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">query_word</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> max_distance <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>query_word<span class="token punctuation">.</span>length <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      tree<span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span>query_word<span class="token punctuation">,</span> max_distance<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">search_result</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        search_result<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">post_index</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">const</span> score <span class="token operator">=</span> search_result<span class="token punctuation">.</span>score<span class="token punctuation">;</span>
+          results<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>post_index<span class="token punctuation">,</span> <span class="token punctuation">(</span>results<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>post_index<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In this new code, a BK-Tree is constructed for each word index, and now these trees can be used to search for similar words below a certain threshold with a time complexity of O(log n). That's more like it.</p>
+<h2 id="looking-for-the-headline" tabindex="-1">Looking for the headline <a class="heading-link" href="#looking-for-the-headline">§</a></h2>
+<p>The fuzzy search function that was implemented above will match similar words. But surely the user, after typing &quot;cyber&quot;, will expect [28623ef9-070a-464c-889c-f5a42fac3cd4] to appear in the results.</p>
+<p>Implementing a prefix match for all the words is possible, for instance with a <a href="https://en.wikipedia.org/wiki/Radix_tree" class="link-wikipedia">radix tree</a> structure. But that would probably generate too many results, many of them unuseful. If the user types &quot;app&quot;, do they want results about applications but also about apples?</p>
+<p>Still, what is overkill for the content can be adequate if limited to the title. In addition to the score provided by the fuzzy search with the word map, I also added a substring search:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">search_titles</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> post_list</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> query_words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>
+    <span class="token function">to_ansi</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\s+</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> post_list<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> title <span class="token operator">=</span> post_list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>title<span class="token punctuation">;</span>
+    <span class="token keyword">let</span> score <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    query_words<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">query_word</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>title<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        score <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>score <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      results<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The previous code takes the words of the search query and checks if they are a substring of a post title. For each word that is a substring of a title, that post gets 1 point. The score of the title search is added to the score of the fuzzy search, and that is how posts are displayed in the search box and how they are sorted.</p>
+<h2 id="conclusion" tabindex="-1">Conclusion <a class="heading-link" href="#conclusion">§</a></h2>
+<p>I am quite satisfied with the static search function I implemented for this website. It is quite lightweight: 52 KB, compared to the 141 KB of Lunr or the 82 KB of a <em>Bloom map.</em> Still, the search experience feels similar to what can be expected from a full text search. Go ahead and test it yourself.</p>
+<p>Obviously, searching web pages is complicated, after all Google was built around this. If I type for &quot;levens&quot; I want the search function to return me results for Levenshtein, but that will not happen as it is too dissimilar (45% similarity). And yet, it will match &quot;leaves&quot; and &quot;even&quot; (66% similarity).</p>
+<p>As the blog grows, maybe I will have to revisit the implementation in case the index becomes too heavy, or it is not very accurate, but for now does the job.</p>
+<h2 id="notes" tabindex="-1">Notes <a class="heading-link" href="#notes">§</a></h2>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>The count of visible characters of the post's text, as seen in the web browser, excluding white spaces. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>See <a href="https://en.wikipedia.org/wiki/Big_O_notation" class="link-wikipedia">Big O Notation</a>. Also, technically, it has gone from O(1) to O(n m). <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+        </div>
+        <div class="clear"></div>
+
+    </article>
+    <!-- <div class="brutalist_themes__related_posts">
+
+        <h4 class="widget-title">You might also like</h4>
+
+        <ul>
+            <li itemscope="" itemtype="http://schema.org/blogPost">
+                <a class="title" href="https://lamaquinadeturing.su/2020/05/01/cibernetica-al-servicio-del-comunismo/"
+                    title="Cibernética – al servicio del comunismo">
+                    <img src="index_fitxers/cybernetics-150x150.png"
+                        class="attachment-thumbnail size-thumbnail wp-post-image"
+                        alt="Cibernética – al servicio del comunismo" itemprop="image"
+                        itemtype="http://schema.org/thumbnailUrl" width="150" height="150">
+                    <h5 itemscope="" itemtype="http://schema.org/headline">Cibernética – al servicio del
+                        comunismo</h5>
+                </a>
+            </li>
+            <li itemscope="" itemtype="http://schema.org/blogPost">
+                <a class="title"
+                    href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/"
+                    title="Cuando la inteligencia artificial desplazó la cibernética">
+                    <img src="index_fitxers/darthsmouth-1-150x150.jpg"
+                        class="attachment-thumbnail size-thumbnail wp-post-image"
+                        alt="Cuando la inteligencia artificial desplazó la cibernética" itemprop="image"
+                        itemtype="http://schema.org/thumbnailUrl" width="150" height="150">
+                    <h5 itemscope="" itemtype="http://schema.org/headline">Cuando la inteligencia artificial
+                        desplazó la cibernética</h5>
+                </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div> -->
+</div>
+
+<div class="grid__item">
+
+    <aside class="widget-area" itemscope="" itemtype="http://schema.org/WPSideBar">
+    
+    <div class="widget element__frame widget_recent_entries">
+        <h3 class="widget-title">Recent Posts</h3>
+        <ul>
+            
+                
+            <li>
+                <a href="/en/2024/10/git-rebase-doesnt-do-what-you-think/">Git rebase doesn't do what you think</a>
+                
+            </li>
+            
+                
+            <li>
+                <a href="/en/2024/09/simple-sabotage-field-manual/">Simple Sabotage Field Manual</a>
+                
+            </li>
+            
+                
+            <li>
+                <a href="/en/2024/08/the-case-for-a-better-web/">The case for a better web</a>
+                
+            </li>
+            
+                
+            <li>
+                <a href="/en/2024/08/this-website-does-not-use-cookies/">This website does not use cookies</a>
+                
+            </li>
+            
+                
+            <li>
+                <a href="/en/2024/08/implementing-the-search-function-in-a-static-web-site/">Implementing the search function in a static web site</a>
+                
+            </li>
+            
+        </ul>
+    </div>
+    <!-- <div id="archives-2" class="widget element__frame widget_archive">
+        <h3 class="widget-title">Archives</h3>
+        <ul>
+            <li><a href="https://lamaquinadeturing.su/2021/08/">August 2021</a></li>
+            <li><a href="https://lamaquinadeturing.su/2020/05/">May 2020</a></li>
+            <li><a href="https://lamaquinadeturing.su/2020/04/">April 2020</a></li>
+        </ul>
+    </div> -->
+    <div class="widget element__frame widget_categories">
+        <h3 class="widget-title">Categories</h3>
+        <ul>
+            
+            
+            <li class="cat-item cat-item-2"><a href="/en/cybernetics/">Cybernetics</a></li>
+            
+            <li class="cat-item cat-item-2"><a href="/en/lzhenauka/">Lzhenauka</a></li>
+            
+            <li class="cat-item cat-item-2"><a href="/en/web/">Web</a></li>
+            
+        </ul>
+    </div>
+    <div class="clear"></div>
+</aside>
+
+</div>
+
+        </section>
+        
+
+        <footer id="site-footer" itemscope="" itemtype="http://schema.org/WPFooter">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ca">CC BY-SA</a> · La màquina de Turing ·
+    <a href="/">This website does not use cookies</a>
+</footer>
+    </div>
+
+    <a class="element__frame scroll-top" href="#scroll-top" title="scroll top" style="display: none;">
+        <p class="bar__title">Top</p>
+    </a>
+</body>
+</html>

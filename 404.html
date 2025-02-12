@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/css/linked.css" type="text/css">
-<style>/* inlined.css */
+    <style>/* assets/css/inlined.css */
 html {
     font-size: 20px;
     --font-title: "Pixelar", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -59,6 +58,7 @@ article h4 { font-size: 1.1rem; }
 article h5 { font-size: 0.9rem; }
 article h6 { font-size: 0.7rem; }
 </style>
+<link rel="stylesheet" href="/assets/css/linked.css" type="text/css">
 <script>
 function loadStyleSheets(...sources) {
     for (const src of sources) {
@@ -74,24 +74,23 @@ function loadStyleSheets(...sources) {
 }
 loadStyleSheets('/assets/css/deferred.css');
 </script>
-<script defer src="/assets/js/combined.js"></script>
+<script src="/assets/js/combined.js" defer></script>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
     <link rel="dns-prefetch" href="https://s.w.org/">
     <script>
-        const page_lang = "";
+        const page_lang = "en";
         const site_languages = ["ca","en","es"];
     </script>
-    <script defer data-domain="lamaquinadeturing.su" src="https://plausible.factoria.lu/js/script.js"></script>
+    <!-- <script defer data-domain="lamaquinadeturing.su" src="https://plausible.factoria.lu/js/script.js"></script> -->
 </head>
-
 <body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
     <div id="page">
 
         <header id="site-header" itemscope="" itemtype="http://schema.org/WPHeader">
     <div id="branding-wrapper" class="element__frame">
-        <a href="https://lamaquinadeturing.su/" rel="home" itemscope="" itemtype="http://schema.org/Brand">
+        <a href="/en" rel="home" itemscope="" itemtype="http://schema.org/Brand">
             <h1 class="site-title" itemprop="name">La màquina de Turing</h1>
         </a>
     </div>
@@ -100,18 +99,16 @@ loadStyleSheets('/assets/css/deferred.css');
         <!-- <p class="bar__title">Lang</p> -->
 
         <ul class="pull clear">
-            <li class="menu-item"><span></span></li>
+            <li class="menu-item"><span>en</span></li>
             
                 
-                    <li class="menu-item"><a href="https://lamaquinadeturing.su/ca">ca</a></li>
-                
-            
-                
-                    <li class="menu-item"><a href="https://lamaquinadeturing.su/en">en</a></li>
+                    <li class="menu-item"><a href="/ca">ca</a></li>
                 
             
                 
-                    <li class="menu-item"><a href="https://lamaquinadeturing.su/es">es</a></li>
+            
+                
+                    <li class="menu-item"><a href="/es">es</a></li>
                 
             
         </ul>
@@ -123,18 +120,12 @@ loadStyleSheets('/assets/css/deferred.css');
         <a id="nav-toggle" class="nav-slide-button" href="#"><span></span></a>
 
         <ul id="primary-menu" class="pull clear">
-            <li class="menu-item mobile-media"><span></span></li>
+            <li class="menu-item mobile-media"><span>en</span></li>
             
-                
-                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/ca">ca</a></li>
-                
-            
-                
-                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/en">en</a></li>
                 
             
                 
-                    <li class="menu-item mobile-media"><a href="https://lamaquinadeturing.su/es">es</a></li>
+            
                 
             
 
@@ -149,14 +140,12 @@ loadStyleSheets('/assets/css/deferred.css');
             </li>
 
             
-                
-                
             
-                
-                
+            <li class="menu-item desktop-media"><a href="/en/cybernetics/">Cybernetics</a></li>
             
-                
-                
+            <li class="menu-item desktop-media"><a href="/en/lzhenauka/">Lzhenauka</a></li>
+            
+            <li class="menu-item desktop-media"><a href="/en/web/">Web</a></li>
             
         </ul>
 
@@ -186,7 +175,8 @@ loadStyleSheets('/assets/css/deferred.css');
         
         <section class="grid__single" itemscope="" itemtype="http://schema.org/BlogPost">
 
-            <style type="text/css" media="screen">
+            
+<style type="text/css" media="screen">
   .container {
     margin: 10px auto;
     max-width: 600px;
@@ -213,7 +203,7 @@ loadStyleSheets('/assets/css/deferred.css');
 
         <footer id="site-footer" itemscope="" itemtype="http://schema.org/WPFooter">
     <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ca">CC BY-SA</a> · La màquina de Turing ·
-    <a href="/ca/2024/08/aquest-lloc-web-no-utilitza-galetes/">This website does not use cookies</a>
+    <a href="/">This website does not use cookies</a>
 </footer>
     </div>
 
