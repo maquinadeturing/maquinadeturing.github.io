@@ -179,3 +179,12 @@ article a.link-github::after
 {
   background-image: url("/assets/img/github.svg");
 }
+
+/* assets/css/mermaid.css */
+.mermaid {
+    text-align: center;
+}
+
+.mermaid svg {
+    line-height: normal;
+}
