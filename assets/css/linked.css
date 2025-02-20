@@ -94,6 +94,14 @@ pre {
     overflow: auto;
 }
 
+code.inline {
+    padding: 0 .1rem;
+    border: 1px solid var(--color-keyword);
+    box-shadow: 0 2px 0 var(--color-keyword);
+    border-radius: 3px;
+    font-size: .72rem;
+}
+
 a,
 a:hover,
 a:focus,

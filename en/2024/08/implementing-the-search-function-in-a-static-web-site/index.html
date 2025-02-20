@@ -18,6 +18,7 @@ html {
     --font-size-18: .9rem;
     --color-text: hsl(0, 0%, 0%);
     --color-indifferent: hsl(0, 0%, 40%);
+    --color-keyword: hsl(0, 0%, 60%);
     --color-accent: hsl(120, 95%, 42%);
     --color-title: hsl(285, 4%, 21%);
     --color-border: hsl(285, 4%, 21%);
@@ -221,7 +222,7 @@ loadStyleSheets('/assets/css/deferred.css');
             
 <p>Static web sites <a href="/en/2024/08/the-case-for-a-better-web/">are the best</a>. They are fast, lightweight, safe and content-centric. However, not having a server comes with its sacrifices. I can go without forms, user accounts or comments, but the thing I miss the most is <em>searching</em>.</p>
 <h2 id="the-poor-man's-search-function" tabindex="-1">The poor man's search function <a class="heading-link" href="#the-poor-man's-search-function">§</a></h2>
-<p>Usually, the alternative has been the <code>site:</code> operator in Google: a form in your website would transform the search string into a <code>site:</code> query and redirect it to Google. Purists can do the same with <a href="https://duckduckgo.com/duckduckgo-help-pages/results/syntax/" class="link-external">DuckDuckGo</a>. But that leaves me relying on notoriously unreliable companies, which can drop this feature at any moment or hide it behind a pawyall.</p>
+<p>Usually, the alternative has been the <code class="inline">site:</code> operator in Google: a form in your website would transform the search string into a <code class="inline">site:</code> query and redirect it to Google. Purists can do the same with <a href="https://duckduckgo.com/duckduckgo-help-pages/results/syntax/" class="link-external">DuckDuckGo</a>. But that leaves me relying on notoriously unreliable companies, which can drop this feature at any moment or hide it behind a pawyall.</p>
 <p>And I wondered: is there a way to have my own search function?</p>
 <h2 id="is-static-search-even-possible%3F" tabindex="-1">Is static search even possible? <a class="heading-link" href="#is-static-search-even-possible%3F">§</a></h2>
 <p>My wishlist for a search function was:</p>
@@ -281,10 +282,11 @@ site<span class="token punctuation">.</span>posts<span class="token punctuation"
         <span class="token punctuation">.</span>convert<span class="token punctuation">(</span>rendered_content<span class="token punctuation">)</span>
 
     text_content <span class="token operator">=</span> html_content<span class="token punctuation">.</span>gsub<span class="token punctuation">(</span><span class="token regex-literal"><span class="token regex">/&lt;\/?[^>]*>/</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">' '</span></span><span class="token punctuation">)</span>
-    <span class="token operator">...</span></code></pre>
+    <span class="token operator">...</span>
+</code></pre>
 <p>In this iterator, the posts of the site are programmatically rendered using the Liquid parser and the Markdown converter to HTML. The result is the HTML as it would be displayed by the web browser. Then, the HTML tags are stripped, so what remains is the pure text content.</p>
 <p>Let's get the words:</p>
-<pre class="language-ruby"><code class="language-ruby"><span class="token operator">...</span>
+<pre class="language-ruby"><code class="language-ruby">    <span class="token operator">...</span>
     lang <span class="token operator">=</span> post<span class="token punctuation">.</span>data<span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'lang'</span></span><span class="token punctuation">]</span>
     valid_chars <span class="token operator">=</span> <span class="token string-literal"><span class="token string">'a-zA-Z0-9áéíóúàèìòùäëïöüâêîôûçñÁÉÍÓÚÀÈÌÒÙÄËÏÖÜÂÊÎÔÛÇÑ·'</span></span>
 
@@ -296,30 +298,38 @@ site<span class="token punctuation">.</span>posts<span class="token punctuation"
         <span class="token punctuation">.</span>filter <span class="token punctuation">{</span> <span class="token operator">|</span>word<span class="token operator">|</span> <span class="token operator">!</span>stopwords<span class="token punctuation">[</span>lang<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token keyword">include</span><span class="token operator">?</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span> <span class="token punctuation">}</span>
         <span class="token punctuation">.</span>sort
         <span class="token punctuation">.</span>uniq
-    <span class="token operator">...</span></code></pre>
-<p>Here the <code>text_content</code> string is filtered, excluding anything that is not a valid character in one of the languages of the blog. This means that punctuation marks or other symbols are removed.</p>
+    <span class="token operator">...</span>
+</code></pre>
+<p>Here the <code class="inline">text_content</code> string is filtered, excluding anything that is not a valid character in one of the languages of the blog. This means that punctuation marks or other symbols are removed.</p>
 <p>Then, the resulting string is split by words, excluding short ones or numbers. A list of stopwords for the language of the post is used to remove common words, like &quot;then&quot; or &quot;one&quot;. There are projects that maintain lists of stopwords, like <a href="https://github.com/nltk/nltk_data/blob/gh-pages/packages/corpora/stopwords.zip" class="link-github">NLTK</a>.</p>
 <p>Finally, the words are sorted and duplicates are removed. Great! This is the list of unique words from one post, after removing garbage like stopwords, short words or numbers. Let's add them to the index:</p>
-<pre class="language-ruby"><code class="language-ruby"><span class="token operator">...</span>
+<pre class="language-ruby"><code class="language-ruby">    <span class="token operator">...</span>
     words<span class="token punctuation">.</span><span class="token keyword">each</span> <span class="token keyword">do</span> <span class="token operator">|</span>word<span class="token punctuation">,</span> count<span class="token operator">|</span>
         index<span class="token punctuation">[</span>lang<span class="token punctuation">]</span> <span class="token operator">||=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
         index<span class="token punctuation">[</span>lang<span class="token punctuation">]</span><span class="token punctuation">[</span>word<span class="token punctuation">]</span> <span class="token operator">||=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
         index<span class="token punctuation">[</span>lang<span class="token punctuation">]</span><span class="token punctuation">[</span>word<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> post_index
     <span class="token keyword">end</span>
-<span class="token keyword">end</span></code></pre>
+<span class="token keyword">end</span>
+</code></pre>
 <p>Note that per each word in a given language, it maps to a list of posts referenced by an &quot;index&quot;. This index is the position in the array of posts at the end of the index structure.</p>
 <p>Let's use an example. The following snippet is taken from the Markdown source of this <a href="28623ef9-070a-464c-889c-f5a42fac3cd4/en">post</a>:</p>
-<p><code>**Cybernetics**[^1], the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.)</code></p>
+<pre class="language-plain"><code class="wrap language-plain">**Cybernetics**[^1], the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.)
+</code></pre>
 <p>After rendering it:</p>
-<p><code>&lt;p&gt;&lt;strong&gt;Cybernetics&lt;/strong&gt;&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.).&lt;p&gt;</code></p>
+<pre class="language-plain"><code class="wrap language-plain">&lt;p>&lt;strong>Cybernetics&lt;/strong>&lt;sup id="fnref:1" role="doc-noteref">&lt;a href="#fn:1" class="footnote" rel="footnote">1&lt;/a>&lt;/sup>, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.).&lt;p>
+</code></pre>
 <p>After removing the HTML tags:</p>
-<p><code>Cybernetics 1, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.).</code></p>
+<pre class="language-plain"><code class="wrap language-plain">Cybernetics 1, the science of the common features of processes and control systems in technological devices, living organisms and human organisations. The principles of C. were first set forth by Wiener (q.v.).
+</code></pre>
 <p>Removing the invalid characters:</p>
-<p><code>Cybernetics 1 the science of the common features of processes and control systems in technological devices living organisms and human organisations The principles of C were first set forth by Wiener q v</code></p>
+<pre class="language-plain"><code class="wrap language-plain">Cybernetics 1 the science of the common features of processes and control systems in technological devices living organisms and human organisations The principles of C were first set forth by Wiener q v
+</code></pre>
 <p>And after filtering out short words, numbers and stopwords:</p>
-<p><code>Cybernetics science common features processes control systems technological devices living organisms human organisations principles set forth Wiener</code></p>
+<pre class="language-plain"><code class="wrap language-plain">Cybernetics science common features processes control systems technological devices living organisms human organisations principles set forth Wiener
+</code></pre>
 <p>Last step, sorting and removing repeated words:</p>
-<p><code>common control cybernetics devices features forth human living organisations organisms principles processes science set systems technological wiener</code></p>
+<pre class="language-plain"><code class="wrap language-plain">common control cybernetics devices features forth human living organisations organisms principles processes science set systems technological wiener
+</code></pre>
 <p>From this, the index would look as follows:</p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"index"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -351,7 +361,8 @@ site<span class="token punctuation">.</span>posts<span class="token punctuation"
             <span class="token property">"lang"</span><span class="token operator">:</span> <span class="token string">"en"</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>The current JSON search index in this format for the 7 posts in 3 languages of the site is 52 KB. Not bad compared to the 141 KB of Lunr for just 3 posts. All in all, 50 KB or 140 KB may be are not very important nowadays, as some images in this site are larger than that. But I'd like this blog to grow enough so the size of the index matters.</p>
 <h2 id="wait%2C-doesn't-that-look-like-a-bloom-filter%3F" tabindex="-1">Wait, doesn't that look like a Bloom filter? <a class="heading-link" href="#wait%2C-doesn't-that-look-like-a-bloom-filter%3F">§</a></h2>
 <p>Indeed, why not use a <a href="https://en.wikipedia.org/wiki/Bloom_filter" class="link-wikipedia">Bloom filter</a>, instead of a map of words? After all, a Bloom filter is super compact: 1 bit per word!</p>
@@ -364,7 +375,7 @@ site<span class="token punctuation">.</span>posts<span class="token punctuation"
 <h2 id="levenshtein-and-his-friends-burkhard-and-keller" tabindex="-1">Levenshtein and his friends Burkhard and Keller <a class="heading-link" href="#levenshtein-and-his-friends-burkhard-and-keller">§</a></h2>
 <p>Now that the search index is generated, it's time to do some searching in the web browser.</p>
 <p>The search index contains (almost) all the words of the posts. A trivial approach would be to take the search query word by word and try to match it against the index. Every time there is a match, one point is given to the matched posts. If the query has 4 words, then the maximum score would be 4. The matching posts are displayed sorted by their score.</p>
-<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> query_words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>
     <span class="token function">to_ansi</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -383,11 +394,12 @@ site<span class="token punctuation">.</span>posts<span class="token punctuation"
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> results<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>That will be the base search algorithm, but I would like it to be slightly smarter than that. After all, we are all used to fancy search engines that will find similar words, or match just prefixes. Instead of doing an exact match of the words in the index, the search could find <em>similar</em> words. An obvious optimization is to ignore accents. But how to match other similarities? For instance, &quot;cybernetics&quot; is very similar to &quot;cibernètica&quot; (Catalan).</p>
 <p>Enter Levenshtein.</p>
 <p>The <em>similarity</em> between two words could be defined as the <em>distance</em> between these words. This is what the <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" class="link-wikipedia">Levenshtein distance</a> function does: it calculates how far away two words are. The distance is defined as how many letters need to be added, removed or substituted to go from one word to the other. In the case of &quot;cybernetics&quot;, it needs 2 substitutions to become &quot;cibernètica&quot;, if we ignore the accents.</p>
-<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">search</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> query_words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>
     <span class="token function">to_ansi</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -409,12 +421,13 @@ site<span class="token punctuation">.</span>posts<span class="token punctuation"
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> results<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>Good, we now have a precise definition of similarity. So the search algorithm can match not only exact words from the index, but also similar words whose Levenshtein distance is below a certain threshold (in particular, the maximum distance allowed is 1/3 of the length of the word, in other words, two words should share 2/3 of their letters to be considered similar).</p>
 <p>Also, now the score is not 1 per each match, because matches may be similar but not exact. How exact? The normalized distance between the words, meaning a distance of 1 in a 5-letter word is an 80% similarity.</p>
 <p>But there is another difference between this code and the previous one: before it was using a map to find exact matches, which is fast, while now it is comparing each word from the query to each word from the index. It has gone from O(1) to O(n<sup>2</sup>)!<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
 <p>Let's bring some friends of Levenshtein to the party. In particular, Burkhard and Keller and their tree structure, the <a href="https://en.wikipedia.org/wiki/BK-tree" class="link-wikipedia">BK-Tree</a>. A BK-Tree is a data structure that can organize values based on their relative distance, and allows to quickly navigate it to find the values with a similarity below the given threshold.</p>
-<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">build_forest</span><span class="token punctuation">(</span><span class="token parameter">word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">build_forest</span><span class="token punctuation">(</span><span class="token parameter">word_map</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">let</span> forest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">;</span>
   index<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">lang<span class="token punctuation">,</span> word_map</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> tree <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BKTree</span><span class="token punctuation">(</span>levenshtein_distance<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -448,13 +461,14 @@ site<span class="token punctuation">.</span>posts<span class="token punctuation"
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> results<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>In this new code, a BK-Tree is constructed for each word index, and now these trees can be used to search for similar words below a certain threshold with a time complexity of O(log n). That's more like it.</p>
 <h2 id="looking-for-the-headline" tabindex="-1">Looking for the headline <a class="heading-link" href="#looking-for-the-headline">§</a></h2>
 <p>The fuzzy search function that was implemented above will match similar words. But surely the user, after typing &quot;cyber&quot;, will expect [28623ef9-070a-464c-889c-f5a42fac3cd4] to appear in the results.</p>
 <p>Implementing a prefix match for all the words is possible, for instance with a <a href="https://en.wikipedia.org/wiki/Radix_tree" class="link-wikipedia">radix tree</a> structure. But that would probably generate too many results, many of them unuseful. If the user types &quot;app&quot;, do they want results about applications but also about apples?</p>
 <p>Still, what is overkill for the content can be adequate if limited to the title. In addition to the score provided by the fuzzy search with the word map, I also added a substring search:</p>
-<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">search_titles</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> post_list</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">search_titles</span><span class="token punctuation">(</span><span class="token parameter">query<span class="token punctuation">,</span> post_list</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> query_words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>
     <span class="token function">to_ansi</span><span class="token punctuation">(</span>query<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -476,7 +490,8 @@ site<span class="token punctuation">.</span>posts<span class="token punctuation"
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> results<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>The previous code takes the words of the search query and checks if they are a substring of a post title. For each word that is a substring of a title, that post gets 1 point. The score of the title search is added to the score of the fuzzy search, and that is how posts are displayed in the search box and how they are sorted.</p>
 <h2 id="conclusion" tabindex="-1">Conclusion <a class="heading-link" href="#conclusion">§</a></h2>
 <p>I am quite satisfied with the static search function I implemented for this website. It is quite lightweight: 52 KB, compared to the 141 KB of Lunr or the 82 KB of a <em>Bloom map.</em> Still, the search experience feels similar to what can be expected from a full text search. Go ahead and test it yourself.</p>
