@@ -89,7 +89,21 @@ loadStyleSheets('/assets/css/deferred.css');
         const page_lang = "en";
         const site_languages = ["ca","en","es"];
     </script>
-    <!-- <script defer data-domain="lamaquinadeturing.su" src="https://plausible.factoria.lu/js/script.js"></script> -->
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//stats.factoria.lu/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '3']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
 </head>
 <body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
     <div id="page">
