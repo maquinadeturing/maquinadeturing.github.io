@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Eleventy v3.0.0">
+    <title>Notes filosòfiques sobre la IA 1: forma sense contingut – La màquina de Turing</title>
+    <meta property="og:title" content="Notes filosòfiques sobre la IA 1: forma sense contingut">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://lamaquinadeturing.su/assets/media/tinman_opt1200.jpg">
+    <meta property="og:url" content="https://lamaquinadeturing.su/ca/2025/08/notes-filosofiques-sobre-la-ia-1-forma-sense-contingut/">
+    <style>/* assets/css/inlined.css */
+html {
+    font-size: 20px;
+    --font-title: "Pixelar", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: "Barlow", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size-18: .9rem;
+    --color-text: hsl(0, 0%, 0%);
+    --color-indifferent: hsl(0, 0%, 40%);
+    --color-keyword: hsl(0, 0%, 60%);
+    --color-accent: hsl(120, 95%, 42%);
+    --color-title: hsl(285, 4%, 21%);
+    --color-border: hsl(285, 4%, 21%);
+    --color-bg: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: var(--font-size-18);
+    font-family: var(--font-body);
+    line-height: 1.8;
+    color: var(--color-text);
+    overflow-x: hidden;
+    font-weight: normal;
+    background: url("/assets/img/dots.svg") var(--color-bg);
+    background-size: 2px 2px;
+    background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-title);
+    margin: 1em 0 .5em 0;
+    line-height: 1.4;
+    font-weight: normal;
+}
+
+h1 { font-size: 2.4rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.7rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.3rem; }
+h6 { font-size: 1.1rem; }
+
+article h1 { font-size: 1.7rem; }
+article h2 { font-size: 1.5rem; }
+article h3 { font-size: 1.3rem; }
+article h4 { font-size: 1.1rem; }
+article h5 { font-size: 0.9rem; }
+article h6 { font-size: 0.7rem; }
+</style>
+<link rel="stylesheet" href="/assets/css/linked.css" type="text/css">
+<script>
+function loadStyleSheets(...sources) {
+    for (const src of sources) {
+        if (document.createStyleSheet) document.createStyleSheet(src);
+        else {
+            var stylesheet = document.createElement('link');
+            stylesheet.href = src;
+            stylesheet.rel = 'stylesheet';
+            stylesheet.type = 'text/css';
+            document.getElementsByTagName('head')[0].appendChild(stylesheet);
+        }
+    }
+}
+loadStyleSheets('/assets/css/deferred.css');
+</script>
+<script src="/assets/js/combined.js" defer></script>
+    <link rel="alternate" type="application/atom+xml" href="https://lamaquinadeturing.su/feed.xml" title="La màquina de Turing">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+    <link rel="dns-prefetch" href="https://s.w.org/">
+    <script>
+        const page_lang = "ca";
+        const site_languages = ["ca","en","es"];
+    </script>
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//stats.factoria.lu/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '3']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+</head>
+<body class="home blog eightbit-effect loading" itemscope="" itemtype="http://schema.org/WebPage">
+    <div id="page">
+
+        <header id="site-header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <div id="branding-wrapper" class="element__frame">
+        <a href="/ca" rel="home" itemscope="" itemtype="http://schema.org/Brand">
+            <h1 class="site-title" itemprop="name">La màquina de Turing</h1>
+        </a>
+    </div>
+
+    <nav class="element__frame desktop-media">
+        <!-- <p class="bar__title">Lang</p> -->
+
+        <ul class="pull clear">
+            <li class="menu-item"><span>ca</span></li>
+            
+                
+            
+                
+                    <li class="menu-item"><a href="/en">en</a></li>
+                
+            
+                
+                    <li class="menu-item"><a href="/es">es</a></li>
+                
+            
+        </ul>
+    </nav>
+
+    <nav itemscope="" itemtype="http://schema.org/SiteNavigationElement" class="element__frame" id="mobile-window">
+        <p class="bar__title mobile-media">Menú</p>
+
+        <a id="nav-toggle" class="nav-slide-button" href="#"><span></span></a>
+
+        <ul id="primary-menu" class="pull clear">
+            <li class="menu-item mobile-media"><span>ca</span></li>
+            
+                
+            
+                
+                    <li class="menu-item mobile-media"><a href="/en">en</a></li>
+                
+            
+                
+                    <li class="menu-item mobile-media"><a href="/es">es</a></li>
+                
+            
+
+            <li>
+                <div class="search-form">
+                    <label>
+                        <span class="screen-reader-text">Cerca de:</span>
+                        <input type="search" class="search-field" placeholder="Cerca…" name="q">
+                    </label>
+                    <input type="submit" class="search-submit" value="Search">
+                </div>
+            </li>
+
+            
+            
+            <li class="menu-item desktop-media"><a href="/ca/cibern%C3%A8tica/">Cibernètica</a></li>
+            
+            <li class="menu-item desktop-media"><a href="/ca/ljena%C3%BCka/">Ljenaüka</a></li>
+            
+            <li class="menu-item desktop-media"><a href="/ca/web/">Web</a></li>
+            
+            <li class="menu-item desktop-media"><a href="/ca/privacitat/">Privacitat</a></li>
+            
+        </ul>
+
+        <ul class="search-results hidden"></ul>
+    </nav>
+
+    
+    <ul class="social-media-profiles element__frame">
+        <li>
+            <p class="bar__title">
+                Xarxes socials </p>
+        </li>
+        
+            
+            
+            
+        <li><a href="https://mastodont.cat/@urixturing"><img src="/assets/img/mastodon.svg" width="12" height="12"></a></li>
+        
+        
+        <li><a href="https://github.com/maquinadeturing/lamaquinadeturing.su"><img src="/assets/img/github.svg" width="12" height="12"></a></li>
+        
+        
+        <li><a href="/feed.xml"><img src="/assets/img/rss.svg" width="12" height="12"></a></li>
+        
+    </ul>
+    
+</header>
+<div class="clear"></div>
+
+        
+        <section class="grid__single" itemscope="" itemtype="http://schema.org/BlogPost">
+
+            
+<div class="grid__item">
+    <article itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting" id="post-5"
+        class="element__frame post type-post status-publish format-standard has-post-thumbnail hentry">
+        <header class="entry-header">
+            <span class="posted-on">22 ago 2025</span>
+            
+            <div>
+            
+            
+            <a href="/ca/cibern%C3%A8tica/" class="category-name" itemprop="articleSection">Cibernètica</a>
+            
+            </div>
+            
+            <h2 class="entry__title" itemprop="headline">Notes filosòfiques sobre la IA 1: forma sense contingut</h2>
+        </header>
+        <div class="entry-content" itemprop="articleBody">
+            
+            
+            
+            
+            <div class="entry-thumbnail-single landscape" itemprop="image">
+                <img src="/assets/media/tinman_opt.jpg" srcset="/assets/media/tinman_opt698.jpg 698w" sizes="(max-width: 800px) 698px, (max-width: 1200px) 1078px, 698px" class="attachment-large size-large wp-post-image" alt="L&#39;Home de Llauna amb l&#39;Alícia i l&#39;Espantaocells, a Illustrations for the Wonderful Wizard of Oz de W. W. Denslow (1900).">
+            </div>
+            
+            <div class="entry-thumbnail-caption"><p>L'Home de Llauna amb l'Alícia i l'Espantaocells, a <em>Illustrations for the Wonderful Wizard of Oz</em> de <a href="https://en.wikipedia.org/wiki/W._W._Denslow" class="link-wikipedia">W. W. Denslow</a> (1900).</p>
+</div>
+            
+            
+
+            
+            
+                <p class="entry__meta translations-box"><span class="lang-icon"></span> També disponible en:
+                    
+                        <a href="/en/2025/08/philosophical-notes-on-llms-1-form-without-content/" class="box-shadow lang-code">en</a>
+                    
+                </p>
+            
+
+            
+<p><em>El que segueix són unes notes intentant entendre els models de llenguatge extensos (<em>large language models</em>) amb l'ajuda de diferents teories filosòfiques. Sóc completament fora del meu element, així que aquest text ha de ser tractat com a experimental.</em></p>
+<p><em>Com el títol implica, potser en seguiran més.</em></p>
+<div class="toc"><ul><li><a href="#els-models-de-llenguatge-extensos-s%C3%B3n-models-que-completen">Els models de llenguatge extensos són models que completen </a></li><li><a href="#forma-sense-contingut%3A-searle">Forma sense contingut: Searle </a></li><li><a href="#paraules-buides%3A-plat%C3%B3%2C-arist%C3%B2til">Paraules buides: Plató, Aristòtil </a></li><li><a href="#xerrameca%3A-kierkegaard%2C-heidegger">Xerrameca: Kierkegaard, Heidegger </a></li><li><a href="#notes">Notes </a></li></ul></div>
+<h2 id="els-models-de-llenguatge-extensos-s%C3%B3n-models-que-completen" tabindex="-1">Els models de llenguatge extensos són models que completen <a class="heading-link" href="#els-models-de-llenguatge-extensos-s%C3%B3n-models-que-completen">§</a></h2>
+<p>Quan un usuari escriu una petició, o <em>prompt</em>, el xatbot contesta amb una resposta. Aquesta és la base de la IA generativa moderna tal com la coneix la majoria de gent. Aquesta interacció és útil perquè pots fer una pregunta i obtenir una resposta, o descriure una tasca i obtenir-ne el resultat.</p>
+<p>Això dona la sensació d'intel·ligència, ja que el bot pot fer tasques molt complexes. Des de resumir textos llargs a una velocitat increïble, fins a mantenir una conversa interessant, programar un algorisme o resoldre un problema matemàtic difícil. Com ho van fer les empreses que fan aquests bots perquè poguessin fer tot això?</p>
+<p>La resposta no és un programa increïblement dens, sinó un truc enginyós: el bot simplement ha après quina és la paraula més probable que segueix a una frase.</p>
+<p>És clar que és més complex que això<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>, però aquesta n'és l'essència. El bot mira la petició de l'usuari, i després afegeix la primera paraula de la resposta. I després una altra, i una altra. Per això també s'anomenen models <em>que completen.</em><sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<p>En el seu nucli, els xatbots només saben afegir una paraula. Però ho fan <em>molt bé.</em> El seu món sencer és afegir-ne només una, la perfecta. Després ho tornen a fer. Això pot generar diverses preguntes. Com és possible que frases coherents, o fins i tot idees profundes, es puguin crear així, i no disbarats? Doncs, de la mateixa manera que el joc del <a href="https://ca.wikipedia.org/wiki/Cad%C3%A0ver_exquisit" class="link-wikipedia">cadàver exquisit</a>, afegint una paraula rere l'altra.</p>
+<h2 id="forma-sense-contingut%3A-searle" tabindex="-1">Forma sense contingut: Searle <a class="heading-link" href="#forma-sense-contingut%3A-searle">§</a></h2>
+<p>Que ho <em>saben</em> els models de llenguatge extensos, el que diuen? I <em>nosaltres,</em> sabem el que diem?</p>
+<p>La referència més directa als xatbots la trobem a l'argument de l'<a href="https://ca.wikipedia.org/wiki/Habitaci%C3%B3_xinesa" class="link-wikipedia">habitació xinesa</a> de <strong>John Searle</strong>. Vindria a ser així: la teva feina és estar en una habitació, amb un llibre molt gran. Algú et llença una targeta amb text en xinès, i s'espera que responguis, també en xinès. Però tu no en saps, de xinès!<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> Per sort, tens el llibre: només has de buscar les regles que s'apliquen als símbols que t'han donat, i seguir-les per obtenir uns altres símbols xinesos igualment enigmàtics com a resposta.<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></p>
+<p>Et sona? És més o menys el que fan els xatbots. No tenen ni idea de què és cada símbol, ni què vol dir tota la frase. Ni tan sols divideixen frases en paraules com fem nosaltres!<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup> Només segueixen regles. Amb aquest exemple, Searle argumentava que els models d'intel·ligència artificial són incapaços d'entendre.</p>
+<p>En altres paraules, els xatbots només deixen anar <em>bajanades.</em> Això és diferent de mentir, perquè mentir requereix comprensió. Les al·lucinacions són un dels problemes més grans dels models de llenguatge, perquè no estan dissenyats pensant en els conceptes de <em>veritat</em> o <em>coneixement.</em> Són lloros estocàstics, trossos de quòniam meravellosos, jugadors professionals del cadàver exquisit.</p>
+<h2 id="paraules-buides%3A-plat%C3%B3%2C-arist%C3%B2til" tabindex="-1">Paraules buides: Plató, Aristòtil <a class="heading-link" href="#paraules-buides%3A-plat%C3%B3%2C-arist%C3%B2til">§</a></h2>
+<p>Hi ha una rica tradició filosòfica europea de menyspreu per les bajanades i l'absurd, començant amb Sòcrates i Plató:</p>
+<figure class="quote">
+<blockquote>
+<p>Sòcrates: Per consegüent, pel que fa a totes les altres arts la situació de l'orador i de la retòrica és la mateixa. De les coses en si, l'orador no cal que n'aprengui l'essència, però ha d'encertar un artifici persuasiu, de manera que davant dels no entesos sembli que en sap més que els entesos.</p>
+</blockquote>
+<figcaption class="quote-citation"><em>Gòrgias</em> de Plató (p. 41 a <em>Diàlegs</em><sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>).</figcaption>
+</figure>
+<p>I afegeix sobre tot allò que és adulador i enganyós:</p>
+<figure class="quote">
+<blockquote>
+<p>Sòcrates: Això ho anomeno llagoteria, i dic que és quelcom vergonyós [...] perquè recerca el plaer sense considerar el bé. I afirmo que no és una art sinó una pràctica, perquè no té cap raó per oferir a qui dóna el que dóna referent a la naturalesa de tot això, de manera que no pot aclarir-ne la causa. Jo dic que no és cap art allò que és irracional.</p>
+</blockquote>
+<figcaption class="quote-citation"><em>Gòrgias</em> de Plató (p. 48 a <em>Diàlegs</em><sup class="footnote-ref"><a href="#fn6" id="fnref6:1">[6:1]</a></sup>).</figcaption>
+</figure>
+<p>Per a <strong>Plató,</strong> l'aparença de saviesa sense coneixement real és només una &quot;pràctica de l'adulació&quot;, fingir en lloc de ser. I, vaja, com haurien odiat ell i Sòcrates els xatbots! Els oradors definitius, paraules completament desconnectades del coneixement real.</p>
+<p><strong>Aristòtil</strong> també considera el <em>logos</em> (la raó) l'estructura d'un argument, mentre que el <em>pathos</em> i <em>l'ethos</em> hi afegeixen persuasió emocional i credibilitat. En aquest context, qualsevol discurs sense <em>logos</em>, fet de cadenes de paraules connectades per probabilitat, s'esfondraria. I de fet, així passa si pressiones una mica un xatbot.</p>
+<h2 id="xerrameca%3A-kierkegaard%2C-heidegger" tabindex="-1">Xerrameca: Kierkegaard, Heidegger <a class="heading-link" href="#xerrameca%3A-kierkegaard%2C-heidegger">§</a></h2>
+<p>Aquest torrent de paraules buit de significat, tant en el sentit de coneixement com d'intenció, segurament irritaria certs filòsofs amb poca paciència per la xerrameca. Per a <strong>Søren Kierkegaard,</strong> la quantitat de <em>snak</em> (xerrameca) ja era insuportable al segle XIX:</p>
+<figure class="quote">
+<blockquote>
+<p>Què és la xerrameca? És l'anul·lació de la disjunció apassionada entre callar i parlar. Només la persona que pot romandre essencialment en silenci pot parlar essencialment, pot actuar essencialment. El silenci és interioritat. La xerrameca s'avança al parlar essencial, i expressar la reflexió té un efecte debilitador sobre l'acció en avançar-se-li.</p>
+</blockquote>
+<figcaption class="quote-citation"><em>Una crítica litèraria</em> per S. Kierkegaard (trad. pròpia, p. 36 a <em>Søren Kierkegaards Skrifter</em><sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>).</figcaption>
+</figure>
+<p>Per a Kierkegaard, el silenci, la interioritat i la passió són l'essència d'una existència autèntica. Els models de llenguatge extensos, amb la seva xerrameca infinita de paraules buides i manca total d'albir, en són l'extrem oposat. No hi ha vida interior, no hi ha espai per a l'acció.</p>
+<p>La xerrameca també era menyspreada per <strong>Martin Heidegger.</strong> Però primer cal entendre millor les seves idees, que són notòriament elusives. Tenia una teoria curiosa de com els humans perceben el món. Per exemple, que un arbre ens pot donar ombra o que una galeta és un dolç per menjar són les relacions primordials que tenim amb aquests objectes, mentre que la seva forma, color o mida són propietats derivades que empra la ment racional. I no només això: centrar-se en la teoria ens priva d'aquest coneixement pràctic.</p>
+<p>Al cap i a la fi, per què <em>aprendre sobre un objecte</em> quan pots <em>experimentar una acció</em>? La teoria et dona coneixement de segona mà, mediat per altres, mentre que la pràctica et dona una experiència autèntica, sense filtres. Això és el que Heidegger considera <em>autèntic,</em> sent conscient del món.</p>
+<p>Malauradament, vivim constantment distrets, fascinats pel món dels <em>altres,</em> per la seva <em>xerrameca</em> de segona mà. Al cap i a la fi, som animals socials i no és possible experimentar-ho tot directament, hem d'aprendre moltíssim. Però aquest coneixement, un cop circula, és desconnectat, poc fiable, superficial —en un sentit pràctic— i ens pot distreure de l'experiència primordial.</p>
+<figure class="quote">
+<blockquote>
+<p>El que es diu en la xerrameca com a tal s'escampa en cercles més amplis i adquireix un caràcter autoritari. Les coses són així perquè algú ho diu. La xerrameca és constituïda precisament per aquest xafardedeig i transmetre la paraula, un procés pel qual la seva carència inicial de fonament es veu agreujada fins a convertir-se en completa manca de fonament. I de fet aquesta xerrameca no es limita al xafardeig oral, sinó que fins i tot s'estén al que escrivim, on pren la forma de &quot;gargot&quot;. En aquest darrer cas el xafardeig no es basa tant en rumors. S'alimenta de lectures superficials. La comprensió mitjana del lector mai no podrà decidir què ha estat extret de fonts primordials amb esforç i què és només xerrameca.</p>
+</blockquote>
+<figcaption class="quote-citation"><em>Ésser i temps</em> de Martin Heidegger (trad. pròpia, p. 169 a <sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>).</figcaption>
+</figure>
+<p>Per això, des del punt de vista de Heidegger, els models de llenguatge extensos serien màquines de pura <em>xerrameca.</em> Les seves paraules de tercera mà estan desconnectades del món, completament inautèntiques. Com més fem servir un xatbot, més ens impedeix experimentar directament el món.</p>
+<h2 id="notes" tabindex="-1">Notes <a class="heading-link" href="#notes">§</a></h2>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Els models de llenguatge extensos fan servir tokens, que són símbols més petits que paraules, per <a href="https://en.wikipedia.org/wiki/Large_language_model#Tokenization" class="link-wikipedia">raons complicades</a>. Per exemple, així és com ChatGPT 4 llegeix una frase: &quot;Un| fant|asma| ronda| per| Europa|:| el| fant|asma| del| comun|isme|.&quot;. <a href="https://platform.openai.com/tokenizer" class="link-external">Prova-ho!</a>. <a href="#fnref1" class="footnote-backref">↩︎</a> <a href="#fnref1:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Predir la paraula correcta és més complex que només tenir una <a href="https://en.wikipedia.org/wiki/Markov_chain" class="link-wikipedia">cadena de Markov</a> amb les probabilitats entre tots els tokens, per exemple calia resoldre el problema de l'<a href="https://en.wikipedia.org/wiki/Attention_Is_All_You_Need" class="link-wikipedia">atenció</a>. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Bé, així és com OpenAI anomena l'API de GPT. En realitat s'anomenen <em>models de llenguatge extensos autoregressius</em>. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Si saps xinès, fes veure que l'experiment mental usa un altre idioma. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>En molts treballs moderns és fàcil sentir-se identificat amb l'operador de l'habitació xinesa, una sensació que David Graeber captura a <em>Bullshit Jobs: A Theory</em>. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Plató, <em>Gòrgies</em> a <em>Diàlegs</em>, vol. VIII, trad. Manuel Balasch, Bernat Metge, 1986. <a href="#fnref6" class="footnote-backref">↩︎</a> <a href="#fnref6:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Søren Kierkegaard, <em>En literair Anmeldelse</em> a <em>Søren Kierkegaards Skrifter</em>, vol. 8, Søren Kierkegaard Forskningscentret, 2004. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Martin Heidegger, <em>Sein und zeit</em>, Max Niemeyer Verlag, 1927. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+
+
+        </div>
+        <div class="clear"></div>
+
+    </article>
+    <!-- <div class="brutalist_themes__related_posts">
+
+        <h4 class="widget-title">You might also like</h4>
+
+        <ul>
+            <li itemscope="" itemtype="http://schema.org/blogPost">
+                <a class="title" href="https://lamaquinadeturing.su/2020/05/01/cibernetica-al-servicio-del-comunismo/"
+                    title="Cibernética – al servicio del comunismo">
+                    <img src="index_fitxers/cybernetics-150x150.png"
+                        class="attachment-thumbnail size-thumbnail wp-post-image"
+                        alt="Cibernética – al servicio del comunismo" itemprop="image"
+                        itemtype="http://schema.org/thumbnailUrl" width="150" height="150">
+                    <h5 itemscope="" itemtype="http://schema.org/headline">Cibernética – al servicio del
+                        comunismo</h5>
+                </a>
+            </li>
+            <li itemscope="" itemtype="http://schema.org/blogPost">
+                <a class="title"
+                    href="https://lamaquinadeturing.su/2020/05/01/cuando-la-inteligencia-artificial-desplazo-la-cibernetica/"
+                    title="Cuando la inteligencia artificial desplazó la cibernética">
+                    <img src="index_fitxers/darthsmouth-1-150x150.jpg"
+                        class="attachment-thumbnail size-thumbnail wp-post-image"
+                        alt="Cuando la inteligencia artificial desplazó la cibernética" itemprop="image"
+                        itemtype="http://schema.org/thumbnailUrl" width="150" height="150">
+                    <h5 itemscope="" itemtype="http://schema.org/headline">Cuando la inteligencia artificial
+                        desplazó la cibernética</h5>
+                </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div> -->
+</div>
+
+<div class="grid__item">
+
+    <aside class="widget-area" itemscope="" itemtype="http://schema.org/WPSideBar">
+    
+    <div class="widget element__frame widget_recent_entries">
+        <h3 class="widget-title">Entrades recents</h3>
+        <ul>
+            
+                
+            <li>
+                <a href="/ca/2025/08/notes-filosofiques-sobre-la-ia-1-forma-sense-contingut/">Notes filosòfiques sobre la IA 1: forma sense contingut</a>
+                
+            </li>
+            
+                
+            <li>
+                <a href="/ca/2025/06/pay-or-spain-cronica-del-mur-de-pagament-de-la-premsa-espanyola/">Pay or Spain: Crònica del mur de pagament de la premsa espanyola</a>
+                
+            </li>
+            
+                
+            <li>
+                <a href="/en/2025/02/this-post-has-been-generated-with-eleventy/">This post has been generated with Eleventy</a>
+                
+                    <a href="/en/2025/02/this-post-has-been-generated-with-eleventy/" class="box-shadow lang-code">en</a>
+                    
+                    
+                
+            </li>
+            
+                
+            <li>
+                <a href="/en/2024/10/git-rebase-doesnt-do-what-you-think/">Git rebase doesn't do what you think</a>
+                
+                    <a href="/en/2024/10/git-rebase-doesnt-do-what-you-think/" class="box-shadow lang-code">en</a>
+                    
+                    
+                
+            </li>
+            
+                
+            <li>
+                <a href="/en/2024/09/simple-sabotage-field-manual/">Simple Sabotage Field Manual</a>
+                
+                    <a href="/en/2024/09/simple-sabotage-field-manual/" class="box-shadow lang-code">en</a>
+                    
+                    
+                
+            </li>
+            
+        </ul>
+    </div>
+    <!-- <div id="archives-2" class="widget element__frame widget_archive">
+        <h3 class="widget-title">Archives</h3>
+        <ul>
+            <li><a href="https://lamaquinadeturing.su/2021/08/">August 2021</a></li>
+            <li><a href="https://lamaquinadeturing.su/2020/05/">May 2020</a></li>
+            <li><a href="https://lamaquinadeturing.su/2020/04/">April 2020</a></li>
+        </ul>
+    </div> -->
+    <div class="widget element__frame widget_categories">
+        <h3 class="widget-title">Categories</h3>
+        <ul>
+            
+            
+            <li class="cat-item cat-item-2"><a href="/ca/cibern%C3%A8tica/">Cibernètica</a></li>
+            
+            <li class="cat-item cat-item-2"><a href="/ca/ljena%C3%BCka/">Ljenaüka</a></li>
+            
+            <li class="cat-item cat-item-2"><a href="/ca/web/">Web</a></li>
+            
+            <li class="cat-item cat-item-2"><a href="/ca/privacitat/">Privacitat</a></li>
+            
+        </ul>
+    </div>
+    <div class="clear"></div>
+</aside>
+
+</div>
+
+        </section>
+        
+
+        <footer id="site-footer" itemscope="" itemtype="http://schema.org/WPFooter">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ca">CC BY-SA</a> · La màquina de Turing ·
+    <a href="/ca/2024/08/aquest-lloc-web-no-utilitza-galetes/">Aquest lloc web no fa servir galetes</a>
+</footer>
+    </div>
+
+    <a class="element__frame scroll-top" href="#scroll-top" title="scroll top" style="display: none;">
+        <p class="bar__title">Top</p>
+    </a>
+</body>
+</html>

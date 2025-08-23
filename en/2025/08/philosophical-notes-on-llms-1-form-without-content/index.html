@@ -236,6 +236,12 @@ loadStyleSheets('/assets/css/deferred.css');
 
             
             
+                <p class="entry__meta translations-box"><span class="lang-icon"></span> Also available in:
+                    
+                        <a href="/ca/2025/08/notes-filosofiques-sobre-la-ia-1-forma-sense-contingut/" class="box-shadow lang-code">ca</a>
+                    
+                </p>
+            
 
             
 <p><em>What follows are some of notes trying to understand large language models with the help of different philosophical theories. I'm incredibly out of my element, so treat this text as experimental.</em></p>
@@ -245,30 +251,37 @@ loadStyleSheets('/assets/css/deferred.css');
 <p>When a user writes a prompt, the chat bot responds with a reply. That is the foundation of the modern generative AI as most people know it. This interaction is useful because you can ask a question and get a response, or describe a task and get the result.</p>
 <p>This gives the impression of intelligence, as the bot can do really complex tasks. From summarizing large texts at incredible speed, to maintaining an interesting conversation, programming an algorithm, or solving a difficult math problem. How did the companies that make these bots train them to do all of this?</p>
 <p>The answer is not an incredibly dense program, but a clever trick: the bot just learned what is the most likely word to follow a sentence.</p>
-<p>It really is more complex than this<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>, but that's the essence. The bot looks at the prompt from the user, then adds the first word of the reply. Then another, and another. This is why they are also called <em>completion</em> models.</p>
+<p>It really is more complex than this<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup><sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>, but that's the essence. The bot looks at the prompt from the user, then adds the first word of the reply. Then another, and another. This is why they are also called <em>completion</em> models<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup>.</p>
 <p>In their core, chat bots only really know how to add one word. But they are <em>really good</em> at it. Their whole world is adding just one word, the perfect one. After that, they do it again. This may generate several questions. How is it possible that coherent sentences, or even insightful ideas, are created this way, instead of nonsense? Well, the same way the game of <a href="https://en.wikipedia.org/wiki/Consequences_(game)" class="link-wikipedia">Consequences</a> can create an <a href="https://en.wikipedia.org/wiki/Exquisite_corpse" class="link-wikipedia">exquisite corpse</a>, one word at a time.</p>
 <h2 id="form-without-content%3A-searle" tabindex="-1">Form without content: Searle <a class="heading-link" href="#form-without-content%3A-searle">§</a></h2>
 <p>Do large language models <em>know</em> what they say? Do <em>we</em> know what we say?</p>
-<p>The most direct reference to chat bots is <strong>John Searl's</strong> <a href="https://en.wikipedia.org/wiki/Chinese_room" class="link-wikipedia">Chinese room</a> argument. It goes like this: your job is to stay in a room, with a big book. Somebody throws in a card with some Chinese text, and you are expected to answer, also in Chinese. But you don't know Chinese! Luckily, the book is here to help you: just look for the rules that apply to the symbols you got, and follow them to get some equally enigmatic Chinese symbols as a response.<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<p>The most direct reference to chat bots is <strong>John Searl's</strong> <a href="https://en.wikipedia.org/wiki/Chinese_room" class="link-wikipedia">Chinese room</a> argument. It goes like this: your job is to stay in a room, with a big book. Somebody throws in a card with some Chinese text, and you are expected to answer, also in Chinese. But you don't know Chinese!<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup> Luckily, the book is here to help you: just look for the rules that apply to the symbols you got, and follow them to get some equally enigmatic Chinese symbols as a response.<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></p>
 <p>Sounds familiar? It is more or less what chat bots do. They have no idea what each symbol is, or what the whole sentence means. They don't even split sentences in words like we do!<sup class="footnote-ref"><a href="#fn1" id="fnref1:1">[1:1]</a></sup> They just follow rules. With this example Searl was arguing that artificial intelligence models are incapable of understanding.</p>
 <p>In other words, chat bots just spill <em>bullshit.</em> This is different from lying, because that would require understanding. Hallucinations are one of the biggest problems that large language models have, because they are not designed around the concepts of <em>truth</em> or <em>knowledge.</em> They are stochastic parrots, amazing bulshitters, professional Consequences players.</p>
 <h2 id="empty-words%3A-plato%2C-aristotle" tabindex="-1">Empty words: Plato, Aristotle <a class="heading-link" href="#empty-words%3A-plato%2C-aristotle">§</a></h2>
 <p>There is a rich European philosophical tradition of despising bullshit and nonsense, beginning with Socrates and Plato:</p>
 <figure class="quote">
-<blockquote cite="https://en.wikisource.org/wiki/Sophist_">
-<p>Socrates: And the same holds of the relation of rhetoric to all the other arts; the rhetorician need not know the truth about things; he has only to discover some way of persuading the ignorant that he has more knowledge than those who know?</p>
+<blockquote cite="https://www.perseus.tufts.edu/hopper/text?doc=urn:cts:greekLit:tlg0059.tlg023.perseus-eng1:459b">
+<p>Socrates: So he who does not know will be more convincing to those who do not know than he who knows, supposing the orator to be more convincing than the doctor. Is that, or something else, the consequence?</p>
 </blockquote>
-<figcaption class="quote-citation"><em>Gorgias</em> by Plato, 380 BC (<a href="https://en.wikisource.org/wiki/Sophist_(Jowett)" class="link-wikipedia">trans.</a> by Benjamin Jowett).</figcaption>
+<figcaption class="quote-citation"><em>Gorgias</em> by Plato (p. 301, <a href="https://www.perseus.tufts.edu/hopper/text?doc=urn:cts:greekLit:tlg0059.tlg023.perseus-eng1:459b" class="link-external">459b</a> in <em>Plato in Twelve Volumes</em><sup class="footnote-ref"><a href="#fn6" id="fnref6">[6]</a></sup>).</figcaption>
+</figure>
+<p>And he adds about anything that is flattery and deceitful:</p>
+<figure class="quote">
+<blockquote cite="https://www.perseus.tufts.edu/hopper/text?doc=urn:cts:greekLit:tlg0059.tlg023.perseus-eng1:464e">
+<p>Socrates: Flattery, however, is what I call it, and I say that this sort of thing is a disgrace [...] because it aims at the pleasant and ignores the best; and I say it is not an art, but a habitude, since it has no account to give of the real nature of the things it applies, and so cannot tell the cause of any of them. I refuse to give the name of art to anything that is irrational.</p>
+</blockquote>
+<figcaption class="quote-citation"><em>Gorgias</em> by Plato (p. 321, <a href="https://www.perseus.tufts.edu/hopper/text?doc=urn:cts:greekLit:tlg0059.tlg023.perseus-eng1:464e" class="link-external">464e</a> in <em>Plato in Twelve Volumes</em><sup class="footnote-ref"><a href="#fn6" id="fnref6:1">[6:1]</a></sup>).</figcaption>
 </figure>
 <p>To <strong>Plato,</strong> the appearance of wisdom without actual knowledge is just a &quot;knack of flattery&quot;, pretending rather than being. And boy, would he and Socrates have hated chat bots! The ultimate rhetoricians, words completely disconnected from actual knowledge.</p>
 <p><strong>Aristotle</strong> also considers <em>logos</em> -reasoning- the structure of an argument, while <em>pathos</em> and <em>ethos</em> add emotional persuasion and credibility. In this context, any speech without <em>logos</em>, made of chains of words connected by probability, would fall apart. And indeed it does, if you push a chat bot a little bit.</p>
 <h2 id="chatter%3A-kierkegaard%2C-heidegger" tabindex="-1">Chatter: Kierkegaard, Heidegger <a class="heading-link" href="#chatter%3A-kierkegaard%2C-heidegger">§</a></h2>
-<p>Such stream of words devoid of meaning -both in the sense of knowledge and intention- would certainly irritate certain no-bullshit philosophers. For <strong>Søren Kierkegaard,</strong> the amount of <em>snak</em> -chatter- was already unbearable in the XIX century:</p>
+<p>Such stream of words devoid of meaning -both in the sense of knowledge and intention- would certainly irritate certain no-nonsense philosophers. For <strong>Søren Kierkegaard,</strong> the amount of <em>snak</em> -chatter- was already unbearable in the XIX century:</p>
 <figure class="quote">
 <blockquote>
-<p>What is talkativeness? It is the result of doing away with the vital distinction between talking and keeping silent. Only someone who knows how to remain essentially silent can really talk —and act essentially. Silence is the essence of inwardness, of the inner life. Mere gossip anticipates real talk, and to express what is still in thought weakens action by forestalling it.</p>
+<p>What is it to chatter? It is the annulment of the passionate disjunction between being silent and speaking. Only the person who can remain essentially silent can speak essentially, can act essentially. Silence is inwardness. Chattering gets ahead of essential speaking, and giving utterance to reflection has a weakening effect on action by getting ahead of it.</p>
 </blockquote>
-<figcaption class="quote-citation"><em>The present age</em> by S. Kierkegaard, 1846.</figcaption>
+<figcaption class="quote-citation"><em>Two Ages. A Literary Review</em> by S. Kierkegaard (p. 97 in <em>Kierkegaard's Writings</em><sup class="footnote-ref"><a href="#fn7" id="fnref7">[7]</a></sup>).</figcaption>
 </figure>
 <p>For Kierkegaard, silence, inwardness and passion are the essence of an authentic existence. Large language models, with their endless chatter of empty words and total lack of agency are the extreme opposite. There is no inner life, there is no room for action.</p>
 <p>Chatter was also despised by <strong>Martin Heidegger.</strong> But we need to better understand his ideas first, which are notoriously slippery. He had a curious theory of how humans perceive the world. For instance, how a tree can give us shadow or how a cookie is sweet food to be eaten is the primordial relation we have with these objects, while their shape, color or size are derivative properties used by the rational mind. Not only that, but focusing on the theory will deprive us from this practical knowledge.</p>
@@ -276,10 +289,9 @@ loadStyleSheets('/assets/css/deferred.css');
 <p>Unfortunately, we live constantly distracted, fascinated by the world of <em>others,</em> by their second-hand <em>idle talk.</em> After all, we are social animals and it is not possible to experience everything directly, we have to learn a whole lot. But this knowledge, once it starts circulating, is dettached, untrustworthy, superficial -in a practical sense- and it may distract us from the primordial experience.</p>
 <figure class="quote">
 <blockquote>
-<p>What is said-in-the-talk as such, spreads in wider circles and takes on an authoritative character. Things are so because one says so. Idle talk is constituted by just such gossiping and passing the word along -a process by which its initial lack of grounds to stand on becomes aggravated to complete groundlessness. And indeed this idle talk is not confined to vocal gossip, but even spreads to what we write, where it takes the form of 'scribbling'. In this latter case the gossip is not based so much upon hearsay.
-It feeds upon superficial reading . The average understanding of the reader will never be able to decide what has been drawn from primordial sources with a struggle and how much is just gossip.</p>
+<p>What is said-in-the-talk as such, spreads in wider circles and takes on an authoritative character. Things are so because one says so. Idle talk is constituted by just such gossiping and passing the word along -a process by which its initial lack of grounds to stand on becomes aggravated to complete groundlessness. And indeed this idle talk is not confined to vocal gossip, but even spreads to what we write, where it takes the form of 'scribbling'. In this latter case the gossip is not based so much upon hearsay. It feeds upon superficial reading. The average understanding of the reader will never be able to decide what has been drawn from primordial sources with a struggle and how much is just gossip.</p>
 </blockquote>
-<figcaption class="quote-citation"><em>Being and Time</em> by Martin Heidegger, 1962 (trans. John Macquarrie and Edward Robinson, p. 212, SZ 169).</figcaption>
+<figcaption class="quote-citation"><em>Being and Time</em> by Martin Heidegger (p. 212<sup class="footnote-ref"><a href="#fn8" id="fnref8">[8]</a></sup>).</figcaption>
 </figure>
 <p>This is why, from the point of view of Heidegger, large language models would be machines of pure <em>idle talk.</em> Their third-hand words are detached from the world, completely unathentic. The more we use a chat bot, the more it prevents us from experiencing the world directly.</p>
 <h2 id="notes" tabindex="-1">Notes <a class="heading-link" href="#notes">§</a></h2>
@@ -290,7 +302,17 @@ It feeds upon superficial reading . The average understanding of the reader will
 </li>
 <li id="fn2" class="footnote-item"><p>Predicting the right word is more complex than just having a <a href="https://en.wikipedia.org/wiki/Markov_chain" class="link-wikipedia">Markov chain</a> with the probabilities between all tokens, for instance it required solving the <a href="https://en.wikipedia.org/wiki/Attention_Is_All_You_Need" class="link-wikipedia">attention</a> problem. <a href="#fnref2" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn3" class="footnote-item"><p>In many modern jobs it is easy to relate to the Chineese room operator, a feeling that David Graeber captures in <em>Bullshit Jobs: A Theory</em>. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+<li id="fn3" class="footnote-item"><p>Well, this is how OpenAI calls the GPT API. They are act actually called <em>autoregressive large language models</em>. <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>If you do, pretend the thought experiment uses a different language that you don't know. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn5" class="footnote-item"><p>In many modern jobs it is easy to relate to the Chineese room operator, a feeling that David Graeber captures in <em>Bullshit Jobs: A Theory</em>. <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn6" class="footnote-item"><p>Plato, <em>Gorgias</em> in <em>Plato in Twelve Volumes</em>, vol. III, trans. W. R. M. Lamb, Harvard University Press, 1967. <a href="#fnref6" class="footnote-backref">↩︎</a> <a href="#fnref6:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn7" class="footnote-item"><p>Søren Kierkegaard, <em>Two Ages. The Age Of Revolution And The Present Age. A Literary Review</em> in <em>Kierkegaard's Writings</em>, vol. XIV, p. 97, SV VIII 91, trans. Howard V. Hong and Edna H. Hong, Princeton University Press, 2009. <a href="#fnref7" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn8" class="footnote-item"><p>Martin Heidegger, <em>Being and Time</em>, p. 212, SZ 169, trans. John Macquarrie and Edward Robinson, Blackwell, 1962. <a href="#fnref8" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
